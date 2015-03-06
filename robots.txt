@@ -1,0 +1,10 @@
+User-Agent: *
+Disallow: /backoffice
+Disallow: /languages
+Disallow: /pages
+Disallow: /pages-e
+Disallow: /site-assets
+Disallow: /templates
+Disallow: /templates-e
+Allow: /u-img
+Allow: /u-docs
