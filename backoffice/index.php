@@ -8,7 +8,6 @@ include "pages/functions.php";
 
 // controlador de sessão
 if (isset($_COOKIE[$configuration["cookie"]]) && !empty($_COOKIE[$configuration["cookie"]])) {
-
 	$cookie = explode(".", $_COOKIE[$configuration["cookie"]]);
 
 	if (count($cookie) === 2) {
