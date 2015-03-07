@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>BO3 / BOzon</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<style>
+			body {
+				color: rgba(0, 0, 0, 0.86);
+				background-color: #e5e5e5;
+			}
+
+			.navbar-inverse {
+				background-color: #00838f;
+				border-color: #00838f;
+			}
+
+			.navbar {
+				border-radius: 0;
+			}
+
+			.navbar-inverse .navbar-nav > .active > a, 
+			.navbar-inverse .navbar-nav > .active > a:hover, 
+			.navbar-inverse .navbar-nav > .active > a:focus {
+				background-color: #006064;
+			}
+
+			.navbar-inverse .navbar-nav > .open > a, 
+			.navbar-inverse .navbar-nav > .open > a:hover, 
+			.navbar-inverse .navbar-nav > .open > a:focus {
+				background-color: #006064;
+			}
+
+			.navbar-inverse .navbar-nav > li > a {
+				color: #fff;
+			}
+
+			.navbar-inverse .navbar-brand {
+				color: #fff;
+			}
+
+			.container {
+				background-color: #fff;
+				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+			}
+
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+					</button>
+					<a class="navbar-brand" href="#">BO3</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Page 1-1</a></li>
+								<li><a href="#">Page 1-2</a></li>
+								<li><a href="#">Page 1-3</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Page 2</a></li>
+						<li><a href="#">Page 3</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="jumbotron">
+				<h1>My First Bootstrap Page</h1>
+				<p>Resize this responsive page to see the effect!</p> 
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>Column 1</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+				</div>
+				<div class="col-sm-4">
+					<h3>Column 2</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+				</div>
+				<div class="col-sm-4">
+					<h3>Column 3</h3>        
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h2>Inline form with .sr-only class</h2>
+					<p>Make the viewport larger than 768px wide to see that all of the form elements are inline, left aligned, and the labels are alongside.</p>
+					<form class="form-inline" role="form">
+						<div class="form-group">
+							<label class="sr-only" for="email">Email:</label>
+							<input type="email" class="form-control" id="email" placeholder="Enter email">
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="pwd">Password:</label>
+							<input type="password" class="form-control" id="pwd" placeholder="Enter password">
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox"> Remember me</label>
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h2>Horizontal form: control states</h2>
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Focused</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="focusedInput" type="text" value="Click to focus...">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="col-sm-2 control-label">Disabled</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+							</div>
+						</div>
+						<fieldset disabled>
+							<div class="form-group">
+								<label for="disabledTextInput" class="col-sm-2 control-label">Disabled input and select list (Fieldset disabled)</label>
+								<div class="col-sm-10">
+									<input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="disabledSelect" class="col-sm-2 control-label"></label>
+								<div class="col-sm-10">
+									<select id="disabledSelect" class="form-control">
+										<option>Disabled select</option>
+									</select>
+								</div>
+							</div>
+						</fieldset>
+						<div class="form-group has-success has-feedback">
+							<label class="col-sm-2 control-label" for="inputSuccess">Input with success and glyphicon</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputSuccess">
+								<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							</div>
+						</div>
+						<div class="form-group has-warning has-feedback">
+							<label class="col-sm-2 control-label" for="inputWarning">Input with warning and glyphicon</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputWarning">
+								<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+							</div>
+						</div>
+						<div class="form-group has-error has-feedback">
+							<label class="col-sm-2 control-label" for="inputError">Input with error and glyphicon</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputError">
+								<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary">Apple</button>
+						<button type="button" class="btn btn-primary">Samsung</button>
+						<button type="button" class="btn btn-primary">Sony</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
