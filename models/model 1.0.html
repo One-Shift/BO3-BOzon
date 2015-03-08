@@ -7,6 +7,29 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script>
+			function hideMenu (o) {
+				o.animate( {'left':'-300px'}, {queue: false, duration: 500});
+			}
+			
+			function showMenu (o) {
+				o.animate( {"left": "0"}, {queue: false, duration: 500});
+			}
+
+			$(document).ready(function () {
+				$("#bo-logo").on("click", function () {
+					var container = $("#bo-menu");
+					showMenu(container);
+				});
+			});
+
+			$(document).mouseup(function (e) {
+				var container = $("#bo-menu");
+				if (!container.is(e.target) /* if the target of the click isn't the container... */ && container.has(e.target).length === 0) {
+					hideMenu(container);
+				}
+			});
+		</script>
 		<style>
 			body {
 				color: rgba(0, 0, 0, 0.86);
@@ -42,15 +65,51 @@
 				color: #fff;
 			}
 
-			.container {
-				background-color: #fff;
-				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+			#bo-topbar {
+				position: fixed;
+				z-index: 1000;
+				width: 100%;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3)
 			}
 
+			#bo-menu {
+				position: fixed;
+				z-index: 1100;
+				top: 0;
+				left: 0;
+				width: 300px;
+				height: 100%;
+				padding-bottom: 15px;
+				background-color: #fff;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+
+			#bo-menu #profile {
+				padding-top: 15px;
+				padding-bottom: 15px;
+				text-align: center;
+				background-image: url(http://www.lirent.net/wp-content/uploads/2014/10/Android-Lollipop-Material-Design-Wallpaper-5.jpg);
+				background-size: cover;
+				background-position: center;
+			}
+
+			#bo-menu #profile img {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+
+			#bo-container {
+				background-color: #fff;
+				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+				padding-top: 15px;
+				padding-bottom: 15px;
+			}
 		</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse">
+		<nav id="bo-topbar" class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -58,7 +117,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-brand" href="#">BO3</a>
+					<a id="bo-logo" class="navbar-brand" href="#">BO3</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
@@ -81,7 +140,37 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<br/><br/><br/><br/>
+				</div>
+			</div>
+		</div>
+		<div id="bo-menu" class="container">
+			<div class="row">
+				<div id="profile" class="col-md-12">
+					<img src="https://yt3.ggpht.com/-q21q4CsCXu8/AAAAAAAAAAI/AAAAAAAAAAA/VY1iG33pTf0/s900-c-k-no/photo.jpg" alt="avatar" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="list-group">
+						<a class="list-group-item active" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+						<a class="list-group-item" href="#">Link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="bo-container" class="container">
 			<div class="jumbotron">
 				<h1>My First Bootstrap Page</h1>
 				<p>Resize this responsive page to see the effect!</p> 
@@ -186,6 +275,13 @@
 						<button type="button" class="btn btn-primary">Samsung</button>
 						<button type="button" class="btn btn-primary">Sony</button>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<br/><br/>
 				</div>
 			</div>
 		</div>
