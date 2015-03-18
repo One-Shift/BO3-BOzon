@@ -1,10 +1,15 @@
 <?php
 
-include "backoffice/class/PHPMailer/class.phpmailer.php";
-include "backoffice/configuration.php";
-include "backoffice/connect.php";
-include "backoffice/functions.php";
-include "pages/functions.php";
+include "class/PHPMailer/class.phpmailer.php";
+include "class/class.functions.php";
+
+include "backoffice/config/cfg.php";
+include "backoffice/config/database.php";
+include "backoffice/config/email.php";
+include "backoffice/config/languages.php";
+include "backoffice/config/store.php";
+include "backoffice/config/system.php";
+include "backoffice/config/connect.php";
 
 // controlador de sessão
 if (isset($_COOKIE[$configuration["cookie"]]) && !empty($_COOKIE[$configuration["cookie"]])) {
@@ -78,7 +83,6 @@ $language = parse_ini_file(sprintf("./languages/%s.ini", $lg_s), true);
 include "pages/includes.php";
 
 // print website
-
 $template = str_replace(
 	[
 		"{c2r-head}",

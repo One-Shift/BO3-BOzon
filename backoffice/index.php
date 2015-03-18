@@ -1,10 +1,15 @@
 <?php
 
 include "class/PHPMailer/class.phpmailer.php";
-include "configuration.php";
-include "connect.php";
-include "functions.php";
-include "pages/functions.php";
+include "class/class.functions.php";
+
+include "config/cfg.php";
+include "config/database.php";
+include "config/email.php";
+include "config/languages.php";
+include "config/store.php";
+include "config/system.php";
+include "config/connect.php";
 
 // controlador de sessão
 if (isset($_COOKIE[$configuration["cookie"]]) && !empty($_COOKIE[$configuration["cookie"]])) {
@@ -90,19 +95,19 @@ $template = str_replace(
 	],
 	[
 		$head,
-		$configuration["site-name"],
+		$cfg->system->name,
 		$language["system"]["keywords"],
 		$language["system"]["description"],
-		$configuration["analytics"],
-		$configuration["path"],
+		$cfg->system->analytics,
+		$cfg->system->path,
 		$lg_s
 	],
 	$template
 );
 
 // testint minify system
-if ($configuration["minify"]) {
-    print minifyPage($template);
+if ($cfg->system->minify) {
+    print functions::minifyPage($template);
 } else {
     print $template;
 }

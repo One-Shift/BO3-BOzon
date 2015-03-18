@@ -5,8 +5,7 @@ $cfg->system = new stdClass();
 $cfg->system->minify = TRUE;
 $cfg->system->pub = TRUE;
 
-$cfg->system->name = "";
-$cfg->system->slogan = "";
+$cfg->system->sitename = "";
 $cfg->system->owner = "";
 
 $cfg->system->path = "Path-here ex.: /new or /old";

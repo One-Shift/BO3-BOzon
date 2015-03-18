@@ -6,36 +6,33 @@ class functions {
 	}
 
 	public function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
-		global $configuration;
-
-		$fName = $configuration["site-name"];
-		$lName = $configuration["site-slogan"];
+		global $cfg;
 
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->CharSet = "UTF-8";
-		$mail->Host = $configuration["mail-smtp"]; // SMTP server example
-		$mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
-		$mail->SMTPAuth = true; // enable SMTP authentication
-		$mail->Port = 25; // set the SMTP port for the GMAIL server
-		$mail->SMTPSecure = $configuration["mail-secure"];
-		$mail->Username = $configuration["mail-username"]; // SMTP account username example
-		$mail->Password = $configuration["mail-password"];
-		$mail->SetFrom($from, $fName . ' : ' . $lName);
+		$mail->Host = $cfg->email->smtp;
+		$mail->SMTPDebug = 0;
+		$mail->SMTPAuth = TRUE;
+		$mail->Port = 25;
+		$mail->SMTPSecure = $cfg->email->secure;
+		$mail->Username = $cfg->email->username;
+		$mail->Password = $cfg->email->password;
+		$mail->SetFrom($from, $cfg->system->sitename);
 		$mail->Subject = $subject;
 		$mail->AddAddress($to, "User");
 		$mail->MsgHTML($message);
 
 		if (count($attach) > 0) {
 			foreach ($attach as $file) {
-				$mail->addAttachment($file[0],$file[1]);
+				$mail->addAttachment($file[0], $file[1]);
 			}
 		}
 
 		if (!$mail->Send()) {
-			return false;
+			return FALSE;
 		} else {
-			return true;
+			return TRUE;
 		}
 	}
 
