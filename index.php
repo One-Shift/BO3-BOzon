@@ -19,10 +19,7 @@ include "backoffice/controller/id.php"
 
 $head = file_get_contents("templates-e/head.html");
 
-/*
- *  abaixo é iniciada a criação do template, com base nós ficheiros html
- */
-
+// abaixo é iniciada a criação do template, com base nós ficheiros html
 include "pages/includes.php";
 
 // print website
@@ -49,7 +46,7 @@ $template = str_replace(
 );
 
 // testint minify system
-if ($configuration["minify"]) {
+if ($cfg->system->minify) {
     print minifyPage($template);
 } else {
     print $template;
