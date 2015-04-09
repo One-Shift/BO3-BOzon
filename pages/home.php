@@ -7,13 +7,13 @@ include "pages-e/footer.php";
 
 /* last thing */
 $template = str_replace(
-    [
-        "{c2r-header}",
-        "{c2r-footer}"
-    ],
-    [
-    	$header,
-    	$footer
+	[
+		"{c2r-header}",
+		"{c2r-footer}"
+	],
+	[
+		$header,
+		$footer
 	],
 	$page_template
 );
