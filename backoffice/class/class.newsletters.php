@@ -76,7 +76,16 @@ class newsletters {
 		$query = sprintf("SELECT * FROM %s_newsletters WHERE id = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->id);
 		$source = $mysqli->query($query);
 
-		return $source->fetch_array(MYSQLI_ASSOC);
+		return $source->fetch_assoc();
+	}
+
+	public function returnOneRegistryByEmail() {
+		global $configuration, $mysqli;
+
+		$query = sprintf("SELECT * FROM %s_newsletters WHERE email = '%s' LIMIT 1", $configuration['mysql-prefix'], $this->email);
+		$source = $mysqli->query($query);
+
+		return $source->fetch_assoc();
 	}
 
 	public function existRegistryByEmail() {
@@ -106,7 +115,7 @@ class newsletters {
 		$toReturn = array();
 		$i = 0;
 
-		while ($data = $source->fetch_array(MYSQLI_ASSOC)) {
+		while ($data = $source->fetch_assoc()) {
 			$toReturn[$i] = $data;
 			$i++;
 		}
