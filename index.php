@@ -45,7 +45,7 @@ $template = str_replace(
 	$template
 );
 
-// testint minify system
+// minify system
 if ($cfg->system->minify) {
 	print minifyPage($template);
 } else {

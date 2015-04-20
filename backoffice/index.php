@@ -49,7 +49,7 @@ $template = str_replace(
 	$template
 );
 
-// testint minify system
+// minify system
 if ($cfg->system->minify) {
 	print functions::minifyPage($template);
 } else {
