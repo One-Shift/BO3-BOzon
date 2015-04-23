@@ -19,15 +19,11 @@ include "controller/id.php"
 
 $head = file_get_contents("templates-e/head.html");
 
-/*
- *  abaixo é iniciada a criação do template, com base nós ficheiros html
- */
-
+// abaixo é iniciada a criação do template, com base nós ficheiros html
 include "pages/includes.php";
 
 // print website
-
-$template = str_replace(
+$tpl = str_replace(
 	[
 		"{c2r-head}",
 		"{c2r-sitename}",
@@ -46,12 +42,12 @@ $template = str_replace(
 		$cfg->system->path,
 		$lg_s
 	],
-	$template
+	$tpl
 );
 
 // minify system
 if ($cfg->system->minify) {
-	print functions::minifyPage($template);
+	print functions::minifyPage($tpl);
 } else {
-	print $template;
+	print $tpl;
 }

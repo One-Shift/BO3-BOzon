@@ -23,7 +23,7 @@ $head = file_get_contents("templates-e/head.html");
 include "pages/includes.php";
 
 // print website
-$template = str_replace(
+$tpl = str_replace(
 	[
 		"{c2r-head}",
 		"{c2r-sitename}",
@@ -35,19 +35,19 @@ $template = str_replace(
 	],
 	[
 		$head,
-		$configuration["site-name"],
+		$cfg->system->name,
 		$language["system"]["keywords"],
 		$language["system"]["description"],
-		$configuration["analytics"],
-		$configuration["path"],
+		$cfg->system->analytics,
+		$cfg->system->path,
 		$lg_s
 	],
-	$template
+	$tpl
 );
 
 // minify system
 if ($cfg->system->minify) {
-	print minifyPage($template);
+	print functions::minifyPage($tpl);
 } else {
-	print $template;
+	print $tpl;
 }
