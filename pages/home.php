@@ -1,12 +1,12 @@
 <?php
 
-$page_template = file_get_contents("templates/home.html");
+$page_tpl = file_get_contents("templates/home.html");
 
 include "pages-e/header.php";
 include "pages-e/footer.php";
 
 /* last thing */
-$template = str_replace(
+$tpl = str_replace(
 	[
 		"{c2r-header}",
 		"{c2r-footer}"
@@ -15,5 +15,5 @@ $template = str_replace(
 		$header,
 		$footer
 	],
-	$page_template
+	$page_tpl
 );
