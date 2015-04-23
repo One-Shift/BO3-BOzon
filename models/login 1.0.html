@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>BO3 / BOzon</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- font awesome -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<!-- twitter bootstrap -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script>
+			function hideMenu (o) {
+				o.animate( {'left':'-300px'}, {queue: false, duration: 500});
+			}
+
+			function showMenu (o) {
+				o.animate( {"left": "0"}, {queue: false, duration: 500});
+			}
+
+			$(document).ready(function () {
+				$("#bo-menu-button").on("click", function () {
+					var container = $("#bo-menu");
+					showMenu(container);
+				});
+			});
+
+			$(document).mouseup(function (e) {
+				var container = $("#bo-menu");
+				if (!container.is(e.target) /* if the target of the click isn't the container... */ && container.has(e.target).length === 0) {
+					hideMenu(container);
+				}
+			});
+		</script>
+		<style>
+			html, body {
+				height: 100%;
+			}
+			
+			body {
+				background-image: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-38.jpg);
+				background-position: center center;
+				background-size: cover;
+			}
+			
+			.wrapper {
+				height: calc(50% - 130px);
+			}
+			
+			.spacer30 {
+				height: 30px;
+			}
+			
+			.login {}
+			
+			.login .col-md-4 {
+				background-color: #fff;
+				border-radius: 3px;
+				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+			}
+			
+			.login .img {
+				text-align: center;
+			}
+			
+			.login .img img {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+			
+			.login .name {}
+			
+			.login label {
+				display: block;
+				font-weight: 300;
+				color: lightgrey;
+			}
+			
+			.login input {
+				border: none;
+				border-bottom: 3px solid  #009688;
+				background-color: #fff;
+				width: 100%;
+				line-height: 25pt;
+			}
+			
+			.login button {
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="login">
+		<div class="wrapper"></div>
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<div class="spacer30"></div>
+						<div class="img">
+							<img alt="avatar" src="https://yt3.ggpht.com/-q21q4CsCXu8/AAAAAAAAAAI/AAAAAAAAAAA/VY1iG33pTf0/s900-c-k-no/photo.jpg">
+						</div>
+						<div class="name">Carlos Santos</div>
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password" />
+						<button type="submit" name="submit"></button>
+						<div class="spacer30"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
