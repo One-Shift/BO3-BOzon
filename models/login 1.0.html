@@ -29,7 +29,7 @@
 				// define avatar
 				$("input[name=name]").on("focusout", 
 					function () {
-						$("img").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=name]").val()));
+						$("#avatar").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=name]").val()) + "?s=240");
 					}
 				)
 			});
@@ -62,6 +62,9 @@
 			
 			.login {}
 			
+			.login input {
+				outline: none;
+			}
 			
 			.login .col-md-3:nth-child(1) {
 				background-color: #fff;
@@ -102,6 +105,9 @@
 				background-color: #fff;
 				width: 100%;
 				line-height: 25pt;
+				text-align: center;
+				font-size: 15pt;
+				font-size: 15pt;
 			}
 			
 			.login button {
@@ -133,14 +139,15 @@
 					<div class="col-md-3 col-md-offset-2">
 						<div class="spacer30"></div>
 						<div class="img">
-							<img alt="avatar" src="https://yt3.ggpht.com/-q21q4CsCXu8/AAAAAAAAAAI/AAAAAAAAAAA/VY1iG33pTf0/s900-c-k-no/photo.jpg">
+							<img id="avatar" alt="avatar" src="http://www.gravatar.com/avatar/?s=240">
 						</div>
 						<div class="name">
-							<input type="text" name="name" value="Carlos Santos" placeholder="Your E-mail" />
+							<label for="name"><!--<center>Password</center>--> <br/></label>
+							<input type="text" name="name" id="name" placeholder="Your E-mail" />
 						</div>
 						<div class="password">
-							<label for="password">Password</label>
-							<input type="password" name="password" id="password" />
+							<!--<label for="password"><center>Password</center><br/></label>-->
+							<input type="password" name="password" id="password" placeholder="Your Password" />
 						</div>
 						<button type="submit" name="submit"></button>
 						<div class="spacer30"></div>
