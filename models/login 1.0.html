@@ -54,7 +54,8 @@
 			
 			.login {}
 			
-			.login .col-md-4 {
+			
+			.login .col-md-3:nth-child(1) {
 				background-color: #fff;
 				border-radius: 3px;
 				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
@@ -71,7 +72,15 @@
 				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
 			}
 			
-			.login .name {}
+			.login .name input {
+				background-color: #fff;
+				border: medium none;
+				font-size: 15pt;
+				line-height: 25pt;
+				margin: 15px 0;
+				text-align: center;
+				width: 100%;
+			}
 			
 			.login label {
 				display: block;
@@ -79,7 +88,7 @@
 				color: lightgrey;
 			}
 			
-			.login input {
+			.login .password input {
 				border: none;
 				border-bottom: 3px solid  #009688;
 				background-color: #fff;
@@ -89,6 +98,13 @@
 			
 			.login button {
 				display: none;
+			}
+			
+			.login .col-md-3:nth-child(2) {
+				background-color: #00838f;
+				border-radius: 3px;
+				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+				color: #fff;
 			}
 		</style>
 		<script>
@@ -106,15 +122,25 @@
 		<div class="container-fluid">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 col-md-offset-4">
+					<div class="col-md-3 col-md-offset-3">
 						<div class="spacer30"></div>
 						<div class="img">
 							<img alt="avatar" src="https://yt3.ggpht.com/-q21q4CsCXu8/AAAAAAAAAAI/AAAAAAAAAAA/VY1iG33pTf0/s900-c-k-no/photo.jpg">
 						</div>
-						<div class="name">Carlos Santos</div>
-						<label for="password">Password</label>
-						<input type="password" name="password" id="password" />
+						<div class="name">
+							<input type="text" name="name" value="Carlos Santos" placeholder="Your E-mail" />
+						</div>
+						<div class="password">
+							<label for="password">Password</label>
+							<input type="password" name="password" id="password" />
+						</div>
 						<button type="submit" name="submit"></button>
+						<div class="spacer30"></div>
+					</div>
+					<div class=" col-md-3 col-md-offset-1">
+						<div class="spacer30"></div>
+						<p>Olá estranho!<br/>Temos trabalhado arduamente para obter um software para melhorar a vida dos programadores e dos seus clientes.</p>
+						<p>Agradecemos a sua preferência por um trabalho português.</p>
 						<div class="spacer30"></div>
 					</div>
 				</div>
