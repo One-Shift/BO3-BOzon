@@ -26,6 +26,7 @@
 					showMenu(container);
 				});
 				
+				// define avatar
 				$("input[name=name]").on("focusout", 
 					function () {
 						$("img").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=name]").val()));
@@ -129,7 +130,7 @@
 		<div class="container-fluid">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3 col-md-offset-3">
+					<div class="col-md-3 col-md-offset-2">
 						<div class="spacer30"></div>
 						<div class="img">
 							<img alt="avatar" src="https://yt3.ggpht.com/-q21q4CsCXu8/AAAAAAAAAAI/AAAAAAAAAAA/VY1iG33pTf0/s900-c-k-no/photo.jpg">
@@ -145,6 +146,8 @@
 						<div class="spacer30"></div>
 					</div>
 					<div class=" col-md-3 col-md-offset-1">
+						<div class="spacer30"></div>
+						<p><center><img src="site-assets/images/logo.png" alt="logotipo" width="80%" /></center></p>
 						<div class="spacer30"></div>
 						<p>Olá estranho!<br/>Temos trabalhado arduamente para obter um software para melhorar a vida dos programadores e dos seus clientes.</p>
 						<p>Agradecemos a sua preferência por um trabalho português.</p>
