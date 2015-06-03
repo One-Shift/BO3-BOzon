@@ -5,10 +5,14 @@ The system BO3 - Bozon may be considered as a new phase of its predecessor, the 
 Having integrated the BO2-website-base system ensuring better stability in its operation.
 Already Backoffice will undergo a technical restructuring and graphic.
 
+It is possible to see the predecessor whit this link: https://github.com/NexuS-Pt/BO2-BOxygen
+
 [ PT-PT ]
 O sistema BO3 - BOzon poderá ser considerado como uma nova fase do seu antecessor, o BO2.
 Tendo integrado o sistema BO2-website-base garantindo uma melhor estabilidade no seu funcionamento.
 Já o Backoffice passará por uma reestruturação tecnica e gráfica.
+
+É possivel ver o antecessor no link: https://github.com/NexuS-Pt/BO2-BOxygen
 
 # Requirements
 
