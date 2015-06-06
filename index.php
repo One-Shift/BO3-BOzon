@@ -1,7 +1,7 @@
 <?php
 
-include "class/PHPMailer/class.phpmailer.php";
-include "class/class.functions.php";
+include "backoffice/class/PHPMailer/class.phpmailer.php";
+include "backoffice/class/class.functions.php";
 
 include "backoffice/config/cfg.php";
 include "backoffice/config/database.php";
