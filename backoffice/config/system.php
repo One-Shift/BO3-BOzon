@@ -4,6 +4,7 @@ $cfg->system = new stdClass();
 
 $cfg->system->minify = TRUE;
 $cfg->system->pub = TRUE;
+$cfg->system->timezone = "Europe/Lisbon"; // to disable set with FALSE
 
 $cfg->system->sitename = "";
 $cfg->system->owner = "";
