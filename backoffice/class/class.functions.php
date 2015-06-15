@@ -1,11 +1,11 @@
 <?php
 
 class functions {
-	public function number_format($n) {
+	public static function number_format($n) {
 		return number_format($n, 2, ".", " ");
 	}
 
-	public function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
+	public static function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
 		global $cfg;
 
 		$mail = new PHPMailer();
@@ -36,7 +36,7 @@ class functions {
 		}
 	}
 
-	public function generateRandomString($length = 10) {
+	public static function generateRandomString($length = 10) {
 		// work 100%
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -57,7 +57,7 @@ class functions {
 		return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 	}
 
-	public function minifyPage($buffer) {
+	public static function minifyPage($buffer) {
 		/* origin http://jesin.tk/how-to-use-php-to-minify-html-output/ */
 		$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
 
@@ -72,7 +72,7 @@ class functions {
 		return $buffer;
 	}
 
-	public function minifyHTML($buffer) {
+	public static function minifyHTML($buffer) {
 		$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
 
 		$replace = array('>', '<', '\\1');
@@ -84,7 +84,7 @@ class functions {
 		return $buffer;
 	}
 
-	public function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = array()) {
+	public static function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = array()) {
 		/*
 		 * Get either a Gravatar URL or complete image tag for a specified email address.
 		 *
