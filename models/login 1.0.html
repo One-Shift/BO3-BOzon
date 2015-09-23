@@ -29,7 +29,7 @@
 				// define avatar
 				$("input[name=name]").on("focusout", 
 					function () {
-						$("#avatar").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=name]").val()) + "?s=240");
+						$("#avatar").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=name]").val()) + "?s=240&r=g&d=mm");
 					}
 				)
 			});
