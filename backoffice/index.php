@@ -11,11 +11,11 @@ include "config/store.php";
 include "config/system.php";
 include "config/connect.php";
 
-include "controller/languages.php"
-include "controller/sessions.php"
-include "controller/pages.php"
-include "controller/actions.php"
-include "controller/id.php"
+include "controller/languages.php";
+include "controller/sessions.php";
+include "controller/pages.php";
+include "controller/actions.php";
+include "controller/id.php";
 
 $head = file_get_contents("templates-e/head.html");
 
