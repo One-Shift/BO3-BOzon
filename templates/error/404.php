@@ -2,6 +2,11 @@
 <html lang="{c2r-lg}">
 	<head>
 		{c2r-head}
+		<style>
+			.big {
+				font-size: 150px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="home">
