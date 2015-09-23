@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>BO3 / BOzon</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!-- font awesome -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<!-- twitter bootstrap -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<style>
+			body {
+				color: rgba(0, 0, 0, 0.86);
+				background-color: #e5e5e5;
+			}
+
+			.navbar-inverse {
+				background-color: #00838f;
+				border-color: #00838f;
+			}
+
+			.navbar {
+				border-radius: 0;
+			}
+
+			.navbar-inverse .navbar-nav > .active > a,
+			.navbar-inverse .navbar-nav > .active > a:hover,
+			.navbar-inverse .navbar-nav > .active > a:focus {
+				background-color: #006064;
+			}
+
+			.navbar-inverse .navbar-nav > .open > a,
+			.navbar-inverse .navbar-nav > .open > a:hover,
+			.navbar-inverse .navbar-nav > .open > a:focus {
+				background-color: #006064;
+			}
+
+			.navbar-inverse .navbar-nav > li > a {
+				color: #fff;
+			}
+
+			.navbar-inverse .navbar-brand {
+				color: #fff;
+			}
+
+			#bo-topbar {
+				position: fixed;
+				z-index: 1000;
+				width: 100%;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3)
+			}
+
+			#bo-menu {
+				position: fixed;
+				z-index: 1100;
+				top: 0;
+				left: 0;
+				width: 300px;
+				height: 100vh;
+				padding-bottom: 15px;
+				background-color: #fff;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+
+			#bo-menu #profile {
+				padding-top: 15px;
+				padding-bottom: 15px;
+				text-align: center;
+				background-image: url(http://www.lirent.net/wp-content/uploads/2014/10/Android-Lollipop-Material-Design-Wallpaper-5.jpg);
+				background-size: cover;
+				background-position: center;
+			}
+
+			#bo-menu #profile img {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+
+			#bo-menu .list-group {}
+
+			#bo-menu .list-group a {
+				margin-left: -15px;
+				margin-right: -15px;
+				border-color: rgb(245,245,245);
+				border-left: none;
+				border-right: none;
+			}
+
+			#bo-menu .list-group a.active {
+				background-color: #00838f;
+			}
+
+			#bo-menu .list-group .list-group-item:first-child {
+				border-radius: 0;
+				border-top: none;
+			}
+
+			#bo-container {
+				background-color: #fff;
+				box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+				padding-top: 15px;
+				padding-bottom: 15px;
+			}
+		</style>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-36909778-11', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</head>
+	<body>
+		<nav id="bo-topbar" class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a id="bo-menu-button" class="navbar-brand" href="#"><i class="fa fa-bars"></i></a>
+					<a id="bo-logo" class="navbar-brand" href="#">BO3</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="http://www.nexus-pt.eu/" title="NexuS-Pt, work team" target="_blank"><i class="fa fa-globe"></i> <span class="hidden-sm hidden-md hidden-lg">NexuS-Pt, work team</span></a></li>
+						<li><a href="http://www.nexus-pt.eu/fm" title="Support" target="_blank"><i class="fa fa-question"></i> <span class="hidden-sm hidden-md hidden-lg">Support</span></a></li>
+						<li><a href="https://github.com/NexuS-Pt/" title="Github" target="_blank"><i class="fa fa-code-fork"></i> <span class="hidden-sm hidden-md hidden-lg">Github</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<br/><br/><br/><br/>
+				</div>
+			</div>
+		</div>
+		<div id="bo-container" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>AVISO DE COOKIES</h1>
+					<p>O nosso website utiliza cookies. Um cookie é um pequeno ficheiro de letras e números que colocamos no seu computador, caso o permita. Estes cookies permitem-nos distingui-lo dos outros utilizadores do nosso website, o que nos ajuda a fornecer-lhe uma boa experiência quando navega no nosso website e também nos permite melhorar o nosso website. Poderá consultar todos os detalhes sobre o tipo de cookies que utilizamos e a finalidade para a qual os utilizamos na nossa política de utilização de cookies. Ao continuar a utilizar este website, está a concordar com a utilização de cookies.</p>
+
+					<h2>A nossa Política de utilização de cookies</h2>
+					<h3>O que é um cookie?</h3>
+
+					<p>Um cookie é um pequeno ficheiro de texto que colocamos no seu computador ou dispositivo, caso o permita. Os cookies podem ser utilizados para várias finalidades diferentes, que explicaremos detalhadamente a seguir.<br>
+					Pode bloquear ou remover cookies através do seu browser da Internet ou utilizando software de terceiros, mas poderão existir problemas com a utilização de determinadas partes do website caso o faça.<br>
+					Ao continuar a utilizar o website, está a concordar com a utilização de cookies. </p>
+
+					Qual a finalidade dos cookies no website da Honda?
+					<p>Os cookies têm imensas funcionalidades diferentes e abaixo listamos apenas alguns exemplos:<br>
+					• Podem lembrar-se das suas preferências - como o seu concessionário Honda preferido. Isto fará com que determinados processos sejam mais fáceis de preencher (por exemplo, encontrar detalhes de contacto ou um mapa).<br>
+					• Podem recolher informações anónimas de utilização - por exemplo, o número de pessoas que utilizam a nossa ferramenta de pesquisa de concessionários. Utilizamos esta informação para continuar a melhorar a sua experiência.<br>
+					• Podem lembrar-se de que visitou o website da Honda e os publicitários online podem utilizar estas informações para personalizar as suas mensagens para si - por exemplo, colocando um anúncio num website de terceiros para lhe promover uma oferta Honda actual.<br>
+					Lembre-se - pode bloquear ou remover cookies a qualquer momento e, quando o fizer, as informações armazenadas são removidas de forma permanente. </p>
+
+					Os cookies utilizados neste website
+					<p>No nosso website utilizamos quatro categorias de cookies:<br>
+					1. Cookies estritamente necessários<br>
+					• Estes são cookies essenciais para o funcionamento do nosso website. Incluem, por exemplo, cookies que lhe permitem navegar para as páginas correctas, caso efectue alguma actualização à forma como o website funciona.<br>
+					2. Cookies de desempenho<br>
+					• Estes cookies recolhem informações sobre a forma como os visitantes utilizam o nosso website, permitindo-nos compreender se ocorreram erros e permitindo-nos testar funcionalidades novas. Não recolhemos informações que identifiquem directamente o visitante, uma vez que os dados são agregados e anónimos. Apenas utilizamos esta informação para continuar a melhorar o funcionamento do website. <br>
+					3. Cookies de funcionalidade<br>
+					• Estes cookies ajudam a activar uma funcionalidade específica no website para melhorar a sua experiência, por exemplo, memorizando as suas preferências (como a selecção do concessionário), detectando se um serviço já lhe foi oferecido (como inquéritos), ou armazenando decisões mais complexas (como o produto específico em que está interessado).<br>
+					4. Cookies de vendas/publicidade<br>
+					• Estes cookies registam a sua visita ao nosso website, as páginas que visitou e as ligações que seguiu. Utilizaremos estas informações para tornar o nosso website e a publicidade nele existente mais relevante para os seus interesses. Também podemos partilhar estas informações com terceiros para esta finalidade. Também são utilizados para registar a eficiência das campanhas publicitárias. <br>
+						Note-se que os terceiros (incluindo, por exemplo, redes publicitárias e fornecedores de serviços externos como serviços de análise de tráfego web) também podem utilizar cookies, sobre os quais não temos controlo. É provável que estes cookies sejam cookies de desempenho ou cookies de vendas. </p>
+
+					<p>Leitura adicional
+					Para saber mais sobre cookies, por favor consulte o seguinte endereço http://www.allaboutcookies.org/</p>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<iframe class="ads" src="http://www.nexus-pt.eu/ads.php" style="border: none; width: 738px; height: 130px; margin: 5px auto 0;display: block;"></iframe>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><br/></div>
+			</div>
+		</div>
+	</body>
+</html>
