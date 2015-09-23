@@ -25,8 +25,10 @@ $head = file_get_contents("templates-e/head.html");
 $pg_file = sprintf("pages/%s.php", $pg);
 if (file_exists($pg_file)) {
 	include $pg_file;
-} else {
+} else if ($pg == null) {
 	include "pages/home.php";
+} else {
+	include "pages/404.php";
 }
 
 // print website
