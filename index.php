@@ -11,11 +11,11 @@ include "backoffice/config/store.php";
 include "backoffice/config/system.php";
 include "backoffice/config/connect.php";
 
-include "backoffice/controller/languages.php"
-include "backoffice/controller/sessions.php"
-include "backoffice/controller/pages.php"
-include "backoffice/controller/actions.php"
-include "backoffice/controller/id.php"
+include "backoffice/controller/languages.php";
+include "backoffice/controller/sessions.php";
+include "backoffice/controller/pages.php";
+include "backoffice/controller/actions.php";
+include "backoffice/controller/id.php";
 
 $head = file_get_contents("templates-e/head.html");
 
