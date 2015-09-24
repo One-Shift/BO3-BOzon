@@ -16,4 +16,9 @@ if (isset($_GET["lg"]) && !empty($_GET["lg"])) {
 	$lg_s = "pt";
 }
 
-$language = parse_ini_file(sprintf("languages/%s.ini", $lg_s), true);
+$lg_file = sprintf("languages/%s.ini", $lg_s) {
+if (file_exists($pg_file)) {
+	$lang = parse_ini_file($lg_file, true);
+} else {
+	$lang = parse_ini_file("languages/en.ini", true);
+}
