@@ -11,12 +11,13 @@ if ($_GET["lg"] != null) {
 			$lg_s = $item[1];
 		}
 	}
-} else {
+}
+
+if ($lg == null || $lg_s == null) {
 	// default language
 	$lg = 1;
 	$lg_s = $cfg->lg[1][1];
 }
-
 
 // languages loader
 $lg_file = sprintf("languages/%s.ini", $lg_s);
