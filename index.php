@@ -19,12 +19,14 @@ include "backoffice/controller/id.php";
 
 $head = file_get_contents("templates-e/head.html");
 
-// abaixo é iniciada a criação do template, com base nós ficheiros html
+// page controller
 $pg_file = sprintf("pages/%s.php", $pg);
-if (file_exists($pg_file)) {
-	include $pg_file;
-} else if ($pg == null) {
+if ($pg == null) {
 	include "pages/home.php";
+} else if ($pg == "404") {
+	include "pages/404.php";
+} else if (file_exists($pg_file)) {
+	include $pg_file;
 } else {
 	include "pages/404.php";
 }
