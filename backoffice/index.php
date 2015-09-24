@@ -20,7 +20,26 @@ include "controller/id.php";
 $head = file_get_contents("templates-e/head.html");
 
 // abaixo é iniciada a criação do template, com base nós ficheiros html
-include "pages/includes.php";
+//include "pages/includes.php";
+switch ($pg) {
+	case "login":
+		include sprintf("./modules/sys-%s/sys-%s.php", "login","login");
+		break;
+	case "logout":
+		include sprintf("./modules/sys-%s/sys-%s.php", "logout","logout");
+		break;
+	default:
+		$mod_path = sprintf("./modules/mod-%s/", $pg);
+
+		if (!file_exists($mod_path)) {
+			include sprintf("./modules/sys-%s/sys-%s.php", "404","404");
+			exit;
+		} else {
+			// mod load
+			include sprintf("%smod-%s.php", $mod_path,$pg);
+		}
+}
+
 
 // print website
 $tpl = str_replace(
