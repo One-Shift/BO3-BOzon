@@ -20,8 +20,6 @@ include "backoffice/controller/id.php";
 $head = file_get_contents("templates-e/head.html");
 
 // abaixo é iniciada a criação do template, com base nós ficheiros html
-// include "pages/includes.php";
-
 $pg_file = sprintf("pages/%s.php", $pg);
 if (file_exists($pg_file)) {
 	include $pg_file;
