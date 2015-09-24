@@ -10,7 +10,7 @@ $cfg->mod->contact = "developer@email.here";
 /* action controller */
 if ($a == null) {
 	// if action doesn't exist, system sent you to module homepage
-	include "modules/%s/actions/home.php";
+	include sprintf("modules/%s/actions/home.php", $cfg->mod->folder);
 } else {
 	$pg_file = sprintf("modules/%s/actions/%s.php", $cfg->mod->folder, $a);
 	if (file_exists($pg_file)) {
