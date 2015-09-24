@@ -1,22 +1,25 @@
 <?php
 
-// controlador de língua
-if (isset($_GET["lg"]) && !empty($_GET["lg"])) {
-	switch ($_GET["lg"]) {
-		case "pt":
-			$lg = 1;
-			$lg_s = "pt";
-			break;
-		default:
-			$lg = 1;
-			$lg_s = "pt";
+// languages verifier
+$lg = null;
+$lg_s = null;
+
+if ($_GET["lg"] != null) {
+	foreach ($cfg->lg as $index=>$item) {
+		if ($_GET["lg"] == $item[1]) {
+			$lg = $index;
+			$lg_s = $item[1];
+		}
 	}
 } else {
+	// default language
 	$lg = 1;
-	$lg_s = "pt";
+	$lg_s = $cfg->lg[1][1];
 }
 
-$lg_file = sprintf("languages/%s.ini", $lg_s) {
+
+// languages loader
+$lg_file = sprintf("languages/%s.ini", $lg_s);
 if (file_exists($pg_file)) {
 	$lang = parse_ini_file($lg_file, true);
 } else {
