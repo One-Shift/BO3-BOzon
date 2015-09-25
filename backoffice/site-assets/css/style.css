@@ -9,3 +9,106 @@
 .tacenter {text-align: center;}
 .tarihgt {text-align: center;}
 .taleft {text-align: center;}
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    color: rgba(0, 0, 0, 0.86);
+    background-color: #e5e5e5;
+    height: 100%;
+    min-height: 100%;
+}
+
+.navbar-inverse {
+    background-color: #00838f;
+    border-color: #00838f;
+    background-image: none;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #006064;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #006064;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+#bo-topbar {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3)
+}
+
+#bo-menu {
+    position: fixed;
+    z-index: 1100;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    padding-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+#bo-menu #profile {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    background-image: url(http://www.lirent.net/wp-content/uploads/2014/10/Android-Lollipop-Material-Design-Wallpaper-5.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#bo-menu #profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+#bo-menu .list-group {}
+
+#bo-menu .list-group a {
+    margin-left: -15px;
+    margin-right: -15px;
+    border-color: rgb(245,245,245);
+    border-left: none;
+    border-right: none;
+}
+
+#bo-menu .list-group a.active {
+    background-color: #00838f;
+}
+
+#bo-menu .list-group .list-group-item:first-child {
+    border-radius: 0;
+    border-top: none;
+}
+
+#bo-container {
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
