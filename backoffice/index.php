@@ -48,7 +48,6 @@ $tpl = str_replace(
 		"{c2r-sitename}",
 		"{c2r-keywords}",
 		"{c2r-description}",
-		"{c2r-analytics}",
 		"{c2r-path}",
 		"{c2r-lg}"
 	],
@@ -57,8 +56,7 @@ $tpl = str_replace(
 		$cfg->system->name,
 		$language["system"]["keywords"],
 		$language["system"]["description"],
-		$cfg->system->analytics,
-		$cfg->system->path,
+		$cfg->system->path_bo,
 		$lg_s
 	],
 	$tpl
