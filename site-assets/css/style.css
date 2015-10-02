@@ -6,6 +6,13 @@
 .spacer30 {height: 30px;}
 .spacer15 {height: 15px;}
 
+.block150 {display: inline-block; width: 150px;}
+.block120 {display: inline-block; width: 120px;}
+.block90 {display: inline-block; width: 90px;}
+.block60 {display: inline-block; width: 60px;}
+.block30 {display: inline-block; width: 30px;}
+.block15 {display: inline-block; width: 15px;}
+
 .tacenter {text-align: center;}
 .tarihgt {text-align: center;}
 .taleft {text-align: center;}
