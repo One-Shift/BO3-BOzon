@@ -14,8 +14,8 @@
 .block15 {display: inline-block; width: 15px;}
 
 .tacenter {text-align: center;}
-.tarihgt {text-align: center;}
-.taleft {text-align: center;}
+.tarihgt {text-align: right;}
+.taleft {text-align: left;}
 
 html {
     height: 100%;
