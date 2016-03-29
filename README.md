@@ -18,7 +18,8 @@ Já o Backoffice passará por uma reestruturação tecnica e gráfica.
 
 * Apache 2.0
 * PHP 5.4
-* MySQL 5.5
+* MySQL 5.5 (studing PDO option)
+* Browser with full support to HTML5
 
 ## License
 
