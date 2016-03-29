@@ -19,16 +19,15 @@
 <meta name="msapplication-TileImage" content="{c2r-path}/site-assets/favicon/favicon_144.png" />
 <!-- end favicon -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta property="og:site_name" content="{c2r-sitename}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{c2r-path}" />
-<meta property="og:image" content="{c2r-path}/site-assets/favicon/favicon_128.png" />
+<meta property="og:image" content="{c2r-og-image}" />
 <meta property="og:title" content="{c2r-sitename}" />
-<meta property="og:description" content="{c2r-description}" />
+<meta property="og:description" content="{c2r-og-description}" />
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
@@ -37,7 +36,10 @@
 
 <link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
 
-<script type="text/javascript" src="{c2r-path}/site-assets/js/jquery.js"></script>
+{c2r-lib-jquery}
+{c2r-lib-bootstrap}
+{c2r-lib-fontawesome}
+
 <script type="text/javascript" src="{c2r-path}/site-assets/js/animatescroll.min.js"></script>
 <script type="text/javascript" src="{c2r-path}/site-assets/js/cookies.js"></script>
 <script type="text/javascript" src="{c2r-path}/site-assets/js/script.js"></script>
@@ -45,12 +47,9 @@
 <!-- GOOGLE MAPS -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
-<!-- BOOTSTRAP -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-<!-- FONT AWESOME -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script>
+	var path = "{c2r-path}";
+	var lg = "{c2r-lg}";
+</script>
 
 {c2r-analytics}
