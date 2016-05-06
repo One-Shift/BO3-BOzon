@@ -43,7 +43,27 @@ $tpl = str_replace(
 		"{c2r-lg}"
 	],
 	[
-		$head,
+		str_replace(
+			[
+				"{c2r-og-title}",
+				"{c2r-og-url}",
+				"{c2r-og-image}",
+				"{c2r-og-description}",
+				"{c2r-lib-jquery}",
+				"{c2r-lib-bootstrap}",
+				"{c2r-lib-fontawesome}"
+			],
+			[
+				(isset($og["title"])) ? $og["title"] : $configuration["site-name"],
+				(isset($og["url"])) ? $og["url"] : "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
+				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$configuration["path"]."/site-assets/default-share-image.jpg",
+				(isset($og["description"])) ? $og["description"] : $language["system"]["description"],
+				file_get_contents("http://nexus-pt.github.io/BO2/jquery.html"),
+				file_get_contents("http://nexus-pt.github.io/BO2/bootstrap.html"),
+				file_get_contents("http://nexus-pt.github.io/BO2/fontawesome.html")
+			],
+			$head
+		),
 		$cfg->system->name,
 		$language["system"]["keywords"],
 		$language["system"]["description"],
