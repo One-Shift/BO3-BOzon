@@ -9,12 +9,14 @@ class user {
 	protected $code;
 	protected $active = FALSE;
 
-	public function __construct() {
-
-	}
+	public function __construct() {}
 
 	public function setUsername($u) {
 		$this->username = $u;
+	}
+
+	public function getSecurePassword ($p) {
+		return sha1(md5(sha1(md5($p))));
 	}
 
 	public function setPassword($p) {

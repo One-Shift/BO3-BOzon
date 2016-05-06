@@ -4,7 +4,7 @@
 $lg = null;
 $lg_s = null;
 
-if ($_GET["lg"] != null) {
+if (isset($_GET["lg"]) && $_GET["lg"] != null) {
 	foreach ($cfg->lg as $index=>$item) {
 		if ($_GET["lg"] == $item[1]) {
 			$lg = $index;
@@ -21,7 +21,7 @@ if ($lg == null || $lg_s == null) {
 
 // languages loader
 $lg_file = sprintf("languages/%s.ini", $lg_s);
-if (file_exists($pg_file)) {
+if (file_exists($lg_file)) {
 	$lang = parse_ini_file($lg_file, true);
 } else {
 	$lang = parse_ini_file("languages/en.ini", true);

@@ -2,6 +2,7 @@
 
 $cfg->mod = new stdClass();
 $cfg->mod->name = "Authenticator Login";
+$cfg->mod->path = $cfg->system->path_bo . "/modules/sys-login/";
 $cfg->mod->folder = "sys-login";
 $cfg->mod->version = "0.0.1";
 $cfg->mod->developer = "Carlos Santos";

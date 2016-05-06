@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
 /* styling here */
 .spacer150 {height: 150px;}
 .spacer120 {height: 120px;}
@@ -14,8 +16,8 @@
 .block15 {display: inline-block; width: 15px;}
 
 .tacenter {text-align: center;}
-.tarihgt {text-align: center;}
-.taleft {text-align: center;}
+.tarihgt {text-align: right;}
+.taleft {text-align: left;}
 
 html {
     height: 100%;
@@ -27,6 +29,8 @@ body {
     background-color: #e5e5e5;
     height: 100%;
     min-height: 100%;
+
+    font-family: "Open Sans", sans-serif;
 }
 
 .navbar-inverse {

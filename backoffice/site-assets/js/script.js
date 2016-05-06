@@ -14,9 +14,9 @@ $(document).ready(function () {
     });
 
     // get avatar for login page
-    $("body.login input[name=name]").on("focusout",
+    $("body.login input[name=email]").on("focusout",
         function () {
-            $("#avatar").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=name]").val()) + "?s=240&r=g&d=mm");
+            $("#avatar").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=email]").val()) + "?s=240&r=g&d=mm");
         }
     )
 });

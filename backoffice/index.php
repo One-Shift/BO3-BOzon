@@ -1,6 +1,7 @@
 <?php
 
 include "class/PHPMailer/class.phpmailer.php";
+include "class/class.user.php";
 include "class/class.functions.php";
 
 include "config/cfg.php";
@@ -21,25 +22,29 @@ $head = file_get_contents("templates-e/head.html");
 
 // abaixo é iniciada a criação do template, com base nós ficheiros html
 
-switch ($pg) {
-	case "login":
-		include sprintf("modules/sys-%s/sys-%s.php", "login","login");
-		break;
-	case "logout":
-		include sprintf("modules/sys-%s/sys-%s.php", "logout","logout");
-		break;
-	default:
-		$mod_path = sprintf("modules/mod-%s/", $pg);
+if ($auth) {
+	switch ($pg) {
+		case "logout":
+			include sprintf("modules/sys-%s/sys-%s.php", "logout","logout");
+			break;
+		case "login":
+			include sprintf("modules/sys-%s/sys-%s.php", "login","login");
+			break;
+		default:
+			$mod_path = sprintf("modules/mod-%s/", $pg);
 
-		if (!file_exists($mod_path)) {
-			include sprintf("modules/sys-%s/sys-%s.php", "404","404");
-			exit;
-		} else {
-			// mod load
-			include sprintf("%smod-%s.php", $mod_path,$pg);
-		}
+			if (!file_exists($mod_path)) {
+				include sprintf("modules/sys-%s/sys-%s.php", "404","404");
+				exit;
+			} else {
+				// mod load
+				include sprintf("%smod-%s.php", $mod_path,$pg);
+			}
+			break;
+	}
+} else {
+	include sprintf("modules/sys-%s/sys-%s.php", "login","login");
 }
-
 
 // print website
 $tpl = str_replace(
@@ -52,10 +57,30 @@ $tpl = str_replace(
 		"{c2r-lg}"
 	],
 	[
-		$head,
-		$cfg->system->name,
-		$language["system"]["keywords"],
-		$language["system"]["description"],
+		str_replace(
+			[
+				"{c2r-og-title}",
+				"{c2r-og-url}",
+				"{c2r-og-image}",
+				"{c2r-og-description}",
+				"{c2r-lib-jquery}",
+				"{c2r-lib-bootstrap}",
+				"{c2r-lib-fontawesome}"
+			],
+			[
+				(isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
+				(isset($og["url"])) ? $og["url"] : "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
+				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$cfg->system->path."/site-assets/default-share-image.jpg",
+				(isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
+				file_get_contents("http://nexus-pt.github.io/BO2/jquery.html"),
+				file_get_contents("http://nexus-pt.github.io/BO2/bootstrap.html"),
+				file_get_contents("http://nexus-pt.github.io/BO2/fontawesome.html")
+			],
+			$head
+		),
+		$cfg->system->sitename,
+		$lang["system"]["keywords"],
+		$lang["system"]["description"],
 		$cfg->system->path_bo,
 		$lg_s
 	],
