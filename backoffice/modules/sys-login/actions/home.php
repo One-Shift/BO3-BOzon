@@ -7,10 +7,9 @@ $form = str_replace(
 	[],
 	file_get_contents(sprintf("modules/%s/templates-e/form.html", $cfg->mod->folder))
 );
-if (isset($_POST["submit"])) { var_dump($_POST);
+if (isset($_POST["submit"])) {
 	if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
 		if (!empty($_POST["password"])) {
-			print 1;
 
 			$_POST["password"] = user::getSecurePassword($_POST["password"]);
 
@@ -23,28 +22,9 @@ if (isset($_POST["submit"])) { var_dump($_POST);
 
 			if ($source->num_rows > 0) {
 				$data = $source->fetch_assoc();
-
-				if (setcookie($cfg->system->cookie, ($data["id"].".".$data["password"]), time() + ($cfg->system->cookie_time * 60), "/", $_SERVER['REQUEST_URI'])) {
-					//header("Location: ".$cfg->system->path_bo."/0/$lg_s/example/");
-
-					// SUCCESS MESSAGE
-					$form = str_replace(
-						[
-							"{c2r-return-message}"
-						],
-						[
-							str_replace(
-							[
-								"{c2r-message}"
-							],
-							[
-								"COOL!"
-							],
-							file_get_contents(sprintf("modules/%s/templates-e/return-message.html", $cfg->mod->folder))
-							)
-						],
-						$form
-					);
+print  $_SERVER["HTTP_HOST"];
+				if (setcookie($cfg->system->cookie, ($data["id"].".".$data["password"]), time() + ($cfg->system->cookie_time * 60), "/", $_SERVER["HTTP_HOST"])) {
+					header("Location: ".$cfg->system->path_bo."/0/$lg_s/example/");
 				} else {
 					// ERROR MESSAGE
 					$form = str_replace(
