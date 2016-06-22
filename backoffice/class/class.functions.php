@@ -5,7 +5,7 @@ class functions {
 		return number_format($n, 2, ".", " ");
 	}
 
-	public static function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
+	public static function sendEmailTo($from, $to, $subject, $message, $attach = []) {
 		global $cfg;
 
 		$mail = new PHPMailer();
@@ -59,9 +59,9 @@ class functions {
 
 	public static function minifyPage($buffer) {
 		/* origin http://jesin.tk/how-to-use-php-to-minify-html-output/ */
-		$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
+		$search = ['/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s'];
 
-		$replace = array('>', '<', '\\1');
+		$replace = ['>', '<', '\\1'];
 
 		if (preg_match("/\<html/i", $buffer) == 1 && preg_match("/\<\/html\>/i", $buffer) == 1) {
 			$buffer = preg_replace($search, $replace, $buffer);
@@ -84,7 +84,7 @@ class functions {
 		return $buffer;
 	}
 
-	public static function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = array()) {
+	public static function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = []) {
 		/*
 		 * Get either a Gravatar URL or complete image tag for a specified email address.
 		 *
