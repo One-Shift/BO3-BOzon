@@ -54,19 +54,19 @@ $tpl = str_replace(
 				"{c2r-lib-fontawesome}"
 			],
 			[
-				(isset($og["title"])) ? $og["title"] : $configuration["site-name"],
+				(isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
 				(isset($og["url"])) ? $og["url"] : "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
-				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$configuration["path"]."/site-assets/default-share-image.jpg",
-				(isset($og["description"])) ? $og["description"] : $language["system"]["description"],
+				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$cfg->system->path."/site-assets/default-share-image.jpg",
+				(isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
 				file_get_contents("http://nexus-pt.github.io/BO2/jquery.html"),
 				file_get_contents("http://nexus-pt.github.io/BO2/bootstrap.html"),
 				file_get_contents("http://nexus-pt.github.io/BO2/fontawesome.html")
 			],
 			$head
 		),
-		$cfg->system->name,
-		$language["system"]["keywords"],
-		$language["system"]["description"],
+		$cfg->system->sitename,
+		$lang["system"]["keywords"],
+		$lang["system"]["description"],
 		$cfg->system->analytics,
 		$cfg->system->path,
 		$lg_s
