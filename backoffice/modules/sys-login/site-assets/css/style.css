@@ -2,6 +2,7 @@
 	background-image: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-38.jpg);
 	background-position: center center;
 	background-size: cover;
+	background-attachment: fixed;
 }
 
 .login .navbar.navbar-default.navbar-fixed-top {
@@ -24,7 +25,7 @@
 	outline: none;
 }
 
-.login .col-md-3:nth-child(1) {
+.login .form {
 	background-color: #fff;
 	border-radius: 3px;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
@@ -72,7 +73,7 @@
 	display: none;
 }
 
-.login .col-md-3:nth-child(2) {
+.login .message {
 	background-color: #00838f;
 	border-radius: 3px;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);

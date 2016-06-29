@@ -22,5 +22,3 @@ $cfg->system->cookie = "cookie";
 $cfg->system->cookie_time = 320;
 
 $cfg->system->analytics = "";
-
-//"category_sections" => ["products", "articles"], // talvez usar na BD

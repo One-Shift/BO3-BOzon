@@ -15,7 +15,7 @@ class user {
 		$this->username = $u;
 	}
 
-	public function getSecurePassword ($p) {
+	public static function getSecurePassword ($p) {
 		return sha1(md5(sha1(md5($p))));
 	}
 
@@ -156,5 +156,9 @@ class user {
 		$code = explode("[spr]", $code);
 
 		return $code;
+	}
+
+	public static function isOwner ($authData) {
+		return $authData["rank"] == "owner";
 	}
 }

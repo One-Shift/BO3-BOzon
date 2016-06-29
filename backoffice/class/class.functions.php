@@ -5,7 +5,7 @@ class functions {
 		return number_format($n, 2, ".", " ");
 	}
 
-	public static function sendEmailTo($from, $to, $subject, $message, $attach = []) {
+	public static function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
 		global $cfg;
 
 		$mail = new PHPMailer();
@@ -59,9 +59,9 @@ class functions {
 
 	public static function minifyPage($buffer) {
 		/* origin http://jesin.tk/how-to-use-php-to-minify-html-output/ */
-		$search = ['/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s'];
+		$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
 
-		$replace = ['>', '<', '\\1'];
+		$replace = array('>', '<', '\\1');
 
 		if (preg_match("/\<html/i", $buffer) == 1 && preg_match("/\<\/html\>/i", $buffer) == 1) {
 			$buffer = preg_replace($search, $replace, $buffer);
@@ -84,31 +84,47 @@ class functions {
 		return $buffer;
 	}
 
-	public static function get_gravatar($email, $s = 80, $d = 'mm', $r = 'x', $img = false, $atts = []) {
-		/*
-		 * Get either a Gravatar URL or complete image tag for a specified email address.
-		 *
-		 * @param string $email The email address
-		 * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
-		 * @param string $d Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
-		 * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
-		 * @param boole $img True to return a complete IMG tag False for just the URL
-		 * @param array $atts Optional, additional key/value attributes to include in the IMG tag
-		 * @return String containing either just a URL or a complete image tag
-		 * @source http://gravatar.com/site/implement/images/php/
-		 */
-		$url = 'http://www.gravatar.com/avatar/';
-		$url .= md5(strtolower(trim($email)));
-		$url .= "?s=$s&d=$d&r=$r";
+	public static function dbTableExists ($list = []) {
+		global $cfg, $mysqli;
 
-		if ($img) {
-			$url = '<img src="' . $url . '"';
-			foreach ($atts as $key => $val)
-				$url .= ' ' . $key . '="' . $val . '"';
-			$url .= ' />';
+		$toReturn = [];
+
+		foreach ($list as $key => $table) {
+			$query = sprintf(
+				"SELECT * FROM %s_%s LIMIT %s",
+				$cfg->db->prefix, $table, 1
+			);
+
+			if ($mysqli->query($query) !== FALSE) {
+				array_push($toReturn, TRUE);
+			} else {
+				array_push($toReturn, FALSE);
+			}
 		}
 
-		return $url;
+		foreach ($toReturn as $key => $value) {
+			if ($value == FALSE) {
+				return FALSE;
+			}
+		}
+
+		return TRUE;
+	}
+
+	public static function importPlg ($plg, $args = []) {
+		global $cfg, $module, $lang;
+
+		include sprintf("modules/plg-%s/plg-%s.php", $plg, $plg);
+	}
+
+	public static function mod_load ($path) {
+		global $cfg;
+
+		if ($path != null) {
+			return file_get_contents("modules/{$cfg->mod->folder}/{$path}");
+		}
+
+		return false;
 	}
 
 }

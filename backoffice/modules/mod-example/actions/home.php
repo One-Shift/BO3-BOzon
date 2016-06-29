@@ -1,17 +1,7 @@
 <?php
 
-//$page_tpl = file_get_contents(sprintf("modules/%s/templates/home.html", $cfg->mod->folder));
-$page_tpl = file_get_contents("templates/home.html");
+$module = "{c2r-plg-example}";
 
-/* last thing */
-$tpl = str_replace(
-	[
-		"{c2r-header}",
-		"{c2r-footer}"
-	],
-	[
-		$header,
-		$footer
-	],
-	$page_tpl
-);
+functions::importPlg("example");
+
+include "pages/module-core.php";

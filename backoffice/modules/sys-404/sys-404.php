@@ -3,6 +3,7 @@
 $cfg->mod = new stdClass();
 $cfg->mod->name = "404 Page Not Found";
 $cfg->mod->folder = "sys-404";
+$cfg->mod->path = "{$cfg->system->path_bo}/modules/{$cfg->mod->folder}/";
 $cfg->mod->version = "0.0.1";
 $cfg->mod->developer = "developer name here";
 $cfg->mod->contact = "developer@email.here";

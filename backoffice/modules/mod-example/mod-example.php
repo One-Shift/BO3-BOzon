@@ -3,12 +3,20 @@
 $cfg->mod = new stdClass();
 $cfg->mod->name = "Example";
 $cfg->mod->folder = "mod-example";
+$cfg->mod->path = "{$cfg->system->path_bo}/modules/{$cfg->mod->folder}/";
 $cfg->mod->version = "0.0.1";
 $cfg->mod->developer = "Carlos Santos";
 $cfg->mod->contact = "carlos@nexus.pt";
+$cfg->mod->install = TRUE;
+$cfg->mod->dbTables = ["example"];
+
+
+if (functions::dbTableExists($cfg->mod->dbTables) == FALSE) {
+	$a = "install";
+}
 
 /* action controller */
-if ($a == null) {
+if ($a == null && $a != "install") {
 	// if action doesn't exist, system sent you to module homepage
 	include sprintf("modules/%s/actions/home.php", $cfg->mod->folder);
 } else {

@@ -1,16 +1,23 @@
 <?php
 
 $cfg->mod = new stdClass();
-$cfg->mod->name = "Authenticator Logout";
-$cfg->mod->folder = "sys-login";
+$cfg->mod->name = "Home";
+$cfg->mod->folder = "mod-home";
+$cfg->mod->path = "{$cfg->system->path_bo}/modules/{$cfg->mod->folder}/";
 $cfg->mod->version = "0.0.1";
 $cfg->mod->developer = "Carlos Santos";
 $cfg->mod->contact = "carlos@nexus.pt";
+$cfg->mod->install = TRUE;
+$cfg->mod->dbTables = [];
+
+if (functions::dbTableExists($cfg->mod->dbTables) == FALSE) {
+	$a = "install";
+}
 
 /* action controller */
-if ($a == null) {
+if ($a == null && $a != "install") {
 	// if action doesn't exist, system sent you to module homepage
-	include "modules/%s/actions/home.php";
+	include sprintf("modules/%s/actions/home.php", $cfg->mod->folder);
 } else {
 	$pg_file = sprintf("modules/%s/actions/%s.php", $cfg->mod->folder, $a);
 	if (file_exists($pg_file)) {
