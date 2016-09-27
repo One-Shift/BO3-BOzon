@@ -1,19 +1,28 @@
 <?php
 
-$cfg->mod = new stdClass();
-$cfg->mod->name = "Authenticator Login";
-$cfg->mod->folder = "sys-login";
-$cfg->mod->path = "{$cfg->system->path_bo}/modules/{$cfg->mod->folder}/";
-$cfg->mod->version = "0.0.1";
-$cfg->mod->developer = "Carlos Santos";
-$cfg->mod->contact = "carlos@nexus.pt";
+$cfg->mdl = new stdClass();
+$cfg->mdl->name = "Authenticator Login";
+$cfg->mdl->folder = "sys-login";
+$cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
+$cfg->mdl->version = "0.0.1";
+$cfg->mdl->developer = "Carlos Santos";
+$cfg->mdl->contact = "carlos@nexus.pt";
+
+// load language for module
+if (file_exists("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini")) {
+	$mdl_lang = parse_ini_file("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini", true);
+} else {
+	if (file_exists("modules/{$cfg->mdl->folder}/languages/en.ini")) {
+		$mdl_lang = parse_ini_file("modules/{$cfg->mdl->folder}/languages/en.ini", true);
+	}
+}
 
 /* action controller */
 if ($a == null) {
 	// if action doesn't exist, system sent you to module homepage
-	include sprintf("modules/%s/actions/home.php", $cfg->mod->folder);
+	include sprintf("modules/%s/actions/home.php", $cfg->mdl->folder);
 } else {
-	$pg_file = sprintf("modules/%s/actions/%s.php", $cfg->mod->folder, $a);
+	$pg_file = sprintf("modules/%s/actions/%s.php", $cfg->mdl->folder, $a);
 	if (file_exists($pg_file)) {
 		// if exist an action response
 		include $pg_file;

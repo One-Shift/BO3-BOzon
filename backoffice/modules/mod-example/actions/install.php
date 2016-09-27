@@ -2,34 +2,34 @@
 
 if (isset($_POST["submitInstall"]) && user::isOwner($authData)) {
     $db = str_replace(
-        "{c2r-prefix}",
-        $cfg->db->prefix,
-        file_get_contents(sprintf("modules/%s/db/install.sql", $cfg->mod->folder))
+        [
+            "{c2r-mod-folder}",
+            "{c2r-prefix}"
+        ],
+        [
+            $cfg->mdl->folder,
+            $cfg->db->prefix
+        ],
+        functions::mdl_load("db/install.sql")
     );
 
-    if ($mysqli->query($db)) {
-        $module = str_replace(
-            [
-                "{c2r-lg-message}"
-            ],
-            [
-                $lang["install"]["success"]
-            ],
-            file_get_contents(sprintf("modules/%s/templates-e/install/message.html", $cfg->mod->folder))
+    if ($mysqli->multi_query($db) != FALSE) {
+        while ($mysqli->more_results() && $mysqli->next_result()) {;} // flush multi_queries
+
+        $mdl = str_replace(
+            "{c2r-lg-message}",
+            $lang["install"]["success"],
+            functions::mdl_load("templates-e/install/message.tpl")
         );
     } else {
-        $module = str_replace(
-            [
-                "{c2r-lg-message}"
-            ],
-            [
-                $lang["install"]["failure"]
-            ],
-            file_get_contents(sprintf("modules/%s/templates-e/install/message.html", $cfg->mod->folder))
+        $mdl = str_replace(
+            "{c2r-lg-message}",
+            $lang["install"]["failure"]." : ".$mysqli->error,
+            functions::mdl_load("templates-e/install/message.tpl")
         );
     }
 } else {
-    $module = str_replace(
+    $mdl = str_replace(
         [
             "{c2r-lg-install}",
             "{c2r-lg-yes}",
@@ -40,7 +40,7 @@ if (isset($_POST["submitInstall"]) && user::isOwner($authData)) {
             $lang["common"]["a-yes"],
             $lang["common"]["a-no"]
         ],
-        file_get_contents(sprintf("modules/%s/templates-e/install/form.html", $cfg->mod->folder))
+        functions::mdl_load("templates-e/install/form.tpl")
     );
 }
 

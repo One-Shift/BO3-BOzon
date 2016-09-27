@@ -2,8 +2,8 @@
 
 $plugin = "";
 
-$module = str_replace(
+$mdl = str_replace(
     "{c2r-".$cfg->plg->folder."}",
     "Cool",
-    $module
+    $mdl
 );

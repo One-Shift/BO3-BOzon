@@ -15,6 +15,7 @@
 
 .login .navbar-default .navbar-text {
 	color: inherit;
+	width: 100%;
 }
 
 .login .wrapper {
@@ -60,7 +61,7 @@
 
 .login .password input {
 	border: none;
-	border-bottom: 3px solid  #009688;
+	border-bottom: 2px solid  #009688;
 	background-color: #fff;
 	width: 100%;
 	line-height: 25pt;
@@ -69,7 +70,7 @@
 	font-size: 15pt;
 }
 
-.login button {
+.login button[type=submit] {
 	display: none;
 }
 

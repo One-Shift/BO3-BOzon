@@ -111,17 +111,34 @@ class functions {
 		return TRUE;
 	}
 
+	public static function mdlInstalled ($folder) {
+		global $cfg, $mysqli;
+
+		$query = sprintf(
+			"SELECT * FROM %s_modules WHERE folder = '%s' LIMIT %s",
+			$cfg->db->prefix, $folder, 1
+		);
+
+		$source = $mysqli->query($query);
+
+		if ($source->num_rows > 0) {
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
 	public static function importPlg ($plg, $args = []) {
-		global $cfg, $module, $lang;
+		global $cfg, $mdl, $lang;
 
 		include sprintf("modules/plg-%s/plg-%s.php", $plg, $plg);
 	}
 
-	public static function mod_load ($path) {
+	public static function mdl_load ($path) {
 		global $cfg;
 
 		if ($path != null) {
-			return file_get_contents("modules/{$cfg->mod->folder}/{$path}");
+			return file_get_contents("modules/{$cfg->mdl->folder}/{$path}");
 		}
 
 		return false;

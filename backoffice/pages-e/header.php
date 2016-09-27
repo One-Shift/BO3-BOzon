@@ -1,6 +1,6 @@
 <?php
 
-$page_e_tpl = file_get_contents("templates-e/header.html");
+$page_e_tpl = file_get_contents("templates-e/header.tpl");
 
 /* last thing */
 $header = str_replace(

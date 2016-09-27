@@ -1,12 +1,12 @@
 <?php
 
-$page_tpl = file_get_contents("templates/home.html");
+$page_tpl = file_get_contents("templates/home.tpl");
 
 include "pages-e/header.php";
 include "pages-e/footer.php";
 include "pages-e/menu.php";
 
-if (user::isOwner($authData) && empty($a) && count($cfg->mod->dbTables) > 0 && $cfg->mod->install == TRUE) {
+if (user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
 	$uninstall = str_replace(
 		[
 			"{c2r-lg-title}",
@@ -20,7 +20,7 @@ if (user::isOwner($authData) && empty($a) && count($cfg->mod->dbTables) > 0 && $
 			$lang["uninstall"]["modal-button"],
 			$lang["uninstall"]["modal-close"],
 		],
-		file_get_contents("templates-e/module-core/uninstall.html")
+		file_get_contents("templates-e/module-core/uninstall.tpl")
 	);
 } else {
 	$uninstall = null;
@@ -53,12 +53,12 @@ $tpl = str_replace(
         file_get_contents("http://api.nexus-pt.eu/bo2-image-server/"),
 
         (isset($breadcrump)) ? $breadcrump : null,
-		$cfg->mod->name,
-        (isset($module)) ? $module : null,
+		$cfg->mdl->name,
+        (isset($mdl)) ? $mdl : null,
 
 		$uninstall,
 
-		str_replace("mod-" , null, $cfg->mod->folder)
+		str_replace("mod-" , null, $cfg->mdl->folder)
 	],
 	$page_tpl
 );

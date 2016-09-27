@@ -1,15 +1,25 @@
 <?php
 
-$menu_item_tpl = file_get_contents("templates-e/menu/item.html");
+$menu_item_tpl = file_get_contents("templates-e/menu/item.tpl");
 
-$menu = null;
+$menu = "";
+$not_installed_menu = "";
+$installed_modules = [];
 
-$list = glob('./modules/mod-*', GLOB_ONLYDIR);
+// installed modules
+$query = sprintf(
+    "SELECT * FROM %s_modules ORDER BY %s",
+    $cfg->db->prefix, "sort ASC"
+);
 
-foreach ($list as $key => $value) {
-    $tmp = explode("/", $value);
+$source = $mysqli->query($query);
 
+while ($data = $source->fetch_object()) {
+    array_push($installed_modules, $data->folder);
+
+    $tmp = explode("/", $data->folder);
     $tmp_name = explode("-", $tmp[count($tmp) - 1]);
+
 
     $menu .= str_replace(
         [
@@ -19,4 +29,37 @@ foreach ($list as $key => $value) {
         $tmp_name[count($tmp_name) - 1],
         $menu_item_tpl
     );
+}
+
+// show not installed modules if user has owner tag
+if (user::isOwner($authData)) {
+    // modules not installed
+    $list = glob('modules/mod-*', GLOB_ONLYDIR);
+
+    foreach ($list as $key => $value) {
+        $tmp = explode("/", $value);
+        $folder = $tmp[count($tmp) - 1];
+        $tmp_name = explode("-", $folder);
+
+        if (!in_array($folder, $installed_modules)) {
+            $not_installed_menu .= str_replace(
+                [
+                    "{c2r-mod}",
+                    "{c2r-name}"
+                ],
+                $tmp_name[count($tmp_name) - 1],
+                $menu_item_tpl
+            );
+        }
+    }
+
+    // add not installed modules if aren't empty
+    if (isset($not_installed_menu) && !empty($not_installed_menu)) {
+        $menu .= str_replace(
+            "{c2r-title}",
+            $lang["menu"]["notInstalled"],
+            file_get_contents("templates-e/menu/title-notinstalled.tpl")
+        );
+        $menu .= $not_installed_menu;
+    }
 }

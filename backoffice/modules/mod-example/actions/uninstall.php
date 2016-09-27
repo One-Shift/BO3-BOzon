@@ -2,41 +2,37 @@
 
 if (isset($_POST["submitUninstall"]) && user::isOwner($authData)) {
     $db = str_replace(
-        "{c2r-prefix}",
-        $cfg->db->prefix,
-        file_get_contents(sprintf("modules/%s/db/uninstall.sql", $cfg->mod->folder))
+        [
+            "{c2r-mod-folder}",
+            "{c2r-prefix}"
+        ],
+        [
+            $cfg->mdl->folder,
+            $cfg->db->prefix
+        ],
+        functions::mdl_load("db/uninstall.sql")
     );
 
-    if ($mysqli->query($db)) {
-        $module = str_replace(
-            [
-                "{c2r-lg-message}"
-            ],
-            [
-                $lang["uninstall"]["success"]
-            ],
-            file_get_contents(sprintf("modules/%s/templates-e/uninstall/message.html", $cfg->mod->folder))
+    if ($mysqli->multi_query($db) != FALSE) {
+        while ($mysqli->more_results() && $mysqli->next_result()) {;} // flush multi_queries
+
+        $mdl = str_replace(
+            "{c2r-lg-message}",
+            $lang["uninstall"]["success"],
+            functions::mdl_load("templates-e/uninstall/message.html")
         );
     } else {
-        $module = str_replace(
-            [
-                "{c2r-lg-message}"
-            ],
-            [
-                $lang["uninstall"]["failure"]
-            ],
-            file_get_contents(sprintf("modules/%s/templates-e/uninstall/message.html", $cfg->mod->folder))
+        $mdl = str_replace(
+            "{c2r-lg-message}",
+            $lang["uninstall"]["failure"]." : ".$mysqli->error,
+            functions::mdl_load("templates-e/uninstall/message.html")
         );
     }
 } else {
-    $module = str_replace(
-        [
-            "{c2r-lg-message}"
-        ],
-        [
-            $lang["uninstall"]["failure"]
-        ],
-        file_get_contents(sprintf("modules/%s/templates-e/uninstall/message.html", $cfg->mod->folder))
+    $mdl = str_replace(
+        "{c2r-lg-message}",
+        $lang["uninstall"]["failure"],
+        functions::mdl_load("templates-e/uninstall/message.html")
     );
 }
 

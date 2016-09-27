@@ -1,36 +1,39 @@
 <?php
 
-$cfg->mod = new stdClass();
-$cfg->mod->name = "Example";
-$cfg->mod->folder = "mod-example";
-$cfg->mod->path = "{$cfg->system->path_bo}/modules/{$cfg->mod->folder}/";
-$cfg->mod->version = "0.0.1";
-$cfg->mod->developer = "Carlos Santos";
-$cfg->mod->contact = "carlos@nexus.pt";
-$cfg->mod->install = TRUE;
-$cfg->mod->dbTables = ["example"];
+$cfg->mdl = new stdClass();
+$cfg->mdl->name = "Example";
+$cfg->mdl->folder = "mod-example";
+$cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
+$cfg->mdl->version = "0.0.1";
+$cfg->mdl->developer = "Carlos Santos";
+$cfg->mdl->contact = "carlos@nexus.pt";
+$cfg->mdl->dbTables = ["example"];
 
+// load language for module
+if (file_exists("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini")) {
+	$mdl_lang = parse_ini_file("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini", true);
+} else {
+	if (file_exists("modules/{$cfg->mdl->folder}/languages/en.ini")) {
+		$mdl_lang = parse_ini_file("modules/{$cfg->mdl->folder}/languages/en.ini", true);
+	}
+}
 
-if (functions::dbTableExists($cfg->mod->dbTables) == FALSE) {
+// check if this module is installed
+if (functions::dbTableExists($cfg->mdl->dbTables) == FALSE || functions::mdlInstalled($cfg->mdl->folder) == FALSE) {
 	$a = "install";
 }
 
 /* action controller */
 if ($a == null && $a != "install") {
 	// if action doesn't exist, system sent you to module homepage
-	include sprintf("modules/%s/actions/home.php", $cfg->mod->folder);
+	include "modules/{$cfg->mdl->folder}/actions/home.php";
 } else {
-	$pg_file = sprintf("modules/%s/actions/%s.php", $cfg->mod->folder, $a);
+	$pg_file = "modules/{$cfg->mdl->folder}/actions/{$a}.php";
 	if (file_exists($pg_file)) {
 		// if exist an action response
 		include $pg_file;
 	} else {
 		// if doesn't exist an action response, system sent you to 404
-		header(
-			sprintf(
-				"Location: %s/0/%s/404/",
-				$cfg->system->path_bo, $lg_s
-			)
-		);
+		header("Location: {$cfg->system->path_bo}/0/{$lg_s}/404/");
 	}
 }

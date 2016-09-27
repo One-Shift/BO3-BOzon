@@ -3,7 +3,7 @@
 $cfg->plg = new stdClass();
 $cfg->plg->name = "Example";
 $cfg->plg->folder = "plg-example";
-$cfg->plg->path = "{$cfg->system->path_bo}/modules/{$cfg->mod->folder}/";
+$cfg->plg->path = "{$cfg->system->path_bo}/modules/{$cfg->plg->folder}/";
 $cfg->plg->version = "0.0.1";
 $cfg->plg->developer = "Carlos Santos";
 $cfg->plg->contact = "carlos@nexus.pt";

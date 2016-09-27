@@ -1,8 +1,6 @@
 <?php
 
-include "class/PHPMailer/class.phpmailer.php";
-include "class/class.user.php";
-include "class/class.functions.php";
+include "controller/classes.php";
 
 include "config/cfg.php";
 include "config/database.php";
@@ -18,27 +16,27 @@ include "controller/pages.php";
 include "controller/actions.php";
 include "controller/id.php";
 
-$head = file_get_contents("templates-e/head.html");
+$head = file_get_contents("templates-e/head.tpl");
 
 // abaixo é iniciada a criação do template, com base nós ficheiros html
 
 if ($auth) {
 	switch ($pg) {
 		case "logout":
-			include sprintf("modules/sys-%s/sys-%s.php", "logout","logout");
+			include sprintf("modules/sys-%s/sys-%s.php", "logout", "logout");
 			break;
-		case "login":
-			include sprintf("modules/sys-%s/sys-%s.php", "login","login");
+		case "404":
+			include sprintf("modules/sys-%s/sys-%s.php", "404", "404");
 			break;
 		default:
-			$mod_path = sprintf("modules/mod-%s/", $pg);
+			$mdl_path = sprintf("modules/mod-%s/", $pg);
 
-			if (!file_exists($mod_path)) {
-				include sprintf("modules/sys-%s/sys-%s.php", "404","404");
-				exit;
+			if (!file_exists($mdl_path)) {
+				// if doesn't exist an action response, system sent you to 404
+				header("Location: {$cfg->system->path_bo}/0/{$lg_s}/404/");
 			} else {
 				// mod load
-				include sprintf("%smod-%s.php", $mod_path,$pg);
+				include sprintf("%smod-%s.php", $mdl_path, $pg);
 			}
 			break;
 	}

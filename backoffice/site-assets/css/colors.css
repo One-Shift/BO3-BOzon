@@ -1,0 +1,45 @@
+a {
+    color: #00838f;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #00838f;
+    border-color: #007680;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #006670;
+    border-color: #006670;
+}
+
+.btn-add {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.btn-edit {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.btn-del {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.btn-save {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.btn-cancel {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}

@@ -1,6 +1,6 @@
 <?php
 
-$module = "{c2r-plg-example}";
+$mdl = "{c2r-plg-example}";
 
 functions::importPlg("example");
 

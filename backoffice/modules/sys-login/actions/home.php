@@ -1,6 +1,6 @@
 <?php
 
-$page_tpl = file_get_contents(sprintf("modules/%s/templates/home.html", $cfg->mod->folder));
+$page_tpl = file_get_contents(sprintf("modules/%s/templates/home.tpl", $cfg->mdl->folder));
 
 $form = str_replace(
 	[
@@ -9,7 +9,7 @@ $form = str_replace(
 	[
 		"2"
 	],
-	file_get_contents(sprintf("modules/%s/templates-e/form.html", $cfg->mod->folder))
+	file_get_contents(sprintf("modules/%s/templates-e/form.tpl", $cfg->mdl->folder))
 );
 
 if (isset($_POST["submit"])) {
@@ -44,7 +44,7 @@ print  $_SERVER["HTTP_HOST"];
 						str_replace(
 							"{c2r-message}",
 							"Message HERE",
-							file_get_contents(sprintf("modules/%s/templates-e/return-message.html", $cfg->mod->folder))
+							file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
 						),
 						$form
 					);
@@ -56,7 +56,7 @@ print  $_SERVER["HTTP_HOST"];
 					str_replace(
 						"{c2r-message}",
 						"Message HERE",
-						file_get_contents(sprintf("modules/%s/templates-e/return-message.html", $cfg->mod->folder))
+						file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
 					),
 					$form
 				);
@@ -68,7 +68,7 @@ print  $_SERVER["HTTP_HOST"];
 				str_replace(
 					"{c2r-message}",
 					"Message HERE",
-					file_get_contents(sprintf("modules/%s/templates-e/return-message.html", $cfg->mod->folder))
+					file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
 				),
 				$form
 			);
@@ -80,7 +80,7 @@ print  $_SERVER["HTTP_HOST"];
 			str_replace(
 				"{c2r-message}",
 				"Message HERE",
-				file_get_contents(sprintf("modules/%s/templates-e/return-message.html", $cfg->mod->folder))
+				file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
 			),
 			$form
 		);
@@ -93,12 +93,24 @@ $tpl = str_replace(
 	[
 		"{c2r-mod-path}",
 		"{c2r-form}",
-		"{c2r-background}"
+		"{c2r-background}",
+
+		"{c2r-lg-cookies-alert}",
+		"{c2r-lg-cookies-title}",
+		"{c2r-lg-cookies-modal}",
+
+		"{c2r-lg-message}",
 	],
 	[
-		$cfg->mod->path,
+		$cfg->mdl->path,
 		$form,
-		file_get_contents("http://api.nexus-pt.eu/bo2-image-server/")
+		file_get_contents("http://api.nexus-pt.eu/bo2-image-server/"),
+
+		$mdl_lang["cookie"]["alert"],
+		$mdl_lang["cookie"]["title"],
+		$mdl_lang["cookie"]["modal"],
+
+		$mdl_lang["message"],
 	],
 	$page_tpl
 );
