@@ -17,7 +17,7 @@ include "backoffice/controller/pages.php";
 include "backoffice/controller/actions.php";
 include "backoffice/controller/id.php";
 
-$head = file_get_contents("templates-e/head.html");
+$head = file_get_contents("templates-e/head.tpl");
 
 // page controller
 $pg_file = sprintf("pages/%s.php", $pg);
