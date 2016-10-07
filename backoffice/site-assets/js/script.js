@@ -8,6 +8,10 @@ function showMenu (o) {
     $("body").addClass("noscroll");
 }
 
+function editor (target) {
+    CKEDITOR.replace(target);
+}
+
 $(document).ready(
     function () {
         $("body").on(
