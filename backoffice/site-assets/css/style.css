@@ -65,6 +65,10 @@ body {
 	line-height: 20px;
 }
 
+textarea {
+	font-family: courier, sans-serif;
+}
+
 a {
 	-webkit-transition: all 200ms ease 0s;
 	transition: all 200ms ease 0s;
