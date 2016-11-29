@@ -144,4 +144,23 @@ class functions {
 		return false;
 	}
 
+	public static function load ($path) {
+		global $cfg;
+
+		if ($path != null) {
+			return file_get_contents("templates/{$path}");
+		}
+
+		return false;
+	}
+
+	public static function loade ($path) {
+		global $cfg;
+
+		if ($path != null) {
+			return file_get_contents("templates-e/{$path}");
+		}
+
+		return false;
+	}
 }
