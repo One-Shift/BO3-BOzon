@@ -5,7 +5,7 @@ class functions {
 		return number_format($n, 2, ".", " ");
 	}
 
-	public static function sendEmailTo($from, $to, $subject, $message, $attach = array()) {
+	public static function sendEmailTo($from, $to, $subject, $message, $attach = []) {
 		global $cfg;
 
 		$mail = new PHPMailer();
