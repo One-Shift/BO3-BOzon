@@ -1,6 +1,6 @@
 <?php
 
-$page_e_tpl = file_get_contents("templates-e/footer.tpl");
+$page_e_tpl = functions::loade("footer.tpl");
 
 /* last thing */
 $footer = str_replace(
