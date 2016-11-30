@@ -124,7 +124,7 @@ class file {
 		$query = sprintf(
 			"SELECT * FROM %s_files WHERE %s",
 			$cfg->db->prefix,
-			(!empty($this->id_ass)) ? "id = {$this->id_ass}" : null,
+			(!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null,
 			(!empty($this->id_ass)) ? " AND " : null.
 			(!empty($this->module)) ? "module = {$this->module}" : null
 		);
