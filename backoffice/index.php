@@ -16,7 +16,7 @@ include "controller/pages.php";
 include "controller/actions.php";
 include "controller/id.php";
 
-$head = file_get_contents("templates-e/head.tpl");
+$head = functions::loade("head.tpl");
 
 // abaixo é iniciada a criação do template, com base nós ficheiros html
 
