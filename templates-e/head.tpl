@@ -31,7 +31,7 @@
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
-<meta name="author" content="NexuS-Pt, work team" />
+<meta name="author" content="One:Shift" />
 <meta name="author-code" content="#someone#" />
 
 <link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />

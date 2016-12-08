@@ -72,9 +72,9 @@ $tpl = str_replace(
 				(isset($og["url"])) ? $og["url"] : "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
 				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$cfg->system->path."/site-assets/default-share-image.jpg",
 				(isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
-				file_get_contents("http://nexus-pt.github.io/BO2/jquery.html"),
-				file_get_contents("http://nexus-pt.github.io/BO2/bootstrap.html"),
-				file_get_contents("http://nexus-pt.github.io/BO2/fontawesome.html")
+				file_get_contents("http://nexus-pt.github.io/BO3/jquery.html"),
+				file_get_contents("http://nexus-pt.github.io/BO3/bootstrap.html"),
+				file_get_contents("http://nexus-pt.github.io/BO3/fontawesome.html")
 			],
 			$head
 		),

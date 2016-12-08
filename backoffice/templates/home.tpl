@@ -16,9 +16,9 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="http://www.nexus-pt.eu/" title="NexuS-Pt, work team" target="_blank"><i class="fa fa-globe"></i> <span class="hidden-sm hidden-md hidden-lg">NexuS-Pt, work team</span></a></li>
-						<li><a href="http://www.nexus-pt.eu/fm" title="Support" target="_blank"><i class="fa fa-question"></i> <span class="hidden-sm hidden-md hidden-lg">Support</span></a></li>
-						<li><a href="https://github.com/NexuS-Pt/" title="Github" target="_blank"><i class="fa fa-code-fork"></i> <span class="hidden-sm hidden-md hidden-lg">Github</span></a></li>
+						<li><a href="http://www.one-shift.com/" title="One:Shift" target="_blank"><i class="fa fa-globe"></i> <span class="hidden-sm hidden-md hidden-lg">One:Shift</span></a></li>
+						<li><a href="https://github.com/One-Shift/BO3-BOzon/issues" title="Support" target="_blank"><i class="fa fa-question"></i> <span class="hidden-sm hidden-md hidden-lg">Support</span></a></li>
+						<li><a href="https://github.com/One-Shift/" title="Github" target="_blank"><i class="fa fa-code-fork"></i> <span class="hidden-sm hidden-md hidden-lg">Github</span></a></li>
 						<li><a id="logout" href="#" title="logout"><i class="fa fa-power-off" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">Logout</span></a></li>
 					</ul>
 				</div>
