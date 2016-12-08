@@ -1,6 +1,6 @@
 <?php
 
-$page_tpl = file_get_contents("templates/home.tpl");
+$page_tpl = functions::load("home.tpl");
 
 include "pages-e/header.php";
 include "pages-e/footer.php";
@@ -20,7 +20,7 @@ if (user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
 			$lang["uninstall"]["modal-button"],
 			$lang["uninstall"]["modal-close"],
 		],
-		file_get_contents("templates-e/module-core/uninstall.tpl")
+		functions::loade("module-core/uninstall.tpl")
 	);
 } else {
 	$uninstall = null;
@@ -32,13 +32,13 @@ $tpl = str_replace(
 		"{c2r-header}",
 		"{c2r-footer}",
 
-        "{c2r-menu}",
-        "{c2r-avatar}",
-        "{c2r-background}",
+		"{c2r-menu}",
+		"{c2r-avatar}",
+		"{c2r-background}",
 
-        "{c2r-breadcrump}",
-        "{c2r-module-name}",
-        "{c2r-module}",
+		"{c2r-breadcrump}",
+		"{c2r-module-name}",
+		"{c2r-module}",
 
 		"{c2r-uninstall}",
 
@@ -48,13 +48,13 @@ $tpl = str_replace(
 		$header,
 		$footer,
 
-        (isset($menu)) ? $menu : null,
-        md5($authData["email"]),
-        file_get_contents("http://api.nexus-pt.eu/bo2-image-server/"),
+		(isset($menu)) ? $menu : null,
+		md5($authData["email"]),
+		file_get_contents("http://api.nexus-pt.eu/bo2-image-server/"),
 
-        (isset($breadcrump)) ? $breadcrump : null,
+		(isset($breadcrump)) ? $breadcrump : null,
 		$cfg->mdl->name,
-        (isset($mdl)) ? $mdl : null,
+		(isset($mdl)) ? $mdl : null,
 
 		$uninstall,
 

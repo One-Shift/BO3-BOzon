@@ -1,8 +1,5 @@
 <?php
 
-include "backoffice/class/PHPMailer/class.phpmailer.php";
-include "backoffice/class/class.functions.php";
-
 include "backoffice/config/cfg.php";
 include "backoffice/config/database.php";
 include "backoffice/config/email.php";
@@ -11,13 +8,14 @@ include "backoffice/config/store.php";
 include "backoffice/config/system.php";
 include "backoffice/config/connect.php";
 
+include "backoffice/controller/classes.php";
 include "backoffice/controller/languages.php";
 include "backoffice/controller/sessions.php";
 include "backoffice/controller/pages.php";
 include "backoffice/controller/actions.php";
 include "backoffice/controller/id.php";
 
-$head = file_get_contents("templates-e/head.tpl");
+$head = functions::loade("head.tpl");
 
 // page controller
 $pg_file = sprintf("pages/%s.php", $pg);

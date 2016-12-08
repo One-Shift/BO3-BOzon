@@ -62,8 +62,8 @@ class article {
 		global $cfg, $mysqli;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text
-			FROM %s_articles AS bc
-    			INNER JOIN %s_articles_lang AS bcl on bcl.article_id = bc.id
+			FROM %s_articles bc
+				INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
 			WHERE bc.id = %s and bcl.lang_id = %s",
 			$cfg->db->prefix, $cfg->db->prefix, $this->id, $this->lang_id
 		);
@@ -82,7 +82,7 @@ class article {
 		$query = sprintf(
 			"SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
 				FROM %s_articles bc
-	    			INNER JOIN %s_articles_lang AS bcl on bcl.article_id = bc.id
+					INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
 				WHERE bc.category_id = %s
 				%s %s",
 			$cfg->db->prefix,
@@ -114,7 +114,7 @@ class article {
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
 			FROM %s_articles bc
-    			INNER JOIN %s_articles_lang AS bcl on bcl.category_id = bc.id
+				INNER JOIN %s_articles_lang bcl on bcl.category_id = bc.id
 			WHERE bc.id = %s
 			LIMIT %s",
 			$cfg->db->prefix, $cfg->db->prefix, $this->id, '1'

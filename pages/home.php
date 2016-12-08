@@ -1,6 +1,6 @@
 <?php
 
-$page_tpl = file_get_contents("templates/home.tpl");
+$page_tpl = functions::load("home.tpl");
 
 include "pages-e/header.php";
 include "pages-e/footer.php";

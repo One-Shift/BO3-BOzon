@@ -1,43 +1,93 @@
 /* styling here */
 
-@media (min-width: 768px) {
-	.spacer150 {height: 150px;}
-	.spacer120 {height: 120px;}
-	.spacer90 {height: 90px;}
-	.spacer60 {height: 60px;}
-	.spacer30 {height: 30px;}
-	.spacer15 {height: 15px;}
+/* LARGE DISPLAY'S */
+@media (min-width: 1200px) {
+	.lg-spacer150 {height: 150px;}
+	.lg-spacer120 {height: 120px;}
+	.lg-spacer90 {height: 90px;}
+	.lg-spacer60 {height: 60px;}
+	.lg-spacer30 {height: 30px;}
+	.lg-spacer15 {height: 15px;}
 
-	.block150 {display: inline-block; width: 150px;}
-	.block120 {display: inline-block; width: 120px;}
-	.block90 {display: inline-block; width: 90px;}
-	.block60 {display: inline-block; width: 60px;}
-	.block30 {display: inline-block; width: 30px;}
-	.block15 {display: inline-block; width: 15px;}
+	.lg-block150 {display: inline-block; width: 150px;}
+	.lg-block120 {display: inline-block; width: 120px;}
+	.lg-block90 {display: inline-block; width: 90px;}
+	.lg-block60 {display: inline-block; width: 60px;}
+	.lg-block30 {display: inline-block; width: 30px;}
+	.lg-block15 {display: inline-block; width: 15px;}
 
-	.taleft {text-align: left;}
-	.tacenter {text-align: center;}
-	.taright {text-align: right;}
-	.tajustify {text-align: justify;}
+	.lg-taleft {text-align: left;}
+	.lg-tacenter {text-align: center;}
+	.lg-taright {text-align: right;}
+	.lg-tajustify {text-align: justify;}
 }
 
+/* DESKTOP */
+@media (min-width: 992px) {
+	.md-spacer150 {height: 150px;}
+	.md-spacer120 {height: 120px;}
+	.md-spacer90 {height: 90px;}
+	.md-spacer60 {height: 60px;}
+	.md-spacer30 {height: 30px;}
+	.md-spacer15 {height: 15px;}
+
+	.md-block150 {display: inline-block; width: 150px;}
+	.md-block120 {display: inline-block; width: 120px;}
+	.md-block90 {display: inline-block; width: 90px;}
+	.md-block60 {display: inline-block; width: 60px;}
+	.md-block30 {display: inline-block; width: 30px;}
+	.md-block15 {display: inline-block; width: 15px;}
+
+	.md-taleft {text-align: left;}
+	.md-tacenter {text-align: center;}
+	.md-taright {text-align: right;}
+	.md-tajustify {text-align: justify;}
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+	.sm-spacer150 {height: 150px;}
+	.sm-spacer120 {height: 120px;}
+	.sm-spacer90 {height: 90px;}
+	.sm-spacer60 {height: 60px;}
+	.sm-spacer30 {height: 30px;}
+	.sm-spacer15 {height: 15px;}
+
+	.sm-block150 {display: inline-block; width: 150px;}
+	.sm-block120 {display: inline-block; width: 120px;}
+	.sm-block90 {display: inline-block; width: 90px;}
+	.sm-block60 {display: inline-block; width: 60px;}
+	.sm-block30 {display: inline-block; width: 30px;}
+	.sm-block15 {display: inline-block; width: 15px;}
+
+	.sm-taleft {text-align: left;}
+	.sm-tacenter {text-align: center;}
+	.sm-taright {text-align: right;}
+	.sm-tajustify {text-align: justify;}
+}
+
+/* MOBILE */
 @media (max-width: 767px) {
-	.mb-spacer150 {height: 150px;}
-	.mb-spacer120 {height: 120px;}
-	.mb-spacer90 {height: 90px;}
-	.mb-spacer60 {height: 60px;}
-	.mb-spacer30 {height: 30px;}
-	.mb-spacer15 {height: 15px;}
+	.xs-spacer150 {height: 150px;}
+	.xs-spacer120 {height: 120px;}
+	.xs-spacer90 {height: 90px;}
+	.xs-spacer60 {height: 60px;}
+	.xs-spacer30 {height: 30px;}
+	.xs-spacer15 {height: 15px;}
 
-	.mb-block150 {display: inline-block; width: 150px;}
-	.mb-block120 {display: inline-block; width: 120px;}
-	.mb-block90 {display: inline-block; width: 90px;}
-	.mb-block60 {display: inline-block; width: 60px;}
-	.mb-block30 {display: inline-block; width: 30px;}
-	.mb-block15 {display: inline-block; width: 15px;}
+	.xs-block150 {display: inline-block; width: 150px;}
+	.xs-block120 {display: inline-block; width: 120px;}
+	.xs-block90 {display: inline-block; width: 90px;}
+	.xs-block60 {display: inline-block; width: 60px;}
+	.xs-block30 {display: inline-block; width: 30px;}
+	.xs-block15 {display: inline-block; width: 15px;}
 
-	.mb-taleft {text-align: left;}
-	.mb-tacenter {text-align: center;}
-	.mb-taright {text-align: right;}
-	.mb-tajustify {text-align: justify;}
+	.xs-taleft {text-align: left;}
+	.xs-tacenter {text-align: center;}
+	.xs-taright {text-align: right;}
+	.xs-tajustify {text-align: justify;}
+}
+
+img {
+	max-width: 100%;
 }

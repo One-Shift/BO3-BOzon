@@ -124,22 +124,27 @@ class file {
 		$query = sprintf(
 			"SELECT * FROM %s_files WHERE %s",
 			$cfg->db->prefix,
-			(!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null,
-			(!empty($this->id_ass)) ? " AND " : null.
-			(!empty($this->module)) ? "module = {$this->module}" : null
+			((!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null) .
+			((!empty($this->id_ass)) ? " AND " : null) .
+			((!empty($this->module)) ? "module = '{$this->module}'" : null)
 		);
 
 		$source = $mysqli->query($query);
 
-		if ($source->num_rows > 1) {
-			while ($data = $source->fetch_object()) {
-				if (!isset($toReturn)) {
-					$toReturn = [];
+		if ($source->num_rows > 0) {
+			if ($source->num_rows > 1) {
+				while ($data = $source->fetch_object()) {
+					if (!isset($toReturn)) {
+						$toReturn = [];
+					}
+
+					array_push($toReturn, $data);
 				}
-				array_push($toReturn, $data);
+
+				return $toReturn;
+			} else {
+				return $source->fetch_object();
 			}
-		} else {
-			return $source->fetch_object();
 		}
 
 		return FALSE;
