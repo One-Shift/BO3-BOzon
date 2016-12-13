@@ -58,7 +58,7 @@ $tpl = str_replace(
 
 		$uninstall,
 
-		str_replace("mod-" , null, $cfg->mdl->folder)
+		$cfg->mdl->path
 	],
 	$page_tpl
 );
