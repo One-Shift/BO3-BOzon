@@ -42,7 +42,8 @@ $tpl = str_replace(
 
 		"{c2r-uninstall}",
 
-		"{c2r-path-module}"
+		"{c2r-module-folder}",
+		"{c2r-module-path}"
 	],
 	[
 		$header,
@@ -58,7 +59,8 @@ $tpl = str_replace(
 
 		$uninstall,
 
-		str_replace("mod-" , null, $cfg->mdl->folder)
+		str_replace("mod-" , null, $cfg->mdl->folder),
+		$cfg->mdl->path
 	],
 	$page_tpl
 );
