@@ -5,7 +5,7 @@ class functions {
 		return number_format($n, 2, ".", " ");
 	}
 
-	public static function sendEmailTo($from, $to, $subject, $message, $attach = []) {
+	public static function sendEmailTo($from, $to, $replyTo, $subject, $message, $attach = []) {
 		global $cfg;
 
 		$mail = new PHPMailer();
@@ -21,6 +21,7 @@ class functions {
 		$mail->SetFrom($from, $cfg->system->sitename);
 		$mail->Subject = $subject;
 		$mail->AddAddress($to, "User");
+		$mail->AddReplyTo($replyTo);
 		$mail->MsgHTML($message);
 
 		if (count($attach) > 0) {
@@ -162,5 +163,17 @@ class functions {
 		}
 
 		return false;
+	}
+
+	public static function convertNumberToHours ($number = 0) {
+		if ($number !== 0) {
+			$minutes = $number - floor($number);
+
+			$minutes = $minutes * 0.6;
+
+			return str_ireplace(".", ":", number_format((floor( $number ) + $minutes),2));
+		} else {
+			return str_ireplace(".", ":", number_format((0.0),2));
+		}
 	}
 }
