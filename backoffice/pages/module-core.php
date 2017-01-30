@@ -32,6 +32,8 @@ $tpl = str_replace(
 		"{c2r-header}",
 		"{c2r-footer}",
 
+		"{c2r-bo3-version}",
+		"{c2r-bo3-sub-version}",
 		"{c2r-menu}",
 		"{c2r-avatar}",
 		"{c2r-background}",
@@ -49,9 +51,11 @@ $tpl = str_replace(
 		$header,
 		$footer,
 
+		$cfg->system->version,
+		$cfg->system->sub_version,
 		(isset($menu)) ? $menu : null,
 		md5($authData["email"]),
-		file_get_contents("http://api.nexus-pt.eu/bo2-image-server/"),
+		file_get_contents("http://api.nexus-pt.eu/bo3-image-server/"),
 
 		(isset($breadcrump)) ? $breadcrump : null,
 		$cfg->mdl->name,

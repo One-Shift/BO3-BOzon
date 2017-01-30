@@ -127,22 +127,26 @@ i {
 }
 
 .btn {
-    border-radius: 0;
-	padding: 14px 30px;
+	border-radius: 0;
 	font-size: 14px;
 	line-height: 100%;
 }
 
 .btn.btn-sm {
 	padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.btn.btn-lg {
+	padding: 14px 30px;
 }
 
 .navbar-inverse {
 	background-color: #00838f;
 	border-color: #00838f;
 	background-image: none;
+	background: linear-gradient(141deg, #00ccff 0%, #1dcab5 51%, #37c871 75%);
 }
 
 .navbar {
@@ -178,13 +182,45 @@ i {
 }
 
 #bo-topbar .navbar-right {
+	/*
 	margin-right: -30px;
+	*/
 }
 
 #bo-topbar a {}
 
-#bo-topbar a:hover {
-	background-color: #006670;
+#bo-topbar a:hover,
+#bo-topbar a:focus {
+	background-color: rgba(0,0,0,0.1);
+}
+
+#bo-topbar li.version a {
+	background-color: rgba(0,0,0,0.05);
+	margin: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#bo-topbar li.version a:hover,
+#bo-topbar li.version a:focus {
+	cursor: default;
+}
+
+#bo-topbar .button-help {
+	color: #FFF;
+	border: none;
+	line-height: 16px;
+}
+
+#bo-topbar .button-help:focus {
+	background-color: transparent;
+}
+
+#bo-topbar .navbar-inverse .navbar-collapse,
+#bo-topbar .navbar-inverse .navbar-form ,
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form{
+	border-color: #0fb8ad;
 }
 
 #bo-menu {
@@ -209,14 +245,16 @@ i {
 }
 
 #bo-menu #profile img {
-	width: 120px;
-	height: 120px;
+	width: 140px;
+	height: 140px;
 	border-radius: 50%;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+	padding: 10px;
+	background: linear-gradient(141deg, #00ccff 0%, #1dcab5 51%, #37c871 75%);
 }
 
 #bo-menu .bo-block-list {
-	height: calc(100vh - 200px);
+	height: calc(100vh - 220px);
 	overflow-y: auto;
 }
 
@@ -241,6 +279,25 @@ i {
 #bo-menu .list-group .list-group-item:first-child {
 	border-radius: 0;
 	border-top: none;
+}
+
+#bo-menu .bo-rights {
+	position: absolute;
+	bottom: 0;
+	padding: 10px 0;
+	font-size: 12px;
+	color: #666;
+	border-top: 1px solid #EEE;
+	left: 0;
+}
+
+#bo-menu .bo-rights a {
+	color: inherit;
+}
+
+#bo-menu .bo-rights a:hover,
+#bo-menu .bo-rights a:focus {
+	text-decoration: none;
 }
 
 #bo-container {
@@ -271,7 +328,7 @@ span[data-toggle=modal] {
 .bg-info,
 .bg-warning,
 .bg-danger {
-    padding: 15px;
+	padding: 15px;
 }
 
 .form-control {
@@ -285,9 +342,9 @@ span[data-toggle=modal] {
 }
 
 .btn-input {
-    padding: 0 15px;
-    height: 34px;
-    line-height: 4px;
+	padding: 0 15px;
+	height: 34px;
+	line-height: 4px;
 }
 
 .modal-content {
@@ -324,4 +381,16 @@ span[data-toggle=modal] {
 
 a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, button.list-group-item:hover {
 	background-color: rgba(0,131,143,0.05);
+}
+
+.resize-Y {
+	resize: vertical;
+}
+
+.resize-X {
+	resize: horizontal;
+}
+
+.no-resize {
+	resize: none;
 }
