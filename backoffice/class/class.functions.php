@@ -176,4 +176,11 @@ class functions {
 			return str_ireplace(".", ":", number_format((0.0),2));
 		}
 	}
+	
+	
+	public static function getDefaultImage ($size = "250x250", $text = "default image", $fontSize = 30, $bg = "00ccff", $textColor = "ffffff") {
+		$size = explode("x", $size);
+
+		return "https://placeholdit.imgix.net/~text?txtsize={$fontSize}&txt={$text}&w={$size[0]}&h={$size[1]}&bg={$bg}&txtclr={$textColor}";
+	}
 }
