@@ -24,6 +24,7 @@ class functions {
 		$mail->AddReplyTo($replyTo);
 		$mail->MsgHTML($message);
 
+
 		if (count($attach) > 0) {
 			foreach ($attach as $file) {
 				$mail->addAttachment($file[0], $file[1]);
@@ -53,7 +54,7 @@ class functions {
 		return $randomString;
 	}
 
-	public function clean($string) {
+	public static function clean($string) {
 		$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 		return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 	}
@@ -175,12 +176,5 @@ class functions {
 		} else {
 			return str_ireplace(".", ":", number_format((0.0),2));
 		}
-	}
-	
-	
-	public static function getDefaultImage ($size = "250x250", $text = "default image", $fontSize = 30, $bg = "00ccff", $textColor = "ffffff") {
-		$size = explode("x", $size);
-
-		return "https://placeholdit.imgix.net/~text?txtsize={$fontSize}&txt={$text}&w={$size[0]}&h={$size[1]}&bg={$bg}&txtclr={$textColor}";
 	}
 }
