@@ -148,12 +148,7 @@ class user {
 	}
 
 	public function returnObject() {
-		return [
-			"name" => $this->username,
-			"password" => $this->password,
-			"email" => $this->email,
-			"rank" => $this->rank
-		];
+		return json_encode(get_object_vars($this));
 	}
 
 	public function returnOneUser() {
@@ -162,7 +157,7 @@ class user {
 		$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
 		$source = $mysqli->query($query);
 
-		return $source->fetch_assoc();
+		return $source->fetch_object();
 	}
 
 	public function existUserByName() {
@@ -183,7 +178,7 @@ class user {
 		);
 		$source = $mysqli->query($query);
 
-		return $source->fetch_assoc();
+		return $source->fetch_object();
 	}
 
 	public function existUserByEmail() {
@@ -201,7 +196,7 @@ class user {
 		$query = sprintf("SELECT * FROM %s_users WHERE true", $cfg->db->prefix);
 		$source = $mysqli->query($query);
 
-		$toReturn = array();
+		$toReturn = [];
 		$i = 0;
 
 		while ($data = $source->fetch_object()) {
