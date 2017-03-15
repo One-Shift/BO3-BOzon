@@ -50,11 +50,8 @@
 	var cookie = "{c2r-cookie}";
 </script>
 
-<!-- GOOGLE MAPS -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
 <!-- MD5 -->
-<script src="http://www.myersdaily.org/joseph/javascript/md5.js"></script>
+<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/md5.js"></script>
 
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
