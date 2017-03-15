@@ -86,7 +86,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-				<iframe class="ads hidden-xs" src="http://www.nexus-pt.eu/ads.php"></iframe>
+				<iframe class="ads hidden-xs" src="https://www.nexus-pt.eu/ads.php"></iframe>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 xs-spacer15 sm-spacer15 md-spacer15 lg-spacer15"></div>
