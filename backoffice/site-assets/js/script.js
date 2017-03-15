@@ -1,3 +1,26 @@
+(
+	function ($) {
+		$.fn.serializeObject = function () {
+			var o = {};
+			var a = this.serializeArray();
+			$.each(
+				a,
+				function () {
+					if (o[this.name]) {
+						if (!o[this.name].push) {
+							o[this.name] = [o[this.name]];
+						}
+						o[this.name].push(this.value || '');
+					} else {
+						o[this.name] = this.value || '';
+					}
+				}
+			);
+			return o;
+		};
+	}
+)(jQuery);
+
 function hideMenu (o) {
 	o.animate( {'left':'-300px'}, {queue: false, duration: 250});
 	$("body").removeClass("noscroll");
@@ -14,6 +37,14 @@ function editor (target) {
 
 $(document).ready(
 	function () {
+		if ($("textarea.editor").length > 0) {
+			$("textarea.editor").each(
+				function (i, obj) {
+					editor($(obj).attr("id"));
+				}
+			);
+		}
+
 		$("body").on(
 			"click",
 			"#bo-menu-button",
@@ -31,7 +62,7 @@ $(document).ready(
 		// get avatar for login page
 		$("body.login input[name=email]").on("focusout",
 			function () {
-				$("#avatar").attr("src", 'http://www.gravatar.com/avatar/' + md5($("input[name=email]").val()) + "?s=240&r=g&d=mm");
+				$("#avatar").attr("src", 'https://www.gravatar.com/avatar/' + md5($("input[name=email]").val()) + "?s=240&r=g&d=mm");
 			}
 		)
 
@@ -90,26 +121,3 @@ $(document).mouseup(
 		}
 	}
 );
-
-(
-	function ($) {
-		$.fn.serializeObject = function () {
-			var o = {};
-			var a = this.serializeArray();
-			$.each(
-				a,
-				function () {
-					if (o[this.name]) {
-						if (!o[this.name].push) {
-							o[this.name] = [o[this.name]];
-						}
-						o[this.name].push(this.value || '');
-					} else {
-						o[this.name] = this.value || '';
-					}
-				}
-			);
-			return o;
-		};
-	}
-)(jQuery);
