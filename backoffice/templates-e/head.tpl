@@ -31,8 +31,8 @@
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
-<meta name="author" content="NexuS-Pt, work team" />
-<meta name="author-code" content="NexuS-Pt, work team" />
+<meta name="author" content="One:Shift at one-shift.com" />
+<meta name="author-code" content="One:Shift at one-shift.com" />
 
 {c2r-lib-jquery}
 {c2r-lib-bootstrap}
