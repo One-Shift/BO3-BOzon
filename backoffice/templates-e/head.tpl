@@ -53,6 +53,10 @@
 <!-- MD5 -->
 <script type="text/javascript" src="{c2r-path-bo}/site-assets/js/md5.js"></script>
 
+<!-- CKEDITOR -->
+<script src="{c2r-path-bo}/site-assets/js/ckeditor/ckeditor.js"></script>
+<script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
+
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
