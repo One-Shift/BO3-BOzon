@@ -14,7 +14,7 @@ $cfg->system->path = "Path-here ex.: /new or /old";
 $cfg->system->path_bo = "Path-above + bo folder ex.: /new/backoffice";
 
 $cfg->system->version = "3.0.0";
-$cfg->system->sub_version = "alpha";
+$cfg->system->sub_version = "beta";
 
 $cfg->system->key = "GJTBpKregE9WgXc";
 
