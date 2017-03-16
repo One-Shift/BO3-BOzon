@@ -6,7 +6,7 @@ $cfg->mdl->folder = "sys-login";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
 $cfg->mdl->version = "0.0.1";
 $cfg->mdl->developer = "Carlos Santos";
-$cfg->mdl->contact = "carlos@nexus.pt";
+$cfg->mdl->contact = "carlos@one-shift.com";
 
 // load language for module
 if (file_exists("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini")) {
