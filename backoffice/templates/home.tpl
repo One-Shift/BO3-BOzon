@@ -53,7 +53,7 @@
 		<div id="bo-menu" class="container">
 			<div class="row">
 				<div id="profile" class="col-xs-12 col-sm-12 col-md-12" style="background-image: url('{c2r-background}');">
-					<img src="http://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" alt="avatar" />
+					<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" alt="avatar" />
 				</div>
 			</div>
 			<div class="row">
