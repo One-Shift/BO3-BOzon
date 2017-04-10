@@ -2,7 +2,7 @@
 	<div class="xs-spacer30 sm-spacer30"></div>
 	{c2r-return-message}
 	<div class="img">
-		<img id="avatar" alt="avatar" src="https://www.gravatar.com/avatar/?s=240&r=g&d=mm" />
+		<img id="avatar" alt="avatar" src="http://www.gravatar.com/avatar/?s=240&r=g&d=mm" />
 	</div>
 	<div class="xs-spacer30 sm-spacer30"></div>
 	<div class="name">

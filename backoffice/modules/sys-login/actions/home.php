@@ -86,7 +86,7 @@ print  $_SERVER["HTTP_HOST"];
 		);
 	}
 }
-$form = str_replace("{c2r-return-message}", null, $form);
+$form = str_replace("{c2r-return-message}", "", $form);
 
 /* last thing */
 $tpl = str_replace(
@@ -104,7 +104,7 @@ $tpl = str_replace(
 	[
 		$cfg->mdl->path,
 		$form,
-		file_get_contents("http://api.nexus-pt.eu/bo2-image-server/"),
+		file_get_contents("http://api.nexus-pt.eu/bo3-image-server/"),
 
 		$mdl_lang["cookie"]["alert"],
 		$mdl_lang["cookie"]["title"],
