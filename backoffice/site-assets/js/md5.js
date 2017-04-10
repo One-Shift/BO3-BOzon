@@ -1,7 +1,3 @@
-/*
-  http://www.myersdaily.org/joseph/javascript/
-*/
-
 function md5cycle(x, k) {
 var a = x[0], b = x[1], c = x[2], d = x[3];
 

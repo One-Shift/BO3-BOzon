@@ -15,15 +15,29 @@ a {
 }
 
 .btn-add {
-	color: #3c763d;
-	background-color: #dff0d8;
-	border-color: #d6e9c6;
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
+.btn-add:hover,
+.btn-add:focus {
+	color: #fff;
+	background-color: #449d44;
+	border-color: #398439;
 }
 
 .btn-edit {
-	color: #8a6d3b;
-	background-color: #fcf8e3;
-	border-color: #faebcc;
+	color: #fff;
+	background-color: #f0ad4e;
+	border-color: #eea236;
+}
+
+.btn-edit:hover,
+.btn-edit:focus {
+	color: #fff;
+	background-color: #ec971f;
+	border-color: #d58512;
 }
 
 .btn-del {
@@ -33,15 +47,29 @@ a {
 }
 
 .btn-save {
-	color: #3c763d;
-	background-color: #dff0d8;
-	border-color: #d6e9c6;
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+}
+
+.btn-save:hover,
+.btn-save:focus {
+	color: #fff;
+	background-color: #449d44;
+	border-color: #398439;
 }
 
 .btn-cancel {
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
+}
+
+.btn-cancel:hover,
+.btn-cancel:focus {
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
 }
 
 .modal-backdrop {

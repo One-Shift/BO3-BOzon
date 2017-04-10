@@ -18,16 +18,17 @@ $source = $mysqli->query($query);
 while ($data = $source->fetch_object()) {
 	array_push($installed_modules, $data->folder);
 
-	$tmp = explode("/", $data->folder);
-	$tmp_name = explode("-", $tmp[count($tmp) - 1]);
-
+	$tmp_name = explode("-", $data->folder);
 
 	$menu .= str_replace(
 		[
 			"{c2r-mod}",
 			"{c2r-name}"
 		],
-		$tmp_name[count($tmp_name) - 1],
+		[
+			$tmp_name[count($tmp_name) - 1],
+			$data->name
+		],
 		$menu_item_tpl
 	);
 }
