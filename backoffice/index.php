@@ -18,8 +18,6 @@ include "controller/id.php";
 
 $head = file_get_contents("templates-e/head.tpl");
 
-// abaixo é iniciada a criação do template, com base nós ficheiros html
-
 if ($auth) {
 	switch ($pg) {
 		case "logout":
