@@ -7,6 +7,7 @@
 		{c2r-header}
 		<div class="home">
 			<!-- here write the HTML code -->
+			
 		</div>
 		{c2r-footer}
 	</body>
