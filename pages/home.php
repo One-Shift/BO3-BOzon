@@ -6,14 +6,10 @@ include "pages-e/header.php";
 include "pages-e/footer.php";
 
 /* last thing */
-$tpl = str_replace(
+$tpl = functions::c2r(
 	[
-		"{c2r-header}",
-		"{c2r-footer}"
-	],
-	[
-		$header,
-		$footer
+		"header" => $header,
+		"footer" => $footer
 	],
 	$page_tpl
 );

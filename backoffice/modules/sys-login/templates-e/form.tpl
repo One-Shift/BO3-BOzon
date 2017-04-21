@@ -2,14 +2,14 @@
 	<div class="xs-spacer30 sm-spacer30"></div>
 	{c2r-return-message}
 	<div class="img">
-		<img id="avatar" alt="avatar" src="http://www.gravatar.com/avatar/?s=240&r=g&d=mm" />
+		<img id="avatar" alt="avatar" src="https://www.gravatar.com/avatar/?s=240&r=g&d=mm" />
 	</div>
 	<div class="xs-spacer30 sm-spacer30"></div>
 	<div class="name">
-		<input type="email" name="email" id="email" placeholder="Your E-mail" required="" autofocus />
+		<input type="email" name="email" id="email" placeholder="{c2r-lg-email}" required="" autofocus />
 	</div>
 	<div class="password">
-		<input type="password" name="password" id="password" placeholder="Your Password" required="" />
+		<input type="password" name="password" id="password" placeholder="{c2r-lg-password}" required="" />
 	</div>
 	<input type="submit" name="submit" class="hidden" value="">
 	<div class="xs-spacer30 sm-spacer30"></div>

@@ -30,46 +30,27 @@ if ($pg == null) {
 }
 
 // print website
-$tpl = str_replace(
+$tpl = functions::c2r(
 	[
-		"{c2r-head}",
-		"{c2r-sitename}",
-		"{c2r-keywords}",
-		"{c2r-description}",
-		"{c2r-analytics}",
-		"{c2r-path}",
-		"{c2r-lg}"
+		"head" => $head,
+
+		"og-title" => (isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
+		"og-url" => (isset($og["url"])) ? $og["url"] : "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
+		"og-image" => (isset($og["image"])) ? $og["image"] : "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
+		"og-description" => (isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
+
+		"lib-jquery" => file_get_contents("https://nexus-pt.github.io/BO3/jquery.html"),
+		"lib-bootstrap" => file_get_contents("https://nexus-pt.github.io/BO3/bootstrap.html"),
+		"lib-fontawesome" => file_get_contents("https://nexus-pt.github.io/BO3/fontawesome.html"),
+
+		"sitename" => $cfg->system->sitename,
+		"keywords" => $lang["system"]["keywords"],
+		"description" => $lang["system"]["description"],
+		"analytics" => $cfg->system->analytics,
+		"path" => $cfg->system->path,
+		"lg" => $lg_s
 	],
-	[
-		str_replace(
-			[
-				"{c2r-og-title}",
-				"{c2r-og-url}",
-				"{c2r-og-image}",
-				"{c2r-og-description}",
-				"{c2r-lib-jquery}",
-				"{c2r-lib-bootstrap}",
-				"{c2r-lib-fontawesome}"
-			],
-			[
-				(isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
-				(isset($og["url"])) ? $og["url"] : "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
-				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$cfg->system->path."/site-assets/default-share-image.jpg",
-				(isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
-				file_get_contents("http://nexus-pt.github.io/BO3/jquery.html"),
-				file_get_contents("http://nexus-pt.github.io/BO3/bootstrap.html"),
-				file_get_contents("http://nexus-pt.github.io/BO3/fontawesome.html")
-			],
-			$head
-		),
-		$cfg->system->sitename,
-		$lang["system"]["keywords"],
-		$lang["system"]["description"],
-		$cfg->system->analytics,
-		$cfg->system->path,
-		$lg_s
-	],
-	$tpl
+	(isset($tpl)) ? $tpl : ".::TPL::.::ERROR::."
 );
 
 // minify system

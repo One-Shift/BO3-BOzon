@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 /* styling here */
+@import "home-2.css";
+@import "portfolio.css";
+@import "modules.css";
 
 /* LARGE DISPLAY'S */
 @media (min-width: 1200px) {
@@ -90,4 +96,52 @@
 
 img {
 	max-width: 100%;
+}
+
+a,
+button {
+	-webkit-transition: all 200ms ease 0s; /* Safari */
+	transition: all 200ms ease 0s;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	color: #333;
+}
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+body {
+	background-image: url(../images/bg-1.png);
+	background-position: top center;
+	background-size: auto auto;
+	background-repeat: no-repeat;
+
+	min-height: 100vh;
+
+	font-family: "Lato", sans-serif;
+	color: #b3b3b3;
+}
+
+header {
+	color: #FFF;
+}
+
+header a {
+	color: inherit;
+}
+
+.body > .container {
+	background-color: #FFF;
+}
+
+.f-poiret-one {
+	font-family: "Poiret One", sans-serif;
+	font-weight: bold;
 }

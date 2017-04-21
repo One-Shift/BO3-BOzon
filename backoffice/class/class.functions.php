@@ -56,6 +56,7 @@ class functions {
 
 	public static function clean($string) {
 		$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+		$string =  str_replace('--', '-', $string);
 		return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 	}
 
@@ -146,6 +147,16 @@ class functions {
 		return false;
 	}
 
+	public static function plg_load ($path) {
+		global $cfg;
+
+		if ($path != null) {
+			return file_get_contents("modules/{$cfg->plg->folder}/{$path}");
+		}
+
+		return false;
+	}
+
 	public static function load ($path) {
 		global $cfg;
 
@@ -172,9 +183,26 @@ class functions {
 
 			$minutes = $minutes * 0.6;
 
-			return str_ireplace(".", ":", number_format((floor( $number ) + $minutes),2));
+			return str_replace(".", ":", number_format((floor( $number ) + $minutes),2));
 		} else {
-			return str_ireplace(".", ":", number_format((0.0),2));
+			return str_replace(".", ":", number_format((0.0),2));
 		}
+	}
+
+	public static function c2r ($args = [], $target) {
+
+		$search = [];
+		$replace = [];
+
+		foreach ($args as $index => $value) {
+			array_push($search, "{c2r-$index}");
+			array_push($replace, $value);
+		}
+
+		return str_replace(
+			$search,
+			$replace,
+			$target
+		);
 	}
 }

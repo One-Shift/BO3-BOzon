@@ -148,7 +148,7 @@ class user {
 	}
 
 	public function returnObject() {
-		return json_encode(get_object_vars($this));
+		return get_object_vars($this);
 	}
 
 	public function returnOneUser() {
@@ -174,7 +174,9 @@ class user {
 
 		$query = sprintf(
 			"SELECT * FROM %s_users WHERE email = '%s' AND active = '%s' LIMIT 1",
-			$cfg->db->prefix, $this->email, $this->active
+			$cfg->db->prefix,
+			$this->email,
+			$this->active
 		);
 		$source = $mysqli->query($query);
 

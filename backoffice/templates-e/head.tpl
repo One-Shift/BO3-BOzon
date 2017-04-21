@@ -1,4 +1,4 @@
-<title>BO3 / BOzon</title>
+<title>BO3 / BOzon » {c2r-sitename}</title>
 
 <!-- begin favicon -->
 <link rel="apple-touch-icon-precomposed" sizes="57x57"   href="{c2r-path-bo}/site-assets/favicon/favicon_57.png" />

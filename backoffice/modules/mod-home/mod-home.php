@@ -6,7 +6,7 @@ $cfg->mdl->folder = "mod-home";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
 $cfg->mdl->version = "0.0.1";
 $cfg->mdl->developer = "Carlos Santos";
-$cfg->mdl->contact = "carlos@one-shift.com";
+$cfg->mdl->contact = "carlos@nexus.pt";
 $cfg->mdl->dbTables = [];
 
 // load language for module

@@ -20,14 +20,10 @@ while ($data = $source->fetch_object()) {
 
 	$tmp_name = explode("-", $data->folder);
 
-	$menu .= str_replace(
+	$menu .= functions::c2r(
 		[
-			"{c2r-mod}",
-			"{c2r-name}"
-		],
-		[
-			$tmp_name[count($tmp_name) - 1],
-			$data->name
+			"mod" => $tmp_name[count($tmp_name) - 1],
+			"name" => $data->name
 		],
 		$menu_item_tpl
 	);
@@ -44,12 +40,11 @@ if (user::isOwner($authData)) {
 		$tmp_name = explode("-", $folder);
 
 		if (!in_array($folder, $installed_modules)) {
-			$not_installed_menu .= str_replace(
+			$not_installed_menu .= functions::c2r(
 				[
-					"{c2r-mod}",
-					"{c2r-name}"
+					"mod" => $tmp_name[count($tmp_name) - 1],
+					"name" => $tmp_name[count($tmp_name) - 1]
 				],
-				$tmp_name[count($tmp_name) - 1],
 				$menu_item_tpl
 			);
 		}
@@ -57,11 +52,8 @@ if (user::isOwner($authData)) {
 
 	// add not installed modules if aren't empty
 	if (isset($not_installed_menu) && !empty($not_installed_menu)) {
-		$menu .= str_replace(
-			"{c2r-title}",
-			$lang["menu"]["notInstalled"],
-			functions::loade("menu/title-notinstalled.tpl")
-		);
+		$menu .= functions::c2r(["title" => $lang["menu"]["notInstalled"]], functions::loade("menu/title-notinstalled.tpl"));
+		
 		$menu .= $not_installed_menu;
 	}
 }

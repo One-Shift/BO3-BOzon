@@ -28,11 +28,6 @@ if ($a == null) {
 		include $pg_file;
 	} else {
 		// if doesn't exist an action response, system sent you to 404
-		header(
-			sprintf(
-				"Location: %s/0/%s/404/",
-				$cfg->system->path_bo, $lg_s
-			)
-		);
+		header(sprintf("Location: %s/0/%s/404/", $cfg->system->path_bo, $lg_s));
 	}
 }

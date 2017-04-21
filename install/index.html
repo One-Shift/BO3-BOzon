@@ -1,0 +1,173 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Database Structure</h1>
+			<label for="">SQL Script</label>
+			<textarea style="width: 100%; font-family: monoco, courier, monospace" rows="20" readonly>
+CREATE TABLE `os_articles` (
+  `id` int(11) NOT NULL,
+  `code` text NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL,
+  `published` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_articles_lang` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `lang_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_categories` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `category_section` varchar(255) NOT NULL,
+  `code` text NOT NULL,
+  `sort` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL,
+  `published` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_categories_lang` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `lang_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_files` (
+  `id` int(11) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `module` varchar(255) NOT NULL,
+  `id_ass` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `code` text NOT NULL,
+  `sort` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_history` (
+  `id` int(11) NOT NULL,
+  `module` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `os_modules` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `folder` varchar(255) NOT NULL,
+  `sort` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_trash` (
+  `id` int(11) NOT NULL,
+  `module` varchar(255) NOT NULL,
+  `code` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `os_users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `rank` enum('owner','manager','member') DEFAULT 'member',
+  `email` varchar(255) DEFAULT NULL,
+  `code` text,
+  `user_key` text,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL,
+  `date_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `os_articles`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_articles_lang`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_categories`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_categories_lang`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_files`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_history`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_modules`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `folder` (`folder`);
+
+ALTER TABLE `os_trash`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `os_users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`username`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `fk_prefix_users_prefix_products1` (`id`),
+  ADD KEY `fk_prefix_users_prefix_articles1` (`id`);
+
+ALTER TABLE `os_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_articles_lang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_categories_lang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_trash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;</textarea>
+			<h1>Database 1st user</h1>
+			<p>
+				<label for="">User:</label><br>
+				<input type="text" name="" value="demo@demo.demo" readonly="" class="form-control">
+			</p>
+			<p>
+				<label for="">Password:</label><br>
+				<input type="text" name="" value="demo" readonly="" class="form-control">
+			</p>
+			<label for="">SQL Script</label>
+			<textarea style="width: 100%; font-family: monoco, courier, monospace" rows="8" readonly>INSERT INTO `os_users` (`id`, `username`, `password`, `rank`, `email`, `code`, `user_key`, `status`, `date`, `date_update`) VALUES (1, 'Demo', '9ccc4065e071a93e89b4327bb48b2aefe4f51a3e', 'owner', 'demo@demo.demo', '', '1794560797a5a5cc40364149fd623df8', 1, '2017-01-01 09:00:00', '2017-01-01 09:00:00');</textarea>
+			<p><br></p>
+			<p><label>Recomended:</label><br>Replace <code>`os_</code> for your own prefix, eg.: <code>`prefix_</code></p>
+			<p><br></p>
+			<p align="center" class="bg-danger text-danger" style="padding: 15px;">Please, delete install folder after full configuration.</p>
+			<p><br></p>
+		</div>
+	</div>
+</div>

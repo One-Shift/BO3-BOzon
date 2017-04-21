@@ -1,15 +1,13 @@
 <?php
 
-$page_tpl = file_get_contents(sprintf("modules/%s/templates/home.tpl", $cfg->mdl->folder));
+$page_tpl = functions::mdl_load("templates/home.tpl");
 
-$form = str_replace(
+$form = functions::c2r(
 	[
-		"1"
+		"lg-email" => $mdl_lang["labels"]["email"],
+		"lg-password" => $mdl_lang["labels"]["password"]
 	],
-	[
-		"2"
-	],
-	file_get_contents(sprintf("modules/%s/templates-e/form.tpl", $cfg->mdl->folder))
+	functions::mdl_load("templates-e/form.tpl")
 );
 
 if (isset($_POST["submit"])) {
@@ -20,97 +18,83 @@ if (isset($_POST["submit"])) {
 
 			$query = sprintf(
 				"SELECT id, password FROM %s_users WHERE email = '%s' AND password = '%s' AND status = '%s' AND rank != '%s' LIMIT %s",
-				$cfg->db->prefix, $_POST["email"], $_POST["password"], TRUE, "member", 1
+				$cfg->db->prefix,
+				$_POST["email"],
+				$_POST["password"],
+				TRUE,
+				"member",
+				1
 			);
 
 			$source = $mysqli->query($query);
 
 			if ($source->num_rows > 0) {
-				$data = $source->fetch_assoc();
-print  $_SERVER["HTTP_HOST"];
+				$data = $source->fetch_object();
+
 				if (
 					setcookie(
 						$cfg->system->cookie,
-						($data["id"].".".$data["password"]),
+						"{$data->id}.{$data->password}",
 						time() + ($cfg->system->cookie_time * 60),
 						(!empty($cfg->system->path)) ? $cfg->system->path : "/"
 					)
 				) {
-					header("Location: ".$cfg->system->path_bo."/0/$lg_s/home/");
+					header("Location: {$cfg->system->path_bo}/0/{$lg_s}/home/");
 				} else {
 					// ERROR MESSAGE
-					$form = str_replace(
-						"{c2r-return-message}",
-						str_replace(
-							"{c2r-message}",
-							"Message HERE",
-							file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
-						),
+					$form = functions::c2r(
+						[
+							"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+							"message" => $mdl_lang["return"]["failure-cookie"]
+						],
 						$form
 					);
 				}
 			} else {
 				// ERROR MESSAGE
-				$form = str_replace(
-					"{c2r-return-message}",
-					str_replace(
-						"{c2r-message}",
-						"Message HERE",
-						file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
-					),
+				$form = functions::c2r(
+					[
+						"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+						"message" => $mdl_lang["return"]["failure-nomatch"]
+					],
 					$form
 				);
 			}
 		} else {
 			// ERROR MESSAGE
-			$form = str_replace(
-				"{c2r-return-message}",
-				str_replace(
-					"{c2r-message}",
-					"Message HERE",
-					file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
-				),
+			$form = functions::c2r(
+				[
+					"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+					"message" => $mdl_lang["return"]["failure-nopassword"]
+				],
 				$form
 			);
 		}
 	} else {
 		// ERROR MESSAGE
-		$form = str_replace(
-			"{c2r-return-message}",
-			str_replace(
-				"{c2r-message}",
-				"Message HERE",
-				file_get_contents(sprintf("modules/%s/templates-e/return-message.tpl", $cfg->mdl->folder))
-			),
+		$form = functions::c2r(
+			[
+				"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+				"message" => $mdl_lang["return"]["failure-email"]
+			],
 			$form
 		);
 	}
 }
-$form = str_replace("{c2r-return-message}", "", $form);
+
+$form = functions::c2r(["return-message" => ""], $form);
 
 /* last thing */
-$tpl = str_replace(
+$tpl = functions::c2r(
 	[
-		"{c2r-mod-path}",
-		"{c2r-form}",
-		"{c2r-background}",
+		"mod-path" => $cfg->mdl->path,
+		"form" => $form,
+		"background" => file_get_contents("https://api.nexus-pt.eu/bo3-image-server/"),
 
-		"{c2r-lg-cookies-alert}",
-		"{c2r-lg-cookies-title}",
-		"{c2r-lg-cookies-modal}",
-
-		"{c2r-lg-message}",
-	],
-	[
-		$cfg->mdl->path,
-		$form,
-		file_get_contents("http://api.nexus-pt.eu/bo3-image-server/"),
-
-		$mdl_lang["cookie"]["alert"],
-		$mdl_lang["cookie"]["title"],
-		$mdl_lang["cookie"]["modal"],
-
-		$mdl_lang["message"],
+		"lg-cookies-alert" => $mdl_lang["cookie"]["alert"],
+		"lg-cookies-title" => $mdl_lang["cookie"]["title"],
+		"lg-cookies-modal" => $mdl_lang["cookie"]["modal"],
+		"lg-message" => $mdl_lang["message"]
 	],
 	$page_tpl
 );

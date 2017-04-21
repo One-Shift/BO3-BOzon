@@ -31,21 +31,23 @@
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
-<meta name="author" content="One:Shift" />
-<meta name="author-code" content="#someone#" />
-
-<link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
+<meta name="author" content="One:Shift at one-shift.com" />
+<meta name="author-code" content="Carlos Santos" />
 
 {c2r-lib-jquery}
 {c2r-lib-bootstrap}
 {c2r-lib-fontawesome}
 
+<link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
+<link rel='stylesheet' type='text/css' href='http://one-shift.github.io/site-assets/css/style.css' />
+
+<!-- WOW -->
+<link rel="stylesheet" href="{c2r-path}/site-assets/css/wow.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{c2r-path}/site-assets/js/wow.js"></script>
+
 <script type="text/javascript" src="{c2r-path}/site-assets/js/animatescroll.min.js"></script>
 <script type="text/javascript" src="{c2r-path}/site-assets/js/cookies.js"></script>
 <script type="text/javascript" src="{c2r-path}/site-assets/js/script.js"></script>
-
-<!-- GOOGLE MAPS -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 <script>
 	var path = "{c2r-path}";

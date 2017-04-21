@@ -16,7 +16,7 @@ include "controller/pages.php";
 include "controller/actions.php";
 include "controller/id.php";
 
-$head = functions::loade("head.tpl");
+$head = file_get_contents("templates-e/head.tpl");
 
 // abaixo é iniciada a criação do template, com base nós ficheiros html
 
@@ -45,48 +45,28 @@ if ($auth) {
 }
 
 // print website
-$tpl = str_replace(
+$tpl = functions::c2r(
 	[
-		"{c2r-head}",
-		"{c2r-sitename}",
-		"{c2r-keywords}",
-		"{c2r-description}",
-		"{c2r-path}",
-		"{c2r-path-bo}",
-		"{c2r-lg}",
-		"{c2r-cookie}"
+		"head" => $head,
+
+		"og-title" => (isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
+		"og-url" => (isset($og["url"])) ? $og["url"] : "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
+		"og-image" => (isset($og["image"])) ? $og["image"] : "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
+		"og-description" => (isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
+
+		"lib-jquery" => file_get_contents("http://nexus-pt.github.io/BO3/jquery.html"),
+		"lib-bootstrap" => file_get_contents("http://nexus-pt.github.io/BO3/bootstrap.html"),
+		"lib-fontawesome" => file_get_contents("http://nexus-pt.github.io/BO3/fontawesome.html"),
+
+		"sitename" => $cfg->system->sitename,
+		"keywords" => $lang["system"]["keywords"],
+		"description" => $lang["system"]["description"],
+		"path" => $cfg->system->path,
+		"path-bo" => $cfg->system->path_bo,
+		"lg" => $lg_s,
+		"cookie" => $cfg->system->cookie
 	],
-	[
-		str_replace(
-			[
-				"{c2r-og-title}",
-				"{c2r-og-url}",
-				"{c2r-og-image}",
-				"{c2r-og-description}",
-				"{c2r-lib-jquery}",
-				"{c2r-lib-bootstrap}",
-				"{c2r-lib-fontawesome}"
-			],
-			[
-				(isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
-				(isset($og["url"])) ? $og["url"] : "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"],
-				(isset($og["image"])) ? $og["image"] : "http://".$_SERVER["HTTP_HOST"].$cfg->system->path."/site-assets/default-share-image.jpg",
-				(isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
-				file_get_contents("http://nexus-pt.github.io/BO3/jquery.html"),
-				file_get_contents("http://nexus-pt.github.io/BO3/bootstrap.html"),
-				file_get_contents("http://nexus-pt.github.io/BO3/fontawesome.html")
-			],
-			$head
-		),
-		$cfg->system->sitename,
-		$lang["system"]["keywords"],
-		$lang["system"]["description"],
-		$cfg->system->path,
-		$cfg->system->path_bo,
-		$lg_s,
-		$cfg->system->cookie
-	],
-	$tpl
+	(isset($tpl)) ? $tpl : ".::TPL::.::ERROR::."
 );
 
 // minify system

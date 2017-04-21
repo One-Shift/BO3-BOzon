@@ -1,70 +1,45 @@
 <?php
 
-$page_tpl = functions::load("home.tpl");
+//$page_tpl = functions::load("home.tpl");
 
 include "pages-e/header.php";
 include "pages-e/footer.php";
 include "pages-e/menu.php";
 
 if (user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
-	$uninstall = str_replace(
+	$uninstall = functions::c2r(
 		[
-			"{c2r-lg-title}",
-			"{c2r-lg-question}",
-			"{c2r-lg-uninstall}",
-			"{c2r-lg-close}",
-		],
-		[
-			$lang["uninstall"]["modal-title"],
-			$lang["uninstall"]["modal-question"],
-			$lang["uninstall"]["modal-button"],
-			$lang["uninstall"]["modal-close"],
+			"lg-title" => $lang["uninstall"]["modal-title"],
+			"lg-question" => $lang["uninstall"]["modal-question"],
+			"lg-uninstall" => $lang["uninstall"]["modal-button"],
+			"lg-close" => $lang["uninstall"]["modal-close"]
 		],
 		functions::loade("module-core/uninstall.tpl")
 	);
 } else {
-	$uninstall = null;
+	$uninstall = "";
 }
 
 /* last thing */
-$tpl = str_replace(
+$tpl = functions::c2r(
 	[
-		"{c2r-header}",
-		"{c2r-footer}",
+		"header" => $header,
+		"footer" => $footer,
 
-		"{c2r-bo3-version}",
-		"{c2r-bo3-sub-version}",
-		"{c2r-menu}",
-		"{c2r-avatar}",
-		"{c2r-background}",
+		"bo3-version" => $cfg->system->version,
+		"bo3-sub-version" => $cfg->system->sub_version,
+		"menu" => (isset($menu)) ? $menu : "",
+		"avatar" => md5($authData["email"]),
+		"background" => file_get_contents("https://api.nexus-pt.eu/bo3-image-server/"),
 
-		"{c2r-breadcrump}",
-		"{c2r-module-name}",
-		"{c2r-module}",
+		"breadcrump" => (isset($breadcrump)) ? $breadcrump : "",
+		"module-name" => $cfg->mdl->name,
+		"module" => (isset($mdl)) ? $mdl : ".::MDL::.::TPL::.::ERROR::.",
 
-		"{c2r-uninstall}",
+		"uninstall" => $uninstall,
 
-		"{c2r-module-folder}",
-		"{c2r-module-path}"
+		"module-folder" => str_replace("mod-" , "", $cfg->mdl->folder),
+		"module-path" => $cfg->mdl->path
 	],
-	[
-		$header,
-		$footer,
-
-		$cfg->system->version,
-		$cfg->system->sub_version,
-		(isset($menu)) ? $menu : null,
-		md5($authData["email"]),
-		file_get_contents("http://api.nexus-pt.eu/bo3-image-server/"),
-
-		(isset($breadcrump)) ? $breadcrump : null,
-		$cfg->mdl->name,
-		(isset($mdl)) ? $mdl : null,
-
-		$uninstall,
-
-		str_replace("mod-" , null, $cfg->mdl->folder),
-		$cfg->mdl->path
-	],
-	$page_tpl
+	functions::load("home.tpl")
 );
