@@ -151,7 +151,14 @@ ALTER TABLE `os_trash`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `os_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;</textarea>
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `os_modules` (`name`, `folder`, `sort`) VALUES
+  ('Home', 'mod-home', 0),
+  ('Account', 'mod-account', 1),
+  ('Users', 'mod-users', 2),
+  ('Articles', 'mod-articles', 3),
+  ('Files', 'mod-files', 4)</textarea>
 			<h1>Database 1st user</h1>
 			<p>
 				<label for="">User:</label><br>
