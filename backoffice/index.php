@@ -48,8 +48,8 @@ $tpl = functions::c2r(
 		"head" => $head,
 
 		"og-title" => (isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
-		"og-url" => (isset($og["url"])) ? $og["url"] : "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
-		"og-image" => (isset($og["image"])) ? $og["image"] : "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
+		"og-url" => (isset($og["url"])) ? $og["url"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
+		"og-image" => (isset($og["image"])) ? $og["image"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
 		"og-description" => (isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
 
 		"lib-jquery" => file_get_contents("http://nexus-pt.github.io/BO3/jquery.html"),
