@@ -144,10 +144,31 @@ i {
 }
 
 .navbar-inverse {
-	background-color: #00838f;
 	border-color: #00838f;
-	background-image: none;
-	background: linear-gradient(141deg, #00ccff 0%, #1dcab5 51%, #37c871 75%);
+
+	background: linear-gradient(270deg, #00ccff, #1dcab5, #37c871);
+	background-size: 600% 600%;
+
+	-webkit-animation: topbarcoloranimation 10s ease infinite;
+	-moz-animation: topbarcoloranimation 10s ease infinite;
+}
+
+@-webkit-keyframes topbarcoloranimation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+@-moz-keyframes topbarcoloranimation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+@keyframes topbarcoloranimation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
 }
 
 .navbar {

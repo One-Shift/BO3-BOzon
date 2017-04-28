@@ -77,9 +77,12 @@
 }
 
 .login .message {
-	background-color: #00838f;
 	border-radius: 3px;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
 	color: #fff;
-	background: linear-gradient(141deg, #00ccff 0%, #1dcab5 51%, #37c871 75%);
+	background: linear-gradient(270deg, #00ccff, #1dcab5, #37c871);
+	background-size: 600% 600%;
+
+	-webkit-animation: topbarcoloranimation 10s ease infinite;
+	-moz-animation: topbarcoloranimation 10s ease infinite;
 }
