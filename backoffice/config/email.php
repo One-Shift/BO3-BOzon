@@ -2,7 +2,7 @@
 
 $cfg->email = new stdClass();
 
-$cfg->email->email = ["hello@one-shift.com";"];
+$cfg->email->email = ["hello@one-shift.com"];
 $cfg->email->smtp = "mail.yourdomain.here";
 $cfg->email->username = "your@email.here";
 $cfg->email->password = "yourpassword";
