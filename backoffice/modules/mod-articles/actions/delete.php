@@ -21,7 +21,7 @@
 					"id" => $id,
 
 					"phrase" => $mdl_lang["delete"]["phrase"],
-					"title" => article->title,
+					"title" => $article->title,
 
 					"del" => $mdl_lang["delete"]["button-del"],
 					"cancel" => $mdl_lang["delete"]["button-cancel"]
