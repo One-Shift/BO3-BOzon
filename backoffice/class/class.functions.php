@@ -14,7 +14,7 @@ class functions {
 		$mail->Host = $cfg->email->smtp;
 		$mail->SMTPDebug = 0;
 		$mail->SMTPAuth = TRUE;
-		$mail->Port = 25;
+		$mail->Port = $cfg->email->port;
 		$mail->SMTPSecure = $cfg->email->secure;
 		$mail->Username = $cfg->email->username;
 		$mail->Password = $cfg->email->password;
