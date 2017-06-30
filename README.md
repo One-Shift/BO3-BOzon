@@ -19,9 +19,9 @@ Já o Backoffice passará por uma reestruturação tecnica e gráfica.
 # Requirements
 
 * Apache 2.0
-* PHP 5.4
-* MySQL 5.5 (studing PDO option)
-* Browser with full support to HTML5
+* PHP 5.4+
+* MySQL 5.5+
+* Browser with full HTML5 support
 
 ## How to Install
 
