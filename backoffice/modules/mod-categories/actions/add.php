@@ -72,22 +72,24 @@ if (!isset($_POST["save"])) {
 
 	recursiveWayGet(-1, 0, $data);
 
-	foreach ($data as $item) {
-		if (!isset($parent_options)) {
-			$parent_options = "";
-		}
+	if(!empty($data)) {
+		foreach ($data as $item) {
+			if (!isset($parent_options)) {
+				$parent_options = "";
+			}
 
-		$parent_options .= str_replace(
-			[
-				"{c2r-option-id}",
-				"{c2r-option}"
-			],
-			[
-				$item["id"],
-				sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
-			],
-			$option_item_tpl
-		);
+			$parent_options .= str_replace(
+				[
+					"{c2r-option-id}",
+					"{c2r-option}"
+				],
+				[
+					$item["id"],
+					sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
+				],
+				$option_item_tpl
+			);
+		}
 	}
 
 	/*------------------------------------------*/
@@ -155,7 +157,7 @@ if (!isset($_POST["save"])) {
 					$mdl_lang["label"]["parent"],
 					$mdl_lang["form"]["option-parent"],
 					$mdl_lang["form"]["option-parent-no"],
-					$parent_options,
+					(isset($parent_options)) ? $parent_options : "",
 					$mdl_lang["label"]["date"],
 					$mdl_lang["form"]["date-placeholder"],
 					date("Y-m-d H:i:s"),

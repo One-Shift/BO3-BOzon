@@ -59,18 +59,20 @@ if (!isset($_POST["save"])) {
 
 	recursiveWayGet(-1, 0, $data);
 
-	foreach ($data as $item) {
-		if (!isset($parent_options)) {
-			$parent_options = "";
-		}
+	if(!empty($data)) {
+		foreach ($data as $item) {
+			if (!isset($parent_options)) {
+				$parent_options = "";
+			}
 
-		$parent_options .= functions::c2r(
-			[
-				"option-id" => $item["id"],
-				"option" => sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
-			],
-			$option_item_tpl
-		);
+			$parent_options .= functions::c2r(
+				[
+					"option-id" => $item["id"],
+					"option" => sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
+				],
+				$option_item_tpl
+			);
+		}
 	}
 
 	/*------------------------------------------*/
@@ -89,7 +91,7 @@ if (!isset($_POST["save"])) {
 			"parent" => $mdl_lang["label"]["parent"],
 			"select-option-parent" => $mdl_lang["form"]["option-parent"],
 			"select-option-parent-no" => $mdl_lang["form"]["option-parent-no"],
-			"parent-options" => $parent_options,
+			"parent-options" => (isset($parent_options)) ? $parent_options : "",
 			"date" => $mdl_lang["label"]["date"],
 			"date-placeholder" => $mdl_lang["form"]["date-placeholder"],
 			"date-value" => date("Y-m-d H:i:s"),
