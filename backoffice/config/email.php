@@ -9,4 +9,6 @@ $cfg->email->password = "yourpassword";
 $cfg->email->secure = "connection-type eg.: plain";
 $cfg->email->port = "connection-port eg.: 25";
 
+$cfg->email->debug = 1;
+
 $cfg->email->support = "hello@one-shift.com";

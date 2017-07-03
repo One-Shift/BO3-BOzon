@@ -12,7 +12,7 @@ class functions {
 		$mail->IsSMTP();
 		$mail->CharSet = "UTF-8";
 		$mail->Host = $cfg->email->smtp;
-		$mail->SMTPDebug = 0;
+		$mail->SMTPDebug = $cfg->email->debug;
 		$mail->SMTPAuth = TRUE;
 		$mail->Port = $cfg->email->port;
 		$mail->SMTPSecure = $cfg->email->secure;
