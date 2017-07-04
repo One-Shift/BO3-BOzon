@@ -19,7 +19,7 @@
 }
 
 .login .wrapper {
-	height: calc(50% - 130px);
+	height: calc(50vh - 130px);
 }
 
 .login input {
