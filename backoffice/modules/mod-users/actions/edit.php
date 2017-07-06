@@ -11,7 +11,7 @@ $userData = $user->returnOneUser();
 if ($userData->rank == "owner") {
 	$rank = "Owner";
 	$ownerSelected = "selected";
-} else if ($userRank == "manager") {
+} else if ($userData->rank == "manager") {
 	$rank = "Manager";
 	$managerSelected = "selected";
 } else {
