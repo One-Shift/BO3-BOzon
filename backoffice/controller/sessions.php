@@ -1,6 +1,5 @@
 <?php
 
-// controlador de sessão
 if ($cfg->db->connect) {
 	if (isset($_COOKIE[$cfg->system->cookie]) && !empty($_COOKIE[$cfg->system->cookie])) {
 		$cookie = explode(".", $_COOKIE[$cfg->system->cookie]);
@@ -13,9 +12,8 @@ if ($cfg->db->connect) {
 				$cfg->db->prefix, $cookie[0], $cookie[1], 1
 			);
 			$source = $mysqli->query($query);
-			$nr = $source->num_rows;
 
-			if ($nr === 1) {
+			if ($source->num_rows == 1) {
 				$auth = true;
 				$authData = $source->fetch_assoc();
 			} else {
