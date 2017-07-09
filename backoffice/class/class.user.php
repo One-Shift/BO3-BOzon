@@ -7,7 +7,7 @@ class user {
 	protected $email;
 	protected $rank;
 	protected $code;
-	protected $status = FALSE;
+	protected $status = false;
 	protected $user_key;
 	protected $date;
 	protected $date_update;
@@ -173,10 +173,10 @@ class user {
 		global $cfg, $mysqli;
 
 		$query = sprintf(
-			"SELECT * FROM %s_users WHERE email = '%s' AND active = '%s' LIMIT 1",
+			"SELECT * FROM %s_users WHERE email = '%s' AND status = '%s' LIMIT 1",
 			$cfg->db->prefix,
 			$this->email,
-			$this->active
+			$this->status
 		);
 		$source = $mysqli->query($query);
 
