@@ -15,7 +15,7 @@ CREATE TABLE `os_articles` (
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL,
   `published` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_articles_lang` (
   `id` int(11) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `os_articles_lang` (
   `lang_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_categories` (
   `id` int(11) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `os_categories` (
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL,
   `published` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_categories_lang` (
   `id` int(11) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `os_categories_lang` (
   `lang_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_files` (
   `id` int(11) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE `os_files` (
   `user_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `date_update` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_history` (
   `id` int(11) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `os_modules` (
   `name` varchar(255) NOT NULL,
   `folder` varchar(255) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_trash` (
   `id` int(11) NOT NULL,
@@ -79,7 +79,15 @@ CREATE TABLE `os_trash` (
   `code` text NOT NULL,
   `user_id` int(11) NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `os_trash` (
+  `id` int(11) NOT NULL,
+  `module` varchar(255) NOT NULL,
+  `code` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_users` (
   `id` int(11) NOT NULL,
