@@ -207,11 +207,13 @@ class file {
 				((!empty($this->module)) ? "module = '{$this->module}'" : null)
 			);
 
-			foreach ($this->code as $key => $value) {
-				if (!isset($code)) {
-					$code = "";
+			if (is_array($this->code)) {
+				foreach ($this->code as $key => $value) {
+					if (!isset($code)) {
+						$code = "";
+					}
+					$code .= "code LIKE '%{$value}%' AND ";
 				}
-				$code .= "code LIKE '%{$value}%' AND ";
 			}
 
 			if (isset($code)) {
