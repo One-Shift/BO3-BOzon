@@ -58,11 +58,13 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 bo-block-list">
-					<div class="list-group">
-						{c2r-menu}
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 xs-tacenter sm-tacenter bo-rights">
-						&copy; <a href="http://www.one-shift.com/" target="_blank">One:Shift</a>
+					<div class="container-menu">
+						<div class="list-group">
+							{c2r-menu}
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 xs-tacenter sm-tacenter bo-rights">
+							&copy; <a href="http://www.one-shift.com/" target="_blank">One:Shift</a>
+						</div>
 					</div>
 				</div>
 			</div>
