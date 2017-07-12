@@ -256,7 +256,7 @@ class file {
 	public function returnFilterList () {
 		global $cfg, $mysqli;
 
-		if (!empty($this->id_ass)) {
+		if (!is_null($this->id_ass)) {
 			$query = sprintf(
 				"SELECT * FROM %s_files WHERE id_ass = %s AND module = '%s' ORDER BY sort ASC",
 				$cfg->db->prefix,
@@ -265,7 +265,7 @@ class file {
 			);
 		} else {
 			$query = sprintf(
-				"SELECT * FROM %s_files WHERE module = '%s' ORDER BY sort ASC",
+				"SELECT * FROM %s_files WHERE id_ass != 0 AND module = '%s' ORDER BY sort ASC",
 				$cfg->db->prefix,
 				$this->module
 			);
