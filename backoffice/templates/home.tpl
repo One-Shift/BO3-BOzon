@@ -58,7 +58,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 bo-block-list">
-					<div class="containerMenu">
+					<div class="container-menu">
 						<div class="list-group">
 							{c2r-menu}
 						</div>
