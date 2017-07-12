@@ -11,6 +11,7 @@
 	<div class="password">
 		<input type="password" name="password" id="password" placeholder="{c2r-lg-password}" required="" />
 	</div>
-	<input type="submit" name="submit" class="hidden" value="">
-	<div class="xs-spacer30 sm-spacer30"></div>
+	<div class="xs-spacer30 sm-spacer30 invisible">
+		<input type="submit" name="submit" value="">
+	</div>
 </form>
