@@ -256,12 +256,20 @@ class file {
 	public function returnFilterList () {
 		global $cfg, $mysqli;
 
-		$query = sprintf(
-			"SELECT * FROM %s_files WHERE (id_ass = %s AND id_ass != 0) AND module = '%s' ORDER BY sort ASC",
-			$cfg->db->prefix,
-			$this->id_ass,
-			$this->module
-		);
+		if (!empty($this->id_ass)) {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE id_ass = %s AND module = '%s' ORDER BY sort ASC",
+				$cfg->db->prefix,
+				$this->id_ass,
+				$this->module
+			);
+		} else {
+			$query = sprintf(
+				"SELECT * FROM %s_files WHERE module = '%s' ORDER BY sort ASC",
+				$cfg->db->prefix,
+				$this->module
+			);
+		}
 
 		$source = $mysqli->query($query);
 
