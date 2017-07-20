@@ -11,7 +11,7 @@ include "config/system.php";
 include "config/connect.php";
 
 include "controller/languages.php";
-include "controller/sessions.php";
+include "controller/sessions-bo.php";
 include "controller/pages.php";
 include "controller/actions.php";
 include "controller/id.php";
