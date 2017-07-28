@@ -34,7 +34,7 @@ if (!isset($_POST["save"])){
 						"label-description" => $mdl_lang["label"]["description"],
 						"place-holder-name" => "",
 						"place-holder-text" => "",
-						"name-value" => (isset($article_result[$index]->title)) ? $article_result[$index]->title : "",
+						"name-value" => (isset($article_result[$index]->title)) ? htmlspecialchars($article_result[$index]->title) : "",
 						"description-value" => (isset($article_result[$index]->text)) ? $article_result[$index]->text : ""
 					],
 					$nav_content_tpl
