@@ -96,9 +96,9 @@ $form = functions::c2r(
 		"manager-selected" => (isset($managerSelected)) ? $managerSelected : "",
 		"member-selected" => (isset($memberSelected)) ? $memberSelected : "",
 
-		"username" => $userData->username,
-		"email" => $userData->email,
-		"code" => $userData->code,
+		"username" => htmlspecialchars($userData->username),
+		"email" => htmlspecialchars($userData->email),
+		"code" => htmlspecialchars($userData->code),
 		"status-checked" => ($userData->status) ? "checked" : ""
 	],
 	$form_tpl
