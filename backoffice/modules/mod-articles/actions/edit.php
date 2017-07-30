@@ -85,7 +85,7 @@ if (!isset($_POST["save"])){
 				$parent_options = "";
 			}
 
-			if($item->id != $id) {
+			if ($item->id != $id) {
 				$parent_options .= functions::c2r(
 					[
 						"option-id" => $item->id,
