@@ -11,36 +11,23 @@ if (!isset($_POST["save"])) {
 	$i = 0;
 	foreach ($cfg->lg as $index => $lg) {
 		if ($lg[0]) {
-			$tabs .= str_replace(
+			$tabs .= functions::c2r(
 				[
-					"{c2r-class}",
-					"{c2r-nr}",
-					"{c2r-lang-name}"
-				],
-				[
-					($i == 0 ? "active" : null),
-					$index,
-					$lg[2]
+					'class' => ($i == 0 ? "active" : null),
+					'nr' => $index,
+					'lang-name' => $lg[2]
 				],
 				$nav_tpl
 			);
 
-			$nav_content .= str_replace(
+			$nav_content .= functions::c2r(
 				[
-					"{c2r-class}",
-					"{c2r-nr}",
-					"{c2r-label-name}",
-					"{c2r-label-description}",
-					"{c2r-place-holder-name}",
-					"{c2r-place-holder-text}"
-				],
-				[
-					($i == 0 ? "active" : null),
-					$index,
-					$mdl_lang["label"]["name"],
-					$mdl_lang["label"]["description"],
-					"",
-					""
+					'class' => ($i == 0 ? "active" : null),
+					'nr' => $index,
+					'label-name' => $mdl_lang["label"]["name"],
+					'label-description' => $mdl_lang["label"]["description"],
+					'place-holder-name' => "",
+					'place-holder-text' => ""
 				],
 				$nav_content_tpl
 			);
@@ -64,7 +51,7 @@ if (!isset($_POST["save"])) {
 
 			$data[] = $tmp;
 
-			if($item->nr_sub_cats > 0 ){
+			if ($item->nr_sub_cats > 0) {
 				recursiveWayGet($item->id, $i+1, $data);
 			}
 		}
@@ -72,20 +59,16 @@ if (!isset($_POST["save"])) {
 
 	recursiveWayGet(-1, 0, $data);
 
-	if(!empty($data)) {
+	if (!empty($data)) {
 		foreach ($data as $item) {
 			if (!isset($parent_options)) {
 				$parent_options = "";
 			}
 
-			$parent_options .= str_replace(
+			$parent_options .= functions::c2r(
 				[
-					"{c2r-option-id}",
-					"{c2r-option}"
-				],
-				[
-					$item["id"],
-					sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
+					'option-id' => $item["id"],
+					'option' => sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
 				],
 				$option_item_tpl
 			);
@@ -113,67 +96,39 @@ if (!isset($_POST["save"])) {
 		);
 	}
 
-	$mdl = str_replace(
+	$mdl = functions::c2r(
 		[
-			"{c2r-content}"
-		],
-		[
-			str_replace(
+			'content' => functions::c2r(
 				[
-					"{c2r-tabs-categories-name-description}",
-					"{c2r-type}",
-					"{c2r-select-option-type}",
-					"{c2r-category-type-options}",
-					"{c2r-parent}",
-					"{c2r-select-option-parent}",
-					"{c2r-select-option-parent-no}",
-					"{c2r-parent-options}",
-					"{c2r-date}",
-					"{c2r-date-placeholder}",
-					"{c2r-date-value}",
-					"{c2r-code}",
-					"{c2r-code-placeholder}",
-					"{c2r-sort}",
-					"{c2r-sort-placeholder}",
-					"{c2r-published}",
-					"{c2r-but-submit}"
-				],
-				[
-					str_replace(
+					'tabs-categories-name-description' => functions::c2r(
 						[
-							"{c2r-nav-tabs-items}",
-							"{c2r-tab-content-items}"
-						],
-						[
-							$tabs,
-							$nav_content
-
+							'nav-tabs-items' => $tabs,
+							'tab-content-items' => $nav_content
 						],
 						functions::mdl_load("templates-e/add/tabs.tpl")
 					),
-					$mdl_lang["label"]["type"],
-					$mdl_lang["form"]["option-type"],
-					$category_type_options,
-					$mdl_lang["label"]["parent"],
-					$mdl_lang["form"]["option-parent"],
-					$mdl_lang["form"]["option-parent-no"],
-					(isset($parent_options)) ? $parent_options : "",
-					$mdl_lang["label"]["date"],
-					$mdl_lang["form"]["date-placeholder"],
-					date("Y-m-d H:i:s"),
-					$mdl_lang["label"]["code"],
-					$mdl_lang["label"]["code-placeholder"],
-					$mdl_lang["label"]["sort"],
-					$mdl_lang["label"]["sort-placeholder"],
-					$mdl_lang["label"]["published"],
-					$mdl_lang["label"]["but-submit"]
+					'type' => $mdl_lang["label"]["type"],
+					'select-option-type' => $mdl_lang["form"]["option-type"],
+					'category-type-options' => $category_type_options,
+					'parent' => $mdl_lang["label"]["parent"],
+					'select-option-parent' => $mdl_lang["form"]["option-parent"],
+					'select-option-parent-no' => $mdl_lang["form"]["option-parent-no"],
+					'parent-options' => (isset($parent_options)) ? $parent_options : "",
+					'date' => $mdl_lang["label"]["date"],
+					'date-placeholder' => $mdl_lang["form"]["date-placeholder"],
+					'date-value' => date("Y-m-d H:i:s"),
+					'code' => $mdl_lang["label"]["code"],
+					'code-placeholder' => $mdl_lang["label"]["code-placeholder"],
+					'sort' => $mdl_lang["label"]["sort"],
+					'sort-placeholder' => $mdl_lang["label"]["sort-placeholder"],
+					'published' => $mdl_lang["label"]["published"],
+					'but-submit' => $mdl_lang["label"]["but-submit"]
 				],
 				functions::mdl_load("templates-e/add/form.tpl")
 			)
 		],
 		functions::mdl_load("templates/add.tpl")
 	);
-
 } else {
 	$category = new category();
 
@@ -200,16 +155,12 @@ if (!isset($_POST["save"])) {
 		$textToPrint = $mdl_lang["add"]["failure"];
 	}
 
-	$mdl = str_replace(
+	$mdl = functions::c2r(
 		[
-			"{c2r-content}"
-		],
-		[
-			$textToPrint
+			'content' => $textToPrint
 		],
 		functions::mdl_load("templates/add.tpl")
 	);
-
 }
 
 functions::importPlg ("files", ["module" => "category"]);

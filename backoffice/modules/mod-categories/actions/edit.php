@@ -18,41 +18,26 @@ if (!isset($_POST["save"])) {
 		foreach ($cfg->lg as $index => $lg) {
 			if ($lg[0]) {
 
-				$tabs .= str_replace(
+				$tabs .= functions::c2r(
 					[
-						"{c2r-class}",
-						"{c2r-nr}",
-						"{c2r-lang-name}"
-					],
-					[
-						($i == 0 ? "active" : null),
-						$index,
-						$lg[2]
+						'class' => ($i == 0 ? "active" : null),
+						'nr' => $index,
+						'lang-name' => $lg[2]
 					],
 					$nav_tpl
 				);
 
-				$nav_content .= str_replace(
+				$nav_content .= functions::c2r(
 					[
-						"{c2r-class}",
-						"{c2r-nr}",
-						"{c2r-label-name}",
-						"{c2r-label-description}",
-						"{c2r-place-holder-name}",
-						"{c2r-place-holder-text}",
-						"{c2r-name-value}",
-						"{c2r-description-value}"
-					],
-					[
-						($i == 0 ? "active" : null),
-						$index,
-						$mdl_lang["label"]["name"],
-						$mdl_lang["label"]["description"],
-						"",
-						"",
-						$category_result[$index]->title,
-						$category_result[$index]->text
+						'class' => ($i == 0 ? "active" : null),
+						'nr' => $index,
+						'label-name' => $mdl_lang["label"]["name"],
+						'label-description' => $mdl_lang["label"]["description"],
+						'place-holder-name' => "",
+						'place-holder-text' => "",
 
+						'name-value' => htmlspecialchars($category_result[$index]->title),
+						'description-value' => $category_result[$index]->text
 					],
 					$nav_content_tpl
 				);
@@ -74,26 +59,20 @@ if (!isset($_POST["save"])) {
 			$a->setParentId($id);
 			$a = $a->returnSubCategoriesFromOneCategory();
 			$i++;
-			foreach ($a as $item) {
 
-				if($item->id != $id) {
-					$parent_options .= str_replace(
+			foreach ($a as $item) {
+				if ($item->id != $id) {
+					$parent_options .= functions::c2r(
 						[
-							"{c2r-option-id}",
-							"{c2r-option}",
-							"{c2r-selected}"
-						],
-						[
-							$item->id,
-							sprintf("%s> %s", str_repeat("-", $i), $item->title),
-							$item->id == $category_result[1]->parent_id ? "selected" : ""
+							'option-id' => $item->id,
+							'option' => sprintf("%s> %s", str_repeat("-", $i), $item->title),
+							'selected' => $item->id == $category_result[1]->parent_id ? "selected" : ""
 						],
 						$option_item_tpl
 					);
 				}
 
-
-				if($item->nr_sub_cats > 0 ){
+				if ($item->nr_sub_cats > 0) {
 					recursiveWayGet($item->id, $i);
 				}
 			}
@@ -103,20 +82,14 @@ if (!isset($_POST["save"])) {
 		$mainCategories->setLangId(1);
 		$allCats = $mainCategories->returnAllMainCategories();
 
-		$parent_options = null;
+		$parent_options = '';
 		foreach ($allCats as $item) {
-
 			if ($item->id != $id) {
-				$parent_options .= str_replace(
+				$parent_options .= functions::c2r(
 					[
-						"{c2r-option-id}",
-						"{c2r-option}",
-						"{c2r-selected}"
-					],
-					[
-						$item->id,
-						$item->title,
-						$item->id == $category_result[1]->parent_id ? "selected" : ""
+						'option-id' => $item->id,
+						'option' => $item->title,
+						'selected' => $item->id == $category_result[1]->parent_id ? "selected" : ""
 					],
 					$option_item_tpl
 				);
@@ -126,91 +99,54 @@ if (!isset($_POST["save"])) {
 
 		/*------------------------------------------*/
 
-		$category_type_options = null;
+		$category_type_options = '';
 
 		$category_types = new category();
 		$category_types = $category_types->returnAllSections();
 
 		foreach ($category_types as $item) {
 
-			$category_type_options .= str_replace(
+			$category_type_options .= functions::c2r(
 				[
-					"{c2r-option-id}",
-					"{c2r-option}"
-				],
-				[
-					$item->category_section,
-					""
+					'option-id' => $item->category_section,
+					'option' => ""
 				],
 				$option_item_tpl
 			);
 		}
 
-		$mdl = str_replace(
+		$mdl = functions::c2r(
 			[
-				"{c2r-content}"
-			],
-			[
-				str_replace(
+				'content' => functions::c2r(
 					[
-						"{c2r-tabs-categories-name-description}",
-						"{c2r-type}",
-						"{c2r-select-option-type}",
-						"{c2r-category-type-options}",
-						"{c2r-type-value}",
-						"{c2r-parent}",
-						"{c2r-select-option-parent}",
-						"{c2r-select-option-parent-no}",
-						"{c2r-selected}",
-						"{c2r-parent-options}",
-						"{c2r-date}",
-						"{c2r-date-placeholder}",
-						"{c2r-date-value}",
-						"{c2r-code}",
-						"{c2r-code-placeholder}",
-						"{c2r-code-value}",
-						"{c2r-sort}",
-						"{c2r-sort-placeholder}",
-						"{c2r-sort-value}",
-						"{c2r-published}",
-						"{c2r-published-checked}",
-						"{c2r-but-submit}"
-					],
-					[
-						str_replace(
+						'tabs-categories-name-description' => functions::c2r(
 							[
-								"{c2r-nav-tabs-items}",
-								"{c2r-tab-content-items}"
-							],
-							[
-								$tabs,
-								$nav_content
-
+								'nav-tabs-items' => $tabs,
+								'tab-content-items' => $nav_content
 							],
 							functions::mdl_load("templates-e/edit/tabs.tpl")
 						),
-						$mdl_lang["label"]["type"],
-						$mdl_lang["form"]["option-type"],
-						$category_type_options,
-						$category_result[1]->category_section,
-						$mdl_lang["label"]["parent"],
-						$mdl_lang["form"]["option-parent"],
-						$mdl_lang["form"]["option-parent-no"],
-						$category_result[1]->parent_id == -1 ? "selected" : "",
-						$parent_options,
-						$mdl_lang["label"]["date"],
-						$mdl_lang["form"]["date-placeholder"],
-						$category_result[1]->date,
-						$mdl_lang["label"]["code"],
-						$mdl_lang["label"]["code-placeholder"],
-						$category_result[1]->code,
-						$mdl_lang["label"]["sort"],
-						$mdl_lang["label"]["sort-placeholder"],
-						$category_result[1]->sort,
-						$mdl_lang["label"]["published"],
-						$category_result[1]->published ? "checked" : null,
-						$mdl_lang["label"]["but-submit"]
-
+						'type' => $mdl_lang["label"]["type"],
+						'select-option-type' => $mdl_lang["form"]["option-type"],
+						'category-type-options' => $category_type_options,
+						'type-value' => $category_result[1]->category_section,
+						'parent' => $mdl_lang["label"]["parent"],
+						'select-option-parent' => $mdl_lang["form"]["option-parent"],
+						'select-option-parent-no' => $mdl_lang["form"]["option-parent-no"],
+						'selected' => $category_result[1]->parent_id == -1 ? "selected" : "",
+						'parent-options' => $parent_options,
+						'date' => $mdl_lang["label"]["date"],
+						'date-placeholder' => $mdl_lang["form"]["date-placeholder"],
+						'date-value' => $category_result[1]->date,
+						'code' => $mdl_lang["label"]["code"],
+						'code-placeholder' => $mdl_lang["label"]["code-placeholder"],
+						'code-value' => $category_result[1]->code,
+						'sort' => $mdl_lang["label"]["sort"],
+						'sort-placeholder' => $mdl_lang["label"]["sort-placeholder"],
+						'sort-value' => $category_result[1]->sort,
+						'published' => $mdl_lang["label"]["published"],
+						'published-checked' => $category_result[1]->published ? "checked" : '',
+						'but-submit' => $mdl_lang["label"]["but-submit"]
 					],
 					functions::mdl_load("templates-e/edit/form.tpl")
 				)
@@ -235,19 +171,16 @@ if (!isset($_POST["save"])) {
 	$category->setSort($_POST["sort"]);
 	$category->setPublished(isset($_POST["published"]) ? $_POST["published"] : 0);
 
-	$textToPrint = null;
+	$textToPrint = '';
 	if ($category->update()) {
 		$textToPrint = $mdl_lang["add"]["success"];
 	} else {
 		$textToPrint = $mdl_lang["add"]["failure"];
 	}
 
-	$mdl = str_replace(
+	$mdl = functions::c2r(
 		[
-			"{c2r-content}"
-		],
-		[
-			$textToPrint
+			'content' => $textToPrint
 		],
 		functions::mdl_load("templates/edit.tpl")
 	);
