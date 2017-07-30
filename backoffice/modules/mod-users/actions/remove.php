@@ -1,7 +1,7 @@
 <?php
-$user = new user();
+$user = new user(); 
 
-if (isset($_POST["inputRemove"]) {
+if (isset($_POST["inputRemove"])) {
 	$user->setId($id);
 	if ($user->delete()) {
 		$remove_message = $mdl_lang["remove"]["message-success"];

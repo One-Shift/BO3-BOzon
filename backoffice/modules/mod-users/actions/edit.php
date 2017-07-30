@@ -1,5 +1,4 @@
 <?php
-$form_tpl = functions::mdl_load("templates-e/edit/form.tpl");
 $message_tpl = functions::mdl_load("templates-e/message.tpl");
 $user = new user();
 
@@ -77,7 +76,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 	}
 }/*Verifies if "save" button was clicked - end*/
 
-/*USER CHANGES - ENDS*/
+/* USER CHANGES - ENDS */
 $form = functions::c2r(
 	[
 		"lg-name" => $mdl_lang["edit"]["name"],
@@ -101,22 +100,17 @@ $form = functions::c2r(
 		"code" => htmlspecialchars($userData->code),
 		"status-checked" => ($userData->status) ? "checked" : ""
 	],
-	$form_tpl
+	functions::mdl_load("templates-e/edit/form.tpl")
 );
 
 $mdl = functions::c2r(
 	[
 		"return-message" => (isset($returnMessage)) ? $returnMessage : "",
-		"user-id" => $id,
-		"lg-sure" => $mdl_lang["edit"]["sure"],
-		"lg-remove" => $mdl_lang["edit"]["remove"],
-		"edituser-form" => $form,
-		"lg-check-remove" => $mdl_lang["edit"]["sure"],
 		"md5-mail" => md5($userData->email),
-		"username" => $userData->username,
-		"email" => $userData->email,
-		"rank" => $userData->rank,
-		"code" => $userData->code
+		"user-id" => $id,
+		"lg-check-remove" => $mdl_lang["edit"]["sure"],
+		"lg-remove" => $mdl_lang["edit"]["remove"],
+		"form" => $form
 	],
 	functions::mdl_load("templates/edit.tpl")
 );

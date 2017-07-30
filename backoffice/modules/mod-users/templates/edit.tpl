@@ -1,10 +1,10 @@
 {c2r-return-message}
 <div class="xs-spacer15 sm-spacer30"></div>
 <div class="row">
-	<div class="col-md-4 sm-tacenter">
+	<div class="col-sm-4 col-md-4 sm-tacenter">
 		<img src="https://www.gravatar.com/avatar/{c2r-md5-mail}?s=300&r=g&d=mm" class="img-circle">
 		<div class="xs-spacer30 sm-spacer30"></div>
-		<form method="post" name="form" id="form" action="{c2r-path-bo}/0/{c2r-lg}/{c2r-path-module}/remove/{c2r-user-id}" enctype="multipart/form-data">
+		<form method="post" name="form" id="form" action="{c2r-path-bo}/0/{c2r-lg}/{c2r-module-folder}/remove/{c2r-user-id}" enctype="multipart/form-data">
 			<!-- CHECK IF DELETE FIELD-->
 			<div>
 				<div class="form-group">
@@ -20,7 +20,7 @@
 			</div>
 		</form>
 	</div>
-	<div class="col-md-8">
-		{c2r-edituser-form}
+	<div class="col-sm-8 col-md-8">
+		{c2r-form}
 	</div>
 </div>
