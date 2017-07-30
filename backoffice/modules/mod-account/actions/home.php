@@ -28,7 +28,7 @@ if (isset($_POST["submit"])) {
 	}
 
 	// Password Confirmation
-	if(!empty($_POST["oldPassword"])) {
+	if (!empty($_POST["oldPassword"])) {
 		if(user::getSecurePassword($_POST["oldPassword"]) == $authData["password"]) {
 			if(!empty($_POST["newPassword"])) {
 				if($_POST["newPassword"] == $_POST["checkPassword"]){
