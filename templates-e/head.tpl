@@ -21,9 +21,9 @@
 
 <meta property="og:site_name" content="{c2r-sitename}" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="{c2r-path}" />
+<meta property="og:url" content="{c2r-og-url}" />
 <meta property="og:image" content="{c2r-og-image}" />
-<meta property="og:title" content="{c2r-sitename}" />
+<meta property="og:title" content="{c2r-og-title}" />
 <meta property="og:description" content="{c2r-og-description}" />
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
