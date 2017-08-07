@@ -8,6 +8,8 @@ include "backoffice/config/store.php";
 include "backoffice/config/system.php";
 include "backoffice/config/connect.php";
 
+include "pages-e/_global_.php";
+
 include "backoffice/controller/classes.php";
 include "backoffice/controller/languages.php";
 include "backoffice/controller/sessions.php";
