@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);
 include "backoffice/config/cfg.php";
 include "backoffice/config/database.php";
 include "backoffice/config/email.php";
