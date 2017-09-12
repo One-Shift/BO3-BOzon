@@ -2,12 +2,12 @@
 
 $cfg->db = new stdClass();
 
-$cfg->db->connect = false;
-$cfg->db->host = "127.0.0.1";
-$cfg->db->user = "username";
-$cfg->db->password = "password";
-$cfg->db->database = "database_name";
-$cfg->db->prefix = "prefix";
+$cfg->db->connect = true;
+$cfg->db->host = "localhost";
+$cfg->db->user = "user";
+$cfg->db->password = "user";
+$cfg->db->database = "nsfw";
+$cfg->db->prefix = "os";
 
 if ($cfg->db->connect) {
 	$mysqli = mysqli_connect(

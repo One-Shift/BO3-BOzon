@@ -1,20 +1,20 @@
 <?php
-
+ini_set('display_errors', 1);
 include "controller/classes.php";
-
 include "config/cfg.php";
 include "config/database.php";
 include "config/email.php";
 include "config/languages.php";
 include "config/store.php";
 include "config/system.php";
-include "config/connect.php";
 
 include "controller/languages.php";
 include "controller/sessions-bo.php";
 include "controller/pages.php";
 include "controller/actions.php";
 include "controller/id.php";
+
+include "../pages-e/_global_.php";
 
 $head = file_get_contents("templates-e/head.tpl");
 
@@ -43,7 +43,7 @@ if ($auth) {
 }
 
 // print website
-$tpl = functions::c2r(
+$tpl = bo3::c2r(
 	[
 		"head" => $head,
 
@@ -69,7 +69,7 @@ $tpl = functions::c2r(
 
 // minify system
 if ($cfg->system->minify) {
-	print functions::minifyPage($tpl);
+	print bo3::minifyPage($tpl);
 } else {
 	print $tpl;
 }

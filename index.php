@@ -1,12 +1,11 @@
 <?php
-
+ini_set('display_errors', 1);
 include "backoffice/config/cfg.php";
 include "backoffice/config/database.php";
 include "backoffice/config/email.php";
 include "backoffice/config/languages.php";
 include "backoffice/config/store.php";
 include "backoffice/config/system.php";
-include "backoffice/config/connect.php";
 
 include "pages-e/_global_.php";
 

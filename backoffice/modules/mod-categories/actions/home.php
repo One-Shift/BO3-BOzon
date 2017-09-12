@@ -7,7 +7,7 @@ $categories = $cat_obj->returnAllMainCategories();
 $table_items = '';
 
 foreach ($categories as $category) {
-	$table_items .= functions::c2r(
+	$table_items .= bo3::c2r(
 		[
 			'id' => $category->id,
 			'title' => $category->title,
@@ -23,11 +23,11 @@ foreach ($categories as $category) {
 			'but-edit' => $mdl_lang["label"]["but-edit"],
 			'but-delete' => $mdl_lang["label"]["but-delete"]
 		],
-		functions::mdl_load("templates-e/home/table-row.tpl")
+		bo3::mdl_load("templates-e/home/table-row.tpl")
 	);
 }
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		'label-add-category' => $mdl_lang["label"]["add-category"],
 		'name' => $mdl_lang["label"]["name"],
@@ -37,7 +37,7 @@ $mdl = functions::c2r(
 		'date' => $mdl_lang["label"]["date"],
 		'table-body' => $table_items
 	],
-	functions::mdl_load("templates/home.tpl")
+	bo3::mdl_load("templates/home.tpl")
 );
 
 include "pages/module-core.php";
