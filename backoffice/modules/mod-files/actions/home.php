@@ -1,6 +1,6 @@
 <?php
 
-$item_tpl = functions::mdl_load("templates-e/home/item.tpl");
+$item_tpl = bo3::mdl_load("templates-e/home/item.tpl");
 
 $file = new file();
 $files = $file->returnFiles("TRUE");
@@ -10,7 +10,7 @@ foreach ($files as $index => $file) {
 		$list = "";
 	}
 
-	$list .= functions::c2r(
+	$list .= bo3::c2r(
 		[
 			"id" => $file->id,
 			"file" => $file->file,
@@ -23,13 +23,13 @@ foreach ($files as $index => $file) {
 	);
 }
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		"list" => (isset($list)) ? $list : ""
 	],
-	functions::mdl_load("templates/home.tpl")
+	bo3::mdl_load("templates/home.tpl")
 );
 
-functions::importPlg ("files", []);
+bo3::importPlg ("files", []);
 
 include "pages/module-core.php";

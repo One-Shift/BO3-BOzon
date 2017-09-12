@@ -1,6 +1,6 @@
 <?php
 
-$message_tpl = functions::mdl_load("templates-e/message.tpl");
+$message_tpl = bo3::mdl_load("templates-e/message.tpl");
 
 if (isset($_POST["submit"])) {
 
@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
 			$user->setEmail($_POST["email"]);
 			$email_success = true;
 		} else {
-			$returnMessage .= functions::c2r(
+			$returnMessage .= bo3::c2r(
 				[
 					"lg-message" => $mdl_lang["email"]["check_failure"]
 				],
@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
 					$user->setPassword($_POST["newPassword"]);
 					$pw_success = true;
 				}else {
-					$returnMessage = functions::c2r(
+					$returnMessage = bo3::c2r(
 						[
 							"message-type" => "danger",
 							"lg-message" => $mdl_lang["password"]["check_pw_failure"]
@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
 					);
 				}
 			} else {
-				$returnMessage = functions::c2r(
+				$returnMessage = bo3::c2r(
 					[
 						"message-type" => "danger",
 						"lg-message" => $mdl_lang["password"]["empty"]
@@ -53,7 +53,7 @@ if (isset($_POST["submit"])) {
 				);
 			}
 		} else {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "danger",
 					"lg-message" => $mdl_lang["password"]["old_pw_failure"]
@@ -76,7 +76,7 @@ if (isset($_POST["submit"])) {
 		$user->setDateUpdate();
 
 		if ($user->update()) {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "sucess",
 					"lg-message" => $mdl_lang["account"]["success"]
@@ -95,7 +95,7 @@ if (isset($_POST["submit"])) {
 				(!empty($cfg->system->path_bo)) ? $cfg->system->path_bo : "/"
 			);
 		} else {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "danger",
 					"lg-message" => sprintf($mdl_lang["account"]["failure"], $cfg->email->support)
@@ -107,7 +107,7 @@ if (isset($_POST["submit"])) {
 	}
 }
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		"return-message" => (isset($returnMessage) && !empty($returnMessage)) ? $returnMessage : null,
 		"lg-username" => $mdl_lang["account"]["username"],
@@ -124,7 +124,7 @@ $mdl = functions::c2r(
 		"lg-cancel" => $lang["common"]["cancel"],
 		"md5-email" => md5($authData["email"])
 	],
-	functions::mdl_load("templates/home.tpl")
+	bo3::mdl_load("templates/home.tpl")
 );
 
 include "pages/module-core.php";

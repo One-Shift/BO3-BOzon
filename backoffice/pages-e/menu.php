@@ -1,6 +1,6 @@
 <?php
 
-$menu_item_tpl = functions::loade("menu/item.tpl");
+$menu_item_tpl = bo3::loade("menu/item.tpl");
 
 $menu = "";
 $not_installed_menu = "";
@@ -20,7 +20,7 @@ while ($data = $source->fetch_object()) {
 
 	$tmp_name = explode("-", $data->folder);
 
-	$menu .= functions::c2r(
+	$menu .= bo3::c2r(
 		[
 			"mod" => $tmp_name[count($tmp_name) - 1],
 			"name" => $data->name
@@ -40,7 +40,7 @@ if (user::isOwner($authData)) {
 		$tmp_name = explode("-", $folder);
 
 		if (!in_array($folder, $installed_modules)) {
-			$not_installed_menu .= functions::c2r(
+			$not_installed_menu .= bo3::c2r(
 				[
 					"mod" => $tmp_name[count($tmp_name) - 1],
 					"name" => $tmp_name[count($tmp_name) - 1]
@@ -52,8 +52,8 @@ if (user::isOwner($authData)) {
 
 	// add not installed modules if aren't empty
 	if (isset($not_installed_menu) && !empty($not_installed_menu)) {
-		$menu .= functions::c2r(["title" => $lang["menu"]["notInstalled"]], functions::loade("menu/title-notinstalled.tpl"));
-		
+		$menu .= bo3::c2r(["title" => $lang["menu"]["notInstalled"]], bo3::loade("menu/title-notinstalled.tpl"));
+
 		$menu .= $not_installed_menu;
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-$user = new user(); 
+$user = new user();
 
 if (isset($_POST["inputRemove"])) {
 	$user->setId($id);
@@ -10,7 +10,7 @@ if (isset($_POST["inputRemove"])) {
 		$remove_message = $mdl_lang["remove"]["message-insuccess"];
 	}
 
-	$mdl = functions::c2r(["removed-message" => $remove_message], functions::mdl_load("templates/remove.tpl"));
+	$mdl = bo3::c2r(["removed-message" => $remove_message], bo3::mdl_load("templates/remove.tpl"));
 }
 
 include "pages/module-core.php";

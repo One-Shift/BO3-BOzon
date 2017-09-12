@@ -1,4 +1,4 @@
-<form action="{c2r-path-bo}/0/{c2r-lg}/login/" method="post">
+<form action="{c2r-path-bo}/{c2r-lg}/login/" method="post">
 	<div class="xs-spacer30 sm-spacer30"></div>
 	{c2r-return-message}
 	<div class="img">

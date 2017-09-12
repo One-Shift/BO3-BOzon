@@ -1,6 +1,6 @@
 <?php
 
-$page_e_tpl = functions::loade("header.tpl");
+$page_e_tpl = bo3::loade("header.tpl");
 
 /* last thing */
-$header = functions::c2r([], $page_e_tpl);
+$header = bo3::c2r([], $page_e_tpl);

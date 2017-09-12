@@ -3,9 +3,9 @@
 if (!isset($_POST["save"])){
 	if (isset($id) && !empty($id)) {
 
-		$nav_tpl = functions::mdl_load("templates-e/edit/nav-tab-item.tpl");
-		$nav_content_tpl = functions::mdl_load("templates-e/edit/tab-content-item-input.tpl");
-		$option_item_tpl = functions::mdl_load("templates-e/edit/option-item.tpl");
+		$nav_tpl = bo3::mdl_load("templates-e/edit/nav-tab-item.tpl");
+		$nav_content_tpl = bo3::mdl_load("templates-e/edit/tab-content-item-input.tpl");
+		$option_item_tpl = bo3::mdl_load("templates-e/edit/option-item.tpl");
 		$tabs = "";
 		$nav_content = "";
 
@@ -17,7 +17,7 @@ if (!isset($_POST["save"])){
 		$i = 0;
 		foreach ($cfg->lg as $index=>$lg) {
 			if ($lg[0]) {
-				$tabs .= functions::c2r(
+				$tabs .= bo3::c2r(
 					[
 						"class" => ($i == 0) ? "active" : "",
 						"nr" => $index,
@@ -26,7 +26,7 @@ if (!isset($_POST["save"])){
 					$nav_tpl
 				);
 
-				$nav_content .= functions::c2r(
+				$nav_content .= bo3::c2r(
 					[
 						"class" => ($i == 0) ? "active" : "",
 						"nr" => $index,
@@ -60,7 +60,7 @@ if (!isset($_POST["save"])){
 
 			foreach ($a as $item) {
 				if ($item->id != $id) {
-					$parent_options .= functions::c2r(
+					$parent_options .= bo3::c2r(
 						[
 							"option-id" => $item->id,
 							"option" => sprintf("%s> %s", str_repeat("-", $i), $item->title),
@@ -86,7 +86,7 @@ if (!isset($_POST["save"])){
 			}
 
 			if ($item->id != $id) {
-				$parent_options .= functions::c2r(
+				$parent_options .= bo3::c2r(
 					[
 						"option-id" => $item->id,
 						"option" => $item->title,
@@ -98,11 +98,11 @@ if (!isset($_POST["save"])){
 			recursiveWayGet($item->id, 0);
 		}
 
-		$mdl = functions::c2r(
+		$mdl = bo3::c2r(
 			[
-				"content" => functions::mdl_load("templates-e/edit/form.tpl"),
+				"content" => bo3::mdl_load("templates-e/edit/form.tpl"),
 
-				"tabs-categories-name-description" => functions::mdl_load("templates-e/edit/tabs.tpl"),
+				"tabs-categories-name-description" => bo3::mdl_load("templates-e/edit/tabs.tpl"),
 
 				"nav-tabs-items" => $tabs,
 				"tab-content-items" => $nav_content,
@@ -124,7 +124,7 @@ if (!isset($_POST["save"])){
 				"published-checked" => ($article_result[1]->published) ? "checked" : "",
 				"but-submit" => $mdl_lang["label"]["but-submit"]
 			],
-			functions::mdl_load("templates/add.tpl")
+			bo3::mdl_load("templates/add.tpl")
 		);
 	} else {
 		// if doesn't exist an action response, system sent you to 404
@@ -148,9 +148,9 @@ if (!isset($_POST["save"])){
 		$textToPrint = $mdl_lang["add"]["failure"];
 	}
 
-	$mdl = functions::c2r(["content" => (isset($textToPrint)) ? $textToPrint : ""], functions::mdl_load("templates/result.tpl"));
+	$mdl = bo3::c2r(["content" => (isset($textToPrint)) ? $textToPrint : ""], bo3::mdl_load("templates/result.tpl"));
 }
 
-functions::importPlg ("files", ["id" => $id, "module" => "article"]);
+bo3::importPlg ("files", ["id" => $id, "module" => "article"]);
 
 include "pages/module-core.php";

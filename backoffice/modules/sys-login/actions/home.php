@@ -1,13 +1,13 @@
 <?php
 
-$page_tpl = functions::mdl_load("templates/home.tpl");
+$page_tpl = bo3::mdl_load("templates/home.tpl");
 
-$form = functions::c2r(
+$form = bo3::c2r(
 	[
 		"lg-email" => $mdl_lang["labels"]["email"],
 		"lg-password" => $mdl_lang["labels"]["password"]
 	],
-	functions::mdl_load("templates-e/form.tpl")
+	bo3::mdl_load("templates-e/form.tpl")
 );
 
 if (isset($_POST["submit"])) {
@@ -42,9 +42,9 @@ if (isset($_POST["submit"])) {
 					header("Location: {$cfg->system->path_bo}/0/{$lg_s}/home/");
 				} else {
 					// ERROR MESSAGE
-					$form = functions::c2r(
+					$form = bo3::c2r(
 						[
-							"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+							"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
 							"message" => $mdl_lang["return"]["failure-cookie"]
 						],
 						$form
@@ -52,9 +52,9 @@ if (isset($_POST["submit"])) {
 				}
 			} else {
 				// ERROR MESSAGE
-				$form = functions::c2r(
+				$form = bo3::c2r(
 					[
-						"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+						"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
 						"message" => $mdl_lang["return"]["failure-nomatch"]
 					],
 					$form
@@ -62,9 +62,9 @@ if (isset($_POST["submit"])) {
 			}
 		} else {
 			// ERROR MESSAGE
-			$form = functions::c2r(
+			$form = bo3::c2r(
 				[
-					"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+					"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
 					"message" => $mdl_lang["return"]["failure-nopassword"]
 				],
 				$form
@@ -72,9 +72,9 @@ if (isset($_POST["submit"])) {
 		}
 	} else {
 		// ERROR MESSAGE
-		$form = functions::c2r(
+		$form = bo3::c2r(
 			[
-				"return-message" => functions::mdl_load("templates-e/return-message.tpl"),
+				"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
 				"message" => $mdl_lang["return"]["failure-email"]
 			],
 			$form
@@ -82,10 +82,10 @@ if (isset($_POST["submit"])) {
 	}
 }
 
-$form = functions::c2r(["return-message" => ""], $form);
+$form = bo3::c2r(["return-message" => ""], $form);
 
 /* last thing */
-$tpl = functions::c2r(
+$tpl = bo3::c2r(
 	[
 		"mod-path" => $cfg->mdl->path,
 		"form" => $form,

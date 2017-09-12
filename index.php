@@ -17,7 +17,7 @@ include "backoffice/controller/pages.php";
 include "backoffice/controller/actions.php";
 include "backoffice/controller/id.php";
 
-$head = functions::loade("head.tpl");
+$head = bo3::loade("head.tpl");
 
 // page controller
 $pg_file = sprintf("pages/%s.php", $pg);
@@ -32,7 +32,7 @@ if ($pg == null) {
 }
 
 // print website
-$tpl = functions::c2r(
+$tpl = bo3::c2r(
 	[
 		"head" => $head,
 
@@ -57,7 +57,7 @@ $tpl = functions::c2r(
 
 // minify system
 if ($cfg->system->minify) {
-	print functions::minifyPage($tpl);
+	print bo3::minifyPage($tpl);
 } else {
 	print $tpl;
 }

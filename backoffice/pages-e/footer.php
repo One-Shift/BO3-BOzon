@@ -1,4 +1,4 @@
 <?php
 
 /* last thing */
-$footer = functions::c2r([], functions::loade("footer.tpl"));
+$footer = bo3::c2r([], bo3::loade("footer.tpl"));
