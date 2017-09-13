@@ -88,7 +88,7 @@ class bo3 {
 	}
 
 	public static function dbTableExists ($list = []) {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$toReturn = [];
 
@@ -98,7 +98,7 @@ class bo3 {
 				$cfg->db->prefix, $table, 1
 			);
 
-			if ($mysqli->query($query) !== FALSE) {
+			if ($db->query($query) !== FALSE) {
 				array_push($toReturn, TRUE);
 			} else {
 				array_push($toReturn, FALSE);
@@ -115,14 +115,14 @@ class bo3 {
 	}
 
 	public static function mdlInstalled ($folder) {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"SELECT * FROM %s_modules WHERE folder = '%s' LIMIT %s",
 			$cfg->db->prefix, $folder, 1
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			return TRUE;
