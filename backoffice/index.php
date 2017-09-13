@@ -7,6 +7,7 @@ include "config/languages.php";
 include "config/store.php";
 include "config/system.php";
 
+include "controller/database.php";
 include "controller/languages.php";
 include "controller/sessions-bo.php";
 include "controller/pages.php";
