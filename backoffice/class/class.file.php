@@ -65,7 +65,7 @@ class file {
 	}
 
 	public function insert () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"INSERT INTO %s_files (file, type, module, id_ass, sort, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
@@ -79,15 +79,15 @@ class file {
 			$this->date_update
 		);
 
-		$toReturn = $mysqli->query($query);
+		$toReturn = $db->query($query);
 
-		$this->id = $mysqli->insert_id;
+		$this->id = $db->insert_id;
 
 		return $toReturn;
 	}
 
 	public function update () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"UPDATE %s_files SET file = '%s', type = '%s', module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
@@ -102,11 +102,11 @@ class file {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function simpleUpdate () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"UPDATE %s_files SET description = '%s', code = '%s', sort = %s, date_update = '%s' WHERE id = %s",
@@ -118,11 +118,11 @@ class file {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function normalUpdate () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"UPDATE %s_files SET module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
@@ -135,11 +135,11 @@ class file {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function updateIdAss () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"UPDATE %s_files SET id_ass = %s, date_update = '%s' WHERE id = %s",
@@ -149,11 +149,11 @@ class file {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function delete () {
-		global $cfg, $mysqli, $authData;
+		global $cfg, $db, $authData;
 
 		$file = new file();
 		$file->setId($this->id);
@@ -174,11 +174,11 @@ class file {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function returnOneFile () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"SELECT * FROM %s_files WHERE id = '%s'",
@@ -186,7 +186,7 @@ class file {
 			$this->id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			return $source->fetch_object();
@@ -196,7 +196,7 @@ class file {
 	}
 
 	public function returnFiles ($args = "") {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		if (empty($args)) {
 			$query = sprintf(
@@ -230,7 +230,7 @@ class file {
 			);
 		}
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			if ($source->num_rows > 1) {
@@ -254,7 +254,7 @@ class file {
 	public function returnFilesByModule () {}
 
 	public function returnFilterList () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		if (!is_null($this->id_ass)) {
 			$query = sprintf(
@@ -271,7 +271,7 @@ class file {
 			);
 		}
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			while ($data = $source->fetch_object()) {
@@ -308,14 +308,14 @@ class file {
 	}
 
 	public static function returnModules () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"SELECT module FROM %s_files WHERE true GROUP BY module ORDER BY module ASC",
 			$cfg->db->prefix
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			while ($data = $source->fetch_object()) {
