@@ -14,8 +14,6 @@ include "controller/pages.php";
 include "controller/actions.php";
 include "controller/id.php";
 
-include "../pages-e/_global_.php";
-
 $head = file_get_contents("templates-e/head.tpl");
 
 if ($auth) {
