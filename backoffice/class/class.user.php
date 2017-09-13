@@ -78,7 +78,7 @@ class user {
 	}
 
 	public function insert() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"INSERT INTO %s_users (username, password, email, rank, code, status, user_key, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
@@ -94,15 +94,15 @@ class user {
 			$this->date_update
 		);
 
-		$toReturn = $mysqli->query($query);
+		$toReturn = $db->query($query);
 
-		$this->id = $mysqli->insert_id;
+		$this->id = $db->insert_id;
 
 		return $toReturn;
 	}
 
 	public function update() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"UPDATE %s_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
@@ -119,11 +119,11 @@ class user {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function delete() {
-		global $cfg, $mysqli, $authData;
+		global $cfg, $db, $authData;
 
 		$user = new user();
 		$user->setId($this->id);
@@ -144,7 +144,7 @@ class user {
 			$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function returnObject() {
@@ -152,25 +152,25 @@ class user {
 	}
 
 	public function returnOneUser() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		return $source->fetch_object();
 	}
 
 	public function existUserByName() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE username = '%s' LIMIT 1", $cfg->db->prefix, $this->username);
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		return $source->num_rows;
 	}
 
 	public function returnOneUserByEmail() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"SELECT * FROM %s_users WHERE email = '%s' AND status = '%s' LIMIT 1",
@@ -178,25 +178,25 @@ class user {
 			$this->email,
 			$this->status
 		);
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		return $source->fetch_object();
 	}
 
 	public function existUserByEmail() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE email = '%s' LIMIT 1", $cfg->db->prefix, $this->email);
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		return $source->num_rows;
 	}
 
 	public function returnAllUsers() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT * FROM %s_users WHERE true", $cfg->db->prefix);
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 		$i = 0;
