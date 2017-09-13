@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
 						(!empty($cfg->system->path)) ? $cfg->system->path : "/"
 					)
 				) {
-					header("Location: {$cfg->system->path_bo}/0/{$lg_s}/home/");
+					header("Location: {$cfg->system->path_bo}/{$lg_s}/home/");
 				} else {
 					// ERROR MESSAGE
 					$form = bo3::c2r(
