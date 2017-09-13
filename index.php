@@ -6,14 +6,15 @@ include "backoffice/config/languages.php";
 include "backoffice/config/store.php";
 include "backoffice/config/system.php";
 
-include "pages-e/_global_.php";
-
+include "backoffice/controller/database.php";
 include "backoffice/controller/classes.php";
 include "backoffice/controller/languages.php";
 include "backoffice/controller/sessions.php";
 include "backoffice/controller/pages.php";
 include "backoffice/controller/actions.php";
 include "backoffice/controller/id.php";
+
+include "pages-e/_global_.php";
 
 $head = bo3::loade("head.tpl");
 
