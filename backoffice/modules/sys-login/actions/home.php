@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 				1
 			);
 
-			$source = $mysqli->query($query);
+			$source = $db->query($query);
 
 			if ($source->num_rows > 0) {
 				$data = $source->fetch_object();
