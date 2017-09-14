@@ -13,8 +13,8 @@ ErrorDocument 404 /templates/error/404.html
 
 <IfModule mod_rewrite.c>
 	RewriteEngine on
-	RewriteRule ^0/([^/]*)/$ ?lg=$1 [QSA,L]
-	RewriteRule ^0/([^/]*)/([^/]*)/$ ?lg=$1&pg=$2 [QSA,L]
-	RewriteRule ^0/([^/]*)/([^/]*)/([0-9]+)$ ?lg=$1&pg=$2&i=$3 [QSA,L]
-	RewriteRule ^0/([^/]*)/([^/]*)/([0-9]+)/([^/]*)$ ?lg=$1&pg=$2&i=$3&a=$4 [QSA,L]
+	RewriteRule ^([^/]*)/$ ?lg=$1 [QSA,L]
+	RewriteRule ^([^/]*)/([^/]*)/$ ?lg=$1&pg=$2 [QSA,L]
+	RewriteRule ^([^/]*)/([^/]*)/([0-9]+)$ ?lg=$1&pg=$2&i=$3 [QSA,L]
+	RewriteRule ^([^/]*)/([^/]*)/([0-9]+)/([^/]*)$ ?lg=$1&pg=$2&i=$3&a=$4 [QSA,L]
 </IfModule>

@@ -1,15 +1,12 @@
 <?php
-
 include "backoffice/config/cfg.php";
 include "backoffice/config/database.php";
 include "backoffice/config/email.php";
 include "backoffice/config/languages.php";
 include "backoffice/config/store.php";
 include "backoffice/config/system.php";
-include "backoffice/config/connect.php";
 
-include "pages-e/_global_.php";
-
+include "backoffice/controller/database.php";
 include "backoffice/controller/classes.php";
 include "backoffice/controller/languages.php";
 include "backoffice/controller/sessions.php";
@@ -17,7 +14,9 @@ include "backoffice/controller/pages.php";
 include "backoffice/controller/actions.php";
 include "backoffice/controller/id.php";
 
-$head = functions::loade("head.tpl");
+include "pages-e/_global_.php";
+
+$head = bo3::loade("head.tpl");
 
 // page controller
 $pg_file = sprintf("pages/%s.php", $pg);
@@ -32,7 +31,7 @@ if ($pg == null) {
 }
 
 // print website
-$tpl = functions::c2r(
+$tpl = bo3::c2r(
 	[
 		"head" => $head,
 
@@ -57,7 +56,7 @@ $tpl = functions::c2r(
 
 // minify system
 if ($cfg->system->minify) {
-	print functions::minifyPage($tpl);
+	print bo3::minifyPage($tpl);
 } else {
 	print $tpl;
 }

@@ -1,15 +1,13 @@
 <?php
-
 include "controller/classes.php";
-
 include "config/cfg.php";
 include "config/database.php";
 include "config/email.php";
 include "config/languages.php";
 include "config/store.php";
 include "config/system.php";
-include "config/connect.php";
 
+include "controller/database.php";
 include "controller/languages.php";
 include "controller/sessions-bo.php";
 include "controller/pages.php";
@@ -31,7 +29,7 @@ if ($auth) {
 
 			if (!file_exists($mdl_path)) {
 				// if doesn't exist an action response, system sent you to 404
-				header("Location: {$cfg->system->path_bo}/0/{$lg_s}/404/");
+				header("Location: {$cfg->system->path_bo}/{$lg_s}/404/");
 			} else {
 				// mod load
 				include sprintf("%smod-%s.php", $mdl_path, $pg);
@@ -43,7 +41,7 @@ if ($auth) {
 }
 
 // print website
-$tpl = functions::c2r(
+$tpl = bo3::c2r(
 	[
 		"head" => $head,
 
@@ -69,7 +67,7 @@ $tpl = functions::c2r(
 
 // minify system
 if ($cfg->system->minify) {
-	print functions::minifyPage($tpl);
+	print bo3::minifyPage($tpl);
 } else {
 	print $tpl;
 }

@@ -53,7 +53,7 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div>
-			<a href="{c2r-path-bo}/0/{c2r-lg}/home/" role="button" class="btn btn-cancel pull-right"><i class="fa fa-times" aria-hidden="true"></i><div class="xs-block15 sm-block15"></div> {c2r-lg-cancel}</a>
+			<a href="{c2r-path-bo}/{c2r-lg}/home/" role="button" class="btn btn-cancel pull-right"><i class="fa fa-times" aria-hidden="true"></i><div class="xs-block15 sm-block15"></div> {c2r-lg-cancel}</a>
 		</div>
 		<div class="xs-spacer15 sm-spacer15 xs-block15 sm-block15 pull-right"></div>
 		<div>

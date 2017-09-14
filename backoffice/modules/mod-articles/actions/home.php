@@ -1,6 +1,6 @@
 <?php
 
-$line_tpl = functions::mdl_load("templates-e/home/table-row.tpl");
+$line_tpl = bo3::mdl_load("templates-e/home/table-row.tpl");
 
 $articles = new article();
 $articles->setLangId($lg);
@@ -17,7 +17,7 @@ foreach ($articles as $article) {
 	$category->setId($article->category_id);
 	$this_category = $category->returnOneCategory();
 
-	$table_items .= functions::c2r(
+	$table_items .= bo3::c2r(
 		[
 			"id" => $article->id,
 			"title" => $article->title,
@@ -34,7 +34,7 @@ foreach ($articles as $article) {
 	);
 }
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		"label-add-category" => $mdl_lang["label"]["add-category"],
 		"name" => $mdl_lang["label"]["name"],
@@ -45,7 +45,7 @@ $mdl = functions::c2r(
 		"date" => $mdl_lang["label"]["date"],
 		"table-body" => (isset($table_items)) ? $table_items : "",
 	],
-	functions::mdl_load("templates/home.tpl")
+	bo3::mdl_load("templates/home.tpl")
 );
 
 include "pages/module-core.php";

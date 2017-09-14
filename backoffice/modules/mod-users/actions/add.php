@@ -1,6 +1,6 @@
 <?php
-$form_tpl = functions::mdl_load("templates-e/add/form.tpl");
-$message_tpl = functions::mdl_load("templates-e/message.tpl");
+$form_tpl = bo3::mdl_load("templates-e/add/form.tpl");
+$message_tpl = bo3::mdl_load("templates-e/message.tpl");
 
 $mail_exists = FALSE;
 $user_exists = FALSE;
@@ -17,7 +17,7 @@ if (isset($_POST["save"])) {
 		/*Verifies if this username doesn't exist*/
 
 		if ($user->existUserByName() != 0) {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "",
 					"lg-message" => $mdl_lang["username"]["exists"]
@@ -35,7 +35,7 @@ if (isset($_POST["save"])) {
 
 		/*Verifies if this email doesn't exist*/
 		if ($user->existUserByEmail() != 0) {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "",
 					"lg-message" => $mdl_lang["mail"]["exists"]
@@ -52,7 +52,7 @@ if (isset($_POST["save"])) {
 			$user->setPassword($_POST["inputPass"]);
 			$password_success = true;
 		} else {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "",
 					"lg-message" => $mdl_lang["pass"]["check_failure"]
@@ -76,7 +76,7 @@ if (isset($_POST["save"])) {
 		/*----------------------------INSERT BEGINS----------------------------*/
 
 		if ($user->insert()) {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "success",
 					"lg-message" => $mdl_lang["adduser"]["success"]
@@ -84,7 +84,7 @@ if (isset($_POST["save"])) {
 				$message_tpl
 			);
 		} else {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "danger",
 					"lg-message" => $mdl_lang["adduser"]["failure"]
@@ -95,7 +95,7 @@ if (isset($_POST["save"])) {
 	}
 }
 
-$form = functions::c2r(
+$form = bo3::c2r(
 	[
 		"lg-name" => $mdl_lang["add"]["name"],
 		"lg-email" => $mdl_lang["add"]["email"],
@@ -115,12 +115,12 @@ $form = functions::c2r(
 	$form_tpl
 );
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		"return-message" => (isset($returnMessage)) ? $returnMessage : "",
 		"adduser-form" => $form
 	],
-	functions::mdl_load("templates/add.tpl")
+	bo3::mdl_load("templates/add.tpl")
 );
 
 include "pages/module-core.php";

@@ -1,6 +1,7 @@
 <?php
+
 if ($cfg->db->connect) {
-	$mysqli = mysqli_connect(
+	$db = mysqli_connect(
 		$cfg->db->host,
 		$cfg->db->user,
 		$cfg->db->password,
@@ -12,5 +13,5 @@ if ($cfg->db->connect) {
 		exit();
 	}
 
-	$mysqli->set_charset("utf8");
+	$db->set_charset("utf8");
 }

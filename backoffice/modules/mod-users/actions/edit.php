@@ -1,5 +1,5 @@
 <?php
-$message_tpl = functions::mdl_load("templates-e/message.tpl");
+$message_tpl = bo3::mdl_load("templates-e/message.tpl");
 $user = new user();
 
 /*FILLS USER INFO ON THE LEFT SIDE MENU - BEGINS*/
@@ -41,7 +41,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 		if ($user->update()) {
 			$userData = $user->returnOneUser();
 
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "success",
 					"lg-message" => $mdl_lang["edit"]["success"]
@@ -49,7 +49,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 				$message_tpl
 			);
 		} else {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "danger",
 					"lg-message" => $mdl_lang["edit"]["fail"]
@@ -65,7 +65,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 		if (isset($_POST["inputConfirm"]) && !empty($_POST["inputConfirm"]) && $_POST["inputConfirm"] == $_POST["inputNewpass"]) {
 			$user->setPassword($_POST["inputNewpass"]);
 		} else {
-			$returnMessage = functions::c2r(
+			$returnMessage = bo3::c2r(
 				[
 					"message-type" => "danger",
 					"lg-message" => $mdl_lang["edit"]["no-match"]
@@ -77,7 +77,7 @@ if (isset($_POST["save"]))/*Verifies if "save" button was clicked*/ {
 }/*Verifies if "save" button was clicked - end*/
 
 /* USER CHANGES - ENDS */
-$form = functions::c2r(
+$form = bo3::c2r(
 	[
 		"lg-name" => $mdl_lang["edit"]["name"],
 		"lg-email" => $mdl_lang["edit"]["email"],
@@ -100,10 +100,10 @@ $form = functions::c2r(
 		"code" => htmlspecialchars($userData->code),
 		"status-checked" => ($userData->status) ? "checked" : ""
 	],
-	functions::mdl_load("templates-e/edit/form.tpl")
+	bo3::mdl_load("templates-e/edit/form.tpl")
 );
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		"return-message" => (isset($returnMessage)) ? $returnMessage : "",
 		"md5-mail" => md5($userData->email),
@@ -112,7 +112,7 @@ $mdl = functions::c2r(
 		"lg-remove" => $mdl_lang["edit"]["remove"],
 		"form" => $form
 	],
-	functions::mdl_load("templates/edit.tpl")
+	bo3::mdl_load("templates/edit.tpl")
 );
 
 include "pages/module-core.php";

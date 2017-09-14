@@ -4,7 +4,7 @@ $file = new file();
 $file->setId($id);
 
 if (!isset($_POST["submit"])) {
-	$select_option = functions::mdl_load("templates-e/edit/select-option.tpl");
+	$select_option = bo3::mdl_load("templates-e/edit/select-option.tpl");
 
 	$modules = file::returnModules();
 	$file = $file->returnOneFile();
@@ -14,7 +14,7 @@ if (!isset($_POST["submit"])) {
 			$modules_list = "";
 		}
 
-		$modules_list .= functions::c2r(
+		$modules_list .= bo3::c2r(
 			[
 				"value" => $module,
 				"selected" => ($file->module == $module) ? "SELECTED" : ""
@@ -23,7 +23,7 @@ if (!isset($_POST["submit"])) {
 		);
 	}
 
-	$mdl = functions::c2r(
+	$mdl = bo3::c2r(
 		[
 			"id" => $file->id,
 			"file" => $file->file,
@@ -36,7 +36,7 @@ if (!isset($_POST["submit"])) {
 			"date" => $file->date,
 			"modules-list" => (isset($modules_list)) ? $modules_list : ""
 		],
-		functions::mdl_load("templates-e/edit/form.tpl")
+		bo3::mdl_load("templates-e/edit/form.tpl")
 	);
 } else {
 	$file->setDescription($_POST["inputDescription"]);

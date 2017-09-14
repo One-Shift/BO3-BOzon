@@ -62,7 +62,7 @@ class category {
 	}
 
 	public function insert() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query[0] = sprintf("INSERT INTO %s_categories (parent_id, category_section, code, sort, user_id, date, date_update, published) VALUES (%s, '%s', '%s', %s, %s, '%s', '%s', %s)",
 			$cfg->db->prefix,
@@ -76,9 +76,9 @@ class category {
 			$this->published
 		);
 
-		if ($mysqli->query($query[0])){
+		if ($db->query($query[0])){
 
-			$this->id = $mysqli->insert_id;
+			$this->id = $db->insert_id;
 
 			foreach ($this->title_arr as $i => $item) {
 				$query[1] = sprintf("INSERT INTO %s_categories_lang (category_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
@@ -89,7 +89,7 @@ class category {
 					$this->description_arr[$i]
 				);
 
-				$mysqli->query($query[1]);
+				$db->query($query[1]);
 			}
 
 			return true;
@@ -99,7 +99,7 @@ class category {
 	}
 
 	public function update() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 		$toReturn = false;
 
 		$query[0] = sprintf("UPDATE %s_categories SET parent_id = '%s', category_section = '%s', code = '%s', sort = '%s', date = '%s', date_update = '%s', published = '%s' WHERE id = '%s'",
@@ -114,7 +114,7 @@ class category {
 			$this->id
 		);
 
-		if ($mysqli->query($query[0])){
+		if ($db->query($query[0])){
 
 			$toReturn = true;
 
@@ -128,7 +128,7 @@ class category {
 						$index
 					);
 
-					if ($mysqli->query($query[$index]) && $toReturn) {
+					if ($db->query($query[$index]) && $toReturn) {
 						$toReturn = true;
 					} else {
 						$toReturn = false;
@@ -142,7 +142,7 @@ class category {
 	}
 
 	public function delete() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("DELETE c, cl
 			FROM %s_categories c
@@ -153,7 +153,7 @@ class category {
 				$this->id
 		);
 
-		return $mysqli->query($query);
+		return $db->query($query);
 	}
 
 	public function returnObject() {
@@ -162,7 +162,7 @@ class category {
 
 	// Returns one categorie in one language need category id and lang id. $this->id, $this->lang_id
 	public function returnOneCategory() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text
 			FROM %s_categories bc
@@ -171,7 +171,7 @@ class category {
 			$cfg->db->prefix, $cfg->db->prefix, $this->id, $this->lang_id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = $source->fetch_object();
 
@@ -180,7 +180,7 @@ class category {
 
 	// Returns one categories in all languages need category id. $this->id
 	public function returnOneCategoryAllLanguages() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
 			FROM %s_categories bc
@@ -189,7 +189,7 @@ class category {
 			$cfg->db->prefix, $cfg->db->prefix, $this->id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 
@@ -203,7 +203,7 @@ class category {
 
 	//Returns nr of childs of a category
 	public function returnNrChildsCategory(){
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT COUNT(id) as 'nr_sub_cats'
 			FROM %s_categories
@@ -212,7 +212,7 @@ class category {
 			$this->id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$nr = $source->num_rows;
 
@@ -226,7 +226,7 @@ class category {
 
 	// Returns AllMainCatgories need lang id. $this->lang_id
 	public function returnAllMainCategories() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
 			FROM %s_categories bc
@@ -236,7 +236,7 @@ class category {
 			$cfg->db->prefix, $cfg->db->prefix, $cfg->db->prefix, $this->lang_id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 		$i = 0;
@@ -250,7 +250,7 @@ class category {
 
 	//Returns sub categories need category id and lang id. $this->parent_id, $this->lang_id
 	public function returnSubCategoriesFromOneCategory() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
 			FROM %s_categories bc
@@ -260,7 +260,7 @@ class category {
 			$cfg->db->prefix, $cfg->db->prefix, $cfg->db->prefix, $this->parent_id, $this->lang_id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 		$i = 0;
@@ -274,7 +274,7 @@ class category {
 
 	// Returns AllMainCatgories need lang id. $this->lang_id
 	public function returnAllCategories() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bcl.title, bc.id
 			FROM %s_categories bc
@@ -284,7 +284,7 @@ class category {
 			$cfg->db->prefix, $cfg->db->prefix, $this->lang_id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 		$i = 0;
@@ -298,7 +298,7 @@ class category {
 
 	// Return AllSections
 	public function returnAllSections() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT distinct category_section
 			FROM %s_categories
@@ -306,7 +306,7 @@ class category {
 			$cfg->db->prefix
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 		$i = 0;

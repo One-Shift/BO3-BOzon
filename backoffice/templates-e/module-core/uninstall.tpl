@@ -18,7 +18,7 @@
 				<p>{c2r-lg-question}</p>
 			</div>
 			<div class="modal-footer">
-				<form method="post" action="{c2r-path-bo}/0/{c2r-lg}/{c2r-module-folder}/uninstall">
+				<form method="post" action="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/uninstall">
 					<button type="submit" class="btn btn-danger" name="submitUninstall">{c2r-lg-uninstall}</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">{c2r-lg-close}</button>
 				</form>

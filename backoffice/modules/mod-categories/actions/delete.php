@@ -18,11 +18,11 @@
 			$textToPrint = $mdl_lang["delete"]["failure-2"];
 		}
 
-		$mdl = functions::c2r(
+		$mdl = bo3::c2r(
 			[
 				'content' => $textToPrint
 			],
-			functions::mdl_load("templates/del.tpl")
+			bo3::mdl_load("templates/del.tpl")
 		);
 	} else {
 		// if doesn't exist an action response, system sent you to 404

@@ -12,10 +12,10 @@ $cfg->plg->dbTables = [];
 
 // $args = [] are available for plugins
 
-if (functions::dbTableExists($cfg->plg->dbTables) == TRUE) {
+if (bo3::dbTableExists($cfg->plg->dbTables) == TRUE) {
 	include sprintf("modules/%s/actions/home.php", $cfg->plg->folder);
 } else {
-	$mdl = functions::c2r(
+	$mdl = bo3::c2r(
 		[
 			$cfg->plg->folder => $lang["plugin"]["isNotInstalled"]
 		],

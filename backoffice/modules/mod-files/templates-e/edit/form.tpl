@@ -1,4 +1,4 @@
-<form action="{c2r-path-bo}/0/{c2r-lg}/{c2r-module-folder}/edit/{c2r-id}" method="post">
+<form action="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/edit/{c2r-id}" method="post">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-group">

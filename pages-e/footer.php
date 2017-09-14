@@ -1,6 +1,6 @@
 <?php
 
-$page_e_tpl = functions::loade("footer.tpl");
+$page_e_tpl = bo3::loade("footer.tpl");
 
 /* last thing */
-$footer = functions::c2r([], $page_e_tpl);
+$footer = bo3::c2r([], $page_e_tpl);

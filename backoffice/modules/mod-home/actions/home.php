@@ -1,11 +1,11 @@
 <?php
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		'version' => $cfg->system->version,
 		'sub-version' => $cfg->system->sub_version
 	],
-	functions::mdl_load("templates/home.tpl")
+	bo3::mdl_load("templates/home.tpl")
 );
 
 include "pages/module-core.php";

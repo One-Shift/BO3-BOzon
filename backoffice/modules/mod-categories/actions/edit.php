@@ -3,9 +3,9 @@
 if (!isset($_POST["save"])) {
 	if (isset($id) && !empty($id)) {
 
-		$nav_tpl = functions::mdl_load("templates-e/edit/nav-tab-item.tpl");
-		$nav_content_tpl = functions::mdl_load("templates-e/edit/tab-content-item-input.tpl");
-		$option_item_tpl = functions::mdl_load("templates-e/edit/option-item.tpl");
+		$nav_tpl = bo3::mdl_load("templates-e/edit/nav-tab-item.tpl");
+		$nav_content_tpl = bo3::mdl_load("templates-e/edit/tab-content-item-input.tpl");
+		$option_item_tpl = bo3::mdl_load("templates-e/edit/option-item.tpl");
 		$tabs = null;
 		$nav_content = null;
 
@@ -18,7 +18,7 @@ if (!isset($_POST["save"])) {
 		foreach ($cfg->lg as $index => $lg) {
 			if ($lg[0]) {
 
-				$tabs .= functions::c2r(
+				$tabs .= bo3::c2r(
 					[
 						'class' => ($i == 0 ? "active" : null),
 						'nr' => $index,
@@ -27,7 +27,7 @@ if (!isset($_POST["save"])) {
 					$nav_tpl
 				);
 
-				$nav_content .= functions::c2r(
+				$nav_content .= bo3::c2r(
 					[
 						'class' => ($i == 0 ? "active" : null),
 						'nr' => $index,
@@ -62,7 +62,7 @@ if (!isset($_POST["save"])) {
 
 			foreach ($a as $item) {
 				if ($item->id != $id) {
-					$parent_options .= functions::c2r(
+					$parent_options .= bo3::c2r(
 						[
 							'option-id' => $item->id,
 							'option' => sprintf("%s> %s", str_repeat("-", $i), $item->title),
@@ -85,7 +85,7 @@ if (!isset($_POST["save"])) {
 		$parent_options = '';
 		foreach ($allCats as $item) {
 			if ($item->id != $id) {
-				$parent_options .= functions::c2r(
+				$parent_options .= bo3::c2r(
 					[
 						'option-id' => $item->id,
 						'option' => $item->title,
@@ -106,7 +106,7 @@ if (!isset($_POST["save"])) {
 
 		foreach ($category_types as $item) {
 
-			$category_type_options .= functions::c2r(
+			$category_type_options .= bo3::c2r(
 				[
 					'option-id' => $item->category_section,
 					'option' => ""
@@ -115,16 +115,16 @@ if (!isset($_POST["save"])) {
 			);
 		}
 
-		$mdl = functions::c2r(
+		$mdl = bo3::c2r(
 			[
-				'content' => functions::c2r(
+				'content' => bo3::c2r(
 					[
-						'tabs-categories-name-description' => functions::c2r(
+						'tabs-categories-name-description' => bo3::c2r(
 							[
 								'nav-tabs-items' => $tabs,
 								'tab-content-items' => $nav_content
 							],
-							functions::mdl_load("templates-e/edit/tabs.tpl")
+							bo3::mdl_load("templates-e/edit/tabs.tpl")
 						),
 						'type' => $mdl_lang["label"]["type"],
 						'select-option-type' => $mdl_lang["form"]["option-type"],
@@ -148,10 +148,10 @@ if (!isset($_POST["save"])) {
 						'published-checked' => $category_result[1]->published ? "checked" : '',
 						'but-submit' => $mdl_lang["label"]["but-submit"]
 					],
-					functions::mdl_load("templates-e/edit/form.tpl")
+					bo3::mdl_load("templates-e/edit/form.tpl")
 				)
 			],
-			functions::mdl_load("templates/add.tpl")
+			bo3::mdl_load("templates/add.tpl")
 		);
 	} else {
 		// if doesn't exist an action response, system sent you to 404
@@ -178,14 +178,14 @@ if (!isset($_POST["save"])) {
 		$textToPrint = $mdl_lang["add"]["failure"];
 	}
 
-	$mdl = functions::c2r(
+	$mdl = bo3::c2r(
 		[
 			'content' => $textToPrint
 		],
-		functions::mdl_load("templates/edit.tpl")
+		bo3::mdl_load("templates/edit.tpl")
 	);
 }
 
-functions::importPlg ("files", ["id" => $id, "module" => "category"]);
+bo3::importPlg ("files", ["id" => $id, "module" => "category"]);
 
 include "pages/module-core.php";

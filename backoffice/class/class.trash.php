@@ -26,7 +26,7 @@ class trash {
 	}
 
 	public function insert() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"INSERT INTO %s_trash (module, code, user_id, date) VALUES ('%s', '%s', '%s', '%s')",
@@ -37,9 +37,9 @@ class trash {
 			$this->date
 		);
 
-		$toReturn = $mysqli->query($query);
+		$toReturn = $db->query($query);
 
-		$this->id = $mysqli->insert_id;
+		$this->id = $db->insert_id;
 
 		return $toReturn;
 	}

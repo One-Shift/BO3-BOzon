@@ -1,5 +1,5 @@
 <?php
-$item_tpl = functions::mdl_load("templates-e/home/item.tpl");
+$item_tpl = bo3::mdl_load("templates-e/home/item.tpl");
 /*----------------------------------------------------- FETCHING USER DATA FROM DATABASE - BEGINS -----------------------------------------------------*/
 
 $user = new user();
@@ -11,7 +11,7 @@ if (count($user_list) != 0) {
 			$list = "";
 		}
 
-		$list .= functions::c2r(
+		$list .= bo3::c2r(
 			[
 				"user-id" => $user->id,
 				"md5-mail" => md5($user->email),
@@ -28,7 +28,7 @@ if (count($user_list) != 0) {
 
 /*----------------------------------------------------- FETCHING USER DATA FROM DATABASE - ENDS	 -----------------------------------------------------*/
 
-$mdl = functions::c2r(
+$mdl = bo3::c2r(
 	[
 		"lg-add-btn" => $mdl_lang["list"]["add-btn"],
 		"lg-gravatar-title" => $mdl_lang["list"]["gravatar-title"],
@@ -41,7 +41,7 @@ $mdl = functions::c2r(
 		"home-list" => (isset($list)) ? $list : "",
 		"lg-edit" => $mdl_lang["list"]["edit"]
 	],
-	functions::mdl_load("templates/home.tpl")
+	bo3::mdl_load("templates/home.tpl")
 );
 
 include "pages/module-core.php";

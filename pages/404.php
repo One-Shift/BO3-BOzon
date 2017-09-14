@@ -1,6 +1,6 @@
 <?php
 
-$page_tpl = functions::load("error/404.tpl");
+$page_tpl = bo3::load("error/404.tpl");
 
 /* last thing */
-$tpl = functions::c2r([], $page_tpl);
+$tpl = bo3::c2r([], $page_tpl);

@@ -20,6 +20,6 @@ $cfg->system->sub_version = "beta";
 $cfg->system->key = "GJTBpKregE9WgXc";
 
 $cfg->system->cookie = "cookie";
-$cfg->system->cookie_time = 320;
+$cfg->system->cookie_time = 1440;
 
 $cfg->system->analytics = "";

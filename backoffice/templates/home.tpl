@@ -75,7 +75,7 @@
 					<ol class="breadcrumb">
 						<li><a href="{c2r-path-bo}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 						<li class="active">
-							<a href="{c2r-path-bo}/0/{c2r-lg}/{c2r-module-folder}/">
+							<a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/">
 								{c2r-module-name}
 							</a>
 						</li>

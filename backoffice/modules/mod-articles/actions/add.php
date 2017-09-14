@@ -2,16 +2,16 @@
 
 if (!isset($_POST["save"])) {
 
-	$nav_tpl = functions::mdl_load("templates-e/add/nav-tab-item.tpl");
-	$nav_content_tpl = functions::mdl_load("templates-e/add/tab-content-item-input.tpl");
-	$option_item_tpl = functions::mdl_load("templates-e/add/option-item.tpl");
+	$nav_tpl = bo3::mdl_load("templates-e/add/nav-tab-item.tpl");
+	$nav_content_tpl = bo3::mdl_load("templates-e/add/tab-content-item-input.tpl");
+	$option_item_tpl = bo3::mdl_load("templates-e/add/option-item.tpl");
 	$tabs = "";
 	$nav_content = "";
 
 	$i = 0;
 	foreach ($cfg->lg as $index => $lg) {
 		if ($lg[0]) {
-			$tabs .= functions::c2r(
+			$tabs .= bo3::c2r(
 				[
 					"class" => ($i == 0 ? "active" : ""),
 					"nr" => $index,
@@ -20,7 +20,7 @@ if (!isset($_POST["save"])) {
 				$nav_tpl
 			);
 
-			$nav_content .= functions::c2r(
+			$nav_content .= bo3::c2r(
 				[
 					"class" => ($i == 0 ? "active" : ""),
 					"nr" => $index,
@@ -65,7 +65,7 @@ if (!isset($_POST["save"])) {
 				$parent_options = "";
 			}
 
-			$parent_options .= functions::c2r(
+			$parent_options .= bo3::c2r(
 				[
 					"option-id" => $item["id"],
 					"option" => sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"])
@@ -77,11 +77,11 @@ if (!isset($_POST["save"])) {
 
 	/*------------------------------------------*/
 
-	$mdl = functions::c2r(
+	$mdl = bo3::c2r(
 		[
-			"content" => functions::mdl_load("templates-e/add/form.tpl"),
+			"content" => bo3::mdl_load("templates-e/add/form.tpl"),
 
-			"tabs-categories-name-description" => functions::mdl_load("templates-e/add/tabs.tpl"),
+			"tabs-categories-name-description" => bo3::mdl_load("templates-e/add/tabs.tpl"),
 
 			"nav-tabs-items" => $tabs,
 			"tab-content-items" => $nav_content,
@@ -100,7 +100,7 @@ if (!isset($_POST["save"])) {
 			"published" => $mdl_lang["label"]["published"],
 			"but-submit" => $mdl_lang["label"]["but-submit"]
 		],
-		functions::mdl_load("templates/add.tpl")
+		bo3::mdl_load("templates/add.tpl")
 	);
 } else {
 	$article = new article();
@@ -124,9 +124,9 @@ if (!isset($_POST["save"])) {
 		$textToPrint = $mdl_lang["add"]["failure"];
 	}
 
-	$mdl = functions::c2r(["content" => (isset($textToPrint)) ? $textToPrint : ""], functions::mdl_load("templates/result.tpl"));
+	$mdl = bo3::c2r(["content" => (isset($textToPrint)) ? $textToPrint : ""], bo3::mdl_load("templates/result.tpl"));
 }
 
-functions::importPlg ("files", ["module" => "article"]);
+bo3::importPlg ("files", ["module" => "article"]);
 
 include "pages/module-core.php";

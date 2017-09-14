@@ -16,7 +16,7 @@
 			$article->setLangId($lg);
 			$article = $article->returnOneArticle();
 
-			$toReturn = functions::c2r(
+			$toReturn = bo3::c2r(
 				[
 					"id" => $id,
 
@@ -26,11 +26,11 @@
 					"del" => $mdl_lang["delete"]["button-del"],
 					"cancel" => $mdl_lang["delete"]["button-cancel"]
 				],
-				functions::mdl_load("templates-e/delete/form.tpl")
+				bo3::mdl_load("templates-e/delete/form.tpl")
 			);
 		}
 
-		$mdl = functions::c2r(["content" => $toReturn], functions::mdl_load("templates/del.tpl"));
+		$mdl = bo3::c2r(["content" => $toReturn], bo3::mdl_load("templates/del.tpl"));
 	} else {
 		// if doesn't exist an action response, system sent you to 404
 		header("Location: {$cfg->system->path_bo}/0/{$lg_s}/404/");
