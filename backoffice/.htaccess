@@ -15,6 +15,6 @@ ErrorDocument 404 /templates/error/404.html
 	RewriteEngine on
 	RewriteRule ^([^/]*)/$ ?lg=$1 [QSA,L]
 	RewriteRule ^([^/]*)/([^/]*)/$ ?lg=$1&pg=$2 [QSA,L]
-	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ ?lg=$1&pg=$2&a=$3 [QSA,L]
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)/$ ?lg=$1&pg=$2&a=$3 [QSA,L]
 	RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([0-9]+)$ ?lg=$1&pg=$2&a=$3&i=$4 [QSA,L]
 </IfModule>
