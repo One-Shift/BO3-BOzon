@@ -40,6 +40,8 @@ $tpl = bo3::c2r(
 
 		"module-folder" => str_replace("mod-" , "", $cfg->mdl->folder),
 		"module-path" => $cfg->mdl->path
+		"username" => $authData["username"],
+		"email" => $authData["email"]
 	],
 	bo3::load("home.tpl")
 );
