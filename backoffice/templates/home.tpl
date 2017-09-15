@@ -3,7 +3,7 @@
 	<head>
 		{c2r-head}
 	</head>
-	<body>
+	<body class="grey lighten-5">
 		<nav id="bo-topbar" class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -43,31 +43,38 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<br/><br/><br/><br/>
-				</div>
-			</div>
-		</div>
 		<div id="bo-menu" class="container">
-			<div class="row">
-				<div id="profile" class="col-xs-12 col-sm-12 col-md-12" style="background-image: url('{c2r-background}');">
-					<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" alt="avatar" />
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 bo-block-list">
 					<div class="container-menu">
 						<div class="list-group">
 							{c2r-menu}
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 xs-tacenter sm-tacenter bo-rights">
-							&copy; <a href="http://www.one-shift.com/" target="_blank">One:Shift</a>
+						<div id="bo-profile">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 xs-spacer15 sm-spacer15"></div>
+								<div class="col-xs-3 col-sm-3 xs-tacenter sm-tacenter">
+									<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" alt="avatar" class="img-circle"/>
+								</div>
+								<div class="col-xs-9 col-sm-9">
+									{c2r-username}<br>
+									<small>{c2r-email}</small>
+								</div>
+								<div class="col-xs-12 col-sm-12 xs-spacer15 sm-spacer15"></div>
+								<div id="bo-rights" class="col-xs-12 col-sm-12 text-center">
+									<small>
+										&copy; <a href="http://www.one-shift.com/" target="_blank">One:Shift</a>
+									</small>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="bo-wrapper">
+			<div class="xs-spacer60 sm-spacer60"></div>
+			<div class="xs-spacer15 sm-spacer15"></div>
 		</div>
 		<div id="bo-container" class="container">
 			<div class="row">
@@ -75,7 +82,7 @@
 					<ol class="breadcrumb">
 						<li><a href="{c2r-path-bo}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 						<li class="active">
-							<a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/">
+							<a href="{c2r-path-bo}/0/{c2r-lg}/{c2r-module-folder}/">
 								{c2r-module-name}
 							</a>
 						</li>
