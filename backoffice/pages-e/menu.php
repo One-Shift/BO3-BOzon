@@ -19,7 +19,7 @@ $query = sprintf(
 	"sort ASC"
 );
 
-$source = $mysqli->query($query);
+$source = $db->query($query);
 
 while ($data = $source->fetch_object()) {
 	array_push($installed_modules, $data->folder);
