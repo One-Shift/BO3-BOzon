@@ -6,19 +6,33 @@ $file = new file();
 $files = $file->returnFiles("TRUE");
 
 if(!empty($files)) {
-	foreach ($files as $index => $file) {
-		if (!isset($list)) {
-			$list = "";
-		}
+	if(count($files) > 1) {
+		foreach ($files as $index => $file) {
+			if (!isset($list)) {
+				$list = "";
+			}
 
-		$list .= bo3::c2r(
+			$list .= bo3::c2r(
+				[
+					"id" => $file->id,
+					"file" => $file->file,
+					"module" => $file->module,
+					"id-ass" => $file->id_ass,
+					"sort" => $file->sort,
+					"date-update" => $file->date_update,
+				],
+				$item_tpl
+			);
+		}
+	} else {
+		$list = bo3::c2r(
 			[
-				"id" => $file->id,
-				"file" => $file->file,
-				"module" => $file->module,
-				"id-ass" => $file->id_ass,
-				"sort" => $file->sort,
-				"date-update" => $file->date_update,
+				"id" => $files->id,
+				"file" => $files->file,
+				"module" => $files->module,
+				"id-ass" => $files->id_ass,
+				"sort" => $files->sort,
+				"date-update" => $files->date_update,
 			],
 			$item_tpl
 		);

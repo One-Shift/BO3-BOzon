@@ -99,7 +99,7 @@ img {
 
 html {
 	height: 100%;
-	min-height: 100%;
+	min-height: 100vh;
 }
 
 body {
@@ -121,6 +121,12 @@ textarea {
 a {
 	-webkit-transition: all 200ms ease 0s;
 	transition: all 200ms ease 0s;
+
+	color: rgb(41,44,76);
+}
+
+a:hover, a:focus {
+	color: rgb(204,57,116);
 }
 
 i {
@@ -141,16 +147,6 @@ i {
 
 .btn.btn-lg {
 	padding: 14px 30px;
-}
-
-.navbar-inverse {
-	border-color: #00838f;
-
-	background: linear-gradient(270deg, #00ccff, #1dcab5, #37c871);
-	background-size: 600% 600%;
-
-	-webkit-animation: topbarcoloranimation 10s ease infinite;
-	-moz-animation: topbarcoloranimation 10s ease infinite;
 }
 
 @-webkit-keyframes topbarcoloranimation {
@@ -201,18 +197,24 @@ i {
 	width: 100%;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 	border: none;
+
+	border-color: #00838f;
+
+
+	-webkit-animation: topbarcoloranimation 10s ease infinite;
+	-moz-animation: topbarcoloranimation 10s ease infinite;
+
+	background-image: linear-gradient(270deg, #4dbbc5, #00838f);
+	background-size: 600% 600%;
 }
 
-#bo-topbar .navbar-right {
-	/*
-	margin-right: -30px;
-	*/
+#bo-topbar > .container-fluid {
+	background: url(../images/topbar-bg.png) center -85px;
 }
 
 #bo-topbar a {}
 
-#bo-topbar a:hover,
-#bo-topbar a:focus {
+#bo-topbar a:hover, #bo-topbar a:focus {
 	background-color: rgba(0,0,0,0.1);
 }
 
@@ -223,8 +225,7 @@ i {
 	padding-bottom: 5px;
 }
 
-#bo-topbar li.version a:hover,
-#bo-topbar li.version a:focus {
+#bo-topbar li.version a:hover, #bo-topbar li.version a:focus {
 	cursor: default;
 }
 
@@ -238,8 +239,7 @@ i {
 	background-color: transparent;
 }
 
-#bo-topbar .navbar-inverse .navbar-collapse,
-#bo-topbar .navbar-inverse .navbar-form ,
+#bo-topbar .navbar-inverse .navbar-collapse, #bo-topbar .navbar-inverse .navbar-form ,
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form{
 	border-color: #0fb8ad;
@@ -253,73 +253,75 @@ i {
 	width: 300px;
 	height: calc(100vh - 50px);
 	padding-bottom: 15px;
-	background-color: #fff;
+	background-color: #080f10;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-#bo-menu #profile {
-	padding-top: 15px;
-	padding-bottom: 15px;
-	text-align: center;
-	background-image: url(http://www.lirent.net/wp-content/uploads/2014/10/Android-Lollipop-Material-Design-Wallpaper-5.jpg);
-	background-size: cover;
-	background-position: center;
-}
+/*
+ *
+ * MENU PROFILE
+ *
+ */
 
-#bo-menu #profile img {
-	width: 140px;
-	height: 140px;
-	border-radius: 50%;
-	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
-	padding: 10px;
-	background: linear-gradient(141deg, #00ccff 0%, #1dcab5 51%, #37c871 75%);
-}
-
-#bo-menu .bo-block-list {
-	height: calc(100vh - 220px);
-	overflow-y: auto;
-}
-
-#bo-menu .list-group {}
-
-#bo-menu .list-group a {
-	margin-left: -15px;
-	margin-right: -15px;
-	border-color: rgb(245,245,245);
-	border-left: none;
-	border-right: none;
-}
-
-#bo-menu .list-group a:not(.ative)::first-letter {
-	text-transform: capitalize;
-}
-
-#bo-menu .list-group a.active {
-	background-color: #00838f;
-}
-
-#bo-menu .list-group .list-group-item:first-child {
-	border-radius: 0;
-	border-top: none;
-}
-
-#bo-menu .bo-rights {
+#bo-menu #bo-profile {
+	color: #fff;
 	position: absolute;
 	bottom: 0;
-	padding: 10px 0;
-	font-size: 12px;
-	color: #666;
-	border-top: 1px solid #EEE;
 	left: 0;
 }
 
-#bo-menu .bo-rights a {
+#bo-menu #bo-profile .row {
+	background-color: #0c1819;
+}
+
+#bo-menu #bo-profile small {
+	color: #666;
+}
+
+#bo-menu #bo-profile #bo-rights {
+	border-top: 1px solid #080f10;
+	color: #666;
+}
+
+#bo-menu #bo-profile #bo-rights a {
 	color: inherit;
 }
 
-#bo-menu .bo-rights a:hover,
-#bo-menu .bo-rights a:focus {
-	text-decoration: none;
+
+#bo-menu .bo-block-list {
+	height: calc(100vh - 50px);
+	overflow-y: auto;
+}
+
+#bo-menu .container-menu {
+	position: relative;
+	padding-bottom: 20px;
+	min-height: calc(100vh - 50px) !important;
+}
+
+#bo-menu .container-menu > .list-group {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+#bo-menu .list-group-item {
+	border-color: #0c1819 !important;
+	background-color: transparent !important;
+	color: #fff !important;
+}
+
+#bo-menu .list-group-item:hover, #bo-menu .list-group-item:focus {
+	background-color: #0c1819 !important;
+}
+
+#bo-menu .sub-list {}
+#bo-menu .sub-list .list-group {
+	margin-bottom: 0 !important;
+}
+
+#bo-menu .sub-list .sub-item {
+	padding-left: 30px !important;
+	border: none;
 }
 
 #bo-container {
@@ -327,6 +329,7 @@ i {
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 	padding-top: 15px;
 	padding-bottom: 15px;
+	border-radius: 3px;
 }
 
 .ads {
@@ -338,7 +341,7 @@ i {
 }
 
 .noscroll {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 span[data-toggle=modal] {
@@ -417,8 +420,24 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 	resize: none;
 }
 
-.container-menu {
-	position:relative;
-	padding-bottom:20px;
-	min-height: calc(100vh - 220px);
+.btn, .btn-large, .btn-floating, .btn-large, .btn-flat {
+	font-size: 1em !important;
+	outline: 0 !important;
+}
+
+.btn, .btn-large, .btn-flat {
+	border: none !important;
+	border-radius: 2px !important;
+	display: inline-block !important;
+	height: 36px !important;
+	line-height: 36px !important;
+	padding: 0 1em !important;
+	text-transform: uppercase !important;
+	vertical-align: middle !important;
+	-webkit-tap-highlight-color: transparent !important;
+}
+
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
 }

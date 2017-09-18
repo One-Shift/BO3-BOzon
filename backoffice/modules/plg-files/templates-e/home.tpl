@@ -1,4 +1,4 @@
-<form id="upload" action="{c2r-path-bo}/{c2r-lg}/files/api?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
+<form id="upload" action="{c2r-path-bo}/{c2r-lg}/files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
 	<label for="fileselect">Files Upload</label>
 	<div>
 		<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />

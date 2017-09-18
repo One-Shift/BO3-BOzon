@@ -10,7 +10,7 @@
 		</div>
 		<div class="xs-spacer30 sm-spacer30"></div>
 		<div class="error-actions">
-			<a href="http://www.jquery2dotnet.com" class="btn btn-primary" id="takemeback">
+			<a href="{c2r-path-bo}" class="btn btn-primary" id="takemeback">
 				<i class="fa fa-chevron-left" aria-hidden="true"></i><div class="xs-block15 sm-block15"></div>Take me back
 			</a>
 		</div>
