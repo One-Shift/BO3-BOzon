@@ -16,7 +16,7 @@
 			</div>
 			<div class="form-group">
 				<label for="inputModule">Module</label>
-				<select class="form-control">
+				<select class="form-control" name="inputModule">
 					<option>Select one module</option>
 					{c2r-modules-list}
 				</select>

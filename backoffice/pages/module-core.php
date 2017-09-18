@@ -39,7 +39,9 @@ $tpl = bo3::c2r(
 		"uninstall" => $uninstall,
 
 		"module-folder" => str_replace("mod-" , "", $cfg->mdl->folder),
-		"module-path" => $cfg->mdl->path
+		"module-path" => $cfg->mdl->path,
+		"username" => $authData["username"],
+		"email" => $authData["email"]
 	],
 	bo3::load("home.tpl")
 );
