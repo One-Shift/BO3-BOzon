@@ -17,7 +17,7 @@ if (!isset($_POST["save"])){
 		$article_result = $article->returnOneArticleAllLanguages();
 
 		$i = 0;
-		foreach ($cfg->lg as $index=>$lg) {
+		foreach ($cfg->lg AS $index => $lg) {
 			if ($lg[0]) {
 				$tabs .= bo3::c2r(
 					[
@@ -102,7 +102,7 @@ if (!isset($_POST["save"])){
 
 		$user_select = null;
 		$user_obj = new user();
-		$user_list=$user_obj->returnAllUsers();
+		$user_list = $user_obj->returnAllUsers();
 
 		foreach ($user_list as $u) {
 			if (!isset($user_options)) {
