@@ -65,7 +65,7 @@ CREATE TABLE `os_history` (
   `user_id` int(11) DEFAULT NULL,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-				
+
 CREATE TABLE `os_modules` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `os_modules` (
   `code` text NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-				
+
 CREATE TABLE `os_trash` (
   `id` int(11) NOT NULL,
   `module` varchar(255) NOT NULL,
@@ -158,8 +158,8 @@ INSERT INTO `os_modules` (`name`, `folder`, `code`, `sort`) VALUES
 ('Home', 'mod-home', '{\r\n  \"fa-icon\": \"fa-home\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {}\r\n}', 0),
 ('Account', 'mod-account', '{\r\n  \"fa-icon\": \"fa-user\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {}\r\n}', 1),
 ('Users', 'mod-users', '{\r\n  \"fa-icon\": \"fa-users\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {\r\n    \"List\": {\r\n      \"url\": \"\"\r\n    },\r\n    \"Add user\": {\r\n      \"url\": \"add\"\r\n    }\r\n  }\r\n}', 2),
-('Categories', 'mod-categories', '{\r\n  \"fa-icon\": \"fa-list\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {\r\n    \"List\": {\r\n      \"url\": \"\"\r\n    },\r\n    \"Add user\": {\r\n      \"url\": \"add\"\r\n    }\r\n  }\r\n}', 3),
-('Articles', 'mod-articles', '{\r\n  \"fa-icon\": \"fa-newspaper-o\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {\r\n    \"List\": {\r\n      \"url\": \"\"\r\n    },\r\n    \"Add user\": {\r\n      \"url\": \"add\"\r\n    }\r\n  }\r\n}', 4),
+('Categories', 'mod-categories', '{\r\n  \"fa-icon\": \"fa-list\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {\r\n    \"List\": {\r\n      \"url\": \"\"\r\n    },\r\n    \"Add category\": {\r\n      \"url\": \"add\"\r\n    }\r\n  }\r\n}', 3),
+('Articles', 'mod-articles', '{\r\n  \"fa-icon\": \"fa-newspaper-o\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {\r\n    \"List\": {\r\n      \"url\": \"\"\r\n    },\r\n    \"Add article\": {\r\n      \"url\": \"add\"\r\n    }\r\n  }\r\n}', 4),
 ('Files', 'mod-files', '{\r\n  \"fa-icon\": \"fa-file\",\r\n  \"img\": \"\",\r\n  \"sub-items\": {}\r\n}', 5);</textarea>
 
 			<h1>Database 1st user</h1>
