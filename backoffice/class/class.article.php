@@ -90,13 +90,14 @@ class article {
 		$toReturn = false;
 
 		$query[0] = sprintf(
-			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s' WHERE id = '%s'",
+			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s', user_id = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->code,
 			$this->category_id,
 			$this->date,
 			$this->date_update,
 			$this->published,
+			$this->user_id,
 			$this->id
 		);
 
