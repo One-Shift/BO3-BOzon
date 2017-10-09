@@ -18,6 +18,8 @@
 		</div>
 		<!-- END Category Parent -->
 
+		{c2r-user-select}
+
 		<!-- Category Date -->
 		<div class="form-group">
 			<label for="inputDate">{c2r-date}</label>

@@ -6,6 +6,8 @@ if (!isset($_POST["save"])){
 		$nav_tpl = bo3::mdl_load("templates-e/edit/nav-tab-item.tpl");
 		$nav_content_tpl = bo3::mdl_load("templates-e/edit/tab-content-item-input.tpl");
 		$option_item_tpl = bo3::mdl_load("templates-e/edit/option-item.tpl");
+		$user_select_tpl = bo3::mdl_load("templates-e/edit/user-select.tpl");
+
 		$tabs = "";
 		$nav_content = "";
 
@@ -15,7 +17,7 @@ if (!isset($_POST["save"])){
 		$article_result = $article->returnOneArticleAllLanguages();
 
 		$i = 0;
-		foreach ($cfg->lg as $index=>$lg) {
+		foreach ($cfg->lg AS $index => $lg) {
 			if ($lg[0]) {
 				$tabs .= bo3::c2r(
 					[
@@ -98,6 +100,49 @@ if (!isset($_POST["save"])){
 			recursiveWayGet($item->id, 0);
 		}
 
+		$user_select = null;
+		$user_obj = new user();
+		$user_list = $user_obj->returnAllUsers();
+
+		foreach ($user_list as $u) {
+			if (!isset($user_options)) {
+				$user_options = "";
+			}
+
+			if($authData["rank"] == "owner"){
+				$user_options .= bo3::c2r(
+					[
+						"option-id" => $u->id,
+						"option" => $u->username,
+						"selected" => ($u->id == $article_result[1]->user_id) ? "selected" : ""
+					],
+					$option_item_tpl
+				);
+			} else {
+				if($u->id == $article_result[1]->user_id) {
+					$user_options = bo3::c2r(
+						[
+							"option-id" => $u->id,
+							"option" => $u->username,
+							"selected" => ($u->id == $article_result[1]->user_id) ? "selected" : ""
+						],
+						$option_item_tpl
+					);
+				}
+			}
+		}
+
+		$user_select = bo3::c2r(
+			[
+				"user" => $mdl_lang["label"]["user"],
+				"user-options" => $user_options,
+				"user-disabled" => $authData["rank"] == "owner" ? "" : "disabled"
+			],
+			$user_select_tpl
+		);
+
+
+
 		$mdl = bo3::c2r(
 			[
 				"content" => bo3::mdl_load("templates-e/edit/form.tpl"),
@@ -122,7 +167,8 @@ if (!isset($_POST["save"])){
 				"code-value" => $article_result[1]->code,
 				"published" => $mdl_lang["label"]["published"],
 				"published-checked" => ($article_result[1]->published) ? "checked" : "",
-				"but-submit" => $mdl_lang["label"]["but-submit"]
+				"but-submit" => $mdl_lang["label"]["but-submit"],
+				"user-select" => $user_select
 			],
 			bo3::mdl_load("templates/add.tpl")
 		);
@@ -140,7 +186,7 @@ if (!isset($_POST["save"])){
 	$article->setDate($_POST["date"]);
 	$article->setDateUpdate();
 	$article->setPublished(isset($_POST["published"]) ? $_POST["published"] : 0);
-	$article->setUserId($authData["id"]);
+	$article->setUserId($_POST["article-user"]);
 
 	if ($article->update()) {
 		$textToPrint = $mdl_lang["add"]["success"];
