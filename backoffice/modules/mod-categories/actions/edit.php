@@ -178,12 +178,7 @@ if (!isset($_POST["save"])) {
 		$textToPrint = $mdl_lang["add"]["failure"];
 	}
 
-	$mdl = bo3::c2r(
-		[
-			'content' => $textToPrint
-		],
-		bo3::mdl_load("templates/edit.tpl")
-	);
+	$mdl = bo3::c2r(["content" => (isset($textToPrint)) ? $textToPrint : ""], bo3::mdl_load("templates/result.tpl"));
 }
 
 bo3::importPlg ("files", ["id" => $id, "module" => "category"]);
