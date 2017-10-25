@@ -1,10 +1,18 @@
 <?php
 
 $line_tpl = bo3::mdl_load("templates-e/home/table-row.tpl");
+$option_item_tpl = bo3::mdl_load("templates-e/home/option-item.tpl");
 
 $articles = new article();
 $articles->setLangId($lg);
-$articles = $articles->returnAllArticles();
+
+if(isset($_POST["filterCategory"]) && !empty($_POST["categoryId"]) && $_POST["categoryId"] != "-1") {
+	$articles->setCategoryId($_POST["categoryId"]);
+	$articles = $articles->returnArticlesByCategory("bcl.lang_id = {$lg}", "bc.date ASC, bcl.title ASC", null);
+} else {
+	$articles = $articles->returnAllArticles();
+}
+
 
 $category = new category();
 $category->setLangId($lg);
@@ -34,9 +42,53 @@ foreach ($articles as $article) {
 	);
 }
 
+/*------------------------------------------*/
+function recursiveWayGet($id, $i = 0, &$data = []) {
+	global $lg;
+	$a = new category();
+	$a->setLangId($lg);
+	$a->setParentId($id);
+	$a = $a->returnSubCategoriesFromOneCategory();
+
+	foreach ($a as $item) {
+		$tmp = [];
+		$tmp["id"] = $item->id;
+		$tmp["title"] = $item->title;
+		$tmp["level"] = $i;
+
+		$data[] = $tmp;
+
+		if ($item->nr_sub_cats > 0 ){
+			recursiveWayGet($item->id, $i+1, $data);
+		}
+	}
+}
+
+recursiveWayGet(-1, 0, $data);
+
+if(!empty($data)) {
+	foreach ($data as $item) {
+		if (!isset($categories_list)) {
+			$categories_list = "";
+		}
+
+		$categories_list .= bo3::c2r(
+			[
+				"option-id" => $item["id"],
+				"option" => sprintf("%s> %s", str_repeat("-", $item["level"]), $item["title"]),
+				"selected" => isset($_POST["categoryId"]) && $_POST["categoryId"] == $item["id"] ? "selected" : ""
+			],
+			$option_item_tpl
+		);
+	}
+}
+/*------------------------------------------*/
+
 $mdl = bo3::c2r(
 	[
 		"label-add-category" => $mdl_lang["label"]["add-category"],
+		"category-filter-select" => $mdl_lang["label"]["category-filter-select"],
+		"filter-options" => $categories_list,
 		"name" => $mdl_lang["label"]["name"],
 		"category" => $mdl_lang["label"]["category"],
 		"section" => $mdl_lang["label"]["type"],
