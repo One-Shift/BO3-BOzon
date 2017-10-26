@@ -135,8 +135,7 @@ if (!isset($_POST["save"])){
 		$user_select = bo3::c2r(
 			[
 				"user" => $mdl_lang["label"]["user"],
-				"user-options" => $user_options,
-				"user-disabled" => $authData["rank"] == "owner" ? "" : "disabled"
+				"user-options" => $user_options
 			],
 			$user_select_tpl
 		);
