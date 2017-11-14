@@ -38,7 +38,7 @@
 {c2r-lib-bootstrap}
 {c2r-lib-fontawesome}
 
-<link rel='stylesheet' type='text/css' href='http://one-shift.github.io/site-assets/css/style.css' />
+<link rel='stylesheet' type='text/css' href='//one-shift.github.io/site-assets/css/style.css' />
 <link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
 
 <script type="text/javascript" src="{c2r-path}/site-assets/js/animatescroll.min.js"></script>
