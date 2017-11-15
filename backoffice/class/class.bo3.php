@@ -205,4 +205,10 @@ class bo3 {
 			$target
 		);
 	}
+
+	public static function dump($args = null) {
+		print "<!--\n";
+		var_dump($args);
+		print "\n-->";
+	}
 }
