@@ -71,8 +71,8 @@ class article {
 					$cfg->db->prefix,
 					$this->id,
 					$i+1,
-					$this->title[$i],
-					$this->description[$i]
+					$db->real_escape_string($this->title[$i]),
+					$db->real_escape_string($this->description[$i])
 				);
 
 				$db->query($query[1]);
@@ -118,8 +118,8 @@ class article {
 					if ($fast_source->num_rows > 0) {
 						$query[$index] = sprintf("UPDATE %s_articles_lang SET title = '%s', text = '%s' WHERE article_id = '%s' AND lang_id = '%s'",
 							$cfg->db->prefix,
-							$this->title[$index-1],
-							$this->description[$index-1],
+							$db->real_escape_string($this->title[$index-1]),
+							$db->real_escape_string($this->description[$index-1]),
 							$this->id,
 							$index
 						);
@@ -130,8 +130,8 @@ class article {
 							$cfg->db->prefix,
 							$this->id,
 							$index,
-							$this->title[$index - 1],
-							$this->description[$index - 1]
+							$db->real_escape_string($this->title[$index - 1]),
+							$db->real_escape_string($this->description[$index - 1])
 						);
 
 						$db->query($query[1]);
