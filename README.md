@@ -1,4 +1,4 @@
-![Imgur](http://i.imgur.com/fCTr1K7.jpg)
+![Imgur](https://i.imgur.com/Asw1JGt.jpg)
 
 # BO3-Bozon
 
