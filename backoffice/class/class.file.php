@@ -74,7 +74,7 @@ class file {
 			$this->type,
 			$this->module,
 			$this->id_ass,
-			$this->sort,
+			$db->real_escape_string($this->sort),
 			$this->date,
 			$this->date_update
 		);
@@ -96,7 +96,7 @@ class file {
 			$this->type,
 			$this->module,
 			$this->id_ass,
-			$this->sort,
+			$db->real_escape_string($this->sort),
 			$this->date,
 			$this->date_update,
 			$this->id
@@ -111,9 +111,9 @@ class file {
 		$query = sprintf(
 			"UPDATE %s_files SET description = '%s', code = '%s', sort = %s, date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
-			$this->description,
-			$this->code,
-			$this->sort,
+			$db->real_escape_string($this->description),
+			$db->real_escape_string($this->code),
+			$db->real_escape_string($this->sort),
 			$this->date_update,
 			$this->id
 		);
@@ -129,7 +129,7 @@ class file {
 			$cfg->db->prefix,
 			$this->module,
 			$this->id_ass,
-			$this->sort,
+			$db->real_escape_string($this->sort),
 			$this->date,
 			$this->date_update,
 			$this->id
