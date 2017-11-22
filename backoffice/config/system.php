@@ -11,6 +11,7 @@ $cfg->system->sitename = "";
 $cfg->system->owner = "";
 
 $cfg->system->protocol = "http"; // you can use https instead
+$cfg->system->domain = "yourdomain.here";
 $cfg->system->path = "Path-here ex.: /new or /old";
 $cfg->system->path_bo = "Path-above + bo folder ex.: /new/backoffice";
 
