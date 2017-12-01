@@ -211,4 +211,19 @@ class bo3 {
 		var_dump($args);
 		print "\n-->";
 	}
+	
+	public static function updateFile ($file = false, $name = "", $text = "", $result = false) {
+		if ($file !== false) {
+			$time = date('H:i:s', time());
+
+			$current = file_get_contents($file);
+			$current .= "{$time} >> {$name} >> {$text}";
+			if ($result !== false) {
+				$current .= " >> {$result}";
+			}
+			$current .= "\n";
+
+			file_put_contents($file, $current);
+		}
+	}
 }
