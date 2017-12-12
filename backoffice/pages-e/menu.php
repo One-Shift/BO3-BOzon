@@ -13,18 +13,15 @@ $not_installed_menu = "";
 $installed_modules = [];
 
 // installed modules
-$query = sprintf(
-	"SELECT * FROM %s_modules ORDER BY %s",
-	$cfg->db->prefix,
-	"sort ASC"
-);
+$query = sprintf("SELECT * FROM %s_modules ORDER BY %s", $cfg->db->prefix, "sort ASC");
 
 $source = $db->query($query);
 
 while ($data = $source->fetch_object()) {
 	array_push($installed_modules, $data->folder);
 
-	$tmp_name = explode("-", $data->folder);
+	// $tmp_name = explode("-", $data->folder);
+	$tmp_name = substr($data->folder, 4);
 	$code = json_decode($data->code);
 
 	// SUB ITEMS
@@ -32,44 +29,33 @@ while ($data = $source->fetch_object()) {
 		$submenu = "";
 
 		foreach ((array)$code->{"sub-items"} as $index => $obj) {
-			$submenu .= bo3::c2r(
-				[
-					"url" => $obj->url,
-					"name" => $index
-				],
-				$menu_sub_item_tpl
-			);
+			$submenu .= bo3::c2r([
+				"url" => $obj->url,
+				"name" => $index
+			], $menu_sub_item_tpl);
 		}
 	}
 
 	// ICON
 	if (isset($code->img) && !empty($code->img)) {
-		$icon = bo3::c2r(
-			[
-				'module-folder' => $data->folder,
-				'img' => $code->img
-			],
-			$menu_img_tpl
-		);
+		$icon = bo3::c2r([
+			'module-folder' => $data->folder,
+			'img' => $code->img
+		], $menu_img_tpl);
 	} else {
-		$icon = bo3::c2r(
-			[
-				'module-folder' => $data->folder,
-				'fa' => (isset($code->{"fa-icon"}) && !empty($code->{"fa-icon"})) ? $code->{"fa-icon"} : "fa-folder"
-			],
-			$menu_fa_icon_tpl
-		);
+		$icon = bo3::c2r([
+			'module-folder' => $data->folder,
+			'fa' => (isset($code->{"fa-icon"}) && !empty($code->{"fa-icon"})) ? $code->{"fa-icon"} : "fa-folder"
+		], $menu_fa_icon_tpl);
 	}
 
-	$menu .= bo3::c2r(
-		[
-			"sub-menu" => (isset($submenu)) ? $submenu : "",
-			"mod" => $tmp_name[count($tmp_name) - 1],
-			"name" => $data->name,
-			"icon" => $icon
-		],
-		(!isset($submenu)) ? $menu_item_tpl : $menu_item_w_sub_items_tpl
-	);
+	$menu .= bo3::c2r([
+		"sub-menu" => (isset($submenu)) ? $submenu : "",
+		// "mod" => $tmp_name[count($tmp_name) - 1],
+		"mod" => $tmp_name,
+		"name" => $data->name,
+		"icon" => $icon
+	], (!isset($submenu)) ? $menu_item_tpl : $menu_item_w_sub_items_tpl);
 
 	unset($submenu);
 }
@@ -82,16 +68,16 @@ if (user::isOwner($authData)) {
 	foreach ($list as $key => $value) {
 		$tmp = explode("/", $value);
 		$folder = $tmp[count($tmp) - 1];
-		$tmp_name = explode("-", $folder);
+		// $tmp_name = explode("-", $folder);
+		$tmp_name = substr($folder, 4);
 
 		if (!in_array($folder, $installed_modules)) {
-			$not_installed_menu .= bo3::c2r(
-				[
-					"mod" => $tmp_name[count($tmp_name) - 1],
-					"name" => $tmp_name[count($tmp_name) - 1]
-				],
-				$menu_item_tpl
-			);
+			$not_installed_menu .= bo3::c2r([
+				// "mod" => $tmp_name[count($tmp_name) - 1],
+				// "name" => $tmp_name[count($tmp_name) - 1]
+				"mod" => $tmp_name,
+				"name" => $tmp_name
+			], $menu_item_tpl);
 		}
 	}
 
