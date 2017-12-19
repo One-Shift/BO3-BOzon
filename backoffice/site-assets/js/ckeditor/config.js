@@ -24,7 +24,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
 		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
-		'/',
 		{ name: 'styles', groups: [ 'styles' ] },
 		{ name: 'colors', groups: [ 'colors' ] },
 		{ name: 'tools', groups: [ 'tools' ] },
@@ -32,5 +31,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'NewPage,Preview,Templates,HiddenField,ImageButton,Button,Select,Textarea,TextField,Radio,Checkbox,Form,Flash,PageBreak,About';
+	config.removeButtons = 'Save,Print,Smiley,NewPage,Preview,Templates,HiddenField,ImageButton,Button,Select,Textarea,TextField,Radio,Checkbox,Form,Flash,PageBreak,About';
+	
+	config.extraPlugins = 'codemirror';
 };
