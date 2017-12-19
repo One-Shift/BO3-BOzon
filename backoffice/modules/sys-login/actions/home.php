@@ -89,7 +89,7 @@ $tpl = bo3::c2r(
 	[
 		"mod-path" => $cfg->mdl->path,
 		"form" => $form,
-		"background" => file_get_contents("https://api.nexus-pt.eu/bo3-image-server/"),
+		"background" => file_get_contents("https://api.one-shift.com/bo3-image-server/"),
 
 		"lg-cookies-alert" => $mdl_lang["cookie"]["alert"],
 		"lg-cookies-title" => $mdl_lang["cookie"]["title"],
