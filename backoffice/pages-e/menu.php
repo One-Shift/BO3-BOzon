@@ -51,7 +51,6 @@ while ($data = $source->fetch_object()) {
 
 	$menu .= bo3::c2r([
 		"sub-menu" => (isset($submenu)) ? $submenu : "",
-		// "mod" => $tmp_name[count($tmp_name) - 1],
 		"mod" => $tmp_name,
 		"name" => $data->name,
 		"icon" => $icon
@@ -65,18 +64,24 @@ if (user::isOwner($authData)) {
 	// modules not installed
 	$list = glob('modules/mod-*', GLOB_ONLYDIR);
 
+	$icon = bo3::c2r([
+		// 'module-folder' => $data->folder,
+		'fa' => "fa-folder"
+	], $menu_fa_icon_tpl);
+
 	foreach ($list as $key => $value) {
-		$tmp = explode("/", $value);
-		$folder = $tmp[count($tmp) - 1];
-		// $tmp_name = explode("-", $folder);
+		$path_explode = explode("/", $value);
+		$folder = $path_explode[count($path_explode) - 1];
+		$path_explode[count($path_explode) - 1] = explode("-", $path_explode[count($path_explode) - 1]);
+
+		// $tmp_name = explode("-", $value);
 		$tmp_name = substr($folder, 4);
 
 		if (!in_array($folder, $installed_modules)) {
 			$not_installed_menu .= bo3::c2r([
-				// "mod" => $tmp_name[count($tmp_name) - 1],
-				// "name" => $tmp_name[count($tmp_name) - 1]
 				"mod" => $tmp_name,
-				"name" => $tmp_name
+				"name" => ucwords(str_replace("-", " ", $tmp_name)),
+				"icon" => $icon
 			], $menu_item_tpl);
 		}
 	}

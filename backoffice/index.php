@@ -26,14 +26,16 @@ if ($auth) {
 			include sprintf("modules/sys-%s/sys-%s.php", "404", "404");
 			break;
 		default:
+			if ($pg == "home") { $pg = "5-home"; }
+
 			$mdl_path = sprintf("modules/mod-%s/", $pg);
 
-			if (!file_exists($mdl_path)) {
+			if (!is_dir($mdl_path)) {
 				// if doesn't exist an action response, system sent you to 404
 				header("Location: {$cfg->system->path_bo}/{$lg_s}/404/");
 			} else {
 				// mod load
-				include sprintf("%smod-%s.php", $mdl_path, $pg);
+				include "{$mdl_path}mod-{$pg}.php";
 			}
 			break;
 	}
@@ -61,7 +63,7 @@ $tpl = bo3::c2r([
 	"path-bo" => $cfg->system->path_bo,
 	"lg" => $lg_s,
 	"cookie" => $cfg->system->cookie
-], isset($tpl) ? $tpl : ".::TPL::.::ERROR::.");
+], (isset($tpl)) ? $tpl : ".::TPL::.::ERROR::.");
 
 // minify system
 if ($cfg->system->minify) {
