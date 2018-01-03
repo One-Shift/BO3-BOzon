@@ -83,7 +83,7 @@
 						<li><a href="{c2r-path-bo}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 						<li class="active">
 							<a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/">
-								{c2r-module-name}
+								{c2r-mdl-name}
 							</a>
 						</li>
 						{c2r-breadcrump}
@@ -92,6 +92,14 @@
 			</div>
 			{c2r-module}
 			{c2r-uninstall}
+			<div class="xs-spacer15 sm-spacer15"></div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 sm-taright">
+					<small class="grey-text">
+						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version {c2r-mdl-version} / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
+					</small>
+				</div>
+			</div>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
