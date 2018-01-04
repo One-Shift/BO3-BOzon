@@ -1,4 +1,4 @@
-<form id="upload" action="{c2r-path-bo}/{c2r-lg}/files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
+<form id="upload" action="{c2r-path-bo}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
 	<label for="fileselect">Files Upload</label>
 	<div>
 		<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
@@ -69,7 +69,6 @@
 			/* remove submit button */
 			submitbutton.style.display = "none";
 		}
-
 	}
 
 	/* file drag hover */
@@ -178,7 +177,7 @@
 
 		$("#uploaded-list").empty();
 		$.get(
-			"{c2r-path-bo}/{c2r-lg}/files/api/" + id + "?r=getList&module={c2r-module}",
+			"{c2r-path-bo}/{c2r-lg}/4-files/api/" + id + "?r=getList&module={c2r-module}",
 			function (data) {
 				data = $.parseJSON(data);
 				var o = data.object;
@@ -207,10 +206,9 @@
 					form.sort = $(obj).find(".inputSort").val();
 
 					$.post(
-						"{c2r-path-bo}/{c2r-lg}/files/api/" + $(this).attr("data-id") + "?r=update",
+						"{c2r-path-bo}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=update",
 						form,
 						function(data) {
-console.log(data);
 							data = $.parseJSON(data);
 							if (data.status) {
 								$(button).append(' <i class="fa fa-check-square" aria-hidden="true"></i>');

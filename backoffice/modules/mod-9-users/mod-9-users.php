@@ -1,13 +1,13 @@
 <?php
 
 $cfg->mdl = new stdClass();
-$cfg->mdl->name = "Account";
-$cfg->mdl->folder = "mod-account";
+$cfg->mdl->name = "Users";
+$cfg->mdl->folder = "mod-9-users";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
 $cfg->mdl->version = "0.0.1";
-$cfg->mdl->developer = "Rafael Duarte";
-$cfg->mdl->contact = "rafaeljfduarte@gmail.com";
-$cfg->mdl->dbTables = ["users","trash"];
+$cfg->mdl->developer = "João Santos";
+$cfg->mdl->contact = "jfnsatos7@gmail.com";
+$cfg->mdl->dbTables = ["users", "trash"];
 
 // load language for module
 if (file_exists("modules/{$cfg->mdl->folder}/languages/{$lg_s}.ini")) {

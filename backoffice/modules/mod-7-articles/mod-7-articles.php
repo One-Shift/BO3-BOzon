@@ -2,7 +2,7 @@
 
 $cfg->mdl = new stdClass();
 $cfg->mdl->name = "Articles";
-$cfg->mdl->folder = "mod-articles";
+$cfg->mdl->folder = "mod-7-articles";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
 $cfg->mdl->version = "0.0.1";
 $cfg->mdl->developer = "Carlos Santos";

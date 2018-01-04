@@ -15,10 +15,7 @@ $cfg->plg->dbTables = [];
 if (bo3::dbTableExists($cfg->plg->dbTables) == TRUE) {
 	include sprintf("modules/%s/actions/home.php", $cfg->plg->folder);
 } else {
-	$mdl = bo3::c2r(
-		[
-			$cfg->plg->folder => $lang["plugin"]["isNotInstalled"]
-		],
-		$mdl
-	);
+	$mdl = bo3::c2r([
+		$cfg->plg->folder => $lang["plugin"]["isNotInstalled"]
+	], $mdl);
 }

@@ -2,7 +2,7 @@
 
 $cfg->mdl = new stdClass();
 $cfg->mdl->name = "Categories";
-$cfg->mdl->folder = "mod-categories";
+$cfg->mdl->folder = "mod-8-categories";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
 $cfg->mdl->version = "0.0.1";
 $cfg->mdl->developer = "Marcos Silva";
