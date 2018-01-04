@@ -57,7 +57,7 @@
 									<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" alt="avatar" class="img-circle"/>
 								</div>
 								<div class="col-xs-9 col-sm-9">
-									{c2r-username}<br>
+									<a class="white-text" href="{c2r-path-bo}/{c2r-lg}/6-account/">{c2r-username}</a><br>
 									<small>{c2r-email}</small>
 								</div>
 								<div class="col-xs-12 col-sm-12 xs-spacer15 sm-spacer15"></div>
