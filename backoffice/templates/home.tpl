@@ -14,32 +14,37 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="version">
-							<a>
-								Version: <span>{c2r-bo3-version}</span> <span>{c2r-bo3-sub-version}</span>
-							</a>
-						</li>
-						<li>
-							<a href="http://www.one-shift.com/" title="One:Shift" target="_blank">
-								<i class="fa fa-globe"></i> <span class="hidden-sm hidden-md hidden-lg">One:Shift</span>
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/One-Shift/BO3-BOzon/issues" title="Support" target="_blank">
-								<i class="fa fa-question"></i> <span class="hidden-sm hidden-md hidden-lg">Support</span>
-							</a>
-						</li>
-						<li>
-							<a href="https://github.com/One-Shift/" title="Github" target="_blank">
-								<i class="fa fa-code-fork"></i> <span class="hidden-sm hidden-md hidden-lg">Github</span>
-							</a>
-						</li>
-						<li>
-							<a id="logout" href="#" title="logout">
-								<i class="fa fa-power-off" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">Logout</span>
-							</a>
-						</li>
-					</ul>
+					<li class="version">
+						<a href="https://one-shift.github.io/BO3/?v={c2r-bo3-version}&sv={c2r-bo3-sub-version}" target="_blank">
+							Version: <span>{c2r-bo3-version}</span> <span>{c2r-bo3-sub-version}</span>
+						</a>
+					</li>
+					<li>
+						<a href="{c2r-path}/{c2r-lg}/" target="_blank" title="See Website">
+							<i class="fa fa-external-link" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">See Website</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/One-Shift/BO3-BOzon/issues" title="Support" target="_blank">
+							<i class="fa fa-question"></i> <span class="hidden-sm hidden-md hidden-lg">Support</span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.one-shift.com/" title="One:Shift" target="_blank">
+							<i class="fa fa-globe"></i> <span class="hidden-sm hidden-md hidden-lg">One:Shift</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/One-Shift/" title="Github" target="_blank">
+							<i class="fa fa-code-fork"></i> <span class="hidden-sm hidden-md hidden-lg">Github</span>
+						</a>
+					</li>
+					<li>
+						<a id="logout" href="#" title="logout">
+							<i class="fa fa-power-off" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">Logout</span>
+						</a>
+					</li>
+				</ul>
 				</div>
 			</div>
 		</nav>
