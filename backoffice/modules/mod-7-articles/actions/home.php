@@ -45,7 +45,7 @@ function recursiveWayGet($id, $i = 0, &$data = []) {
 	$a = new category();
 	$a->setLangId($lg);
 	$a->setParentId($id);
-	$a = $a->returnSubCategoriesFromOneCategory();
+	$a = $a->returnChildCategories();
 
 	foreach ($a as $item) {
 		$tmp = [];
