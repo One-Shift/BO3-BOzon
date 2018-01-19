@@ -3,7 +3,7 @@
 $cat_obj = new category();
 $cat_obj->setLangId($lg);
 $cat_obj->setParentId($id);
-$categories = $cat_obj->returnSubCategoriesFromOneCategory();
+$categories = $cat_obj->returnChildCategories();
 
 $table_items = null;
 
