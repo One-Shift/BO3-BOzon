@@ -89,6 +89,7 @@ CREATE TABLE `os_users` (
   `rank` enum('owner','manager','member') DEFAULT 'member',
   `email` varchar(255) DEFAULT NULL,
   `code` text,
+  `custom_css` text NOT NULL,
   `user_key` text,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date` datetime NOT NULL,

@@ -20,6 +20,8 @@ $tpl = bo3::c2r([
 	"header" => $header,
 	"footer" => $footer,
 
+	"custom-css" => isset($authData["custom_css"]) ? $authData["custom_css"] : "",
+
 	"bo3-version" => $cfg->system->version,
 	"bo3-sub-version" => $cfg->system->sub_version,
 	"menu" => (isset($menu)) ? $menu : "",

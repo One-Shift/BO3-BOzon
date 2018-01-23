@@ -7,6 +7,7 @@ class user {
 	protected $email;
 	protected $rank;
 	protected $code;
+	protected $custom_css;
 	protected $status = false;
 	protected $user_key;
 	protected $date;
@@ -55,6 +56,10 @@ class user {
 
 	public function setCode($c) {
 		$this->code = $c;
+	}
+	
+	public function setCustomCss($c) {
+		$this->custom_css = $c;
 	}
 
 	public function setStatus($s) {
@@ -115,6 +120,20 @@ class user {
 			$this->status,
 			$this->user_key,
 			$this->date,
+			$this->date_update,
+			$this->id
+		);
+
+		return $db->query($query);
+	}
+	
+	public function update_custom_css() {
+		global $cfg, $db;
+		
+		$query = sprintf(
+			"UPDATE %s_users SET custom_css = '%s', date_update = '%s' WHERE id = '%s'",
+			$cfg->db->prefix,
+			$this->custom_css,
 			$this->date_update,
 			$this->id
 		);

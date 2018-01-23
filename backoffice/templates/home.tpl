@@ -2,6 +2,9 @@
 <html>
 	<head>
 		{c2r-head}
+		<style media="screen">
+			{c2r-custom-css}
+		</style>
 	</head>
 	<body class="grey lighten-5">
 		<nav id="bo-topbar" class="navbar navbar-inverse">
