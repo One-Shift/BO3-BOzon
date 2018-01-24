@@ -28,7 +28,7 @@ $tpl = bo3::c2r([
 	"avatar" => md5($authData["email"]),
 	"background" => file_get_contents("https://api.nexus-pt.eu/bo3-image-server/"),
 
-	"breadcrump" => isset($breadcrump) ? $breadcrump : "",
+	"breadcrumb" => isset($breadcrumb) ? bo3::breadcrumb($breadcrumb) : "",
 	"mdl-official-url" => str_replace(["mod-", "-"], ["","/"], $cfg->mdl->folder),
 	"mdl-name" => $cfg->mdl->name,
 	"mdl-version" => $cfg->mdl->version,

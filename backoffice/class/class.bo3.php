@@ -226,4 +226,23 @@ class bo3 {
 			file_put_contents($file, $current);
 		}
 	}
+	
+	public static function breadcrumb ($breadcrumb = []) {
+		$toRetun = "";
+
+		if (is_array($breadcrumb) && count($breadcrumb) > 0) {
+			foreach ($breadcrumb as $key => $item) {
+				if (empty($toRetun)) {
+					$item_tpl = bo3::loade("breadcrumb-item.tpl");
+				}
+
+				$toRetun .= bo3::c2r([
+					"link" => $item["link"],
+					"name" => $item["name"]
+				], $item_tpl);
+			}
+		}
+
+		return $toRetun;
+	}
 }
