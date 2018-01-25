@@ -15,12 +15,9 @@ if (isset($_POST["submit"])) {
 			$user->setEmail($_POST["email"]);
 			$email_success = true;
 		} else {
-			$returnMessage .= bo3::c2r(
-				[
-					"lg-message" => $mdl_lang["email"]["check_failure"]
-				],
-				$message_tpl
-			);
+			$returnMessage .= bo3::c2r([
+				"lg-message" => $mdl_lang["email"]["check_failure"]
+			], $message_tpl);
 		}
 	} else {
 		$user->setEmail($authData["email"]);
@@ -35,31 +32,22 @@ if (isset($_POST["submit"])) {
 					$user->setPassword($_POST["newPassword"]);
 					$pw_success = true;
 				}else {
-					$returnMessage = bo3::c2r(
-						[
-							"message-type" => "danger",
-							"lg-message" => $mdl_lang["password"]["check_pw_failure"]
-						],
-						$message_tpl
-					);
+					$returnMessage = bo3::c2r([
+						"message-type" => "danger",
+						"lg-message" => $mdl_lang["password"]["check_pw_failure"]
+					], $message_tpl);
 				}
 			} else {
-				$returnMessage = bo3::c2r(
-					[
-						"message-type" => "danger",
-						"lg-message" => $mdl_lang["password"]["empty"]
-					],
-					$message_tpl
-				);
+				$returnMessage = bo3::c2r([
+					"message-type" => "danger",
+					"lg-message" => $mdl_lang["password"]["empty"]
+				], $message_tpl);
 			}
 		} else {
-			$returnMessage = bo3::c2r(
-				[
-					"message-type" => "danger",
-					"lg-message" => $mdl_lang["password"]["old_pw_failure"]
-				],
-				$message_tpl
-			);
+			$returnMessage = bo3::c2r([
+				"message-type" => "danger",
+				"lg-message" => $mdl_lang["password"]["old_pw_failure"]
+			], $message_tpl);
 		}
 	} else {
 		$user->setOldPassword($authData["password"]);
@@ -76,13 +64,10 @@ if (isset($_POST["submit"])) {
 		$user->setDateUpdate();
 
 		if ($user->update()) {
-			$returnMessage = bo3::c2r(
-				[
-					"message-type" => "sucess",
-					"lg-message" => $mdl_lang["account"]["success"]
-				],
-				$message_tpl
-			);
+			$returnMessage = bo3::c2r([
+				"message-type" => "sucess",
+				"lg-message" => $mdl_lang["account"]["success"]
+			], $message_tpl);
 
 			$userData = $user->returnOneUser();
 
@@ -95,36 +80,30 @@ if (isset($_POST["submit"])) {
 				(!empty($cfg->system->path_bo)) ? $cfg->system->path_bo : "/"
 			);
 		} else {
-			$returnMessage = bo3::c2r(
-				[
-					"message-type" => "danger",
-					"lg-message" => sprintf($mdl_lang["account"]["failure"], $cfg->email->support)
-				],
-				$message_tpl
-			);
+			$returnMessage = bo3::c2r([
+				"message-type" => "danger",
+				"lg-message" => sprintf($mdl_lang["account"]["failure"], $cfg->email->support)
+			], $message_tpl);
 		}
 		//$user->insert()
 	}
 }
 
-$mdl = bo3::c2r(
-	[
-		"return-message" => (isset($returnMessage) && !empty($returnMessage)) ? $returnMessage : null,
-		"lg-username" => $mdl_lang["account"]["username"],
-		"username" => $authData["username"],
-		"lg-email" => $mdl_lang["account"]["email"],
-		"email" => $authData["email"],
-		"lg-rank" => $mdl_lang["account"]["rank"],
-		"rank" => $authData["rank"],
-		"lg-date" => $mdl_lang["account"]["date"],
-		"date" => $authData["date"],
-		"lg-password" => $mdl_lang["account"]["password"],
-		"lg-email-change" => $mdl_lang["account"]["email_change"],
-		"lg-save" => $lang["common"]["save"],
-		"lg-cancel" => $lang["common"]["cancel"],
-		"md5-email" => md5($authData["email"])
-	],
-	bo3::mdl_load("templates/home.tpl")
-);
+$mdl = bo3::c2r([
+	"return-message" => (isset($returnMessage) && !empty($returnMessage)) ? $returnMessage : null,
+	"lg-username" => $mdl_lang["account"]["username"],
+	"username" => $authData["username"],
+	"lg-email" => $mdl_lang["account"]["email"],
+	"email" => $authData["email"],
+	"lg-rank" => $mdl_lang["account"]["rank"],
+	"rank" => $authData["rank"],
+	"lg-date" => $mdl_lang["account"]["date"],
+	"date" => $authData["date"],
+	"lg-password" => $mdl_lang["account"]["password"],
+	"lg-email-change" => $mdl_lang["account"]["email_change"],
+	"lg-save" => $lang["common"]["save"],
+	"lg-cancel" => $lang["common"]["cancel"],
+	"md5-email" => md5($authData["email"])
+], bo3::mdl_load("templates/home.tpl"));
 
 include "pages/module-core.php";

@@ -26,7 +26,7 @@
 
 <!-- Form -->
 
-<form method="post" action="{c2r-path-bo}/0/{c2r-lg}/account/">
+<form method="post" action="{c2r-path-bo}/{c2r-lg}/6-account/">
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 		<div class="form-group">
