@@ -94,7 +94,7 @@
 								{c2r-mdl-name}
 							</a>
 						</li>
-						{c2r-breadcrump}
+						{c2r-breadcrumb}
 					</ol>
 				</div>
 			</div>
