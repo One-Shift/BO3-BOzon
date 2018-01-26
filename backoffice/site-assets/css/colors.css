@@ -111,14 +111,14 @@ a {
   border-color: #23828f;
 }
 
-.btn-sucess {
+.btn-success {
 	color: #4cae4c;
 	background-color: #ffffff;
 	border-color: #4cae4c;
 }
 
-.btn-sucess:hover,
-.btn-sucess:focus {
+.btn-success:hover,
+.btn-success:focus {
 	color: #4cae4c;
 	background-color: #eaf9ea;
 	border-color: #4cae4c;
