@@ -249,7 +249,7 @@ class category {
 	}
 
 	//Returns sub categories need category id and lang id. $this->parent_id, $this->lang_id
-	public function returnSubCategoriesFromOneCategory() {
+	public function returnChildCategories() {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
