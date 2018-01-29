@@ -41,7 +41,7 @@ if (!isset($_POST["save"])) {
 		$a = new category();
 		$a->setLangId(1);
 		$a->setParentId($id);
-		$a = $a->returnSubCategoriesFromOneCategory();
+		$a = $a->returnChildCategories();
 
 		foreach ($a as $item) {
 			$tmp = [];
