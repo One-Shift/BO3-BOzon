@@ -97,6 +97,8 @@ if (!isset($_POST["save"])) {
 			"date-value" => date("Y-m-d H:i:s"),
 			"code" => $mdl_lang["label"]["code"],
 			"code-placeholder" => $mdl_lang["label"]["code-placeholder"],
+			'sort' => $mdl_lang["label"]["sort"],
+			'sort-placeholder' => $mdl_lang["label"]["sort-placeholder"],
 			"published" => $mdl_lang["label"]["published"],
 			"but-submit" => $mdl_lang["label"]["but-submit"]
 		],
@@ -110,6 +112,7 @@ if (!isset($_POST["save"])) {
 	$article->setCode($_POST["code"]);
 	$article->setDate($_POST["date"]);
 	$article->setDateUpdate();
+	$article->setSort($_POST["sort"]);
 	$article->setPublished(isset($_POST["published"]) ? $_POST["published"] : 0);
 	$article->setUserId($authData["id"]);
 

@@ -27,6 +27,13 @@
 		</div>
 		<!-- END Category Date -->
 
+		<!-- Category Sort -->
+		<div class="form-group">
+			<label for="inputSort">{c2r-sort}</label>
+			<input name="sort" id="inputSort" type="number" class="form-control" placeholder="{c2r-sort-placeholder}" value="{c2r-sort-value}" required>
+		</div>
+		<!-- END Category Sort -->
+
 		<!-- Category Code -->
 		<div class="form-group">
 			<label for="inputCode">{c2r-code}</label>
