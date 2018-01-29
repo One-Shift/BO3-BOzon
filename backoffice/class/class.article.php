@@ -231,11 +231,12 @@ class article {
 			"SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
 				FROM %s_articles bc
 					INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
-				WHERE (%s) AND bc.category_id = %s
+				WHERE (%s) AND bcl.lang_id = %s AND bc.category_id = %s
 				%s %s",
 			$cfg->db->prefix,
 			$cfg->db->prefix,
 			(!empty($where)) ? $where : "true",
+			$this->lang_id,
 			$this->category_id,
 			($order !== null) ? "ORDER BY {$order}" : null,
 			($limit !== null) ? "LIMIT {$limit}" : null
