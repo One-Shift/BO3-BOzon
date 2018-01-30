@@ -1,3 +1,8 @@
+a, button {
+	transition: all ease 300ms;
+	-webkit-transition: all ease 300ms;
+}
+
 a {
 	color: #00838f;
 }
@@ -80,8 +85,8 @@ a {
 
 .btn-danger:hover,
 .btn-danger:focus {
-	color: #d9534f;
-  background-color: #fdf2f2;
+	color: #fff;
+  background-color: #d9534f;
   border-color: #d43f3a;
 }
 
