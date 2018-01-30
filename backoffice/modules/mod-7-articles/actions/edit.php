@@ -57,7 +57,7 @@ if (!isset($_POST["save"])){
 			$a = new category();
 			$a->setLangId(1);
 			$a->setParentId($id);
-			$a = $a->returnSubCategoriesFromOneCategory();
+			$a = $a->returnChildCategories();
 			$i++;
 
 			foreach ($a as $item) {
@@ -164,6 +164,9 @@ if (!isset($_POST["save"])){
 				"code" => $mdl_lang["label"]["code"],
 				"code-placeholder" => $mdl_lang["label"]["code-placeholder"],
 				"code-value" => $article_result[1]->code,
+				'sort' => $mdl_lang["label"]["sort"],
+				'sort-placeholder' => $mdl_lang["label"]["sort-placeholder"],
+				'sort-value' => $article_result[1]->sort,
 				"published" => $mdl_lang["label"]["published"],
 				"published-checked" => ($article_result[1]->published) ? "checked" : "",
 				"but-submit" => $mdl_lang["label"]["but-submit"],

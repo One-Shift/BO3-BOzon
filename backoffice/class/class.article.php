@@ -9,6 +9,7 @@ class article {
 	protected $user_id;
 	protected $date;
 	protected $date_update;
+	protected $sort;
 	protected $published = false;
 
 	public function __construct() {}
@@ -50,16 +51,21 @@ class article {
 		$this->published = $p;
 	}
 
+	public function setSort($s) {
+		$this->sort = $s;
+	}
+
 	public function insert() {
 		global $cfg, $db;
 
-		$query[0] = sprintf("INSERT INTO %s_articles (code, category_id, user_id, date, date_update, published) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+		$query[0] = sprintf("INSERT INTO %s_articles (code, category_id, user_id, date, date_update, sort, published) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->code,
 			$this->category_id,
 			$this->user_id,
 			$this->date,
 			$this->date_update,
+			$this->sort,
 			$this->published
 		);
 
@@ -90,12 +96,13 @@ class article {
 		$toReturn = false;
 
 		$query[0] = sprintf(
-			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s', user_id = '%s' WHERE id = '%s'",
+			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', sort = '%s', published = '%s', user_id = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->code,
 			$this->category_id,
 			$this->date,
 			$this->date_update,
+			$this->sort,
 			$this->published,
 			$this->user_id,
 			$this->id
@@ -224,11 +231,12 @@ class article {
 			"SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
 				FROM %s_articles bc
 					INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
-				WHERE (%s) AND bc.category_id = %s
+				WHERE (%s) AND bcl.lang_id = %s AND bc.category_id = %s
 				%s %s",
 			$cfg->db->prefix,
 			$cfg->db->prefix,
 			(!empty($where)) ? $where : "true",
+			$this->lang_id,
 			$this->category_id,
 			($order !== null) ? "ORDER BY {$order}" : null,
 			($limit !== null) ? "LIMIT {$limit}" : null
