@@ -45,7 +45,7 @@ function recursiveWayGet($id, $i = 0, &$data = []) {
 	$a = new category();
 	$a->setLangId($lg);
 	$a->setParentId($id);
-	$a = $a->returnSubCategoriesFromOneCategory();
+	$a = $a->returnChildCategories();
 
 	foreach ($a as $item) {
 		$tmp = [];
@@ -81,7 +81,7 @@ if(!empty($data)) {
 $mdl = bo3::c2r([
 	"label-add-category" => $mdl_lang["label"]["add-category"],
 	"category-filter-select" => $mdl_lang["label"]["category-filter-select"],
-	"filter-options" => $categories_list,
+	"filter-options" => (isset($categories_list)) ? $categories_list : "",
 	"name" => $mdl_lang["label"]["name"],
 	"category" => $mdl_lang["label"]["category"],
 	"section" => $mdl_lang["label"]["type"],

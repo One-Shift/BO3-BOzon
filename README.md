@@ -32,7 +32,7 @@ Coming soon
 * Files 0.0.2
 * Home 0.0.1
 * Account 0.0.2
-* Articles 0.0.1
+* Articles 0.0.4
 * Categories 0.0.1
 * Users 0.0.1
 

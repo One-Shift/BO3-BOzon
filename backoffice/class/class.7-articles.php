@@ -234,7 +234,6 @@ class article {
 			($limit !== null) ? "LIMIT {$limit}" : null
 		);
 
-
 		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {

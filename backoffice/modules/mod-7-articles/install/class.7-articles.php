@@ -51,7 +51,7 @@ class article {
 	}
 
 	public function insert() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query[0] = sprintf("INSERT INTO %s_articles (code, category_id, user_id, date, date_update, published) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
@@ -63,19 +63,19 @@ class article {
 			$this->published
 		);
 
-		if ($mysqli->query($query[0])){
-			$this->id = $mysqli->insert_id;
+		if ($db->query($query[0])){
+			$this->id = $db->insert_id;
 
 			foreach ($this->title as $i => $item) {
 				$query[1] = sprintf("INSERT INTO %s_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
 					$cfg->db->prefix,
 					$this->id,
 					$i+1,
-					$this->title[$i],
-					$this->description[$i]
+					$db->real_escape_string($this->title[$i]),
+					$db->real_escape_string($this->description[$i])
 				);
 
-				$mysqli->query($query[1]);
+				$db->query($query[1]);
 			}
 
 			return true;
@@ -85,56 +85,57 @@ class article {
 	}
 
 	public function update() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$toReturn = false;
 
 		$query[0] = sprintf(
-			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s' WHERE id = '%s'",
+			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s', user_id = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->code,
 			$this->category_id,
 			$this->date,
 			$this->date_update,
 			$this->published,
+			$this->user_id,
 			$this->id
 		);
 
-		if ($mysqli->query($query[0])){
+		if ($db->query($query[0])){
 			$toReturn = true;
 
 			foreach ($cfg->lg as $index => $lg) {
-				$fast_query = sprintf(
-					"SELECT id FROM %s_articles_lang WHERE article_id = %s AND lang_id = %s",
-					$cfg->db->prefix,
-					$this->id,
-					$index
-				);
+				if ($lg[0]) {
+					$fast_query = sprintf(
+						"SELECT id FROM %s_articles_lang WHERE article_id = %s AND lang_id = %s",
+						$cfg->db->prefix,
+						$this->id,
+						$index
+					);
 
-				$fast_source = $mysqli->query($fast_query);
+					$fast_source = $db->query($fast_query);
 
-				if ($fast_source->num_rows > 0) {
-					if($lg[0]){
+					if ($fast_source->num_rows > 0) {
 						$query[$index] = sprintf("UPDATE %s_articles_lang SET title = '%s', text = '%s' WHERE article_id = '%s' AND lang_id = '%s'",
 							$cfg->db->prefix,
-							$this->title[$index-1],
-							$this->description[$index-1],
+							$db->real_escape_string($this->title[$index-1]),
+							$db->real_escape_string($this->description[$index-1]),
 							$this->id,
 							$index
 						);
 
-						$mysqli->query($query[$index]);
-					}
-				} else {
-					$query[1] = sprintf("INSERT INTO %s_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
-						$cfg->db->prefix,
-						$this->id,
-						$index,
-						$this->title[$index - 1],
-						$this->description[$index - 1]
-					);
+						$db->query($query[$index]);
+					} else {
+						$query[1] = sprintf("INSERT INTO %s_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
+							$cfg->db->prefix,
+							$this->id,
+							$index,
+							$db->real_escape_string($this->title[$index - 1]),
+							$db->real_escape_string($this->description[$index - 1])
+						);
 
-					$mysqli->query($query[1]);
+						$db->query($query[1]);
+					}
 				}
 			}
 		}
@@ -143,7 +144,7 @@ class article {
 	}
 
 	public function delete() {
-		global $cfg, $mysqli, $authData;
+		global $cfg, $db, $authData;
 
 		$article = new article();
 		$article->setId($this->id);
@@ -156,14 +157,16 @@ class article {
 		$trash->setUser($authData["id"]);
 		$trash->insert();
 
-		$query = sprintf(
-			"DELETE c, cl FROM %s_articles c JOIN %s_articles_lang cl on cl.article_id = c.id WHERE c.id = %s",
-			$cfg->db->prefix,
-			$cfg->db->prefix,
-			$this->id
+		$query = sprintf("DELETE c, cl
+			FROM %s_articles c
+				JOIN %s_articles_lang cl on cl.article_id = c.id
+			WHERE c.id = %s",
+				$cfg->db->prefix,
+				$cfg->db->prefix,
+				$this->id
 		);
 
-		$mysqli->query($query);
+		$db->query($query);
 
 		return ($article->returnOneArticleAllLanguages() == FALSE) ? TRUE : FALSE;
 	}
@@ -173,7 +176,7 @@ class article {
 	}
 
 	public function returnAllArticles () {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$toReturn = [];
 
@@ -185,7 +188,7 @@ class article {
 			$cfg->db->prefix, $cfg->db->prefix, $this->lang_id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		while ($data = $source->fetch_object()) {
 			array_push($toReturn, $data);
@@ -195,7 +198,7 @@ class article {
 
 	// Returns one categorie in one language need category id and lang id. $this->id, $this->lang_id
 	public function returnOneArticle() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text
 			FROM %s_articles bc
@@ -207,7 +210,7 @@ class article {
 			$this->lang_id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = $source->fetch_object();
 
@@ -215,7 +218,7 @@ class article {
 	}
 
 	public function returnArticlesByCategory($where = null, $order = null, $limit = null) {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf(
 			"SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
@@ -231,8 +234,7 @@ class article {
 			($limit !== null) ? "LIMIT {$limit}" : null
 		);
 
-
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			$toReturn = [];
@@ -249,7 +251,7 @@ class article {
 
 	// Returns one categories in all languages need category id. $this->id
 	public function returnOneArticleAllLanguages() {
-		global $cfg, $mysqli;
+		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
 			FROM %s_articles bc
@@ -258,7 +260,7 @@ class article {
 			$cfg->db->prefix, $cfg->db->prefix, $this->id
 		);
 
-		$source = $mysqli->query($query);
+		$source = $db->query($query);
 
 		$toReturn = [];
 
