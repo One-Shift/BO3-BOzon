@@ -33,7 +33,7 @@ Coming soon
 * Home 0.0.1
 * Account 0.0.2
 * Articles 0.0.4
-* Categories 0.0.1
+* Categories 0.0.4
 * Users 0.0.1
 
 ## License

@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST["submitInstall"]) && user::isOwner($authData)) {
-    $db = bo3::c2r(
+	$db = bo3::c2r(
 		[
 			"mod-name" => $cfg->mdl->name,
 			"mod-folder" => $cfg->mdl->folder,
