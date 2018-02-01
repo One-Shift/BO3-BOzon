@@ -1,6 +1,6 @@
 <?php
 
-$file = new file();
+$file = new files();
 $file->setId($id);
 
 if (!isset($_POST["submit"])) {
@@ -14,30 +14,24 @@ if (!isset($_POST["submit"])) {
 			$modules_list = "";
 		}
 
-		$modules_list .= bo3::c2r(
-			[
-				"value" => $module,
-				"selected" => ($file->module == $module) ? "SELECTED" : ""
-			],
-			$select_option
-		);
+		$modules_list .= bo3::c2r([
+			"value" => $module,
+			"selected" => ($file->module == $module) ? "SELECTED" : ""
+		], $select_option);
 	}
 
-	$mdl = bo3::c2r(
-		[
-			"id" => $file->id,
-			"file" => $file->file,
-			"type" => $file->type,
-			"module" => $file->module,
-			"id-ass" => $file->id_ass,
-			"description" => $file->description,
-			"code" => $file->code,
-			"sort" => $file->sort,
-			"date" => $file->date,
-			"modules-list" => (isset($modules_list)) ? $modules_list : ""
-		],
-		bo3::mdl_load("templates-e/edit/form.tpl")
-	);
+	$mdl = bo3::c2r([
+		"id" => $file->id,
+		"file" => $file->file,
+		"type" => $file->type,
+		"module" => $file->module,
+		"id-ass" => $file->id_ass,
+		"description" => $file->description,
+		"code" => $file->code,
+		"sort" => $file->sort,
+		"date" => $file->date,
+		"modules-list" => (isset($modules_list)) ? $modules_list : ""
+	], bo3::mdl_load("templates-e/edit/form.tpl"));
 } else {
 	$file->setDescription($_POST["inputDescription"]);
 	$file->setCode($_POST["inputCode"]);

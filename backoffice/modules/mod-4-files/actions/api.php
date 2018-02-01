@@ -7,6 +7,8 @@ function clean($string) {
 }
 
 function upload($post, $files = []) {
+	global $auth, $authData;
+
 	$toReturn = [
 		"status" => false,
 		"message" => "",
@@ -22,13 +24,12 @@ function upload($post, $files = []) {
 
 		$file = new file();
 		$file->setFile($clean_file_name);
-		$file->setType(
-			(!in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) ? 'doc' : 'img'
-		);
+		$file->setType((!in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) ? 'doc' : 'img');
 		$file->setModule((isset($post["module"])) ? $post["module"] : "");
 		$file->setIdAss((isset($post["id"])) ? $post["id"] : "");
-		$file->setSort(0);
 		$file->setDescription("");
+		$file->setSort(0);
+		$file->setUserId($authData['id']);
 
 		$file->setDate();
 		$file->setDateUpdate();
@@ -96,10 +97,7 @@ function delete ($id) {
 
 switch ($_GET["r"]) {
 	case 'upload':
-		$tpl = upload(
-			$_POST,
-			(isset($_FILES["file"])) ? $_FILES["file"] : []
-		);
+		$tpl = upload( $_POST, isset($_FILES["file"]) ? $_FILES["file"] : []);
 		break;
 	case 'getList':
 		$tpl = getList($id, $_GET["module"]);
