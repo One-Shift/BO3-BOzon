@@ -27,6 +27,15 @@ Já o Backoffice passará por uma reestruturação tecnica e gráfica.
 
 Coming soon
 
+## Pre Installed Modules
+
+* Files 0.0.1
+* Home 0.0.1
+* Account 0.0.2
+* Articles 0.0.1
+* Categories 0.0.1
+* Users 0.0.1
+
 ## License
 
 Copyright (c) 2012-2014 GitHub, Inc. See the LICENSE file for license rights and
