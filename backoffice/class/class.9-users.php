@@ -57,7 +57,7 @@ class user {
 	public function setCode($c) {
 		$this->code = $c;
 	}
-	
+
 	public function setCustomCss($c) {
 		$this->custom_css = $c;
 	}
@@ -126,10 +126,10 @@ class user {
 
 		return $db->query($query);
 	}
-	
+
 	public function update_custom_css() {
 		global $cfg, $db;
-		
+
 		$query = sprintf(
 			"UPDATE %s_users SET custom_css = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,

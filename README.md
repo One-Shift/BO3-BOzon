@@ -34,7 +34,7 @@ Coming soon
 * Account 0.0.2
 * Articles 0.0.4
 * Categories 0.0.4
-* Users 0.0.1
+* Users 0.0.3
 
 ## License
 

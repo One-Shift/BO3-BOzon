@@ -4,9 +4,9 @@ $cfg->mdl = new stdClass();
 $cfg->mdl->name = "Users";
 $cfg->mdl->folder = "mod-9-users";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
-$cfg->mdl->version = "0.0.1";
-$cfg->mdl->developer = "João Santos";
-$cfg->mdl->contact = "jfnsatos7@gmail.com";
+$cfg->mdl->version = "0.0.3";
+$cfg->mdl->developer = "João Santos & Carlos Santos";
+$cfg->mdl->contact = "jfnsatos7@gmail.com & carlos@one-shift.com";
 $cfg->mdl->dbTables = ["users", "trash"];
 
 // load language for module
