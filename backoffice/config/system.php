@@ -13,7 +13,7 @@ $cfg->system->owner = "";
 $cfg->system->protocol = "http"; // you can use https instead
 $cfg->system->domain = "yourdomain.here";
 $cfg->system->path = "Path-here ex.: /new or /old";
-$cfg->system->path_bo = "Path-above + bo folder ex.: /new/backoffice";
+$cfg->system->path_bo = "{$cfg->system->path}/backoffice";
 
 $cfg->system->version = "3.2.3";
 $cfg->system->sub_version = "RC";
@@ -21,6 +21,6 @@ $cfg->system->sub_version = "RC";
 $cfg->system->key = "GJTBpKregE9WgXc";
 
 $cfg->system->cookie = "cookie";
-$cfg->system->cookie_time = 1440;
+$cfg->system->cookie_time = 86400; // 86400 represents 1 day, 60 seconds * 60 minutes * 24 hours.
 
 $cfg->system->analytics = "";
