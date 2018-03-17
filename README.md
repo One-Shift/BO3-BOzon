@@ -29,7 +29,7 @@ Coming soon
 
 ## Pre Installed Modules
 
-* Files 0.0.2
+* Files 0.0.4
 * Home 0.0.1
 * Account 0.0.2
 * Articles 0.0.4
