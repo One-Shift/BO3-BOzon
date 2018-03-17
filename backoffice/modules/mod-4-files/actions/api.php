@@ -17,7 +17,7 @@ function upload($post, $files = []) {
 
 	$clean_file_name = clean($files["name"]);
 	$clean_file_name = date("Y-m-d-H-i-s-").$clean_file_name;
-	$newFilePath = "../u-files/{$clean_file_name}";
+	$newFilePath = "../uploads/{$clean_file_name}";
 
 	if (move_uploaded_file($files["tmp_name"], $newFilePath)) {
 		$extension = pathinfo($files['name'], PATHINFO_EXTENSION);
