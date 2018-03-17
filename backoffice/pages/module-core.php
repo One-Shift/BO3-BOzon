@@ -26,7 +26,6 @@ $tpl = bo3::c2r([
 	"bo3-sub-version" => $cfg->system->sub_version,
 	"menu" => (isset($menu)) ? $menu : "",
 	"avatar" => md5($authData["email"]),
-	"background" => file_get_contents("https://api.nexus-pt.eu/bo3-image-server/"),
 
 	"breadcrumb" => isset($breadcrumb) ? bo3::breadcrumb($breadcrumb) : "",
 	"mdl-official-url" => str_replace(["mod-", "-"], ["","/"], $cfg->mdl->folder),
