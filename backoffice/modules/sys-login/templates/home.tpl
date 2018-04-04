@@ -26,9 +26,9 @@
 					</div>
 					<div class="col-xs-12 hidden-sm hidden-md hidden-lg xs-spacer15"></div>
 					<div class="col-xs-12 col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-2 message">
-						<div class="xs-spacer30 sm-spacer30"></div>
-						<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="80%" /></p>
-						<div class="sm-spacer30"></div>
+						<div class="xs-spacer30 sm-spacer60"></div>
+						<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
+						<div class="sm-spacer60"></div>
 						{c2r-lg-message}
 						<div class="xs-spacer30 sm-spacer60"></div>
 					</div>
