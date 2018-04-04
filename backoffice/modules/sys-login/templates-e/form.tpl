@@ -8,8 +8,13 @@
 	<div class="name">
 		<input type="email" name="email" id="email" placeholder="{c2r-lg-email}" required="" autofocus />
 	</div>
-	<div class="password">
+	<div class="input-group password">
 		<input type="password" name="password" id="password" placeholder="{c2r-lg-password}" required="" />
+		<div class="input-group-btn">
+			<span onclick="seePassword()">
+				<i class="fa fa-eye-slash" aria-hidden="true"></i>
+			</span>
+		</div>
 	</div>
 	<div class="xs-spacer15 sm-spacer15"></div>
 	<div class="xs-tacenter sm-tacenter">

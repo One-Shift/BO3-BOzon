@@ -3,6 +3,7 @@
 	<head>
 		{c2r-head}
 		<link rel="stylesheet" href="{c2r-mod-path}/site-assets/css/style.css" media="screen" title="no title" charset="utf-8">
+		<script type="text/javascript" src="{c2r-mod-path}/site-assets/js/script.js"></script>
 	</head>
 	<body class="login" style="background-image: url({c2r-background});">
 		<nav class="navbar navbar-default navbar-fixed-top">
