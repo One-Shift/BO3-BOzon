@@ -70,6 +70,7 @@
 	line-height: 25pt;
 	text-align: center;
 	font-size: 15pt;
+	padding-left: 40px;
 }
 
 .login .password .input-group-btn span {
