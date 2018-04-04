@@ -161,7 +161,7 @@
 		$("#uploaded-list").append(uploaded_tpl);
 
 		var line = $("#uploaded-list .row:last-child")[0];
-		$(line).find(".file").attr("href", path + "/u-files/" + o.file).html(o.file);
+		$(line).find(".file").attr("href", path + "/uploads/" + o.file).html(o.file);
 		$(line).find("#inputDescription").val(o.description);
 		$(line).find("#inputCode").val(o.code);
 		$(line).find("#inputSort").val(o.sort);
