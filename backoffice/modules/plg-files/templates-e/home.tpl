@@ -228,7 +228,7 @@
 					var obj = $(this).parent("div").parent("div");
 
 					$.get(
-						"{c2r-path-bo}/{c2r-lg}/files/api/" + $(this).attr("data-id") + "?r=delete",
+						"{c2r-path-bo}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete",
 						function(data) {
 							data = $.parseJSON(data);
 							if (data.status) {
