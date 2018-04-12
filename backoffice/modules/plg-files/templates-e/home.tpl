@@ -161,7 +161,7 @@
 		$("#uploaded-list").append(uploaded_tpl);
 
 		var line = $("#uploaded-list .row:last-child")[0];
-		$(line).find(".file").attr("href", path + "/u-files/" + o.file).html(o.file);
+		$(line).find(".file").attr("href", path + "/uploads/" + o.file).html(o.file);
 		$(line).find("#inputDescription").val(o.description);
 		$(line).find("#inputCode").val(o.code);
 		$(line).find("#inputSort").val(o.sort);
@@ -228,7 +228,7 @@
 					var obj = $(this).parent("div").parent("div");
 
 					$.get(
-						"{c2r-path-bo}/{c2r-lg}/files/api/" + $(this).attr("data-id") + "?r=delete",
+						"{c2r-path-bo}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete",
 						function(data) {
 							data = $.parseJSON(data);
 							if (data.status) {
