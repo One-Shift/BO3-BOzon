@@ -38,7 +38,7 @@
 		<!-- Category Sort -->
 		<div class="form-group">
 			<label for="inputSort">{c2r-sort}</label>
-			<input name="sort" id="inputSort" type="number" class="form-control" placeholder="{c2r-sort-placeholder}" required>
+			<input name="sort" id="inputSort" type="number" class="form-control" placeholder="{c2r-sort-placeholder}" value="0" required>
 		</div>
 		<!-- END Category Sort -->
 
