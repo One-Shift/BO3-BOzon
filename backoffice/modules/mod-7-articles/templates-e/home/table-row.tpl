@@ -11,7 +11,7 @@
 			{c2r-but-edit}
 		</a>
 		<a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/delete/{c2r-id}" class="btn btn-cancel" role="button">
-			<i class="fa fa-pencil" aria-hidden="true"></i>
+			<i class="fa fa-trash" aria-hidden="true"></i>
 			<span class="sm-block15 xs-block15"></span>
 			{c2r-but-delete}
 		</a>
