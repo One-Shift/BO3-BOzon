@@ -10,12 +10,12 @@ $cfg->system->timezone = "Europe/Lisbon"; // to disable set with FALSE
 $cfg->system->sitename = "";
 $cfg->system->owner = "";
 
-$cfg->system->protocol = "http"; // you can use https instead
+$cfg->system->protocol = "https"; // you can use http instead
 $cfg->system->domain = "yourdomain.here";
 $cfg->system->path = "Path-here ex.: /new or /old";
 $cfg->system->path_bo = "{$cfg->system->path}/backoffice";
 
-$cfg->system->version = "3.2.3";
+$cfg->system->version = "3.2.4";
 $cfg->system->sub_version = "RC";
 
 $cfg->system->key = "GJTBpKregE9WgXc";
