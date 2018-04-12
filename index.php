@@ -50,6 +50,7 @@ $tpl = bo3::c2r([
 	"description" => $lang["system"]["description"],
 	"analytics" => $cfg->system->analytics,
 	"path" => $cfg->system->path,
+	"path-bo" => $cfg->system->path_bo,
 	"lg" => $lg_s
 ], isset($tpl) ? $tpl : ".::TPL::.::ERROR::.");
 
