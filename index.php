@@ -6,7 +6,6 @@ include "backoffice/config/email.php";
 include "backoffice/config/languages.php";
 include "backoffice/config/store.php";
 include "backoffice/config/system.php";
-
 include "backoffice/controller/database.php";
 include "backoffice/controller/https.php";
 include "backoffice/controller/classes.php";
@@ -15,8 +14,6 @@ include "backoffice/controller/sessions.php";
 include "backoffice/controller/pages.php";
 include "backoffice/controller/actions.php";
 include "backoffice/controller/id.php";
-
-include "pages-e/_global_.php";
 
 $head = bo3::loade("head.tpl");
 
@@ -35,21 +32,16 @@ if ($pg == null) {
 // print website
 $tpl = bo3::c2r([
 	"head" => $head,
-
 	"og-title" => (isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
 	"og-url" => (isset($og["url"])) ? $og["url"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
 	"og-image" => (isset($og["image"])) ? $og["image"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
 	"og-description" => (isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
-
-	"lib-jquery" => file_get_contents("https://one-shift.github.io/BO3/jquery.html"),
-	"lib-bootstrap" => file_get_contents("https://one-shift.github.io/BO3/bootstrap.html"),
-	"lib-fontawesome" => file_get_contents("https://one-shift.github.io/BO3/fontawesome.html"),
-
 	"sitename" => $cfg->system->sitename,
 	"keywords" => $lang["system"]["keywords"],
 	"description" => $lang["system"]["description"],
 	"analytics" => $cfg->system->analytics,
 	"path" => $cfg->system->path,
+	"path-bo" => $cfg->system->path_bo,
 	"lg" => $lg_s
 ], isset($tpl) ? $tpl : ".::TPL::.::ERROR::.");
 

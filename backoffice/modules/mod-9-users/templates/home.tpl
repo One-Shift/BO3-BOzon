@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 sm-taright">
-		<a href="{c2r-path-bo}/{c2r-lg}/users/add/" class="btn btn-add" role="button">
+		<a href="{c2r-path-bo}/{c2r-lg}/9-users/add/" class="btn btn-add" role="button">
 			<i class="fa fa-plus" aria-hidden="true"></i><div class="xs-block15 sm-block15"></div>{c2r-lg-add-btn}
 		</a>
 	</div>

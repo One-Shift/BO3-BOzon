@@ -1,23 +1,15 @@
 <title>BO3 / BOzon » {c2r-sitename}</title>
 
-<!-- begin favicon -->
-<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="{c2r-path-bo}/site-assets/favicon/favicon_57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{c2r-path-bo}/site-assets/favicon/favicon_114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="{c2r-path-bo}/site-assets/favicon/favicon_72.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{c2r-path-bo}/site-assets/favicon/favicon_144.png" />
-
-<link rel="icon" href="{c2r-path-bo}/site-assets/favicon/favicon_16.png"  sizes="16x16"   type="image/png" />
-<link rel="icon" href="{c2r-path-bo}/site-assets/favicon/favicon_32.png"  sizes="32x32"   type="image/png" />
-<link rel="icon" href="{c2r-path-bo}/site-assets/favicon/favicon_48.png"  sizes="48x48"   type="image/png" />
-<link rel="icon" href="{c2r-path-bo}/site-assets/favicon/favicon_64.png"  sizes="64x64"   type="image/png" />
-<link rel="icon" href="{c2r-path-bo}/site-assets/favicon/favicon_128.png" sizes="128x128" type="image/png" />
-
-<link rel="icon" href="{c2r-path-bo}/site-assets/favicon/favicon_32.png" />
-<!--[if IE]><link rel="shortcut icon" href="{c2r-path}/site-assets/favicon/favicon.ico"><![endif]-->
-
-<meta name="msapplication-TileColor" content="#ebffe3" />
-<meta name="msapplication-TileImage" content="{c2r-path-bo}/site-assets/favicon/favicon_144.png" />
-<!-- end favicon -->
+<link rel="shortcut icon" href="{c2r-path-bo}/site-assets/favicon/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-152x152.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-180x180.png" />
 
 <meta property="og:site_name" content="{c2r-sitename}" />
 <meta property="og:type" content="website" />
@@ -26,17 +18,19 @@
 <meta property="og:title" content="{c2r-sitename}" />
 <meta property="og:description" content="{c2r-og-description}" />
 
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
 <meta name="author" content="One:Shift at one-shift.com" />
 <meta name="author-code" content="One:Shift at one-shift.com" />
 
-{c2r-lib-jquery}
-{c2r-lib-bootstrap}
-{c2r-lib-fontawesome}
+<script type="text/javascript" src="{c2r-path-bo}/site-assets/libs/jquery/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{c2r-path-bo}/site-assets/libs/bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="{c2r-path-bo}/site-assets/libs/bootstrap/js/bootstrap.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{c2r-path-bo}/site-assets/libs/fontawesome/css/font-awesome.min.css">
 
 <link rel='stylesheet' type='text/css' href='//one-shift.github.io/site-assets/css/style.css' />
 <link rel="stylesheet" href="{c2r-path-bo}/site-assets/css/style.css" type="text/css" media="screen" />
