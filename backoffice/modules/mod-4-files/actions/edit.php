@@ -1,6 +1,6 @@
 <?php
 
-$file = new file();
+$file = new files();
 $file->setId($id);
 
 if (!isset($_POST["submit"])) {

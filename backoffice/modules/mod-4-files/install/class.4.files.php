@@ -212,7 +212,9 @@ class file {
 				$cfg->db->prefix,
 				((!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null) .
 				((!empty($this->id_ass)) ? " AND " : null) .
-				((!empty($this->module)) ? "module = '{$this->module}'" : null)
+				((!empty($this->module)) ? "module = '{$this->module}'" : null) .
+				((!empty($this->module)) ? " AND " : null) .
+				((!empty($this->type)) ? "type = '{$this->type}'" : null)
 			);
 
 			if (is_array($this->code)) {

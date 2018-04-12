@@ -5,7 +5,7 @@
 				<label for="inputFile">File</label>
 				<div class="input-group">
 					<input type="text" class="form-control" id="inputFile" placeholder="" value="{c2r-file}" readonly>
-					<a class="input-group-addon" href="{c2r-path}/u-files/{c2r-file}" target="_blank">
+					<a class="input-group-addon" href="{c2r-path}/uploads/{c2r-file}" target="_blank">
 						<i class="fa fa-eye" aria-hidden="true"></i>
 					</a>
 				</div>
