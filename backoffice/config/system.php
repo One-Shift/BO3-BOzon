@@ -15,7 +15,7 @@ $cfg->system->domain = "yourdomain.here";
 $cfg->system->path = "Path-here ex.: /new or /old";
 $cfg->system->path_bo = "{$cfg->system->path}/backoffice";
 
-$cfg->system->version = "3.2.4";
+$cfg->system->version = "3.2.5";
 $cfg->system->sub_version = "RC";
 
 $cfg->system->key = "GJTBpKregE9WgXc";
