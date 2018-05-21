@@ -2,7 +2,7 @@
 
 $item_tpl = bo3::mdl_load("templates-e/home/item.tpl");
 
-$file = new files();
+$file = new file();
 $files = $file->returnFiles("TRUE");
 
 if(!empty($files)) {
