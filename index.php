@@ -41,9 +41,9 @@ $tpl = bo3::c2r([
 	"og-image" => (isset($og["image"])) ? $og["image"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
 	"og-description" => (isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
 
-	"lib-jquery" => file_get_contents("http://bozon3.com/resources/{$cfg->system->version}-{$cfg->system->sub_version}/jquery.html"),
-	"lib-bootstrap" => file_get_contents("http://bozon3.com/resources/{$cfg->system->version}-{$cfg->system->sub_version}/bootstrap.html"),
-	"lib-fontawesome" => file_get_contents("http://bozon3.com/resources/{$cfg->system->version}-{$cfg->system->sub_version}/fontawesome.html"),
+	"lib-jquery" => file_get_contents("https://bozon3.com/resources/{$cfg->system->version}-{$cfg->system->sub_version}/jquery.html"),
+	"lib-bootstrap" => file_get_contents("https://bozon3.com/resources/{$cfg->system->version}-{$cfg->system->sub_version}/bootstrap.html"),
+	"lib-fontawesome" => file_get_contents("https://bozon3.com/resources/{$cfg->system->version}-{$cfg->system->sub_version}/fontawesome.html"),
 
 	"sitename" => $cfg->system->sitename,
 	"keywords" => $lang["system"]["keywords"],
