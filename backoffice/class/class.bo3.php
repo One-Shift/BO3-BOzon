@@ -245,4 +245,10 @@ class bo3 {
 
 		return $toRetun;
 	}
+	
+	public static function get_resources ($lib, $version, $sub_version) {
+		$options = ["ssl" => [ "verify_peer" => FALSE, "verify_peer_name" => FALSE ]];
+
+		return file_get_contents("https://bozon3.com/resources/{$version}-{$sub_version}/{$lib}.html", FALSE, stream_context_create($options));
+	}
 }
