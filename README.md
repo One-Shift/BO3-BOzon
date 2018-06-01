@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Requirements
 - Apache 2.0+
 - PHP 5.4+
-- MySQL 5.5+
+- MySQL 5.6.5+
 - Browser with full HTML5 support
 - Config-per-directory Support
 
