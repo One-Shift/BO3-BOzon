@@ -29,15 +29,22 @@
 <meta name="author" content="One:Shift at one-shift.com" />
 <meta name="author-code" content="Developer" />
 
-{c2r-lib-jquery}
-{c2r-lib-bootstrap}
-{c2r-lib-fontawesome}
+<!-- begin jquery -->
+<script src="{c2r-libs}/jquery-3.1.1/jquery-3.3.1.min.js" charset="utf-8"></script>
+<!-- end jquery -->
 
-<link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
+<!-- begin bootstrap -->
+<script src="{c2r-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js">
+<!-- end bootstrap -->
 
-<script type="text/javascript" src="{c2r-path}/site-assets/js/animatescroll.min.js"></script>
-<script type="text/javascript" src="{c2r-path}/site-assets/js/cookies.js"></script>
+<!-- begin fontawesome -->
+<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.1.0/css/all.css">
+<!-- end fontawesome -->
+
 <script type="text/javascript" src="{c2r-path}/site-assets/js/script.js"></script>
+<link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
 
 <script>
 	var path = "{c2r-path}";
