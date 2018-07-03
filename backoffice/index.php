@@ -52,15 +52,18 @@ $tpl = bo3::c2r([
 	"og-image" => (isset($og["image"])) ? $og["image"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$cfg->system->path}/site-assets/default-share-image.jpg",
 	"og-description" => (isset($og["description"])) ? $og["description"] : $lang["system"]["description"],
 
-	"lib-jquery" => bo3::get_resources("jquery", $cfg->system->version, $cfg->system->sub_version),
-	"lib-bootstrap" => bo3::get_resources("bootstrap", $cfg->system->version, $cfg->system->sub_version),
-	"lib-fontawesome" => bo3::get_resources("fontawesome", $cfg->system->version, $cfg->system->sub_version),
-
 	"sitename" => $cfg->system->sitename,
 	"keywords" => $lang["system"]["keywords"],
 	"description" => $lang["system"]["description"],
+
 	"path" => $cfg->system->path,
 	"path-bo" => $cfg->system->path_bo,
+	"css" => "{$cfg->system->path}/site-assets/css",
+	"js" => "{$cfg->system->path}/site-assets/js",
+	"images" => "{$cfg->system->path}/site-assets/images",
+	"libs" => "{$cfg->system->path}/site-assets/libs",
+	"uploads" => "{$cfg->system->path}/site-assets/uploads",
+
 	"lg" => $lg_s,
 	"cookie" => $cfg->system->cookie
 ], (isset($tpl)) ? $tpl : ".::TPL::.::ERROR::.");

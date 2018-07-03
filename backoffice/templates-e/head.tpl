@@ -1,4 +1,4 @@
-<title>BO3 / BOzon » {c2r-sitename}</title>
+<title>{c2r-sitename} » BO3 / BOzon</title>
 
 <!-- begin favicon -->
 <link rel="shortcut icon" href="{c2r-path-bo}/site-assets/favicon/favicon.ico" type="image/x-icon" />
@@ -29,16 +29,23 @@
 <meta name="author" content="One:Shift at one-shift.com" />
 <meta name="author-code" content="One:Shift at one-shift.com" />
 
-{c2r-lib-jquery}
-{c2r-lib-bootstrap}
-{c2r-lib-fontawesome}
+<!-- begin jquery -->
+<script src="{c2r-libs}/jquery-3.1.1/jquery-3.3.1.min.js" charset="utf-8"></script>
+<!-- end jquery -->
 
-<link rel='stylesheet' type='text/css' href='//one-shift.github.io/site-assets/css/style.css' />
+<!-- begin bootstrap -->
+<script src="{c2r-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js">
+<!-- end bootstrap -->
+
+<!-- begin fontawesome -->
+<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.1.0/css/all.css">
+<!-- end fontawesome -->
+
+<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/script.js"></script>
 <link rel="stylesheet" href="{c2r-path-bo}/site-assets/css/style.css" type="text/css" media="screen" />
 
-<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/animatescroll.min.js"></script>
-<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/cookies.js"></script>
-<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/script.js"></script>
 <script type="text/javascript">
 	var path = "{c2r-path}";
 	var path_bo = "{c2r-path-bo}";
@@ -46,12 +53,14 @@
 	var cookie = "{c2r-cookie}";
 </script>
 
-<!-- MD5 -->
+<!-- begin MD5 -->
 <script type="text/javascript" src="{c2r-path-bo}/site-assets/js/md5.js"></script>
+<!-- end MD5 -->
 
-<!-- CKEDITOR -->
+<!-- begin CKEDITOR -->
 <script src="{c2r-path-bo}/site-assets/js/ckeditor/ckeditor.js"></script>
 <script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
+<!-- end CKEDITOR -->
 
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
