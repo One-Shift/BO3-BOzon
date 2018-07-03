@@ -4,7 +4,6 @@ include "backoffice/config/cfg.php";
 include "backoffice/config/database.php";
 include "backoffice/config/email.php";
 include "backoffice/config/languages.php";
-include "backoffice/config/store.php";
 include "backoffice/config/system.php";
 
 include "backoffice/controller/database.php";
