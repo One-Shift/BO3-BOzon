@@ -6,115 +6,94 @@
 			{c2r-custom-css}
 		</style>
 	</head>
-	<body class="grey lighten-5">
-		<nav id="bo-topbar" class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle button-help" data-toggle="collapse" data-target="#myNavbar">
-						<i class="fa fa-info" aria-hidden="true"></i>
-					</button>
-					<a id="bo-menu-button" class="navbar-brand" href="#"><i class="fa fa-bars"></i><div class="xs-block15 sm-block15 md-block15 lg-block15"></div>BO3</a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav navbar-right">
-					<li class="version">
-						<a href="https://one-shift.github.io/BO3/?v={c2r-bo3-version}&sv={c2r-bo3-sub-version}" target="_blank">
-							Version: <span>{c2r-bo3-version}</span> <span>{c2r-bo3-sub-version}</span>
+	<body>
+		<nav class="top-bar navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">
+				<img src="{c2r-path-bo}/site-assets/images/logo-dark.svg" class="sm-spacer30" alt="bo3 bozon3">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">
+							<i class="fas fa-bell"></i>
 						</a>
 					</li>
-					<li>
-						<a href="{c2r-path}/{c2r-lg}/" target="_blank" title="See Website">
-							<i class="fa fa-external-link" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">See Website</span>
+					<li class="nav-item">
+						<a class="nav-link" href="#">
+							<i class="fas fa-envelope"></i>
 						</a>
 					</li>
-					<li>
-						<a href="https://github.com/One-Shift/BO3-BOzon/issues" title="Support" target="_blank">
-							<i class="fa fa-question"></i> <span class="hidden-sm hidden-md hidden-lg">Support</span>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="menu-user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" class="rounded-circle" alt="">
 						</a>
-					</li>
-					<li>
-						<a href="http://www.one-shift.com/" title="One:Shift" target="_blank">
-							<i class="fa fa-globe"></i> <span class="hidden-sm hidden-md hidden-lg">One:Shift</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://github.com/One-Shift/" title="Github" target="_blank">
-							<i class="fa fa-code-fork"></i> <span class="hidden-sm hidden-md hidden-lg">Github</span>
-						</a>
-					</li>
-					<li>
-						<a id="logout" href="#" title="logout">
-							<i class="fa fa-power-off" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">Logout</span>
-						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" id="logout" href="#" title="logout">
+								<i class="fa fa-power-off" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">Logout</span>
+							</a>
+						</div>
 					</li>
 				</ul>
-				</div>
 			</div>
 		</nav>
-		<div id="bo-menu" class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 bo-block-list">
-					<div class="container-menu">
-						<div class="list-group">
-							{c2r-menu}
+		<div class="top-bar-animation"></div>
+		<div class="sidebar">
+			<div class="sm-spacer15"></div>
+			<div class="list-group">
+				{c2r-menu}
+			</div>
+			<div class="sm-spacer15"></div>
+		</div>
+		<div class="core-container">
+			<div class="core-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<h3>{c2r-mdl-name}</h3>
 						</div>
-						<div id="bo-profile">
-							<div class="row">
-								<div class="col-xs-12 col-sm-12 xs-spacer15 sm-spacer15"></div>
-								<div class="col-xs-3 col-sm-3 xs-tacenter sm-tacenter">
-									<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" alt="avatar" class="img-circle"/>
-								</div>
-								<div class="col-xs-9 col-sm-9">
-									<a class="white-text" href="{c2r-path-bo}/{c2r-lg}/6-account/">{c2r-username}</a><br>
-									<small>{c2r-email}</small>
-								</div>
-								<div class="col-xs-12 col-sm-12 xs-spacer15 sm-spacer15"></div>
-								<div id="bo-rights" class="col-xs-12 col-sm-12 text-center">
-									<small>
-										&copy; <a href="http://www.one-shift.com/" target="_blank">One:Shift</a>
-									</small>
-								</div>
-							</div>
+						<div class="col">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{c2r-path-bo}/{c2r-lg}/"><i class="fas fa-home"></i></a></li>
+									<li class="breadcrumb-item"><a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/">{c2r-mdl-name}</a></li>
+									<!-- <li class="breadcrumb-item active" aria-current="page">Data</li> -->
+									{c2r-breadcrumb}
+								</ol>
+							</nav>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="bo-wrapper">
-			<div class="xs-spacer60 sm-spacer60"></div>
-			<div class="xs-spacer15 sm-spacer15"></div>
-		</div>
-		<div id="bo-container" class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12">
-					<ol class="breadcrumb">
-						<li><a href="{c2r-path-bo}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-						<li class="active">
-							<a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/">
-								{c2r-mdl-name}
-							</a>
-						</li>
-						{c2r-breadcrumb}
-					</ol>
+			<div class="core-body">
+				<div class="sm-spacer30"></div>
+				{c2r-module}
+				<div class="sm-spacer30"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col col-sm col-md text-right">
+							<small class="grey-text">
+								<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version {c2r-mdl-version} / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
+							</small>
+						</div>
+					</div>
 				</div>
+				<div class="sm-spacer30"></div>
 			</div>
-			{c2r-module}
-			{c2r-uninstall}
-			<div class="xs-spacer15 sm-spacer15"></div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 sm-taright">
-					<small class="grey-text">
-						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version {c2r-mdl-version} / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
-					</small>
+			<div class="core-footer">
+				<div class="container-fluid">
+					<div class="sm-spacer30"></div>
+					<div class="row">
+						<iframe class="ads hidden-xs" src="https://www.nexus-pt.eu/ads.php"></iframe>
+					</div>
+					<div class="sm-spacer30"></div>
 				</div>
-			</div>
-		</div>
-		<div class="container-fluid">
-			<div class="row">
-				<iframe class="ads hidden-xs" src="https://www.nexus-pt.eu/ads.php"></iframe>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 xs-spacer15 sm-spacer15 md-spacer15 lg-spacer15"></div>
 			</div>
 		</div>
 	</body>
