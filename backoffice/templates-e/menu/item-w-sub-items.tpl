@@ -2,7 +2,7 @@
 	{c2r-icon}
 	<span class="xs-block15 sm-block15"></span>
 	{c2r-name}
-	<i class="fa fa-plus pull-right" aria-hidden="true"></i>
+	<i class="fa fa-plus float-right" aria-hidden="true"></i>
 </a>
 
 <div id="bo-menu-{c2r-mod}" class="collapse sub-list">
