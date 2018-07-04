@@ -30,13 +30,13 @@
 <meta name="author-code" content="One:Shift at one-shift.com" />
 
 <!-- begin jquery -->
-<script src="{c2r-libs}/jquery-3.1.1/jquery-3.3.1.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="{c2r-libs}/jquery-3.1.1/jquery-3.3.1.min.js"></script>
 <!-- end jquery -->
 
 <!-- begin bootstrap -->
-<script src="{c2r-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
+<script src="{c2r-libs}/popper-1.14.3/popper.min.js"></script>
 <link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js">
+<script type="text/javascript" href="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js"></script>
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
