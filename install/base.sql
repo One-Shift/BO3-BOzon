@@ -151,5 +151,5 @@ INSERT INTO `os_modules` (`name`, `folder`, `code`, `sort`) VALUES
 ('Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {}\r\n}', 1),
 ('Users', 'mod-9-users', '{\r\n	\"fa-icon\": \"fa-users\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add user\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 2),
 ('Categories', 'mod-8-categories', '{\r\n	\"fa-icon\": \"fa-list\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add category\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 3),
-('Articles', 'mod-7-articles', '{\r\n	\"fa-icon\": \"fa-newspaper-o\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add Article\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 4),
+('Articles', 'mod-7-articles', '{\r\n	\"fa-icon\": \"fa-newspaper\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add Article\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 4),
 ('Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {}\r\n}', 5);
