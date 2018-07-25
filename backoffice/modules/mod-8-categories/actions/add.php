@@ -151,7 +151,7 @@ if (!isset($_POST["save"])) {
 
 		if(!empty($_POST["files-fallback"])) {
 			$file = new file();
-			$file->fallback($obj->["id"], $_POST["files-fallback"]);
+			$file->fallback($obj->id, $_POST["files-fallback"]);
 		}
 	} else {
 		$textToPrint = $mdl_lang["add"]["failure"];
