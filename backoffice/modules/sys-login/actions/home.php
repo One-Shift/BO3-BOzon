@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
 				$data = $source->fetch_object();
 
 				if (setcookie($cfg->system->cookie, "{$data->id}.{$data->password}", time() + ($cfg->system->cookie_time * 60), (!empty($cfg->system->path)) ? $cfg->system->path : "/")) {
-					header("Location: {$cfg->system->path_bo}/{$lg_s}/home/");
+					header("Location: {$cfg->system->path_bo}/{$lg_s}/5-home/");
 				} else {
 					// ERROR MESSAGE
 					$form = bo3::c2r([
