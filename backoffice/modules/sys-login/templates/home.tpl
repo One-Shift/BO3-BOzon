@@ -9,7 +9,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 						<p class="navbar-text xs-tacenter sm-tacenter">
 							{c2r-lg-cookies-alert}
 						</p>
@@ -17,26 +17,23 @@
 				</div>
 			</div>
 		</nav>
-		<div class="wrapper hidden-xs"></div>
-		<div class="xs-spacer120"></div>
-		<div class="container-fluid">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-5 col-md-3 col-sm-offset-1 col-md-offset-2 form">
-						{c2r-form}
-					</div>
-					<div class="col-xs-12 hidden-sm hidden-md hidden-lg xs-spacer15"></div>
-					<div class="col-xs-12 col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-2 message">
-						<div class="xs-spacer30 sm-spacer60"></div>
-						<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
-						<div class="sm-spacer60"></div>
-						{c2r-lg-message}
-						<div class="xs-spacer30 sm-spacer60"></div>
-					</div>
+		<div class="wrapper"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-4 offset-sm-1 offset-md-2 offset-lg-2 offset-xl-2 form">
+					{c2r-form}
+				</div>
+				<div class="col-xs-12 hidden-sm hidden-md hidden-lg xs-spacer15"></div>
+				<div class="col-xs-12 col-sm-5 col-md-4 message">
+					<div class="spacer all-60"></div>
+					<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
+					<div class="spacer all-60"></div>
+					{c2r-lg-message}
+					<div class="spacer all-60"></div>
 				</div>
 			</div>
 		</div>
-		<div class="xs-spacer120 sm-spacer120"></div>
+		<div class="spacer all-120"></div>
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
