@@ -8,13 +8,12 @@
 	</head>
 	<body>
 		<nav class="top-bar navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">
-				<img src="{c2r-path-bo}/site-assets/images/logo-dark.svg" class="sm-spacer30" alt="bo3 bozon3">
+			<a class="navbar-brand" href="{c2r-path-bo}/{c2r-lg}/5-home/">
+				<img src="{c2r-path-bo}/site-assets/images/logo-dark.svg" class="spacer all-60" alt="bo3 bozon3">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
@@ -22,21 +21,25 @@
 							<i class="fas fa-bell"></i>
 						</a>
 					</li>
+					<div class="block all-15"></div>
 					<li class="nav-item">
 						<a class="nav-link" href="#">
 							<i class="fas fa-envelope"></i>
 						</a>
 					</li>
+					<div class="block all-15"></div>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="menu-user" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" class="rounded-circle" alt="">
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
+							<!--<a class="dropdown-item" href="#">Action</a>-->
+							<!--<a class="dropdown-item" href="#">Another action</a>-->
+							<!--<div class="dropdown-divider"></div>-->
 							<a class="dropdown-item" id="logout" href="#" title="logout">
-								<i class="fa fa-power-off" aria-hidden="true"></i> <span class="hidden-sm hidden-md hidden-lg">Logout</span>
+								<i class="fa fa-power-off" aria-hidden="true"></i>
+								<span class="block all-15"></span>
+								<span>Logout</span>
 							</a>
 						</div>
 					</li>
@@ -44,21 +47,21 @@
 			</div>
 		</nav>
 		<div class="top-bar-animation"></div>
-		<div class="sidebar">
-			<div class="sm-spacer15"></div>
+		<div class="sidebar {c2r-collapsed}">
 			<div class="list-group">
+				<div class="spacer all-30"></div>
 				{c2r-menu}
 			</div>
-			<div class="sm-spacer15"></div>
+			<div class="spacer all-15"></div>
 		</div>
-		<div class="core-container">
+		<div class="core-container {c2r-unleashed}">
 			<div class="core-header">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col">
+						<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 							<h3>{c2r-mdl-name}</h3>
 						</div>
-						<div class="col">
+						<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{c2r-path-bo}/{c2r-lg}/"><i class="fas fa-home"></i></a></li>
@@ -72,27 +75,22 @@
 				</div>
 			</div>
 			<div class="core-body">
-				<div class="sm-spacer30"></div>
-				{c2r-module}
-				<div class="sm-spacer30"></div>
-				<div class="container">
-					<div class="row">
-						<div class="col col-sm col-md text-right">
-							<small class="grey-text">
-								<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version {c2r-mdl-version} / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
-							</small>
-						</div>
-					</div>
+				<div class="container-fluid">
+					{c2r-module}
 				</div>
-				<div class="sm-spacer30"></div>
+				<div class="authors-bar">
+					<small class="grey-text">
+						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version {c2r-mdl-version} / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
+					</small>
+				</div>
 			</div>
 			<div class="core-footer">
 				<div class="container-fluid">
-					<div class="sm-spacer30"></div>
+					<div class="spacer all-30"></div>
 					<div class="row">
 						<iframe class="ads hidden-xs" src="https://www.nexus-pt.eu/ads.php"></iframe>
 					</div>
-					<div class="sm-spacer30"></div>
+					<div class="spacer all-30"></div>
 				</div>
 			</div>
 		</div>

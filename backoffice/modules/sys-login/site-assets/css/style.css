@@ -62,6 +62,11 @@
 	color: lightgrey;
 }
 
+.login .password {
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+}
+
 .login .password input {
 	border: none;
 	border-bottom: 2px solid #009688;
@@ -72,6 +77,7 @@
 	font-size: 15pt;
 	padding-left: 40px;
 }
+
 .login .password .input-group-btn span {
 	border: none;
 	border-bottom: 2px solid #009688;
