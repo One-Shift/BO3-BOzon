@@ -29,7 +29,6 @@
 <meta name="author" content="One:Shift at one-shift.com" />
 <meta name="author-code" content="One:Shift at one-shift.com" />
 
-
 <!-- begin jquery -->
 <script src="{c2r-libs}/jquery-3.1.1/jquery-3.3.1.min.js" charset="utf-8"></script>
 <!-- end jquery -->
@@ -45,6 +44,7 @@
 <!-- end fontawesome -->
 
 <script type="text/javascript" src="{c2r-path-bo}/site-assets/js/script.js"></script>
+<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/cookies.js"></script>
 <link rel="stylesheet" href="{c2r-path-bo}/site-assets/css/style.css" type="text/css" media="screen" />
 
 <script type="text/javascript">
