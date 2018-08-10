@@ -10,3 +10,6 @@
 [submodule "backoffice/modules/mod-7-articles"]
 	path = backoffice/modules/mod-7-articles
 	url = https://github.com/One-Shift/mod-7-articles.git
+[submodule "backoffice/modules/mod-8-categories"]
+	path = backoffice/modules/mod-8-categories
+	url = https://github.com/One-Shift/mod-8-categories.git
