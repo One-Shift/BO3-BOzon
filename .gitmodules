@@ -7,3 +7,6 @@
 [submodule "backoffice/modules/mod-6-account"]
 	path = backoffice/modules/mod-6-account
 	url = https://github.com/One-Shift/mod-6-account.git
+[submodule "backoffice/modules/mod-7-articles"]
+	path = backoffice/modules/mod-7-articles
+	url = https://github.com/One-Shift/mod-7-articles.git
