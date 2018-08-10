@@ -1,3 +1,6 @@
 [submodule "backoffice/modules/mod-5-home"]
 	path = backoffice/modules/mod-5-home
 	url = https://github.com/One-Shift/mod-5-home.git
+[submodule "backoffice/modules/mod-4-files"]
+	path = backoffice/modules/mod-4-files
+	url = https://github.com/One-Shift/mod-4-files.git
