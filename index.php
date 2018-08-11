@@ -53,7 +53,10 @@ $tpl = bo3::c2r([
 	"libs" => "{$cfg->system->path}/site-assets/libs",
 	"uploads" => "{$cfg->system->path}/site-assets/uploads",
 
-	"lg" => $lg_s
+	"lg" => $lg_s,
+
+	"bo3-version" => $cfg->system->version,
+	"bo3-subversion" => $cfg->system->sub_version
 ], isset($tpl) ? $tpl : ".::TPL::.::ERROR::.");
 
 // minify system

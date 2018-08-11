@@ -28,6 +28,7 @@
 <meta name="robots" content="index" />
 <meta name="author" content="One:Shift at one-shift.com" />
 <meta name="author-code" content="Developer" />
+<meta name="generator" content="BO3 {c2r-bo3-version} {c2r-bo3-subversion}" />
 
 <!-- begin jquery -->
 <script type="text/javascript" src="{c2r-libs}/jquery-3.1.1/jquery-3.3.1.min.js"></script>
