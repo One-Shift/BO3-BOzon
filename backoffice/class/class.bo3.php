@@ -211,7 +211,7 @@ class bo3 {
 		var_dump($args);
 		print "\n-->";
 	}
-	
+
 	public static function updateFile ($file = false, $name = "", $text = "", $result = false) {
 		if ($file !== false) {
 			$time = date('H:i:s', time());
@@ -226,7 +226,7 @@ class bo3 {
 			file_put_contents($file, $current);
 		}
 	}
-	
+
 	public static function breadcrumb ($breadcrumb = []) {
 		$toRetun = "";
 
@@ -235,6 +235,8 @@ class bo3 {
 				if (empty($toRetun)) {
 					$item_tpl = bo3::loade("breadcrumb-item.tpl");
 				}
+
+				$toRetun .= "&nbsp;/&nbsp;";
 
 				$toRetun .= bo3::c2r([
 					"link" => $item["link"],
@@ -245,7 +247,7 @@ class bo3 {
 
 		return $toRetun;
 	}
-	
+
 	public static function get_resources ($lib, $version, $sub_version) {
 		$options = ["ssl" => [ "verify_peer" => FALSE, "verify_peer_name" => FALSE ]];
 
