@@ -23,8 +23,7 @@
 				<div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-4 offset-sm-1 offset-md-2 offset-lg-2 offset-xl-2 form">
 					{c2r-form}
 				</div>
-				<div class="col-xs-12 hidden-sm hidden-md hidden-lg xs-spacer15"></div>
-				<div class="col-xs-12 col-sm-5 col-md-4 message">
+				<div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-4 message">
 					<div class="spacer all-60"></div>
 					<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
 					<div class="spacer all-60"></div>
