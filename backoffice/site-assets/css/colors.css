@@ -2,6 +2,18 @@ a {
 	color: #00838f;
 }
 
+.b-owner img {
+	border: 5px solid #37c871;
+}
+
+.b-manager img {
+	border: 5px solid #37c871;
+}
+
+.b-member img {
+	border: 5px solid #4e4e4e;
+}
+
 .btn-primary {
 	color: #fff;
 	background-color: #00838f;

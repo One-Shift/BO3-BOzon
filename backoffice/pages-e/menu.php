@@ -24,39 +24,41 @@ while ($data = $source->fetch_object()) {
 	$tmp_name = substr($data->folder, 4);
 	$code = json_decode($data->code);
 
-	// SUB ITEMS
-	if (isset($code->{"sub-items"}) && count((array)$code->{"sub-items"}) > 0) {
-		$submenu = "";
+	if(isset($code->{"sidebar"}) && $code->{"sidebar"} == TRUE) {
+		// SUB ITEMS
+		if (isset($code->{"sub-items"}) && count((array)$code->{"sub-items"}) > 0) {
+			$submenu = "";
 
-		foreach ((array)$code->{"sub-items"} as $index => $obj) {
-			$submenu .= bo3::c2r([
-				"url" => $obj->url,
-				"name" => $index
-			], $menu_sub_item_tpl);
+			foreach ((array)$code->{"sub-items"} as $index => $obj) {
+				$submenu .= bo3::c2r([
+					"url" => $obj->url,
+					"name" => $index
+				], $menu_sub_item_tpl);
+			}
 		}
+
+		// ICON
+		if (isset($code->img) && !empty($code->img)) {
+			$icon = bo3::c2r([
+				'module-folder' => $data->folder,
+				'img' => $code->img
+			], $menu_img_tpl);
+		} else {
+			$icon = bo3::c2r([
+				'module-folder' => $data->folder,
+				'fa' => (isset($code->{"fa-icon"}) && !empty($code->{"fa-icon"})) ? $code->{"fa-icon"} : "fa-folder"
+			], $menu_fa_icon_tpl);
+		}
+
+		$menu .= bo3::c2r([
+			"sub-menu" => (isset($submenu)) ? $submenu : "",
+			"mod" => $tmp_name,
+			"name" => $data->name,
+			"icon" => $icon
+		], (!isset($submenu)) ? $menu_item_tpl : $menu_item_w_sub_items_tpl);
+
+		unset($submenu);
 	}
-
-	// ICON
-	if (isset($code->img) && !empty($code->img)) {
-		$icon = bo3::c2r([
-			'module-folder' => $data->folder,
-			'img' => $code->img
-		], $menu_img_tpl);
-	} else {
-		$icon = bo3::c2r([
-			'module-folder' => $data->folder,
-			'fa' => (isset($code->{"fa-icon"}) && !empty($code->{"fa-icon"})) ? $code->{"fa-icon"} : "fa-folder"
-		], $menu_fa_icon_tpl);
-	}
-
-	$menu .= bo3::c2r([
-		"sub-menu" => (isset($submenu)) ? $submenu : "",
-		"mod" => $tmp_name,
-		"name" => $data->name,
-		"icon" => $icon
-	], (!isset($submenu)) ? $menu_item_tpl : $menu_item_w_sub_items_tpl);
-
-	unset($submenu);
 }
 
 // show not installed modules if user has owner tag
