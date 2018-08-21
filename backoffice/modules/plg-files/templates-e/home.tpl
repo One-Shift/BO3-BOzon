@@ -1,3 +1,8 @@
+<div class="spacer all-30"></div>
+<div class="alert alert-warning {c2r-permissions-display}" role="alert">
+	<i class="fas fa-exclamation-triangle"></i> You don't have permissions to write data on the defined path.
+</div>
+<div class="spacer all-30"></div>
 <form id="upload" action="{c2r-path-bo}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
 	<label for="fileselect">Files Upload</label>
 	<div>
