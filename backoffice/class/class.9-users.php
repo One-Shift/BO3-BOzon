@@ -235,7 +235,7 @@ class user {
 	public function returnLogs () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_log WHERE true", $cfg->db->prefix);
+		$query = sprintf("SELECT * FROM %s_history WHERE module = '%s'", $cfg->db->prefix, "sys-login");
 		$source = $db->query($query);
 
 		$toReturn = [];
@@ -252,7 +252,7 @@ class user {
 	public function returnLogsByUser () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_log WHERE user_id = %s ORDER BY %s", $cfg->db->prefix, $this->id, "date DESC");
+		$query = sprintf("SELECT * FROM %s_history WHERE user_id = %s AND module = '%s' ORDER BY %s", $cfg->db->prefix, $this->id, "sys-login", "date DESC");
 		$source = $db->query($query);
 
 		$toReturn = [];
@@ -269,7 +269,7 @@ class user {
 	public function returnLastLog () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_log WHERE user_id = %s ORDER BY %s LIMIT %s", $cfg->db->prefix, $this->id, "date DESC", 1);
+		$query = sprintf("SELECT * FROM %s_history WHERE user_id = %s AND module = '%s' ORDER BY %s LIMIT %s", $cfg->db->prefix, $this->id, "sys-login", "date DESC", 1);
 		$source = $db->query($query);
 
 		return $source->fetch_object();
@@ -278,7 +278,7 @@ class user {
 	public function returnLog () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_log WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
+		$query = sprintf("SELECT * FROM %s_history WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
 		$source = $db->query($query);
 
 		return $source->fetch_object();
