@@ -46,6 +46,7 @@
 
 <script type="text/javascript" src="{c2r-path}/site-assets/js/script.js"></script>
 <link rel="stylesheet" href="{c2r-path}/site-assets/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{c2r-path}/site-assets/css/spacers.min.css" type="text/css" media="screen" />
 
 <script>
 	var path = "{c2r-path}";
