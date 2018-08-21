@@ -67,7 +67,7 @@ $(document).ready(
 		)
 
 		// logout
-		$("body").on(
+		/*$("body").on(
 			"click",
 			"a#logout",
 			function () {
@@ -75,7 +75,7 @@ $(document).ready(
 				window.location = path_bo;
 				return false;
 			}
-		);
+		); */
 
 		// get back
 		$("body").on(
