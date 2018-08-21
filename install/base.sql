@@ -54,7 +54,8 @@ CREATE TABLE `os_history` (
 	`id` int(11) NOT NULL,
 	`module` varchar(255) DEFAULT NULL,
 	`user_id` int(11) DEFAULT NULL,
-	`description` text
+	`description` text,
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_modules` (
@@ -70,14 +71,6 @@ CREATE TABLE `os_trash` (
 	`module` varchar(255) NOT NULL,
 	`code` text NOT NULL,
 	`user_id` int(11) NOT NULL,
-	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-CREATE TABLE `os_log` (
-	`id` int(11) NOT NULL,
-	`user_id` int(11) NOT NULL,
-	`ip` text CHARACTER SET utf8 NOT NULL,
-	`code` text CHARACTER SET utf8 NOT NULL,
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -130,9 +123,6 @@ ALTER TABLE `os_modules`
 	ADD UNIQUE KEY `folder` (`folder`);
 
 ALTER TABLE `os_trash`
-	ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `os_log`
 	ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_users`
