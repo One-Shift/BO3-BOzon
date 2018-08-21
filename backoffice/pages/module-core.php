@@ -3,6 +3,7 @@
 include "pages-e/header.php";
 include "pages-e/footer.php";
 include "pages-e/menu.php";
+include "pages-e/dropdown-menu.php";
 
 if (user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
 	$uninstall = bo3::c2r([
@@ -25,6 +26,7 @@ $tpl = bo3::c2r([
 	"bo3-version" => $cfg->system->version,
 	"bo3-sub-version" => $cfg->system->sub_version,
 	"menu" => (isset($menu)) ? $menu : "",
+	"dropdown-menu" => (isset($dropdown_menu)) ? $dropdown_menu : "",
 	"avatar" => md5($authData["email"]),
 
 	"breadcrumb" => isset($breadcrumb) ? bo3::breadcrumb($breadcrumb) : "",

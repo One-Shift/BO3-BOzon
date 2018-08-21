@@ -33,10 +33,9 @@
 							<img src="https://www.gravatar.com/avatar/{c2r-avatar}?s=240&r=g&d=mm" class="rounded-circle" alt="">
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-							<!--<a class="dropdown-item" href="#">Action</a>-->
-							<!--<a class="dropdown-item" href="#">Another action</a>-->
-							<!--<div class="dropdown-divider"></div>-->
-							<a class="dropdown-item" id="logout" href="#" title="logout">
+							{c2r-dropdown-menu}
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" id="logout" href="{c2r-path-bo}/{c2r-lg}/logout/" title="logout">
 								<i class="fa fa-power-off" aria-hidden="true"></i>
 								<span class="block all-15"></span>
 								<span>Logout</span>

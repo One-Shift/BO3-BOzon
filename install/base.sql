@@ -54,7 +54,8 @@ CREATE TABLE `os_history` (
 	`id` int(11) NOT NULL,
 	`module` varchar(255) DEFAULT NULL,
 	`user_id` int(11) DEFAULT NULL,
-	`description` text
+	`description` text,
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_modules` (
@@ -85,6 +86,18 @@ CREATE TABLE `os_users` (
 	`status` tinyint(1) NOT NULL DEFAULT '0',
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `os_users_fields` (
+	`id` int(11) NOT NULL,
+	`name` text CHARACTER SET utf8 NOT NULL,
+	`value` text CHARACTER SET utf8 NOT NULL,
+	`type` text CHARACTER SET utf8 NOT NULL,
+	`required` tinyint(1) NOT NULL DEFAULT '0',
+	`sort` int(11) NOT NULL,
+	`status` tinyint(1) NOT NULL DEFAULT '0',
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `os_articles`
@@ -119,6 +132,9 @@ ALTER TABLE `os_users`
 	ADD KEY `fk_prefix_users_prefix_products1` (`id`),
 	ADD KEY `fk_prefix_users_prefix_articles1` (`id`);
 
+ALTER TABLE `os_users_fields`
+	ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `os_articles`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
@@ -146,10 +162,10 @@ ALTER TABLE `os_trash`
 ALTER TABLE `os_users`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO `os_modules` (`name`, `folder`, `code`, `sort`) VALUES
-('Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {}\r\n}', 0),
-('Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {}\r\n}', 1),
-('Users', 'mod-9-users', '{\r\n	\"fa-icon\": \"fa-users\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add user\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 2),
-('Categories', 'mod-8-categories', '{\r\n	\"fa-icon\": \"fa-list\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add category\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 3),
-('Articles', 'mod-7-articles', '{\r\n	\"fa-icon\": \"fa-newspaper\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add Article\": {\r\n			\"url\": \"add\"\r\n		}\r\n	}\r\n}', 4),
-('Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {}\r\n}', 5);
+INSERT INTO `os_modules` (`id`, `name`, `folder`, `code`, `sort`) VALUES
+(1, 'Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0),
+(2, 'Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user-cog\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": false,\r\n\"dropdown\": true\r\n}', 1),
+(3, 'Users', 'mod-9-users', '{\r\n	\"fa-icon\": \"fa-users\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add user\": {\r\n			\"url\": \"add\"\r\n		},\r\n\"Logs\": {\r\n			\"url\": \"logs\"\r\n		}\r\n	},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 2),
+(4, 'Categories', 'mod-8-categories', '{\r\n	\"fa-icon\": \"fa-list\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add category\": {\r\n			\"url\": \"add\"\r\n		}\r\n	},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 3),
+(5, 'Articles', 'mod-7-articles', '{\r\n	\"fa-icon\": \"fa-newspaper\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add Article\": {\r\n			\"url\": \"add\"\r\n		}\r\n	},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 4),
+(6, 'Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 5);

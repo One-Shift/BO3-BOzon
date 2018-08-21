@@ -23,7 +23,29 @@ if (isset($_POST["submit"])) {
 			if ($source->num_rows > 0) {
 				$data = $source->fetch_object();
 
-				if (setcookie($cfg->system->cookie, "{$data->id}.{$data->password}", time() + ($cfg->system->cookie_time * 60), (!empty($cfg->system->path)) ? $cfg->system->path : "/")) {
+				if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+					$ip = [
+						"ip" => $_SERVER['HTTP_CLIENT_IP']
+					];
+				} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+					$ip = [
+						"ip" => $_SERVER['HTTP_X_FORWARDED_FOR']
+					];
+				} else {
+					$ip = [
+						"ip" => $_SERVER['REMOTE_ADDR']
+					];
+				}
+
+				$ip = json_encode($ip);
+
+				if (
+					setcookie($cfg->system->cookie, "{$data->id}.{$data->password}", time() + ($cfg->system->cookie_time * 60), (!empty($cfg->system->path)) ? $cfg->system->path : "/")
+					&&
+					$db->query(sprintf(
+						"INSERT INTO %s_history (user_id, module, description, date) VALUES ('%s', '%s', '%s', '%s')",
+						$cfg->db->prefix, $data->id, "sys-login", $ip, date("Y-m-d H:i:s", time())))
+					) {
 					header("Location: {$cfg->system->path_bo}/{$lg_s}/5-home/");
 				} else {
 					// ERROR MESSAGE

@@ -138,6 +138,10 @@ a:hover, a:focus {
 	text-decoration: none;
 }
 
+label {
+	margin-bottom: 0px;
+}
+
 textarea:focus,
 textarea.form-control:focus,
 input.form-control:focus,
@@ -152,6 +156,37 @@ input[type=number]:focus,
 [contenteditable].form-control:focus {
 	box-shadow: inset 0 -1px 0 transparent;
 	outline: 0;
+}
+
+.bg-owner {
+	background-color: #37c871;
+	color: #fff;
+	border-color: #37c871;
+}
+
+.bg-manager {
+	background-color: blue;
+	color: #fff;
+	border-color: blue;
+}
+
+.bg-member {
+	background-color: #4e4e4e;
+	color: #fff;
+	border-color: #4e4e4e;
+}
+
+.b-owner img:not(.card-img-top), .b-owner:not(.avatar-placeholder) {
+	border: 5px solid #37c871;
+}
+
+
+.b-manager img:not(.card-img-top), .b-manager:not(.avatar-placeholder) {
+	border: 5px solid blue;
+}
+
+.b-member img:not(.card-img-top), .b-member:not(.avatar-placeholder) {
+	border: 5px solid #4e4e4e;
 }
 
 #menu-user.dropdown-toggle::after {
