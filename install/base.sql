@@ -162,6 +162,9 @@ ALTER TABLE `os_trash`
 ALTER TABLE `os_users`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `os_users_fields`
+	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 INSERT INTO `os_modules` (`id`, `name`, `folder`, `code`, `sort`) VALUES
 (1, 'Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0),
 (2, 'Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user-cog\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": false,\r\n\"dropdown\": true\r\n}', 1),
