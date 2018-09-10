@@ -243,19 +243,15 @@ class file {
 		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
-			if ($source->num_rows > 1) {
-				while ($data = $source->fetch_object()) {
-					if (!isset($toReturn)) {
-						$toReturn = [];
-					}
-
-					array_push($toReturn, $data);
+			while ($data = $source->fetch_object()) {
+				if (!isset($toReturn)) {
+					$toReturn = [];
 				}
 
-				return $toReturn;
-			} else {
-				return $source->fetch_object();
+				array_push($toReturn, $data);
 			}
+
+			return $toReturn;
 		}
 
 		return FALSE;
@@ -266,7 +262,7 @@ class file {
 	public function returnFilterList () {
 		global $cfg, $db;
 
-		if (!is_null($this->id_ass)) {
+		if (!is_null($this->id_ass) && ($this->id_ass != 0)) {
 			$query = sprintf(
 				"SELECT * FROM %s_files WHERE id_ass = %s AND module = '%s' ORDER BY sort ASC",
 				$cfg->db->prefix,
@@ -274,8 +270,8 @@ class file {
 				$this->module
 			);
 		} else {
-			$query = sprintf(
-				"SELECT * FROM %s_files WHERE id_ass != 0 AND module = '%s' ORDER BY sort ASC",
+		 	$query = sprintf(
+				"SELECT * FROM %s_files WHERE id_ass != 0 ORDER BY sort ASC",
 				$cfg->db->prefix,
 				$this->module
 			);
