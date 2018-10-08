@@ -37,7 +37,7 @@
 <!-- begin bootstrap -->
 <script type="text/javascript" src="{c2r-libs}/popper-1.14.3/popper.min.js"></script>
 <link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
-<script type="text/javascript" href="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js"></script>
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
