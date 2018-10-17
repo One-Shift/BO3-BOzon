@@ -8,7 +8,7 @@ if ($cfg->db->connect) {
 			$cookie[1] = $db->real_escape_string($cookie[1]);
 
 			$query = sprintf(
-				"SELECT * FROM %s_users WHERE id = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager') AND status = %s LIMIT %s",
+				"SELECT * FROM %s_9_users WHERE id = '%s' AND password = '%s' AND (rank = 'owner' OR rank = 'manager') AND status = %s LIMIT %s",
 				$cfg->db->prefix, $cookie[0], $cookie[1], 1, 1
 			);
 			$source = $db->query($query);

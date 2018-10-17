@@ -74,7 +74,7 @@ CREATE TABLE `os_trash` (
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE `os_users` (
+CREATE TABLE `os_9_users` (
 	`id` int(11) NOT NULL,
 	`username` varchar(255) DEFAULT NULL,
 	`password` varchar(255) DEFAULT NULL,
@@ -86,6 +86,18 @@ CREATE TABLE `os_users` (
 	`status` tinyint(1) NOT NULL DEFAULT '0',
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `os_9_users_fields` (
+	`id` int(11) NOT NULL,
+	`name` text NOT NULL,
+	`value` text NOT NULL,
+	`type` text NOT NULL,
+	`required` tinyint(1) NOT NULL DEFAULT '0',
+	`sort` int(11) NOT NULL,
+	`status` tinyint(1) NOT NULL DEFAULT '0',
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `os_users_fields` (
@@ -159,10 +171,10 @@ ALTER TABLE `os_modules`
 ALTER TABLE `os_trash`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `os_users`
+ALTER TABLE `os_9_users`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `os_users_fields`
+ALTER TABLE `os_9_users_fields`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 INSERT INTO `os_modules` (`id`, `name`, `folder`, `code`, `sort`) VALUES

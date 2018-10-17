@@ -5,7 +5,7 @@ include "pages-e/footer.php";
 include "pages-e/menu.php";
 include "pages-e/dropdown-menu.php";
 
-if (user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
+if (c9_user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
 	$uninstall = bo3::c2r([
 		"lg-title" => $lang["uninstall"]["modal-title"],
 		"lg-question" => $lang["uninstall"]["modal-question"],

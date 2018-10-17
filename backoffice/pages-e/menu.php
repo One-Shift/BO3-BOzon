@@ -62,7 +62,7 @@ while ($data = $source->fetch_object()) {
 }
 
 // show not installed modules if user has owner tag
-if (user::isOwner($authData)) {
+if (c9_user::isOwner($authData)) {
 	// modules not installed
 	$list = glob('modules/mod-*', GLOB_ONLYDIR);
 
