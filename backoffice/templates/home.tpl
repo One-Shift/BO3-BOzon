@@ -9,7 +9,7 @@
 	<body>
 		<nav class="top-bar navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="{c2r-path-bo}/{c2r-lg}/5-home/">
-				<img src="{c2r-path-bo}/site-assets/images/logo-dark.svg" class="spacer all-60" alt="bo3 bozon3">
+				<img src="{c2r-path-bo}/site-assets/images/logo-dark.svg" class="spacer all-30" alt="bo3 bozon3">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
