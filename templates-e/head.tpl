@@ -41,7 +41,7 @@
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
-<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.1.0/css/all.css">
+<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.6.3/css/all.css">
 <!-- end fontawesome -->
 
 <script type="text/javascript" src="{c2r-path}/site-assets/js/script.js"></script>

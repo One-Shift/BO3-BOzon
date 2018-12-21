@@ -40,7 +40,7 @@
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
-<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.3.1/css/all.css">
+<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.6.3/css/all.css">
 <!-- end fontawesome -->
 
 <script type="text/javascript" src="{c2r-path-bo}/site-assets/js/script.js"></script>
