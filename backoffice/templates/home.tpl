@@ -79,7 +79,7 @@
 				</div>
 				<div class="authors-bar">
 					<small class="grey-text">
-						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version {c2r-mdl-version} / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
+						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version <a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/changelog/">{c2r-mdl-version}</a> / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
 					</small>
 				</div>
 			</div>
@@ -95,3 +95,4 @@
 		</div>
 	</body>
 </html>
+
