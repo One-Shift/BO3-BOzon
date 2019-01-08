@@ -1,6 +1,6 @@
 <?php
 
-class article {
+class c7_article {
 	protected $id;
 	protected $category_id;
 	protected $title = [];
@@ -53,7 +53,7 @@ class article {
 	public function insert() {
 		global $cfg, $db;
 
-		$query[0] = sprintf("INSERT INTO %s_articles (code, category_id, user_id, date, date_update, published) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+		$query[0] = sprintf("INSERT INTO %s_7_articles (code, category_id, user_id, date, date_update, published) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->code,
 			$this->category_id,
@@ -67,7 +67,7 @@ class article {
 			$this->id = $db->insert_id;
 
 			foreach ($this->title as $i => $item) {
-				$query[1] = sprintf("INSERT INTO %s_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
+				$query[1] = sprintf("INSERT INTO %s_7_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
 					$cfg->db->prefix,
 					$this->id,
 					$i+1,
@@ -90,7 +90,7 @@ class article {
 		$toReturn = false;
 
 		$query[0] = sprintf(
-			"UPDATE %s_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s', user_id = '%s' WHERE id = '%s'",
+			"UPDATE %s_7_articles SET code = '%s', category_id = '%s', date = '%s', date_update = '%s', published = '%s', user_id = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->code,
 			$this->category_id,
@@ -107,7 +107,7 @@ class article {
 			foreach ($cfg->lg as $index => $lg) {
 				if ($lg[0]) {
 					$fast_query = sprintf(
-						"SELECT id FROM %s_articles_lang WHERE article_id = %s AND lang_id = %s",
+						"SELECT id FROM %s_7_articles_lang WHERE article_id = %s AND lang_id = %s",
 						$cfg->db->prefix,
 						$this->id,
 						$index
@@ -116,7 +116,7 @@ class article {
 					$fast_source = $db->query($fast_query);
 
 					if ($fast_source->num_rows > 0) {
-						$query[$index] = sprintf("UPDATE %s_articles_lang SET title = '%s', text = '%s' WHERE article_id = '%s' AND lang_id = '%s'",
+						$query[$index] = sprintf("UPDATE %s_7_articles_lang SET title = '%s', text = '%s' WHERE article_id = '%s' AND lang_id = '%s'",
 							$cfg->db->prefix,
 							$db->real_escape_string($this->title[$index-1]),
 							$db->real_escape_string($this->description[$index-1]),
@@ -126,7 +126,7 @@ class article {
 
 						$db->query($query[$index]);
 					} else {
-						$query[1] = sprintf("INSERT INTO %s_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
+						$query[1] = sprintf("INSERT INTO %s_7_articles_lang (article_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
 							$cfg->db->prefix,
 							$this->id,
 							$index,
@@ -158,8 +158,8 @@ class article {
 		$trash->insert();
 
 		$query = sprintf("DELETE c, cl
-			FROM %s_articles c
-				JOIN %s_articles_lang cl on cl.article_id = c.id
+			FROM %s_7_articles c
+				JOIN %s_7_articles_lang cl on cl.article_id = c.id
 			WHERE c.id = %s",
 				$cfg->db->prefix,
 				$cfg->db->prefix,
@@ -181,8 +181,8 @@ class article {
 		$toReturn = [];
 
 		$query = sprintf("SELECT bc.*, bcl.title, bc.id
-			FROM %s_articles bc
-				INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
+			FROM %s_7_articles bc
+				INNER JOIN %s_7_articles_lang bcl on bcl.article_id = bc.id
 			WHERE bcl.lang_id = %s
 			ORDER BY bc.date ASC, bcl.title ASC",
 			$cfg->db->prefix, $cfg->db->prefix, $this->lang_id
@@ -201,8 +201,8 @@ class article {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text
-			FROM %s_articles bc
-				INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
+			FROM %s_7_articles bc
+				INNER JOIN %s_7_articles_lang bcl on bcl.article_id = bc.id
 			WHERE bc.id = %s and bcl.lang_id = %s",
 			$cfg->db->prefix,
 			$cfg->db->prefix,
@@ -222,8 +222,8 @@ class article {
 
 		$query = sprintf(
 			"SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
-				FROM %s_articles bc
-					INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
+				FROM %s_7_articles bc
+					INNER JOIN %s_7_articles_lang bcl on bcl.article_id = bc.id
 				WHERE (%s) AND bcl.lang_id = %s AND bc.category_id = %s
 				%s %s",
 			$cfg->db->prefix,
@@ -255,8 +255,8 @@ class article {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
-			FROM %s_articles bc
-				INNER JOIN %s_articles_lang bcl on bcl.article_id = bc.id
+			FROM %s_7_articles bc
+				INNER JOIN %s_7_articles_lang bcl on bcl.article_id = bc.id
 			WHERE bc.id = %s",
 			$cfg->db->prefix, $cfg->db->prefix, $this->id
 		);

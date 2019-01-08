@@ -1,6 +1,6 @@
 <?php
 
-class file {
+class c4_file {
 	protected $id;
 	protected $file;
 	protected $type;
@@ -73,7 +73,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"INSERT INTO %s_files (file, type, module, id_ass, description, code, sort, user_id, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			"INSERT INTO %s_4_files (file, type, module, id_ass, description, code, sort, user_id, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->file,
 			$this->type,
@@ -98,7 +98,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_files SET file = '%s', type = '%s', module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_4_files SET file = '%s', type = '%s', module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->file,
 			$this->type,
@@ -117,7 +117,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_files SET description = '%s', code = '%s', sort = %s, date_update = '%s' WHERE id = %s",
+			"UPDATE %s_4_files SET description = '%s', code = '%s', sort = %s, date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
 			$db->real_escape_string($this->description),
 			$db->real_escape_string($this->code),
@@ -133,7 +133,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_files SET module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_4_files SET module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->module,
 			$this->id_ass,
@@ -150,7 +150,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_files SET id_ass = %s, date_update = '%s' WHERE id = %s",
+			"UPDATE %s_4_files SET id_ass = %s, date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
 			$this->id_ass,
 			$this->date_update,
@@ -163,7 +163,7 @@ class file {
 	public function delete () {
 		global $cfg, $db, $authData;
 
-		$file = new file();
+		$file = new c4_file();
 		$file->setId($this->id);
 		$file = $file->returnOneFile();
 
@@ -177,7 +177,7 @@ class file {
 		unset($user);
 
 		$query = sprintf(
-			"DELETE FROM %s_files WHERE id = '%s'",
+			"DELETE FROM %s_4_files WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->id
 		);
@@ -189,7 +189,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"SELECT * FROM %s_files WHERE id = '%s'",
+			"SELECT * FROM %s_4_files WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->id
 		);
@@ -208,7 +208,7 @@ class file {
 
 		if (empty($args)) {
 			$query = sprintf(
-				"SELECT * FROM %s_files WHERE %s",
+				"SELECT * FROM %s_4_files WHERE %s",
 				$cfg->db->prefix,
 				((!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null) .
 				((!empty($this->id_ass)) ? " AND " : null) .
@@ -234,7 +234,7 @@ class file {
 			}
 		} else {
 			$query = sprintf(
-				"SELECT * FROM %s_files WHERE %s",
+				"SELECT * FROM %s_4_files WHERE %s",
 				$cfg->db->prefix,
 				$args
 			);
@@ -243,19 +243,15 @@ class file {
 		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
-			if ($source->num_rows > 1) {
-				while ($data = $source->fetch_object()) {
-					if (!isset($toReturn)) {
-						$toReturn = [];
-					}
-
-					array_push($toReturn, $data);
+			while ($data = $source->fetch_object()) {
+				if (!isset($toReturn)) {
+					$toReturn = [];
 				}
 
-				return $toReturn;
-			} else {
-				return $source->fetch_object();
+				array_push($toReturn, $data);
 			}
+
+			return $toReturn;
 		}
 
 		return FALSE;
@@ -266,16 +262,16 @@ class file {
 	public function returnFilterList () {
 		global $cfg, $db;
 
-		if (!is_null($this->id_ass)) {
+		if (!is_null($this->id_ass) && ($this->id_ass != 0)) {
 			$query = sprintf(
-				"SELECT * FROM %s_files WHERE id_ass = %s AND module = '%s' ORDER BY sort ASC",
+				"SELECT * FROM %s_4_files WHERE id_ass = %s AND module = '%s' ORDER BY sort ASC",
 				$cfg->db->prefix,
 				$this->id_ass,
 				$this->module
 			);
 		} else {
-			$query = sprintf(
-				"SELECT * FROM %s_files WHERE id_ass != 0 AND module = '%s' ORDER BY sort ASC",
+		 	$query = sprintf(
+				"SELECT * FROM %s_4_files WHERE id_ass != 0 ORDER BY sort ASC",
 				$cfg->db->prefix,
 				$this->module
 			);
@@ -305,7 +301,7 @@ class file {
 	public function fallback($id, $l) {
 		$l = explode(",", $l);
 
-		$file = new file();
+		$file = new c4_file();
 		$file->setDateUpdate();
 
 		foreach ($l as $i => $item) {
@@ -321,7 +317,7 @@ class file {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"SELECT module FROM %s_files WHERE true GROUP BY module ORDER BY module ASC",
+			"SELECT module FROM %s_4_files WHERE true GROUP BY module ORDER BY module ASC",
 			$cfg->db->prefix
 		);
 

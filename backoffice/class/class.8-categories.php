@@ -1,6 +1,6 @@
 <?php
 
-class category {
+class c8_category {
 	protected $id;
 	protected $parent_id;
 	protected $lang_id;
@@ -64,7 +64,7 @@ class category {
 	public function insert() {
 		global $cfg, $db;
 
-		$query[0] = sprintf("INSERT INTO %s_categories (parent_id, category_section, code, sort, user_id, date, date_update, published) VALUES (%s, '%s', '%s', %s, %s, '%s', '%s', %s)",
+		$query[0] = sprintf("INSERT INTO %s_8_categories (parent_id, category_section, code, sort, user_id, date, date_update, published) VALUES (%s, '%s', '%s', %s, %s, '%s', '%s', %s)",
 			$cfg->db->prefix,
 			$this->parent_id,
 			$this->category_section,
@@ -81,7 +81,7 @@ class category {
 			$this->id = $db->insert_id;
 
 			foreach ($this->title_arr as $i => $item) {
-				$query[1] = sprintf("INSERT INTO %s_categories_lang (category_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
+				$query[1] = sprintf("INSERT INTO %s_8_categories_lang (category_id, lang_id, title, text) VALUES (%s, %s, '%s', '%s')",
 					$cfg->db->prefix,
 					$this->id,
 					$i+1,
@@ -102,7 +102,7 @@ class category {
 		global $cfg, $db;
 		$toReturn = false;
 
-		$query[0] = sprintf("UPDATE %s_categories SET parent_id = '%s', category_section = '%s', code = '%s', sort = '%s', date = '%s', date_update = '%s', published = '%s' WHERE id = '%s'",
+		$query[0] = sprintf("UPDATE %s_8_categories SET parent_id = '%s', category_section = '%s', code = '%s', sort = '%s', date = '%s', date_update = '%s', published = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->parent_id,
 			$this->category_section,
@@ -120,7 +120,7 @@ class category {
 
 			foreach ($cfg->lg as $index=>$lg) {
 				if($lg[0]){
-					$query[$index] = sprintf("UPDATE %s_categories_lang SET title = '%s', text = '%s' WHERE category_id = '%s' AND lang_id = '%s'",
+					$query[$index] = sprintf("UPDATE %s_8_categories_lang SET title = '%s', text = '%s' WHERE category_id = '%s' AND lang_id = '%s'",
 						$cfg->db->prefix,
 						$this->title_arr[$index-1],
 						$this->description_arr[$index-1],
@@ -145,8 +145,8 @@ class category {
 		global $cfg, $db;
 
 		$query = sprintf("DELETE c, cl
-			FROM %s_categories c
-				JOIN %s_categories_lang cl on cl.category_id = c.id
+			FROM %s_8_categories c
+				JOIN %s_8_categories_lang cl on cl.category_id = c.id
 			WHERE c.id = %s",
 				$cfg->db->prefix,
 				$cfg->db->prefix,
@@ -165,8 +165,8 @@ class category {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text
-			FROM %s_categories bc
-				INNER JOIN %s_categories_lang AS bcl on bcl.category_id = bc.id
+			FROM %s_8_categories bc
+				INNER JOIN %s_8_categories_lang AS bcl on bcl.category_id = bc.id
 			WHERE bc.id = %s and bcl.lang_id = %s",
 			$cfg->db->prefix, $cfg->db->prefix, $this->id, $this->lang_id
 		);
@@ -183,8 +183,8 @@ class category {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, bcl.lang_id
-			FROM %s_categories bc
-				INNER JOIN %s_categories_lang AS bcl on bcl.category_id = bc.id
+			FROM %s_8_categories bc
+				INNER JOIN %s_8_categories_lang AS bcl on bcl.category_id = bc.id
 			WHERE bc.id = %s",
 			$cfg->db->prefix, $cfg->db->prefix, $this->id
 		);
@@ -206,7 +206,7 @@ class category {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT COUNT(id) as 'nr_sub_cats'
-			FROM %s_categories
+			FROM %s_8_categories
 			WHERE parent_id = '%s'",
 			$cfg->db->prefix,
 			$this->id
@@ -228,9 +228,9 @@ class category {
 	public function returnAllMainCategories() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
-			FROM %s_categories bc
-				INNER JOIN %s_categories_lang AS bcl on bcl.category_id = bc.id
+		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_8_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
+			FROM %s_8_categories bc
+				INNER JOIN %s_8_categories_lang AS bcl on bcl.category_id = bc.id
 			WHERE bc.parent_id = -1 AND bcl.lang_id = %s
 			ORDER BY bc.category_section ASC, bcl.title ASC",
 			$cfg->db->prefix, $cfg->db->prefix, $cfg->db->prefix, $this->lang_id
@@ -252,9 +252,9 @@ class category {
 	public function returnChildCategories() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
-			FROM %s_categories bc
-				INNER JOIN %s_categories_lang AS bcl on bcl.category_id = bc.id
+		$query = sprintf("SELECT bc.*, bcl.title, bcl.text, (SELECT COUNT(id) FROM %s_8_categories WHERE parent_id = bc.id) AS 'nr_sub_cats'
+			FROM %s_8_categories bc
+				INNER JOIN %s_8_categories_lang AS bcl on bcl.category_id = bc.id
 			WHERE bc.parent_id = %s AND bcl.lang_id = %s
 			ORDER BY bc.category_section ASC, bcl.title ASC",
 			$cfg->db->prefix, $cfg->db->prefix, $cfg->db->prefix, $this->parent_id, $this->lang_id
@@ -277,8 +277,8 @@ class category {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT bcl.title, bc.id
-			FROM %s_categories bc
-				INNER JOIN %s_categories_lang AS bcl on bcl.category_id = bc.id
+			FROM %s_8_categories bc
+				INNER JOIN %s_8_categories_lang AS bcl on bcl.category_id = bc.id
 			WHERE bcl.lang_id = %s
 			ORDER BY bc.category_section ASC, bcl.title ASC",
 			$cfg->db->prefix, $cfg->db->prefix, $this->lang_id
@@ -301,7 +301,7 @@ class category {
 		global $cfg, $db;
 
 		$query = sprintf("SELECT distinct category_section
-			FROM %s_categories
+			FROM %s_8_categories
 			ORDER BY category_section ASC",
 			$cfg->db->prefix
 		);
