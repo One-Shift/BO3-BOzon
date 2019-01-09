@@ -1,6 +1,6 @@
 <?php
 
-class user {
+class c9_user {
 	protected $id;
 	protected $username;
 	protected $password;
@@ -86,7 +86,7 @@ class user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"INSERT INTO %s_users (username, password, email, rank, code, status, user_key, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			"INSERT INTO %s_9_users (username, password, email, rank, code, status, user_key, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -110,7 +110,7 @@ class user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -131,7 +131,7 @@ class user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_users SET custom_css = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_9_users SET custom_css = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->custom_css,
 			$this->date_update,
@@ -144,7 +144,7 @@ class user {
 	public function delete() {
 		global $cfg, $db, $authData;
 
-		$user = new user();
+		$user = new c9_user();
 		$user->setId($this->id);
 		$user = $user->returnOneUser();
 
@@ -158,7 +158,7 @@ class user {
 		unset($user);
 
 		$query = sprintf(
-			"DELETE FROM %s_users WHERE id = '%s'",
+			"DELETE FROM %s_9_users WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->id
 		);
@@ -173,7 +173,7 @@ class user {
 	public function returnOneUser() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
+		$query = sprintf("SELECT * FROM %s_9_users WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
 		$source = $db->query($query);
 
 		return $source->fetch_object();
@@ -182,7 +182,7 @@ class user {
 	public function existUserByName() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users WHERE username = '%s' LIMIT 1", $cfg->db->prefix, $this->username);
+		$query = sprintf("SELECT * FROM %s_9_users WHERE username = '%s' LIMIT 1", $cfg->db->prefix, $this->username);
 		$source = $db->query($query);
 
 		return $source->num_rows;
@@ -192,7 +192,7 @@ class user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"SELECT * FROM %s_users WHERE email = '%s' AND status = '%s' LIMIT 1",
+			"SELECT * FROM %s_9_users WHERE email = '%s' AND status = '%s' LIMIT 1",
 			$cfg->db->prefix,
 			$this->email,
 			$this->status
@@ -205,7 +205,7 @@ class user {
 	public function existUserByEmail() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users WHERE email = '%s' LIMIT 1", $cfg->db->prefix, $this->email);
+		$query = sprintf("SELECT * FROM %s_9_users WHERE email = '%s' LIMIT 1", $cfg->db->prefix, $this->email);
 		$source = $db->query($query);
 
 		return $source->num_rows;
@@ -214,7 +214,7 @@ class user {
 	public function returnAllUsers() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users WHERE true", $cfg->db->prefix);
+		$query = sprintf("SELECT * FROM %s_9_users WHERE true", $cfg->db->prefix);
 		$source = $db->query($query);
 
 		$toReturn = [];
@@ -288,7 +288,7 @@ class user {
 
 	public static function insertField ($name, $value, $type, $sort, $required, $status) {
 		global $cfg, $db;
-		$query = sprintf("INSERT INTO %s_users_fields (`name`, `value`, `type`, `sort`,`required`, `status`, `date`, `date_update`) VALUES ('%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
+		$query = sprintf("INSERT INTO %s_9_users_fields (`name`, `value`, `type`, `sort`,`required`, `status`, `date`, `date_update`) VALUES ('%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$db->real_escape_string($name),
 			$db->real_escape_string($value),
@@ -311,7 +311,7 @@ class user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_users_fields SET  name = '%s', value = '%s', sort = '%s', required = '%s', status = '%s', date_update = '%s' WHERE id = %s",
+			"UPDATE %s_9_users_fields SET name = '%s', value = '%s', sort = '%s', required = '%s', status = '%s', date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
 			$db->real_escape_string($name),
 			$db->real_escape_string($value),
@@ -328,7 +328,7 @@ class user {
 	public static function deleteField($id) {
 		global $cfg, $db, $authData;
 
-		$gp = new user();
+		$gp = new c9_user();
 		$gp = $gp->returnOneField($id);
 
 		$trash = new trash();
@@ -340,7 +340,7 @@ class user {
 
 		unset($gp);
 
-		$query = sprintf("DELETE FROM %s_users_fields WHERE id = %s", $cfg->db->prefix, $id);
+		$query = sprintf("DELETE FROM %s_9_users_fields WHERE id = %s", $cfg->db->prefix, $id);
 
 		return $db->query($query);
 	}
@@ -349,7 +349,7 @@ class user {
 	public static function returnAllFields() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users_fields WHERE true", $cfg->db->prefix);
+		$query = sprintf("SELECT * FROM %s_9_users_fields WHERE true", $cfg->db->prefix);
 		$source = $db->query($query);
 
 		$toReturn = [];
@@ -366,7 +366,7 @@ class user {
 	public static function returnFields() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users_fields WHERE status = %s", $cfg->db->prefix, 1);
+		$query = sprintf("SELECT * FROM %s_9_users_fields WHERE status = %s", $cfg->db->prefix, 1);
 		$source = $db->query($query);
 
 		$toReturn = [];
@@ -383,7 +383,7 @@ class user {
 	public static function returnOneField($id) {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_users_fields WHERE id = %s LIMIT 1", $cfg->db->prefix, $id, 1);
+		$query = sprintf("SELECT * FROM %s_9_users_fields WHERE id = %s LIMIT 1", $cfg->db->prefix, $id, 1);
 		$source = $db->query($query);
 
 		return $source->fetch_object();
