@@ -7,12 +7,6 @@ CREATE TABLE `os_modules` (
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `os_modules` (name`, `folder`, `code`, `sort`) VALUES
-('Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0),
-('Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user-cog\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": false,\r\n\"dropdown\": true\r\n}', 1),
-('Users', 'mod-9-users', '{\"fa-icon\":\"fa-users\",\"img\":\"\",\"sub-items\":{\"List\":{\"url\":\"\"},\"Add user\":{\"url\":\"add\"},\"Logs\":{\"url\":\"logs\"}},\"sidebar\":true,\"dropdown\":false}', 2),
-('Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 3);
-
 CREATE TABLE `os_9_users` (
 	`id` int(11) NOT NULL,
 	`username` varchar(255) DEFAULT NULL,
@@ -109,4 +103,11 @@ ALTER TABLE `os_history`
 
 ALTER TABLE `os_trash`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `os_modules` (`name`, `folder`, `code`, `sort`) VALUES
+('Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0),
+('Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user-cog\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": false,\r\n\"dropdown\": true\r\n}', 1),
+('Users', 'mod-9-users', '{\"fa-icon\":\"fa-users\",\"img\":\"\",\"sub-items\":{\"List\":{\"url\":\"\"},\"Add user\":{\"url\":\"add\"},\"Logs\":{\"url\":\"logs\"}},\"sidebar\":true,\"dropdown\":false}', 2),
+('Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 3);
+
 COMMIT;
