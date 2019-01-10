@@ -86,7 +86,7 @@ class c9_user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"INSERT INTO %s_9_users (username, password, email, rank, code, status, user_key, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -94,9 +94,7 @@ class c9_user {
 			$this->rank,
 			$this->code,
 			$this->status,
-			$this->user_key,
-			$this->date,
-			$this->date_update
+			$this->user_key
 		);
 
 		$toReturn = $db->query($query);
@@ -110,7 +108,7 @@ class c9_user {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -119,8 +117,6 @@ class c9_user {
 			$this->code,
 			$this->status,
 			$this->user_key,
-			$this->date,
-			$this->date_update,
 			$this->id
 		);
 
@@ -390,3 +386,4 @@ class c9_user {
 	}
 
 }
+
