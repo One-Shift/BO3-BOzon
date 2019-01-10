@@ -1,5 +1,5 @@
 .login {
-	background-image: url('../images/background-fhd.jpg');
+	background-image: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-38.jpg);
 	background-position: center center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -129,21 +129,21 @@ input:focus::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 }
 
 input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	color: #009688;
+    color: #009688;
 	opacity: 1;
 }
 
 input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
-	color: #009688;
+    color: #009688;
 	opacity: 1;
 }
 
 input:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
-	color: #009688;
+    color: #009688;
 }
 
 input:focus::-ms-input-placeholder { /* Microsoft Edge */
-	color: #009688;
+    color: #009688;
 }
 
 input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -151,21 +151,21 @@ input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 }
 
 input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	color: #009688;
+    color: #009688;
 	opacity: 1;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
-	color: #009688;
+    color: #009688;
 	opacity: 1;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-	color: #009688;
+    color: #009688;
 }
 
 input::-ms-input-placeholder { /* Microsoft Edge */
-	color: #009688;
+    color: #009688;
 }
 
 input:-webkit-autofill,
@@ -174,15 +174,16 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active,
 select:-webkit-autofill {
 	transition: background-color 5000s ease-in-out 0s !important;
-	-webkit-text-fill-color: #000;
-	-webkit-box-shadow: inset 0 0 0px 9999px white, 0 0 0 rgba(255, 255, 255, 1);
+    -webkit-text-fill-color: #000;
+	-webkit-box-shadow: inset 0 0 0px 9999px white,
+                        0 0 0 rgba(255, 255, 255, 1);
 }
 
 @media screen and (max-width:575px) {
 	.login {
 		overflow: scroll;
 	}
-
+	
 	.login .wrapper {
 		display: none;
 	}
