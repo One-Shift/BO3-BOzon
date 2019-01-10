@@ -4,7 +4,7 @@ $cfg->mdl = new stdClass();
 $cfg->mdl->name = "Authenticator Login";
 $cfg->mdl->folder = "sys-login";
 $cfg->mdl->path = "{$cfg->system->path_bo}/modules/{$cfg->mdl->folder}/";
-$cfg->mdl->version = "0.0.1";
+$cfg->mdl->version = "1.0.0";
 $cfg->mdl->developer = "Carlos Santos";
 $cfg->mdl->contact = "carlos@one-shift.com";
 

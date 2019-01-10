@@ -2,19 +2,14 @@
 
 $page_tpl = bo3::mdl_load("templates/home.tpl");
 
-$form = bo3::c2r([
-	"lg-email" => $mdl_lang["labels"]["email"],
-	"lg-password" => $mdl_lang["labels"]["password"]
-], bo3::mdl_load("templates-e/form.tpl"));
-
-if (isset($_POST["submit"])) {
-	if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-		if (!empty($_POST["password"])) {
-			$_POST["password"] = c9_user::getSecurePassword($_POST["password"]);
+if (isset($_POST["input-submit"])) {
+	if (filter_var($_POST["input-email"], FILTER_VALIDATE_EMAIL)) {
+		if (!empty($_POST["input-password"])) {
+			$_POST["input-password"] = c9_user::getSecurePassword($_POST["input-password"]);
 
 			$query = sprintf(
 				"SELECT id, password FROM %s_9_users WHERE email = '%s' AND password = '%s' AND status = '%s' AND rank != '%s' LIMIT %s",
-				$cfg->db->prefix, $db->real_escape_string($_POST["email"]), $db->real_escape_string($_POST["password"]), TRUE, "member", 1
+				$cfg->db->prefix, $db->real_escape_string($_POST["input-email"]), $db->real_escape_string($_POST["input-password"]), TRUE, "member", 1
 			);
 
 			$source = $db->query($query);
@@ -47,40 +42,38 @@ if (isset($_POST["submit"])) {
 					header("Location: {$cfg->system->path_bo}/{$lg_s}/5-home/");
 				} else {
 					// ERROR MESSAGE
-					$form = bo3::c2r([
-						"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
-						"message" => $mdl_lang["return"]["failure-cookie"]
-					], $form);
+					$message = bo3::c2r([
+						"return-message" => $mdl_lang["return"]["failure-cookie"],
+						"type" => "danger"
+					], bo3::mdl_load("templates-e/return-message.tpl"));
 				}
 			} else {
 				// ERROR MESSAGE
-				$form = bo3::c2r([
-					"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
-					"message" => $mdl_lang["return"]["failure-nomatch"]
-				], $form);
+				$message = bo3::c2r([
+					"return-message" => $mdl_lang["return"]["failure-nomatch"],
+					"type" => "danger"
+				], bo3::mdl_load("templates-e/return-message.tpl"));
 			}
 		} else {
 			// ERROR MESSAGE
-			$form = bo3::c2r([
-				"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
-				"message" => $mdl_lang["return"]["failure-nopassword"]
-			], $form);
+			$message = bo3::c2r([
+				"return-message" => $mdl_lang["return"]["failure-nopassword"],
+				"type" => "danger"
+			], bo3::mdl_load("templates-e/return-message.tpl"));
 		}
 	} else {
 		// ERROR MESSAGE
-		$form = bo3::c2r([
-			"return-message" => bo3::mdl_load("templates-e/return-message.tpl"),
-			"message" => $mdl_lang["return"]["failure-email"]
-		], $form);
+		$message = bo3::c2r([
+			"return-message" => $mdl_lang["return"]["failure-email"],
+			"type" => "danger"
+		], bo3::mdl_load("templates-e/return-message.tpl"));
 	}
 }
-
-$form = bo3::c2r(["return-message" => ""], $form);
 
 /* last thing */
 $tpl = bo3::c2r([
 	"mod-path" => $cfg->mdl->path,
-	"form" => $form,
+	"message" => isset($message) ? $message : bo3::mdl_load("templates-e/spacer-60.tpl"),
 
 	"lg-cookies-alert" => $mdl_lang["cookie"]["alert"],
 	"lg-cookies-title" => $mdl_lang["cookie"]["title"],

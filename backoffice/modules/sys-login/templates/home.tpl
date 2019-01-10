@@ -6,48 +6,40 @@
 		<script type="text/javascript" src="{c2r-mod-path}/site-assets/js/script.js"></script>
 	</head>
 	<body class="login">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-						<p class="navbar-text xs-tacenter sm-tacenter">
-							{c2r-lg-cookies-alert}
-						</p>
-					</div>
-				</div>
-			</div>
-		</nav>
-		<div class="wrapper"></div>
-		<div class="container">
+		<div class="spacer sm-30"></div>
+		<div class="container form_login">
 			<div class="row">
-				<div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-4 offset-sm-1 offset-md-2 offset-lg-2 offset-xl-2 form">
-					{c2r-form}
-				</div>
-				<div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-4 message">
-					<div class="spacer all-60"></div>
-					<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
-					<div class="spacer all-60"></div>
-					{c2r-lg-message}
-					<div class="spacer all-60"></div>
+				<div class="col-sm-4 offset-sm-4 sm-tacenter">
+					<div class="row">
+						<div class="col-sm-10 offset-sm-1">
+							<form method="post" action="{c2r-path-bo}/{c2r-lg}/login/">
+								{c2r-message}
+								<div class="img">
+									<img class="avatar img-circle sm-block120" alt="avatar" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=120&amp;r=g&amp;d=mm">
+								</div>
+								<div class="spacer sm-60"></div>
+								<div class="form-group">
+									<label for="login-input-email">Email address</label>
+									<input type="email" name="input-email" class="form-control sm-tacenter" id="login-input-email" placeholder="" autofocus>
+								</div>
+								<div class="spacer sm-30"></div>
+								<div class="form-group">
+									<label for="login-input-password">Password</label>
+									<input type="password" name="input-password" class="form-control sm-tacenter" id="login-input-password" placeholder="">
+								</div>
+								<div class="spacer sm-60"></div>
+								<button name="input-submit" type="submit" class="btn btn-default btn-block">
+									<span>Login</span>
+								</button>
+							</form>
+							<div class="spacer sm-90"></div>
+							<p>Don't have an account? <a class="a_signup" href="{c2r-path-bo}/{c2r-lg}/login/register/">Sign up</a></p>
+							<div class="spacer sm-30"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="spacer all-120"></div>
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title" id="myModalLabel">{c2r-lg-cookies-title}</h4>
-					</div>
-					<div class="modal-body">
-						{c2r-lg-cookies-modal}
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div class="spacer sm-15"></div>
 	</body>
 </html>
