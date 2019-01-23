@@ -11,7 +11,7 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-12 col-sm-8 col-md-6 col-lg-4 message tacenter">
 					<div class="spacer all-60"></div>
-					<p align="center"><img src="{c2r-path-bo}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
+					<p align="center"><img src="{c2r-bo-path}/site-assets/images/logo-bo3.png" alt="logotipo" width="77%" /></p>
 					<div class="spacer all-60"></div>
 					{c2r-message}
 					<div class="spacer all-60"></div>
