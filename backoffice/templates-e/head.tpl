@@ -1,16 +1,16 @@
 <title>{c2r-sitename} » BO3 / BOzon</title>
 
 <!-- begin favicon -->
-<link rel="shortcut icon" href="{c2r-path-bo}/site-assets/favicon/favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="57x57" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-152x152.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="{c2r-path-bo}/site-assets/favicon/apple-touch-icon-180x180.png" />
+<link rel="shortcut icon" href="{c2r-bo-path}/site-assets/favicon/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-152x152.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="{c2r-bo-path}/site-assets/favicon/apple-touch-icon-180x180.png" />
 <!-- end favicon -->
 
 <meta property="og:site_name" content="{c2r-sitename}" />
@@ -37,29 +37,34 @@
 <script src="{c2r-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
 <link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
 <script src="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js" charset="utf-8"></script>
+
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-select-1.13.2/css/bootstrap-select.min.css">
+<script src="{c2r-libs}/bootstrap-select-1.13.2/js/bootstrap-select.min.js" charset="utf-8"></script>
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
 <link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.6.3/css/all.css">
 <!-- end fontawesome -->
 
-<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/script.js"></script>
-<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/cookies.js"></script>
-<link rel="stylesheet" href="{c2r-path-bo}/site-assets/css/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{c2r-bo-path}/site-assets/js/script.js"></script>
+<script type="text/javascript" src="{c2r-bo-path}/site-assets/js/cookies.js"></script>
+<link rel="stylesheet" href="{c2r-bo-path}/site-assets/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{c2r-bo-path}/site-assets/css/spacers.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{c2r-bo-path}/site-assets/css/custom.css" type="text/css" media="screen" />
 
 <script type="text/javascript">
 	var path = "{c2r-path}";
-	var path_bo = "{c2r-path-bo}";
+	var path_bo = "{c2r-bo-path}";
 	var lg = "{c2r-lg}";
 	var cookie = "{c2r-cookie}";
 </script>
 
 <!-- begin MD5 -->
-<script type="text/javascript" src="{c2r-path-bo}/site-assets/js/md5.js"></script>
+<script type="text/javascript" src="{c2r-bo-path}/site-assets/js/md5.js"></script>
 <!-- end MD5 -->
 
 <!-- begin CKEDITOR -->
-<script src="{c2r-path-bo}/site-assets/js/ckeditor/ckeditor.js"></script>
+<script src="{c2r-bo-path}/site-assets/js/ckeditor/ckeditor.js"></script>
 <script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <!-- end CKEDITOR -->
 
