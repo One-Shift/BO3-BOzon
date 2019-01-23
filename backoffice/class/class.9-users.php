@@ -224,6 +224,15 @@ class c9_user {
 		return $toReturn;
 	}
 
+	public static function returnNumOfUsers () {
+		global $cfg, $db;
+
+		$query = sprintf("SELECT * FROM %s_9_users WHERE true", $cfg->db->prefix);
+		$source = $db->query($query);
+
+		return $source->num_rows;
+	}
+
 	public static function isOwner ($authData) {
 		return $authData["rank"] == "owner";
 	}
@@ -282,12 +291,13 @@ class c9_user {
 
 	//fields
 
-	public static function insertField ($name, $value, $type, $sort, $required, $status) {
+	public static function insertField ($name, $value, $placeholder, $type, $sort, $required, $status) {
 		global $cfg, $db;
-		$query = sprintf("INSERT INTO %s_9_users_fields (`name`, `value`, `type`, `sort`,`required`, `status`, `date`, `date_update`) VALUES ('%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
+		$query = sprintf("INSERT INTO %s_9_users_fields (`name`, `value`, `placeholder`, `type`, `sort`,`required`, `status`, `date`, `date_update`) VALUES ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$db->real_escape_string($name),
 			$db->real_escape_string($value),
+			$db->real_escape_string($placeholder),
 			$db->real_escape_string($type),
 			$db->real_escape_string($sort),
 			$required,
@@ -303,14 +313,15 @@ class c9_user {
 		return false;
 	}
 
-	public static function updateField ($name, $value, $sort, $required, $status, $id) {
+	public static function updateField ($name, $value, $placeholder, $sort, $required, $status, $id) {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"UPDATE %s_9_users_fields SET name = '%s', value = '%s', sort = '%s', required = '%s', status = '%s', date_update = '%s' WHERE id = %s",
+			"UPDATE %s_9_users_fields SET name = '%s', value = '%s', placeholder = '%s', sort = '%s', required = '%s', status = '%s', date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
 			$db->real_escape_string($name),
 			$db->real_escape_string($value),
+			$db->real_escape_string($placeholder),
 			$db->real_escape_string($sort),
 			$db->real_escape_string($required),
 			$db->real_escape_string($status),
@@ -386,4 +397,3 @@ class c9_user {
 	}
 
 }
-
