@@ -3,11 +3,11 @@
 $cfg->system = new stdClass();
 
 $cfg->system->minify = TRUE;
-$cfg->system->pub = TRUE;
+$cfg->system->pub = FALSE;
 $cfg->system->restricted = TRUE;
 $cfg->system->timezone = "Europe/Lisbon"; // to disable set with FALSE
 
-$cfg->system->sitename = "";
+$cfg->system->sitename = "Powered by Bozon3";
 $cfg->system->owner = "";
 
 $cfg->system->protocol = "https"; // you can use http instead

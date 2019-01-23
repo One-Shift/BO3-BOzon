@@ -8,8 +8,8 @@
 	</head>
 	<body>
 		<nav class="top-bar navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="{c2r-path-bo}/{c2r-lg}/5-home/">
-				<img src="{c2r-path-bo}/site-assets/images/logo-dark.svg" class="spacer all-30" alt="bo3 bozon3">
+			<a class="navbar-brand" href="{c2r-bo-path}/{c2r-lg}/5-home/">
+				<img src="{c2r-bo-path}/site-assets/images/logo-dark.svg" class="spacer all-30" alt="bo3 bozon3">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							{c2r-dropdown-menu}
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" id="logout" href="{c2r-path-bo}/{c2r-lg}/logout/" title="logout">
+							<a class="dropdown-item" id="logout" href="{c2r-bo-path}/{c2r-lg}/logout/" title="logout">
 								<i class="fa fa-power-off" aria-hidden="true"></i>
 								<span class="block all-15"></span>
 								<span>Logout</span>
@@ -63,8 +63,8 @@
 						<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="{c2r-path-bo}/{c2r-lg}/"><i class="fas fa-home"></i></a></li>
-									<li class="breadcrumb-item"><a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/">{c2r-mdl-name}</a></li>
+									<li class="breadcrumb-item"><a href="{c2r-bo-path}/{c2r-lg}/"><i class="fas fa-home"></i></a></li>
+									<li class="breadcrumb-item"><a href="{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/">{c2r-mdl-name}</a></li>
 									<!-- <li class="breadcrumb-item active" aria-current="page">Data</li> -->
 									{c2r-breadcrumb}
 								</ol>
@@ -77,22 +77,21 @@
 				<div class="container-fluid">
 					{c2r-module}
 				</div>
-				<div class="authors-bar">
-					<small class="grey-text">
-						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version <a href="{c2r-path-bo}/{c2r-lg}/{c2r-module-folder}/changelog/">{c2r-mdl-version}</a> / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
-					</small>
-				</div>
 			</div>
 			<div class="core-footer">
-				<div class="container-fluid">
+				<div class="container-fluid {c2r-ads-active}">
 					<div class="spacer all-30"></div>
 					<div class="row">
-						<iframe class="ads hidden-xs" src="https://www.nexus-pt.eu/ads.php"></iframe>
+						<iframe class="ads" src="https://www.nexus-pt.eu/ads.php"></iframe>
 					</div>
 					<div class="spacer all-30"></div>
+				</div>
+				<div class="authors-bar">
+					<small class="grey-text">
+						<a class="grey-text" href="https://one-shift.com/en/bo3-module/{c2r-mdl-official-url}#t" target="_blank">{c2r-mdl-name}</a> / version <a href="{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/changelog/">{c2r-mdl-version}</a> / developer <a class="grey-text" href="mailto:{c2r-mdl-developer-contact}?subject={c2r-mdl-name}-v{c2r-mdl-version}">{c2r-mdl-developer}</a>
+					</small>
 				</div>
 			</div>
 		</div>
 	</body>
 </html>
-

@@ -56,7 +56,7 @@ $tpl = bo3::c2r([
 	"description" => $lang["system"]["description"],
 
 	"path" => $cfg->system->path,
-	"path-bo" => $cfg->system->path_bo,
+	"bo-path" => $cfg->system->path_bo,
 	"css" => "{$cfg->system->path}/site-assets/css",
 	"js" => "{$cfg->system->path}/site-assets/js",
 	"images" => "{$cfg->system->path}/site-assets/images",
@@ -64,7 +64,9 @@ $tpl = bo3::c2r([
 	"uploads" => "{$cfg->system->path}/site-assets/uploads",
 
 	"lg" => $lg_s,
-	"cookie" => $cfg->system->cookie
+	"cookie" => $cfg->system->cookie,
+
+	"ads-active" => ($cfg->system->pub) ? "d-block" : "d-none"
 ], (isset($tpl)) ? $tpl : ".::TPL::.::ERROR::.");
 
 // minify system

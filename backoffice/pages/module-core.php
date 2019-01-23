@@ -1,5 +1,7 @@
 <?php
 
+// VERSION: 3.0.3
+
 include "pages-e/header.php";
 include "pages-e/footer.php";
 include "pages-e/menu.php";
@@ -16,7 +18,6 @@ if (c9_user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) 
 	$uninstall = "";
 }
 
-/* last thing */
 $tpl = bo3::c2r([
 	"header" => $header,
 	"footer" => $footer,
@@ -25,7 +26,7 @@ $tpl = bo3::c2r([
 
 	"bo3-version" => $cfg->system->version,
 	"bo3-sub-version" => $cfg->system->sub_version,
-	"menu" => (isset($menu)) ? $menu : "",
+	"menu" => isset($menu) ? $menu : "",
 	"dropdown-menu" => (isset($dropdown_menu)) ? $dropdown_menu : "",
 	"avatar" => md5($authData["email"]),
 
@@ -39,8 +40,11 @@ $tpl = bo3::c2r([
 
 	"uninstall" => $uninstall,
 
+	"mdl-url" => "{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/",
+	"mdl-path" => $cfg->mdl->path,
+	"mdl-folder" => $cfg->mdl->folder,
 	"module-folder" => str_replace("mod-" , "", $cfg->mdl->folder),
-	"module-path" => $cfg->mdl->path,
+
 	"username" => $authData["username"],
 	"email" => $authData["email"]
 ], bo3::load("home.tpl"));
