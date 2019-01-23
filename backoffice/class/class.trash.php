@@ -32,7 +32,7 @@ class trash {
 			"INSERT INTO %s_trash (module, code, user_id, date) VALUES ('%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->module,
-			$this->code,
+			$db->real_escape_string($this->code),
 			$this->user,
 			$this->date
 		);
