@@ -46,7 +46,7 @@ $tpl = bo3::c2r([
 	"analytics" => $cfg->system->analytics,
 
 	"path" => $cfg->system->path,
-	"path-bo" => $cfg->system->path_bo,
+	"bo-path" => $cfg->system->path_bo,
 	"css" => "{$cfg->system->path}/site-assets/css",
 	"js" => "{$cfg->system->path}/site-assets/js",
 	"images" => "{$cfg->system->path}/site-assets/images",
