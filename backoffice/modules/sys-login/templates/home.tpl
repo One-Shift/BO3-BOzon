@@ -12,7 +12,7 @@
 				<div class="col-sm-4 offset-sm-4 sm-tacenter">
 					<div class="row">
 						<div class="col-sm-10 offset-sm-1">
-							<form method="post" action="{c2r-path-bo}/{c2r-lg}/login/">
+							<form method="post" action="{c2r-bo-path}/{c2r-lg}/login/">
 								{c2r-message}
 								<div class="img">
 									<img class="avatar img-circle sm-block120" alt="avatar" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=120&amp;r=g&amp;d=mm">
@@ -33,7 +33,7 @@
 								</button>
 							</form>
 							<div class="spacer sm-90"></div>
-							<p>Don't have an account? <a class="a_signup" href="{c2r-path-bo}/{c2r-lg}/login/register/">Sign up</a></p>
+							<p>Don't have an account? <a class="a_signup" href="{c2r-bo-path}/{c2r-lg}/login/register/">Sign up</a></p>
 							<div class="spacer sm-30"></div>
 						</div>
 					</div>

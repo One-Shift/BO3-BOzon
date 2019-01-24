@@ -3,10 +3,16 @@
 	<i class="fas fa-exclamation-triangle"></i> You don't have permissions to write data on the defined path.
 </div>
 <div class="spacer all-30"></div>
-<form id="upload" action="{c2r-path-bo}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
-	<label for="fileselect">Files Upload</label>
+<form id="upload" action="{c2r-bo-path}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
+	<label>Files Upload</label>
+	<div class="spacer all-15"></div>
 	<div>
-		<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+		<label for="fileselect" class="custom-file-upload">
+			<i class="fas fa-cloud-upload-alt"></i> Choose your files
+		</label>
+		<span class="helper">Multiple files allowed. Enjoy!</span>
+
+		<input id="fileselect" name ="fileselect[]" type="file" multiple="multiple"/>
 		<div id="filedrag">or drop files here</div>
 	</div>
 	<div id="submitbutton">
@@ -41,6 +47,7 @@
 	var data;
 
 	var uploaded_tpl = '{c2r-uploaded-item-tpl}';
+	var message_tpl = '{c2r-message-tpl}';
 	/* getElementById */
 	function $id(id) {
 		return document.getElementById(id);
@@ -182,13 +189,16 @@
 
 		$("#uploaded-list").empty();
 		$.get(
-			"{c2r-path-bo}/{c2r-lg}/4-files/api/" + id + "?r=getList&module={c2r-module}",
+			"{c2r-bo-path}/{c2r-lg}/4-files/api/" + id + "?r=getList&module={c2r-module}",
 			function (data) {
 				data = $.parseJSON(data);
 				var o = data.object;
-
-				for (i = 0; i < o.length; i++) {
-					addItemToList(o[i]);
+				if(o != false) {
+					for (i = 0; i < o.length; i++) {
+						addItemToList(o[i]);
+					}
+				} else {
+					$("#uploaded-list").append(message_tpl);
 				}
 			}
 		);
@@ -211,7 +221,7 @@
 					form.sort = $(obj).find(".inputSort").val();
 
 					$.post(
-						"{c2r-path-bo}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=update",
+						"{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=update",
 						form,
 						function(data) {
 							data = $.parseJSON(data);
@@ -233,7 +243,7 @@
 					var obj = $(this).parent("div").parent("div");
 
 					$.get(
-						"{c2r-path-bo}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete",
+						"{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete",
 						function(data) {
 							data = $.parseJSON(data);
 							if (data.status) {
