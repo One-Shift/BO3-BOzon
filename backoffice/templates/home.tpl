@@ -46,14 +46,14 @@
 			</div>
 		</nav>
 		<div class="top-bar-animation"></div>
-		<div class="sidebar {c2r-collapsed}">
+		<div class="sidebar">
 			<div class="list-group">
 				<div class="spacer all-30"></div>
 				{c2r-menu}
 			</div>
 			<div class="spacer all-15"></div>
 		</div>
-		<div class="core-container {c2r-unleashed}">
+		<div class="core-container">
 			<div class="core-header">
 				<div class="container-fluid">
 					<div class="row">
@@ -82,7 +82,7 @@
 				<div class="container-fluid {c2r-ads-active}">
 					<div class="spacer all-30"></div>
 					<div class="row">
-						<iframe class="ads" src="https://www.nexus-pt.eu/ads.php"></iframe>
+						<iframe class="ads d-none d-block-sm" src="https://www.nexus-pt.eu/ads.php"></iframe>
 					</div>
 					<div class="spacer all-30"></div>
 				</div>
