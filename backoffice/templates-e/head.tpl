@@ -22,7 +22,7 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
@@ -45,6 +45,11 @@
 <!-- begin fontawesome -->
 <link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.6.3/css/all.css">
 <!-- end fontawesome -->
+
+<!-- begin hammerjs -->
+<script src="{c2r-bo-path}/site-assets/libs/hammer-2.0.8/hammer.min.js" charset="utf-8"></script>
+<script src="{c2r-bo-path}/site-assets/libs/hammer-2.0.8/jquery.hammer.js" charset="utf-8"></script>
+<!-- end hammerjs -->
 
 <script type="text/javascript" src="{c2r-bo-path}/site-assets/js/script.js"></script>
 <script type="text/javascript" src="{c2r-bo-path}/site-assets/js/cookies.js"></script>
