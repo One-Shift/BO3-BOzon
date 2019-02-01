@@ -61,7 +61,7 @@ $tpl = bo3::c2r([
 	"js" => "{$cfg->system->path}/site-assets/js",
 	"images" => "{$cfg->system->path}/site-assets/images",
 	"libs" => "{$cfg->system->path}/site-assets/libs",
-	"uploads" => "{$cfg->system->path}/site-assets/uploads",
+	"uploads" => "{$cfg->system->path}/uploads",
 
 	"lg" => $lg_s,
 	"cookie" => $cfg->system->cookie,
