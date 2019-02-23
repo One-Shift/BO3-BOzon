@@ -71,7 +71,7 @@ $tpl = bo3::c2r([
 
 // minify system
 if ($cfg->system->minify) {
-	print bo3::minifyPage($tpl);
+	echo bo3::minifyPage($tpl);
 } else {
-	print $tpl;
+	echo $tpl;
 }
