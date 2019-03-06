@@ -57,10 +57,10 @@ $tpl = bo3::c2r([
 
 	"path" => $cfg->system->path,
 	"bo-path" => $cfg->system->path_bo,
-	"css" => "{$cfg->system->path}/site-assets/css",
-	"js" => "{$cfg->system->path}/site-assets/js",
-	"images" => "{$cfg->system->path}/site-assets/images",
-	"libs" => "{$cfg->system->path}/site-assets/libs",
+	"css" => "{$cfg->system->path_bo}/site-assets/css",
+	"js" => "{$cfg->system->path_bo}/site-assets/js",
+	"images" => "{$cfg->system->path_bo}/site-assets/images",
+	"libs" => "{$cfg->system->path_bo}/site-assets/libs",
 	"uploads" => "{$cfg->system->path}/uploads",
 
 	"lg" => $lg_s,
