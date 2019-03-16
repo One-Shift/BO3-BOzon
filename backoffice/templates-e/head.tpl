@@ -1,4 +1,4 @@
-<title>{c2r-sitename} ? BO3 / BOzon</title>
+<title>{c2r-sitename} » BO3 / BOzon</title>
 
 <!-- begin favicon -->
 <link rel="shortcut icon" href="{c2r-bo-path}/site-assets/favicon/favicon.ico" type="image/x-icon" />
@@ -30,32 +30,32 @@
 <meta name="author-code" content="One:Shift at one-shift.com" />
 
 <!-- begin jquery -->
-<script src="{c2r-bo-libs}/jquery-3.3.1/jquery-3.3.1.min.js" charset="utf-8"></script>
+<script src="{c2r-libs}/jquery-3.3.1/jquery-3.3.1.min.js" charset="utf-8"></script>
 <!-- end jquery -->
 
 <!-- begin bootstrap -->
-<script src="{c2r-bo-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
-<link rel="stylesheet" href="{c2r-bo-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
-<script src="{c2r-bo-libs}/bootstrap-4.1.1/js/bootstrap.min.js" charset="utf-8"></script>
+<script src="{c2r-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
+<script src="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js" charset="utf-8"></script>
 
-<link rel="stylesheet" href="{c2r-bo-libs}/bootstrap-select-1.13.2/css/bootstrap-select.min.css">
-<script src="{c2r-bo-libs}/bootstrap-select-1.13.2/js/bootstrap-select.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-select-1.13.2/css/bootstrap-select.min.css">
+<script src="{c2r-libs}/bootstrap-select-1.13.2/js/bootstrap-select.min.js" charset="utf-8"></script>
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
-<link rel="stylesheet" href="{c2r-bo-libs}/fontawesome-free-5.6.3/css/all.css">
+<link rel="stylesheet" href="{c2r-libs}/fontawesome-free-5.6.3/css/all.css">
 <!-- end fontawesome -->
 
 <!-- begin hammerjs -->
-<script src="{c2r-bo-path}/site-assets/libs/hammer-2.0.8/hammer.min.js" charset="utf-8"></script>
-<script src="{c2r-bo-path}/site-assets/libs/hammer-2.0.8/jquery.hammer.js" charset="utf-8"></script>
+<script src="{c2r-libs}/hammer-2.0.8/hammer.min.js" charset="utf-8"></script>
+<script src="{c2r-libs}/hammer-2.0.8/jquery.hammer.js" charset="utf-8"></script>
 <!-- end hammerjs -->
 
-<script type="text/javascript" src="{c2r-bo-path}/site-assets/js/script.js"></script>
-<script type="text/javascript" src="{c2r-bo-path}/site-assets/js/cookies.js"></script>
-<link rel="stylesheet" href="{c2r-bo-path}/site-assets/css/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{c2r-bo-path}/site-assets/css/spacers.min.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{c2r-bo-path}/site-assets/css/custom.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{c2r-js}/script.js"></script>
+<script type="text/javascript" src="{c2r-js}/cookies.js"></script>
+<link rel="stylesheet" href="{c2r-css}/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{c2r-css}/spacers.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{c2r-css}/custom.css" type="text/css" media="screen" />
 
 <script type="text/javascript">
 	var path = "{c2r-path}";
@@ -65,11 +65,11 @@
 </script>
 
 <!-- begin MD5 -->
-<script type="text/javascript" src="{c2r-bo-path}/site-assets/js/md5.js"></script>
+<script type="text/javascript" src="{c2r-js}/md5.js"></script>
 <!-- end MD5 -->
 
 <!-- begin CKEDITOR -->
-<script src="{c2r-bo-path}/site-assets/js/ckeditor/ckeditor.js"></script>
+<script src="{c2r-js}/ckeditor/ckeditor.js"></script>
 <script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <!-- end CKEDITOR -->
 
