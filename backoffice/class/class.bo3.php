@@ -157,20 +157,34 @@ class bo3 {
 		return false;
 	}
 
-	public static function load ($path) {
-		global $cfg;
-
-		if ($path != null) {
+	public static function load ($path = FALSE) {
+		if ($path) {
+			if (!file_exists("templates/{$path}")) {
+				$target_file = fopen("templates/{$path}", "w") or die("Unable to open file!");
+				fclose($target_file);
+			}
 			return file_get_contents("templates/{$path}");
+		} else {
+			$stack = debug_backtrace();
+			$sorigin_file = basename($stack[0]['file'], '.php');
+
+			if (!file_exists("templates/{$sorigin_file}.tpl")) {
+				$target_file = fopen("templates/{$sorigin_file}.tpl", "w") or die("Unable to open file!");
+				fclose($target_file);
+			}
+
+			return file_get_contents("templates/{$sorigin_file}.tpl");
 		}
 
-		return false;
+		return FALSE;
 	}
 
-	public static function loade ($path) {
-		global $cfg;
-
-		if ($path != null) {
+	public static function loade ($path = FALSE) {
+		if ($path) {
+			if (!file_exists("templates-e/{$path}")) {
+				$target_file = fopen("templates-e/{$path}", "w") or die("Unable to open file!");
+				fclose($target_file);
+			}
 			return file_get_contents("templates-e/{$path}");
 		}
 
