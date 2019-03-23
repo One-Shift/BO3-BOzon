@@ -27,14 +27,14 @@ if ($auth) {
 		default:
 			if ($pg == "home") { $pg = "5-home"; }
 
-			$mdl_path = sprintf("modules/mod-%s/", $pg);
+			$mdl_path = sprintf("modules/mod-%s", $pg);
 
 			if (!is_dir($mdl_path)) {
 				// if doesn't exist an action response, system sent you to 404
 				header("Location: {$cfg->system->path_bo}/{$lg_s}/404/");
 			} else {
 				// mod load
-				include "{$mdl_path}mod-{$pg}.php";
+				include "{$mdl_path}/mod-init.php";
 			}
 			break;
 	}
