@@ -35,8 +35,8 @@
 
 <!-- begin bootstrap -->
 <script src="{c2r-libs}/popper-1.14.3/popper.min.js" charset="utf-8"></script>
-<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.1.1/css/bootstrap.min.css">
-<script src="{c2r-libs}/bootstrap-4.1.1/js/bootstrap.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.2.1/css/bootstrap.min.css">
+<script src="{c2r-libs}/bootstrap-4.2.1/js/bootstrap.min.js" charset="utf-8"></script>
 
 <link rel="stylesheet" href="{c2r-libs}/bootstrap-select-1.13.2/css/bootstrap-select.min.css">
 <script src="{c2r-libs}/bootstrap-select-1.13.2/js/bootstrap-select.min.js" charset="utf-8"></script>
