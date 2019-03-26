@@ -1,5 +1,7 @@
 <?php
 
+// version: 4
+
 class bo3 {
 	public static function number_format($n) {
 		return number_format($n, 2, ".", " ");
