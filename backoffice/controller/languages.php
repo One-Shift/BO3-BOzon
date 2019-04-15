@@ -1,5 +1,7 @@
 <?php
 
+// version: 2
+
 // languages verifier
 $lg = null;
 $lg_s = null;
@@ -20,9 +22,12 @@ if ($lg == null || $lg_s == null) {
 }
 
 // languages loader
-$lg_file = sprintf("languages/%s.ini", $lg_s);
-if (file_exists($lg_file)) {
-	$lang = parse_ini_file($lg_file, true);
+if (is_dir("languages/{$lg_s}")) {
+	foreach (glob("languages/{$lg_s}/*.ini") as $filename) {
+		$lang[basename($filename, ".ini")] = parse_ini_file($filename, true);
+	}
 } else {
-	$lang = parse_ini_file("languages/en.ini", true);
+	foreach (glob("languages/en/*.ini") as $filename) {
+		$lang[basename($filename, ".ini")] = parse_ini_file($filename, true);
+	}
 }
