@@ -1,6 +1,6 @@
 <?php
 
-// version: 2
+// version: 3
 
 // languages verifier
 $lg = null;
