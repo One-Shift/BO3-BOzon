@@ -9,8 +9,12 @@ $lg_s = null;
 if (isset($_GET["lg"]) && $_GET["lg"] != null) {
 	foreach ($cfg->lg as $index=>$item) {
 		if ($_GET["lg"] == $item[1]) {
-			$lg = $index;
-			$lg_s = $item[1];
+			if ($item[0]) {
+				$lg = $index;
+				$lg_s = $item[1];
+			} else {
+				header("Location : {$cfg->system->path}");
+			}
 		}
 	}
 }
