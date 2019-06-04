@@ -31,13 +31,13 @@
 <meta name="generator" content="BO3 {c2r-bo3-version} {c2r-bo3-subversion}" />
 
 <!-- begin jquery -->
-<script type="text/javascript" src="{c2r-libs}/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="{c2r-libs}/jquery-3.4.1/jquery-3.4.1.min.js"></script>
 <!-- end jquery -->
 
 <!-- begin bootstrap -->
-<script type="text/javascript" src="{c2r-libs}/popper-1.14.3/popper.min.js"></script>
-<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.2.1/css/bootstrap.min.css">
-<script type="text/javascript" src="{c2r-libs}/bootstrap-4.2.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{c2r-libs}/popper-1.14.7/popper.min.js"></script>
+<link rel="stylesheet" href="{c2r-libs}/bootstrap-4.3.1/css/bootstrap.min.css">
+<script type="text/javascript" src="{c2r-libs}/bootstrap-4.3.1/js/bootstrap.min.js"></script>
 <!-- end bootstrap -->
 
 <!-- begin fontawesome -->
