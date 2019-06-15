@@ -5,7 +5,7 @@ CREATE TABLE `os_modules` (
 	`code` text NOT NULL,
 	`sort` int(11) NOT NULL DEFAULT '0',
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `os_9_users` (
 	`id` int(11) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE `os_9_users` (
 	`status` tinyint(1) NOT NULL DEFAULT '0',
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `os_9_users_fields` (
 	`id` int(11) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `os_9_users_fields` (
 	`status` tinyint(1) NOT NULL DEFAULT '0',
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `os_9_users`
 	ADD PRIMARY KEY (`id`),
@@ -52,7 +52,7 @@ CREATE TABLE `os_4_files` (
 	`user_id` int(11) NOT NULL,
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `os_history` (
 	`id` int(11) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `os_history` (
 	`user_id` int(11) DEFAULT NULL,
 	`description` text,
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `os_trash` (
 	`id` int(11) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `os_trash` (
 	`code` text NOT NULL,
 	`user_id` int(11) NOT NULL,
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `os_modules`
 	ADD PRIMARY KEY (`id`),
