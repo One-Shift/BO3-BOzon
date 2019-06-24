@@ -9,10 +9,10 @@ CREATE TABLE `os_modules` (
 
 CREATE TABLE `os_9_users` (
 	`id` int(11) NOT NULL,
-	`username` varchar(255) DEFAULT NULL,
-	`password` varchar(255) DEFAULT NULL,
+	`username` varchar(250) DEFAULT NULL,
+	`password` varchar(250) DEFAULT NULL,
 	`rank` enum('owner','manager','member') DEFAULT 'member',
-	`email` varchar(255) DEFAULT NULL,
+	`email` varchar(250) DEFAULT NULL,
 	`code` text,
 	`custom_css` text NOT NULL,
 	`user_key` text,
@@ -35,10 +35,8 @@ CREATE TABLE `os_9_users_fields` (
 
 ALTER TABLE `os_9_users`
 	ADD PRIMARY KEY (`id`),
-	ADD UNIQUE KEY `name` (`username`),
-	ADD UNIQUE KEY `email` (`email`),
-	ADD KEY `fk_prefix_users_prefix_products1` (`id`),
-	ADD KEY `fk_prefix_users_prefix_articles1` (`id`);
+	ADD UNIQUE KEY `username` (`username`),
+	ADD UNIQUE KEY `email` (`email`);
 
 CREATE TABLE `os_4_files` (
 	`id` int(11) NOT NULL,
@@ -71,17 +69,16 @@ CREATE TABLE `os_trash` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `os_modules`
-	ADD PRIMARY KEY (`id`),
-	ADD UNIQUE KEY `folder` (`folder`);
+	ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_modules`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `os_9_users_fields`
-	ADD PRIMARY KEY (`id`);
+ 	ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_9_users`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `os_9_users_fields`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -104,11 +101,12 @@ ALTER TABLE `os_history`
 ALTER TABLE `os_trash`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-
-INSERT INTO `os_modules` (`name`, `folder`, `code`, `sort`) VALUES
-('Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0),
-('Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user-cog\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": false,\r\n\"dropdown\": true\r\n}', 1),
-('Users', 'mod-9-users', '{\"fa-icon\":\"fa-users\",\"img\":\"\",\"sub-items\":{\"List\":{\"url\":\"\"},\"Add user\":{\"url\":\"add\"},\"Logs\":{\"url\":\"logs\"}},\"sidebar\":true,\"dropdown\":false}', 2),
-('Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 3);
+INSERT INTO `os_modules` (`id`, `name`, `folder`, `code`, `sort`, `date`) VALUES
+(1, 'Home', 'mod-5-home', '{\r\n	\"fa-icon\": \"fa-home\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0, '2019-06-19 16:11:40'),
+(2, 'Account', 'mod-6-account', '{\r\n	\"fa-icon\": \"fa-user-cog\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": false,\r\n\"dropdown\": true\r\n}', 1, '2019-06-19 16:11:40'),
+(3, 'Users', 'mod-9-users', '{\"fa-icon\":\"fa-users\",\"img\":\"\",\"sub-items\":{\"List\":{\"url\":\"\"},\"Add user\":{\"url\":\"add\"},\"Logs\":{\"url\":\"logs\"}},\"sidebar\":true,\"dropdown\":false}', 2, '2019-06-19 16:11:40'),
+(4, 'Files', 'mod-4-files', '{\r\n	\"fa-icon\": \"fa-file\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 3, '2019-06-19 16:11:40'),
+(5, 'Categories', 'mod-8-categories', '{\r\n	\"fa-icon\": \"fa-list\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add category\": {\r\n			\"url\": \"add\"\r\n		}\r\n	},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0, '2019-06-19 16:15:25'),
+(6, 'Articles', 'mod-7-articles', '{\r\n	\"fa-icon\": \"fa-newspaper\",\r\n	\"img\": \"\",\r\n	\"sub-items\": {\r\n		\"List\": {\r\n			\"url\": \"\"\r\n		},\r\n		\"Add Article\": {\r\n			\"url\": \"add\"\r\n		}\r\n	},\r\n\"sidebar\": true,\r\n\"dropdown\": false\r\n}', 0, '2019-06-19 16:15:28');
 
 COMMIT;
