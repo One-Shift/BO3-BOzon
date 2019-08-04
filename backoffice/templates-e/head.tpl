@@ -22,7 +22,7 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="keywords" content="{c2r-keywords}" />
 <meta name="description" content="{c2r-description}" />
 <meta name="robots" content="index" />
@@ -47,22 +47,35 @@
 <!-- end fontawesome -->
 
 <!-- begin hammerjs -->
-<script src="{c2r-libs}/hammer-2.0.8/hammer.min.js" charset="utf-8"></script>
-<script src="{c2r-libs}/hammer-2.0.8/jquery.hammer.js" charset="utf-8"></script>
+<!-- <script src="{c2r-libs}/hammer-2.0.8/hammer.min.js" charset="utf-8"></script> -->
+<!-- <script src="{c2r-libs}/hammer-2.0.8/jquery.hammer.js" charset="utf-8"></script> -->
 <!-- end hammerjs -->
 
 <script type="text/javascript" src="{c2r-js}/script.js"></script>
 <script type="text/javascript" src="{c2r-js}/cookies.js"></script>
-<link rel="stylesheet" href="{c2r-css}/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{c2r-css}/spacers.min.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{c2r-css}/custom.css" type="text/css" media="screen" />
 
-<script type="text/javascript">
-	var path = "{c2r-path}";
-	var path_bo = "{c2r-bo-path}";
-	var lg = "{c2r-lg}";
-	var cookie = "{c2r-cookie}";
-</script>
+<!-- <link rel="stylesheet" href="{c2r-css}/style.css" type="text/css" media="screen" /> -->
+<!-- <link rel="stylesheet" href="{c2r-css}/custom.css" type="text/css" media="screen" /> -->
+
+<!-- -->
+		<!-- Fontfaces CSS-->
+		<link href="{c2r-css}/_font-face.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+		<!-- Vendor CSS-->
+		<link href="{c2r-libs}/_animsition/animsition.min.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_wow/animate.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_slick/slick.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_select2/select2.min.css" rel="stylesheet" media="all">
+		<link href="{c2r-libs}/_perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+		<!-- Main CSS-->
+		<link href="{c2r-css}/_theme.css" rel="stylesheet" media="all">
+<!-- -->
 
 <!-- begin MD5 -->
 <script type="text/javascript" src="{c2r-js}/md5.js"></script>
@@ -72,6 +85,13 @@
 <script src="{c2r-js}/ckeditor/ckeditor.js"></script>
 <script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <!-- end CKEDITOR -->
+
+<script type="text/javascript">
+	var path = "{c2r-path}",
+	path_bo = "{c2r-bo-path}",
+	lg = "{c2r-lg}",
+	cookie = "{c2r-cookie}";
+</script>
 
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
