@@ -20,7 +20,6 @@ $source = $db->query($query);
 while ($data = $source->fetch_object()) {
 	array_push($installed_modules, $data->folder);
 
-	// $tmp_name = explode("-", $data->folder);
 	$tmp_name = substr($data->folder, 4);
 	$code = json_decode($data->code);
 
@@ -67,7 +66,6 @@ if (c9_user::isOwner($authData)) {
 	$list = glob('modules/mod-*', GLOB_ONLYDIR);
 
 	$icon = bo3::c2r([
-		// 'module-folder' => $data->folder,
 		'fa' => "fa-folder"
 	], $menu_fa_icon_tpl);
 
@@ -76,7 +74,6 @@ if (c9_user::isOwner($authData)) {
 		$folder = $path_explode[count($path_explode) - 1];
 		$path_explode[count($path_explode) - 1] = explode("-", $path_explode[count($path_explode) - 1]);
 
-		// $tmp_name = explode("-", $value);
 		$tmp_name = substr($folder, 4);
 
 		if (!in_array($folder, $installed_modules)) {

@@ -1,9 +1,9 @@
 <?php
 
-$menu_item_tpl = bo3::loade("menu/d-item.tpl");
+$menu_item_tpl = bo3::loade("dropdown-menu/item.tpl");
 
-$menu_fa_icon_tpl = bo3::loade("menu/fa-icon.tpl");
-$menu_img_tpl = bo3::loade("menu/img.tpl");
+$menu_fa_icon_tpl = bo3::loade("dropdown-menu/icon.tpl");
+$menu_img_tpl = bo3::loade("dropdown-menu/img.tpl");
 
 $dropdown_menu = "";
 $installed_modules = [];
@@ -16,7 +16,6 @@ $source = $db->query($query);
 while ($data = $source->fetch_object()) {
 	array_push($installed_modules, $data->folder);
 
-	// $tmp_name = explode("-", $data->folder);
 	$tmp_name = substr($data->folder, 4);
 	$code = json_decode($data->code);
 
@@ -30,7 +29,7 @@ while ($data = $source->fetch_object()) {
 		} else {
 			$icon = bo3::c2r([
 				'module-folder' => $data->folder,
-				'fa' => (isset($code->{"fa-icon"}) && !empty($code->{"fa-icon"})) ? $code->{"fa-icon"} : "fa-folder"
+				'icon' => (isset($code->{"fa-icon"}) && !empty($code->icon)) ? $code->icon : "fa-folder"
 			], $menu_fa_icon_tpl);
 		}
 
