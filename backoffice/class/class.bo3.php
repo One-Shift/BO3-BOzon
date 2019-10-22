@@ -206,20 +206,10 @@ class bo3 {
 	}
 
 	public static function c2r ($args = [], $target) {
-
-		$search = [];
-		$replace = [];
-
 		foreach ($args as $index => $value) {
-			array_push($search, "{c2r-$index}");
-			array_push($replace, $value);
+			$target = str_replace("{c2r-$index}", $value, $target);
 		}
-
-		return str_replace(
-			$search,
-			$replace,
-			$target
-		);
+		return $target;
 	}
 
 	public static function dump($args = null) {
