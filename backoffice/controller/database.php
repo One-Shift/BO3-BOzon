@@ -1,17 +1,19 @@
 <?php
 
 if ($cfg->db->connect) {
-	$db = mysqli_connect(
-		$cfg->db->host,
-		$cfg->db->user,
-		$cfg->db->password,
-		$cfg->db->database
-	);
+	$options = [
+		PDO::ATTR_EMULATE_PREPARES   => false,
+		PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+	];
 
-	if (mysqli_connect_errno()) {
-		printf("Connect failed: %s\n", mysqli_connect_error());
+	try {
+		$db = new PDO("mysql:host={$cfg->db->host};dbname={$cfg->db->database};charset=utf8mb4", $cfg->db->user, $cfg->db->password, $options);
+	} catch (Exception $e) {
+		error_log($e->getMessage(), 0);
+		exit("Connect failed: ".$e->getMessage());
 		exit();
 	}
 
-	$db->set_charset("utf8");
+	unset($options);
 }

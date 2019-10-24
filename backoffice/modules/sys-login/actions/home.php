@@ -5,14 +5,21 @@ $page_tpl = bo3::mdl_load("templates/home.tpl");
 if (isset($_POST["input-submit"])) {
 	if (filter_var($_POST["input-email"], FILTER_VALIDATE_EMAIL)) {
 		if (!empty($_POST["input-password"])) {
-			$_POST["input-password"] = c9_user::getSecurePassword($_POST["input-password"]);
+			// $_POST["input-password"] = c9_user::getSecurePassword($_POST["input-password"]);
 
-			$query = sprintf(
-				"SELECT id, password FROM %s_9_users WHERE email = '%s' AND status = '%s' AND rank != '%s' LIMIT %s",
-				$cfg->db->prefix, $db->real_escape_string($_POST["input-email"]), TRUE, "member", 1
-			);
+			$instance = $db->prepare("SELECT id, password FROM {$cfg->db->prefix}_9_users WHERE email=:email AND status=:status AND rank=:rank LIMIT :limit")
+			$instance->execute(['email' => $_POST["input-email"], 'status' => true, 'limit' => 1]);
 
-			$source = $db->query($query);
+			$response = $instance->fetchObject();
+			// $query = sprintf(
+			// 	"SELECT id, password FROM %s_9_users WHERE email = '%s' AND status = '%s' AND rank != '%s' LIMIT %s",
+			// 	$cfg->db->prefix, $db->real_escape_string($_POST["input-email"]), TRUE, "member", 1
+			// );
+
+			// $source = $db->query($query);
+			if (password_verify($_POST["input-password"], $response->password)) {
+
+			}
 
 			if ($source->num_rows > 0) {
 				$data = $source->fetch_object();
