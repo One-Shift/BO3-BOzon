@@ -1,9 +1,8 @@
-<a class="list-group-item" href="#bo-menu-{c2r-mod}" data-toggle="collapse" title="{c2r-name}">
-	{c2r-icon}
-	<span class="nav-label">{c2r-name} <i class="fa fa-plus float-right" aria-hidden="true"></i></span>
-</a>
-<div id="bo-menu-{c2r-mod}" class="collapse sub-list">
-	<div class="list-group">
+<li class="has-sub">
+	<a class="js-arrow" href="#" title="{c2r-name}">
+		{c2r-icon}{c2r-name}
+	</a>
+	<ul class="list-unstyled navbar__sub-list js-sub-list">
 		{c2r-sub-menu}
-	</div>
-</div>
+	</ul>
+</li>

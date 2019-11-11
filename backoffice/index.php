@@ -1,4 +1,5 @@
 <?php
+
 include "controller/classes.php";
 include "config/cfg.php";
 include "config/database.php";
@@ -38,9 +39,7 @@ if ($auth) {
 			}
 			break;
 	}
-} else {
-	include sprintf("modules/sys-%s/sys-%s.php", "login","login");
-}
+} else { include sprintf("modules/sys-%s/sys-%s.php", "login","login"); }
 
 // print website
 $tpl = bo3::c2r([
@@ -67,7 +66,7 @@ $tpl = bo3::c2r([
 	"cookie" => $cfg->system->cookie,
 
 	"ads-active" => ($cfg->system->pub) ? "d-block" : "d-none"
-], (isset($tpl)) ? $tpl : ".::TPL::.::ERROR::.");
+], isset($tpl) ? $tpl : ".::TPL::.::ERROR::.");
 
 // minify system
 if ($cfg->system->minify) {

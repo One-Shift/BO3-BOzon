@@ -1,28 +1,39 @@
-<div class="spacer all-30"></div>
 <div class="alert alert-warning {c2r-permissions-display}" role="alert">
 	<i class="fas fa-exclamation-triangle"></i> You don't have permissions to write data on the defined path.
 </div>
-<div class="spacer all-30"></div>
-<form id="upload" action="{c2r-bo-path}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
-	<label>Files Upload</label>
-	<div class="spacer all-15"></div>
-	<div>
-		<label for="fileselect" class="custom-file-upload">
-			<i class="fas fa-cloud-upload-alt"></i> Choose your files
-		</label>
-		<span class="helper">Multiple files allowed. Enjoy!</span>
+<div class="card">
+	<div class="card-header">
+		<strong>Files Upload</strong>
+		<!-- <small>Use this class
+			<code>.btn-block</code>
+		</small> -->
+	</div>
+	<div class="card-body">
+		<form id="upload" action="{c2r-bo-path}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
+			<p>
+				<label for="fileselect" class="custom-file-upload">
+					<i class="fas fa-cloud-upload-alt"></i> Choose your files
+				</label><br>
+				<span class="helper">Multiple files allowed. Enjoy!</span>
+			</p>
 
-		<input id="fileselect" name ="fileselect[]" type="file" multiple="multiple"/>
-		<div id="filedrag">or drop files here</div>
+			<input id="fileselect" name ="fileselect[]" type="file" multiple="multiple"/>
+			<div id="filedrag">or drop files here</div>
+			<div id="submitbutton">
+				<button type="submit">Upload Files</button>
+			</div>
+		</form>
 	</div>
-	<div id="submitbutton">
-		<button type="submit">Upload Files</button>
+</div>
+
+<div class="card">
+	<div class="card-header">
+		<strong>Uploaded Files</strong>
 	</div>
-</form>
-<div class="sm-spacer30"></div>
-<label>Uploaded Files</label>
-<div class="sm-spacer15"></div>
-<div id="uploaded-list"></div>
+	<div class="card-body">
+		<div id="uploaded-list"></div>
+	</div>
+</div>
 
 <style media="screen">
 	#filedrag {
@@ -54,13 +65,10 @@
 	}
 
 	/* call initialization file */
-	if (window.File && window.FileList && window.FileReader) {
-		Init();
-	}
+	if (window.File && window.FileList && window.FileReader) { Init(); }
 
 	/* initialize */
 	function Init() {
-
 		var fileselect = $id("fileselect"),
 			filedrag = $id("filedrag"),
 			submitbutton = $id("submitbutton");
@@ -92,7 +100,6 @@
 
 	/* file selection */
 	function FileSelectHandler(e) {
-
 		/* cancel event and hover styling */
 		FileDragHover(e);
 
@@ -102,26 +109,21 @@
 		for (var i = 0, f; f = files[i]; i++) {
 			UploadFile(f);
 		}
-
 	}
 
 	function UploadFile(file) {
 		var xhr = new XMLHttpRequest();
 
-		if ( xhr.upload ) {
+		if (xhr.upload) {
 			xhr.upload.onprogress = function(e) {
 				var done = e.position || e.loaded, total = e.totalSize || e.total;
-				/*
-				console.log('xhr.upload progress: ' + done + ' / ' + total + ' = ' + (Math.floor(done/total*1000)/10) + '%');
-				*/
+				/* console.log('xhr.upload progress: ' + done + ' / ' + total + ' = ' + (Math.floor(done/total*1000)/10) + '%'); */
 			};
 		}
 
 		xhr.onreadystatechange = function(e) {
-			if ( 4 == this.readyState ) {
-				/*
-				console.log(['xhr upload complete', e]);
-				*/
+			if (4 == this.readyState) {
+				/* console.log(['xhr upload complete', e]); */
 			}
 		};
 
@@ -134,9 +136,7 @@
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
 				data = readBody(xhr);
-				/*
-				console.log(data);
-				*/
+				/* console.log(data); */
 
 				fallback (data.object);
 				addItemToList ($.parseJSON(data.object));
@@ -188,71 +188,51 @@
 		}
 
 		$("#uploaded-list").empty();
-		$.get(
-			"{c2r-bo-path}/{c2r-lg}/4-files/api/" + id + "?r=getList&module={c2r-module}",
-			function (data) {
-				data = $.parseJSON(data);
-				var o = data.object;
-				if(o != false) {
-					for (i = 0; i < o.length; i++) {
-						addItemToList(o[i]);
-					}
-				} else {
-					$("#uploaded-list").append(message_tpl);
+		$.get("{c2r-bo-path}/{c2r-lg}/4-files/api/" + id + "?r=getList&module={c2r-module}", function (data) {
+			data = $.parseJSON(data);
+			var o = data.object;
+			if (o != false) {
+				for (i = 0; i < o.length; i++) {
+					addItemToList(o[i]);
 				}
+			} else {
+				$("#uploaded-list").append(message_tpl);
 			}
-		);
+		});
 	}
 
-	$(document).ready(
-		function () {
-			getList();
+	$(document).ready(function () {
+		getList();
 
-			$("body").on(
-				"click",
-				".upload-update",
-				function () {
-					var button = $(this);
-					var obj = $(this).parent("div").parent("div");
+		$("body").on("click", ".upload-update", function () {
+			var button = $(this);
+			var obj = $(this).parent("div").parent("div");
 
-					var form = {};
-					form.description = $(obj).find(".inputDescription").val();
-					form.code = $(obj).find(".inputCode").val();
-					form.sort = $(obj).find(".inputSort").val();
+			var form = {};
+			form.description = $(obj).find(".inputDescription").val();
+			form.code = $(obj).find(".inputCode").val();
+			form.sort = $(obj).find(".inputSort").val();
 
-					$.post(
-						"{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=update",
-						form,
-						function(data) {
-							data = $.parseJSON(data);
-							if (data.status) {
-								$(button).append(' <i class="fa fa-check-square" aria-hidden="true"></i>');
+			$.post( "{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=update", form, function(data) {
+				data = $.parseJSON(data);
+				if (data.status) {
+					$(button).append(' <i class="fa fa-check-square" aria-hidden="true"></i>');
 
-								setTimeout(function () {$(button).children("i").remove()}, 2500);
-							}
-						}
-					);
+					setTimeout(function () {$(button).children("i").remove()}, 2500);
 				}
-			);
+			});
+		});
 
-			$("body").on(
-				"click",
-				".upload-delete",
-				function () {
-					var button = $(this);
-					var obj = $(this).parent("div").parent("div");
+		$("body").on("click", ".upload-delete", function () {
+			var button = $(this);
+			var obj = $(this).parent("div").parent("div");
 
-					$.get(
-						"{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete",
-						function(data) {
-							data = $.parseJSON(data);
-							if (data.status) {
-								$(obj).remove();
-							}
-						}
-					);
+			$.get( "{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete", function(data) {
+				data = $.parseJSON(data);
+				if (data.status) {
+					$(obj).remove();
 				}
-			);
-		}
-	);
+			});
+		});
+	});
 </script>
