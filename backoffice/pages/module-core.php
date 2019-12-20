@@ -1,11 +1,11 @@
 <?php
 
-// VERSION: 3.0.4
+// VERSION: 3.0.5
 
-include "pages-e/header.php";
-include "pages-e/footer.php";
-include "pages-e/menu.php";
-include "pages-e/dropdown-menu.php";
+include ROOT_DIR."/pages-e/header.php";
+include ROOT_DIR."/pages-e/footer.php";
+include ROOT_DIR."/pages-e/menu.php";
+include ROOT_DIR."/pages-e/dropdown-menu.php";
 
 if (c9_user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
 	$uninstall = bo3::c2r([
