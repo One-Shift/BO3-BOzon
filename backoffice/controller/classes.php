@@ -1,11 +1,24 @@
 <?php
 
-if (is_dir("./backoffice") != FALSE) {
-	$classes_folder = "./backoffice";
+/**
+* Class init
+* Includes all classes from the class folder
+*
+* @author 	Carlos Santos
+* @version 0.2
+* @since 2016-10
+*/
+
+if (is_dir("./backoffice")) {
+	$path_to_backoffice = "/backoffice";
 } else {
-	$classes_folder = ".";
+	$path_to_backoffice = "";
 }
 
-foreach (glob("{$classes_folder}/class/*.php") as $filename) {
+if (is_dir(ROOT_DIR."{$path_to_backoffice}/vendor/")) {
+	require ROOT_DIR."{$path_to_backoffice}/vendor/autoload.php";
+}
+
+foreach (glob(ROOT_DIR."{$path_to_backoffice}/class/*.php") as $filename) {
 	include $filename;
 }

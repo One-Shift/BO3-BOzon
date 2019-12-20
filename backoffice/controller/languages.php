@@ -1,10 +1,16 @@
 <?php
 
-// version: 4
+/**
+* Language Controller
+*
+* @author 	Carlos Santos
+* @version 0.4
+* @since 2016-10
+*/
 
 // languages verifier
-$lg = null;
-$lg_s = null;
+$lg = null; /** @var int */
+$lg_s = null; /** @var string */
 
 // VERIFY GET DATA
 if (isset($_GET["lg"]) && $_GET["lg"] != null) {
@@ -28,12 +34,12 @@ if (isset($_GET["lg"]) && $_GET["lg"] != null) {
 }
 
 if ($lg == null || $lg_s == null) {
-	// default language
+	// DEFAULT LANGUAGE
 	$lg = 1;
 	$lg_s = $cfg->lg[1][1];
 }
 
-// languages loader
+// LANGUAGE LOADER
 if (is_dir("languages/{$lg_s}")) {
 	foreach (glob("languages/{$lg_s}/*.ini") as $filename) {
 		$lang[basename($filename, ".ini")] = parse_ini_file($filename, true);

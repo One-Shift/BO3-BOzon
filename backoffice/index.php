@@ -1,34 +1,36 @@
 <?php
 
-include "controller/classes.php";
-include "config/cfg.php";
-include "config/database.php";
-include "config/email.php";
-include "config/languages.php";
-include "config/system.php";
+define('ROOT_DIR', dirname(__FILE__));
 
-include "controller/database.php";
-include "controller/https.php";
-include "controller/languages.php";
-include "controller/sessions-bo.php";
-include "controller/pages.php";
-include "controller/actions.php";
-include "controller/id.php";
+include ROOT_DIR."/controller/classes.php";
+include ROOT_DIR."/config/cfg.php";
+include ROOT_DIR."/config/database.php";
+include ROOT_DIR."/config/email.php";
+include ROOT_DIR."/config/languages.php";
+include ROOT_DIR."/config/system.php";
 
-$head = file_get_contents("templates-e/head.tpl");
+include ROOT_DIR."/controller/database.php";
+include ROOT_DIR."/controller/https.php";
+include ROOT_DIR."/controller/languages.php";
+include ROOT_DIR."/controller/sessions-bo.php";
+include ROOT_DIR."/controller/pages.php";
+include ROOT_DIR."/controller/actions.php";
+include ROOT_DIR."/controller/id.php";
+
+$head = file_get_contents(ROOT_DIR."/templates-e/head.tpl");
 
 if ($auth) {
 	switch ($pg) {
 		case "logout":
-			include sprintf("modules/sys-%s/sys-%s.php", "logout", "logout");
+			include sprintf(ROOT_DIR."/modules/sys-%s/sys-%s.php", "logout", "logout");
 			break;
 		case "404":
-			include sprintf("modules/sys-%s/sys-%s.php", "404", "404");
+			include sprintf(ROOT_DIR."/modules/sys-%s/sys-%s.php", "404", "404");
 			break;
 		default:
 			if ($pg == "home") { $pg = "5-home"; }
 
-			$mdl_path = sprintf("modules/mod-%s", $pg);
+			$mdl_path = sprintf(ROOT_DIR."/modules/mod-%s", $pg);
 
 			if (!is_dir($mdl_path)) {
 				// if doesn't exist an action response, system sent you to 404
@@ -39,9 +41,9 @@ if ($auth) {
 			}
 			break;
 	}
-} else { include sprintf("modules/sys-%s/sys-%s.php", "login","login"); }
+} else { include sprintf(ROOT_DIR."/modules/sys-%s/sys-%s.php", "login","login"); }
 
-// print website
+// Preparing tpl to be send as response of the request
 $tpl = bo3::c2r([
 	"head" => $head,
 
