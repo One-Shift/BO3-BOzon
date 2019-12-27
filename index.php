@@ -23,14 +23,10 @@ $head = bo3::loade("head.tpl");
 
 // page controller
 $pg_file = sprintf(ROOT_DIR."/pages/%s.php", $pg);
-if ($pg == null) {
-	include ROOT_DIR."/pages/home.php";
-} else if ($pg == "404") {
-	include ROOT_DIR."/pages/404.php";
-} else if (file_exists($pg_file)) {
+if (file_exists($pg_file)) {
 	include $pg_file;
 } else {
-	include ROOT_DIR."/pages/404.php";
+	include ROOT_DIR."/pages/404.php"; /* 404 must exist */
 }
 
 // Preparing tpl to be send as response of the request
