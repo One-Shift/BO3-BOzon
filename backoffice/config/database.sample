@@ -1,0 +1,10 @@
+<?php
+
+$cfg->db = new stdClass();
+
+$cfg->db->connect = {c2r-connect}; // Database not connected by default. Change to TRUE to connect
+$cfg->db->host = "{c2r-host}:{c2r-port}";
+$cfg->db->user = "{c2r-username}";
+$cfg->db->password = "{c2r-password}";
+$cfg->db->database = "{c2r-schema}";
+$cfg->db->prefix = "{c2r-prefix}";

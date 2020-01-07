@@ -1,0 +1,26 @@
+<?php
+
+$cfg->system = new stdClass();
+
+$cfg->system->minify = {c2r-minify};
+$cfg->system->pub = {c2r-publicity};
+$cfg->system->restricted = TRUE;
+$cfg->system->timezone = "Europe/Lisbon"; // to disable set with FALSE
+
+$cfg->system->sitename = "{c2r-sitename}";
+$cfg->system->owner = "{c2r-owner}";
+
+$cfg->system->protocol = "{c2r-protocol}"; // you can use http instead
+$cfg->system->domain = "{c2r-domain}";
+$cfg->system->path = "{c2r-path}";
+$cfg->system->path_bo = "{$cfg->system->path}/backoffice";
+
+$cfg->system->version = "3.5.0";
+$cfg->system->sub_version = "RC";
+
+$cfg->system->key = "{c2r-key}";
+
+$cfg->system->cookie = "{c2r-cookie}";
+$cfg->system->cookie_time = 86400; // 86400 represents 1 day, 60 seconds * 60 minutes * 24 hours.
+
+$cfg->system->analytics = "{c2r-analytics}";

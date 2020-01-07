@@ -1,11 +1,11 @@
 <?php
 
-// VERSION: 3.0.4
+// VERSION: 3.0.5
 
-include "pages-e/header.php";
-include "pages-e/footer.php";
-include "pages-e/menu.php";
-include "pages-e/dropdown-menu.php";
+include ROOT_DIR."/pages-e/header.php";
+include ROOT_DIR."/pages-e/footer.php";
+include ROOT_DIR."/pages-e/menu.php";
+include ROOT_DIR."/pages-e/dropdown-menu.php";
 
 if (c9_user::isOwner($authData) && empty($a) && count($cfg->mdl->dbTables) > 0) {
 	$uninstall = bo3::c2r([
@@ -20,7 +20,7 @@ $tpl = bo3::c2r([
 	"header" => $header,
 	"footer" => $footer,
 
-	"custom-css" => isset($authData["custom_css"]) ? $authData["custom_css"] : "",
+	"custom-css" => isset($authData->custom_css) ? $authData->custom_css : "",
 
 	"bo3-version" => $cfg->system->version,
 	"bo3-sub-version" => $cfg->system->sub_version,
@@ -44,12 +44,12 @@ $tpl = bo3::c2r([
 
 	"uninstall" => isset($uninstall) ? $uninstall : "",
 
-	"user-avatar" => md5($authData["email"]),
-	"user-name" => $authData["username"],
-	"user-email" => $authData["email"],
+	"user-avatar" => md5($authData->email),
+	"user-name" => $authData->username,
+	"user-email" => $authData->email,
 
 	"year" => date("Y"),
 
-	"username" => $authData["username"],
-	"email" => $authData["email"]
+	"username" => $authData->username,
+	"email" => $authData->email
 ], bo3::load());
