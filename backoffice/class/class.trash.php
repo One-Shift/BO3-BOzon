@@ -1,40 +1,52 @@
 <?php
 
+/**
+* trash Class
+* Class used to save deleted data from other modules
+* The purpose is give tools to developers to help his customers in the future.
+* Can also be used to deal with files for front-end purposes.
+*
+* @author 	Carlos Santos
+* @version 1.1
+* @since 2016-10
+* @license The MIT License (MIT)
+*/
+
 class trash {
-	protected $id;
-	protected $code;
-	protected $date;
-	protected $module;
-	protected $user;
+	protected $id; /** @var int **/
+	protected $code; /** @var string **/
+	protected $module; /** @var string **/
+	protected $user; /** @var int **/
 
 	public function __construct() {}
 
+	/** === SET METHODS === **/
+
+	/** @param string **/
 	public function setCode($c) {
 		$this->code = $c;
 	}
 
+	/** @param int **/
 	public function setUser($u) {
 		$this->user = $u;
 	}
 
+	/** @param string **/
 	public function setModule($m) {
 		$this->module = $m;
 	}
 
-	public function setDate($d = null) {
-		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
-
+	/** [Insert new file regist in DB] @return boolean */
 	public function insert() {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"INSERT INTO %s_trash (module, code, user_id, date) VALUES ('%s', '%s', '%s', '%s')",
+			"INSERT INTO %s_trash (module, code, user_id) VALUES ('%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->module,
 			$db->real_escape_string($this->code),
-			$this->user,
-			$this->date
+			$this->user
 		);
 
 		$toReturn = $db->query($query);
