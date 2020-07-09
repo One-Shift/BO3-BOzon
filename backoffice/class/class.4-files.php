@@ -1,28 +1,41 @@
 <?php
 
+/**
+* c4_file Class
+* Class used to deal with files information that is storaged in DB
+* It's used in the BO in the files plugin and module
+* Can also be used to deal with files for front-end purposes.
+*
+* @author 	Carlos Santos
+* @version 1.0
+* @since 2016-10
+* @license The MIT License (MIT)
+*/
+
 class c4_file {
-	protected $id;
-	protected $file;
-	protected $type;
-	protected $module;
-	protected $id_ass;
-	protected $description;
-	protected $code;
-	protected $sort = 0;
-	protected $user_id;
-	protected $date;
-	protected $date_update;
+	protected $id; /** @var int **/
+	protected $file; /** @var string **/
+	protected $type; /** @var string **/
+	protected $module; /** @var string **/
+	protected $id_ass; /** @var int **/
+	protected $description; /** @var string **/
+	protected $code; /** @var string **/
+	protected $sort = 0; /** @var int **/
+	protected $user_id; /** @var int **/
+	protected $date; /** @var DateTime **/
+	protected $date_update; /** @var DateTime **/
 
 	public function __construct() {}
 
-	public function setId ($i) {
-		$this->id = $i;
-	}
+	/** === SET METHODS === **/
 
-	public function setFile ($f) {
-		$this->file = $f;
-	}
+	/** @param int **/
+	public function setId ($i) {$this->id = $i;}
 
+	/** @param string **/
+	public function setFile ($f) {$this->file = $f;}
+
+	/** @param string **/
 	public function setType ($t) {
 		switch ($t) {
 			case 'img':
@@ -37,42 +50,35 @@ class c4_file {
 		}
 	}
 
-	public function setModule ($m) {
-		$this->module = $m;
-	}
+	/** @param string **/
+	public function setModule ($m) {$this->module = $m;}
 
-	public function setDescription ($d) {
-		$this->description = $d;
-	}
+	/** @param string **/
+	public function setDescription ($d) {$this->description = $d;}
 
-	public function setCode ($c) {
-		$this->code = $c;
-	}
+	/** @param string **/
+	public function setCode ($c) {$this->code = $c;}
 
-	public function setIdAss ($ia) {
-		$this->id_ass = $ia;
-	}
+	/** @param int **/
+	public function setIdAss ($ia) {$this->id_ass = $ia;}
 
-	public function setSort ($s) {
-		$this->sort = $s;
-	}
+	/** @param int **/
+	public function setSort ($s) {$this->sort = $s;}
 
-	public function setUserId ($u) {
-		$this->user_id = $u;
-	}
+	/** @param int **/
+	public function setUserId ($u) {$this->user_id = $u;}
 
-	public function setDate($d = null) {
-		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
+	/** @param DateTime **/
+	public function setDate($d = null) {$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
 
-	public function setDateUpdate($d = null) {
-		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
+	/** @param DateTime **/
+	public function setDateUpdate($d = null) {$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
 
+	/** [Insert new file regist in DB] @return boolean */
 	public function insert () {
 		global $cfg, $db;
 
-		$query = sprintf(
+		return $db->query(sprintf(
 			"INSERT INTO %s_4_files (file, type, module, id_ass, description, code, sort, user_id, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->file,
@@ -85,19 +91,14 @@ class c4_file {
 			$db->real_escape_string($this->sort),
 			$this->date,
 			$this->date_update
-		);
-
-		$toReturn = $db->query($query);
-
-		$this->id = $db->insert_id;
-
-		return $toReturn;
+		));
 	}
 
+	/** [Update file regist in DB by given ID] @return boolean */
 	public function update () {
 		global $cfg, $db;
 
-		$query = sprintf(
+		return $db->query(sprintf(
 			"UPDATE %s_4_files SET file = '%s', type = '%s', module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->file,
@@ -108,15 +109,14 @@ class c4_file {
 			$this->date,
 			$this->date_update,
 			$this->id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Update file regist in DB by given ID] @return boolean */
 	public function simpleUpdate () {
 		global $cfg, $db;
 
-		$query = sprintf(
+		return $db->query(sprintf(
 			"UPDATE %s_4_files SET description = '%s', code = '%s', sort = %s, date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
 			$db->real_escape_string($this->description),
@@ -124,15 +124,14 @@ class c4_file {
 			$db->real_escape_string($this->sort),
 			$this->date_update,
 			$this->id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Update file regist in DB by given ID] @return boolean */
 	public function normalUpdate () {
 		global $cfg, $db;
 
-		$query = sprintf(
+		return $db->query(sprintf(
 			"UPDATE %s_4_files SET module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->module,
@@ -141,25 +140,23 @@ class c4_file {
 			$this->date,
 			$this->date_update,
 			$this->id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Update file regist in DB by given ID] @return boolean */
 	public function updateIdAss () {
 		global $cfg, $db;
 
-		$query = sprintf(
+		return $db->query(sprintf(
 			"UPDATE %s_4_files SET id_ass = %s, date_update = '%s' WHERE id = %s",
 			$cfg->db->prefix,
 			$this->id_ass,
 			$this->date_update,
 			$this->id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Delete file regist] @return boolean */
 	public function delete () {
 		global $cfg, $db, $authData;
 
@@ -167,34 +164,29 @@ class c4_file {
 		$file->setId($this->id);
 		$file = $file->returnOneFile();
 
-		$trash = new trash();
-		$trash->setCode(json_encode($file));
-		$trash->setDate();
-		$trash->setModule($cfg->mdl->folder);
-		$trash->setUser($authData["id"]);
-		$trash->insert();
+		$trash = new trash(json_encode($file), null, $cfg->mdl->folder, $authData->id);
+		if($trash->insert()) {
+			unset($file);
 
-		unset($user);
+			return $db->query(sprintf(
+				"DELETE FROM %s_4_files WHERE id = '%s'",
+				$cfg->db->prefix,
+				$this->id
+			));
+		}
 
-		$query = sprintf(
-			"DELETE FROM %s_4_files WHERE id = '%s'",
-			$cfg->db->prefix,
-			$this->id
-		);
-
-		return $db->query($query);
+		return FALSE;
 	}
 
+	/** [Return one file by given ID] @return object */
 	public function returnOneFile () {
 		global $cfg, $db;
 
-		$query = sprintf(
+		$source = $db->query(sprintf(
 			"SELECT * FROM %s_4_files WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->id
-		);
-
-		$source = $db->query($query);
+		));
 
 		if ($source->num_rows > 0) {
 			return $source->fetch_object();
@@ -203,20 +195,12 @@ class c4_file {
 		return FALSE;
 	}
 
+	/** [Return files by given args] @return array or @return boolean */
 	public function returnFiles ($args = "") {
 		global $cfg, $db;
 
-		if (empty($args)) {
-			$query = sprintf(
-				"SELECT * FROM %s_4_files WHERE %s",
-				$cfg->db->prefix,
-				((!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null) .
-				((!empty($this->id_ass)) ? " AND " : null) .
-				((!empty($this->module)) ? "module = '{$this->module}'" : null) .
-				((!empty($this->module)) ? " AND " : null) .
-				((!empty($this->type)) ? "type = '{$this->type}'" : null)
-			);
 
+		if (empty($args)) {
 			if (is_array($this->code)) {
 				foreach ($this->code as $key => $value) {
 					if (!isset($code)) {
@@ -224,23 +208,28 @@ class c4_file {
 					}
 					$code .= "code LIKE '%{$value}%' AND ";
 				}
+			} elseif (is_string($code) && $code != "") {
+				$code = "code LIKE '%{$code}%'";
 			}
 
-			if (isset($code)) {
-				if (!empty($this->id_ass) || !empty($this->module)) {
-					$query .= " AND ";
-				}
-				$query .= substr($code, 0, -4);
-			}
+			$source = $db->query(sprintf(
+				"SELECT * FROM %s_4_files WHERE %s",
+				$cfg->db->prefix,
+				((!empty($this->id_ass)) ? "id_ass = {$this->id_ass}" : null) .
+				((!empty($this->id_ass)) ? " AND " : null) .
+				((!empty($this->module)) ? "module = '{$this->module}'" : null) .
+				((!empty($this->module)) ? " AND " : null) .
+				((!empty($this->type)) ? "type = '{$this->type}'" : null) .
+				((!empty($this->type)) ? " AND " : null) .
+				((isset($code)) ? substr($code, 0, -4) : null)
+			));
 		} else {
-			$query = sprintf(
+			$source = $db->query(sprintf(
 				"SELECT * FROM %s_4_files WHERE %s",
 				$cfg->db->prefix,
 				$args
-			);
+			));
 		}
-
-		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			while ($data = $source->fetch_object()) {
@@ -257,27 +246,48 @@ class c4_file {
 		return FALSE;
 	}
 
-	public function returnFilesByModule () {}
+	/** [Return files by Module] @return array or @return boolean */
+	public function returnFilesByModule () {
+		global $cfg, $db;
 
+		if(isset($this->module) && !empty($this->module)) {
+			$source = $db->query(sprintf(
+				"SELECT  * FROM %s_4_files WHERE module = '%s'",
+				$cfg->db->prefix, $this->module
+			));
+
+			if($source->num_rows > 0) {
+				while ($data = $source->fetch_object()) {
+					if(!isset($toReturn)) {
+						$toReturn = [];
+					}
+
+					array_push($toReturn, $data);
+				}
+			}
+		}
+
+		return FALSE;
+	}
+
+	/** [Return files filtered by module and id_ass] @return array or @return boolean */
 	public function returnFilterList () {
 		global $cfg, $db;
 
 		if (!is_null($this->id_ass) && ($this->id_ass != 0)) {
-			$query = sprintf(
+			$source = $db->query(sprintf(
 				"SELECT * FROM %s_4_files WHERE id_ass = %s AND module = '%s' ORDER BY sort ASC",
 				$cfg->db->prefix,
 				$this->id_ass,
 				$this->module
-			);
+			));
 		} else {
-		 	$query = sprintf(
+			$source = $db->query(sprintf(
 				"SELECT * FROM %s_4_files WHERE id_ass != 0 ORDER BY sort ASC",
 				$cfg->db->prefix,
 				$this->module
-			);
+			));
 		}
-
-		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			while ($data = $source->fetch_object()) {
@@ -294,9 +304,11 @@ class c4_file {
 		return FALSE;
 	}
 
+	/** [Returns the properties of the given object] */
 	public function returnObject() {
 		return json_encode(get_object_vars($this));
 	}
+
 
 	public function fallback($id, $l) {
 		$l = explode(",", $l);
@@ -313,15 +325,19 @@ class c4_file {
 		}
 	}
 
+	/** [Return the diferent modules that the files are associated to] @return array or @return boolean */
 	public static function returnModules () {
 		global $cfg, $db;
+
+		$source = $db->query(sprintf(
+			"SELECT module FROM %s_4_files WHERE true GROUP BY module ORDER BY module ASC",
+			$cfg->db->prefix
+		));
 
 		$query = sprintf(
 			"SELECT module FROM %s_4_files WHERE true GROUP BY module ORDER BY module ASC",
 			$cfg->db->prefix
 		);
-
-		$source = $db->query($query);
 
 		if ($source->num_rows > 0) {
 			while ($data = $source->fetch_object()) {
