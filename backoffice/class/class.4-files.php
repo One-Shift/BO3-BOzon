@@ -80,7 +80,7 @@ class c4_file {
 			'',
 			'',
 			$this->user_id,
-			$db->real_escape_string($this->sort),
+			$db->real_escape_string($this->sort)
 		));
 	}
 

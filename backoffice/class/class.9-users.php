@@ -76,12 +76,6 @@ class c9_user {
 	/** @param string */
 	public function setUserKey() {$this->user_key = md5("{$this->username}+{$this->email}+{$this->date}+{$this->date_update}");}
 
-	/** @param DateTime */
-	public function setDate($d = null) {$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
-
-	/** @param DateTime */
-	public function setDateUpdate($d = null) {$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
-
 	/** === CRUD Functions === */
 
 	/** [Insert new user in DB] @return boolean */
@@ -89,7 +83,7 @@ class c9_user {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', %d, '%s')",
+			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -106,7 +100,7 @@ class c9_user {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = %d, user_key = '%s' WHERE id = %d",
+			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s' WHERE id = %d",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
