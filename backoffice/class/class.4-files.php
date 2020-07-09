@@ -7,7 +7,7 @@
 * Can also be used to deal with files for front-end purposes.
 *
 * @author 	Carlos Santos
-* @version 1.0
+* @version 1.1
 * @since 2016-10
 * @license The MIT License (MIT)
 */
@@ -22,8 +22,6 @@ class c4_file {
 	protected $code; /** @var string **/
 	protected $sort = 0; /** @var int **/
 	protected $user_id; /** @var int **/
-	protected $date; /** @var DateTime **/
-	protected $date_update; /** @var DateTime **/
 
 	public function __construct() {}
 
@@ -68,18 +66,12 @@ class c4_file {
 	/** @param int **/
 	public function setUserId ($u) {$this->user_id = $u;}
 
-	/** @param DateTime **/
-	public function setDate($d = null) {$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
-
-	/** @param DateTime **/
-	public function setDateUpdate($d = null) {$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
-
 	/** [Insert new file regist in DB] @return boolean */
 	public function insert () {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"INSERT INTO %s_4_files (file, type, module, id_ass, description, code, sort, user_id, date, date_update) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+			"INSERT INTO %s_4_files (file, type, module, id_ass, description, code, sort, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->file,
 			$this->type,
@@ -89,8 +81,6 @@ class c4_file {
 			'',
 			$this->user_id,
 			$db->real_escape_string($this->sort),
-			$this->date,
-			$this->date_update
 		));
 	}
 
@@ -99,15 +89,13 @@ class c4_file {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"UPDATE %s_4_files SET file = '%s', type = '%s', module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_4_files SET file = '%s', type = '%s', module = '%s', id_ass = '%s', sort = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->file,
 			$this->type,
 			$this->module,
 			$this->id_ass,
 			$db->real_escape_string($this->sort),
-			$this->date,
-			$this->date_update,
 			$this->id
 		));
 	}
@@ -117,12 +105,11 @@ class c4_file {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"UPDATE %s_4_files SET description = '%s', code = '%s', sort = %s, date_update = '%s' WHERE id = %s",
+			"UPDATE %s_4_files SET description = '%s', code = '%s', sort = %s WHERE id = %s",
 			$cfg->db->prefix,
 			$db->real_escape_string($this->description),
 			$db->real_escape_string($this->code),
 			$db->real_escape_string($this->sort),
-			$this->date_update,
 			$this->id
 		));
 	}
@@ -132,13 +119,11 @@ class c4_file {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"UPDATE %s_4_files SET module = '%s', id_ass = '%s', sort = '%s', date = '%s', date_update = '%s' WHERE id = '%s'",
+			"UPDATE %s_4_files SET module = '%s', id_ass = '%s', sort = '%s' WHERE id = '%s'",
 			$cfg->db->prefix,
 			$this->module,
 			$this->id_ass,
 			$db->real_escape_string($this->sort),
-			$this->date,
-			$this->date_update,
 			$this->id
 		));
 	}
@@ -148,10 +133,9 @@ class c4_file {
 		global $cfg, $db;
 
 		return $db->query(sprintf(
-			"UPDATE %s_4_files SET id_ass = %s, date_update = '%s' WHERE id = %s",
+			"UPDATE %s_4_files SET id_ass = %s WHERE id = %s",
 			$cfg->db->prefix,
 			$this->id_ass,
-			$this->date_update,
 			$this->id
 		));
 	}
@@ -314,7 +298,6 @@ class c4_file {
 		$l = explode(",", $l);
 
 		$file = new c4_file();
-		$file->setDateUpdate();
 
 		foreach ($l as $i => $item) {
 			if (!empty($item)) {
