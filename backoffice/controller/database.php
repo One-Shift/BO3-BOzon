@@ -1,5 +1,13 @@
 <?php
 
+/**
+* MySQLi Connection
+*
+* @author 	Carlos Santos
+* @version 0.1
+* @since 2016-10
+*/
+
 if ($cfg->db->connect) {
 	$db = mysqli_connect(
 		$cfg->db->host,

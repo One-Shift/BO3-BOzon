@@ -1,37 +1,35 @@
 <?php
 
-include "backoffice/config/cfg.php";
-include "backoffice/config/database.php";
-include "backoffice/config/email.php";
-include "backoffice/config/languages.php";
-include "backoffice/config/system.php";
+define('ROOT_DIR', dirname(__FILE__));
 
-include "backoffice/controller/database.php";
-include "backoffice/controller/https.php";
-include "backoffice/controller/classes.php";
-include "backoffice/controller/languages.php";
-include "backoffice/controller/sessions.php";
-include "backoffice/controller/pages.php";
-include "backoffice/controller/actions.php";
-include "backoffice/controller/id.php";
+include ROOT_DIR."/backoffice/config/cfg.php";
+include ROOT_DIR."/backoffice/config/database.php";
+include ROOT_DIR."/backoffice/config/email.php";
+include ROOT_DIR."/backoffice/config/languages.php";
+include ROOT_DIR."/backoffice/config/system.php";
 
-include "pages-e/_global_.php";
+include ROOT_DIR."/backoffice/controller/database.php";
+include ROOT_DIR."/backoffice/controller/https.php";
+include ROOT_DIR."/backoffice/controller/classes.php";
+include ROOT_DIR."/backoffice/controller/languages.php";
+include ROOT_DIR."/backoffice/controller/sessions.php";
+include ROOT_DIR."/backoffice/controller/pages.php";
+include ROOT_DIR."/backoffice/controller/actions.php";
+include ROOT_DIR."/backoffice/controller/id.php";
+
+include ROOT_DIR."/pages-e/_global_.php";
 
 $head = bo3::loade("head.tpl");
 
 // page controller
-$pg_file = sprintf("pages/%s.php", $pg);
-if ($pg == null) {
-	include "pages/home.php";
-} else if ($pg == "404") {
-	include "pages/404.php";
-} else if (file_exists($pg_file)) {
+$pg_file = sprintf(ROOT_DIR."/pages/%s.php", $pg);
+if (file_exists($pg_file)) {
 	include $pg_file;
 } else {
-	include "pages/404.php";
+	include ROOT_DIR."/pages/404.php"; /* 404 must exist */
 }
 
-// print website
+// Preparing tpl to be send as response of the request
 $tpl = bo3::c2r([
 	"head" => $head,
 
