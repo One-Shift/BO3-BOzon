@@ -14,6 +14,7 @@ if (isset($_GET["a"]) && !empty($_GET["a"])) {
 	} else {
 		$a = $_GET["a"];
 	}
+/* CLI support cmd eg.: php index.php --a=home */
 } else if (isset(getopt(null, ["a::"])["a"])) {
 	if ($cfg->db->connect) {
 		$a = $db->real_escape_string(getopt(null, ["a::"])["a"]);
