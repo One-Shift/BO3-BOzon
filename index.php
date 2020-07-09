@@ -3,10 +3,6 @@
 define('ROOT_DIR', dirname(__FILE__));
 
 include ROOT_DIR."/backoffice/config/cfg.php";
-include ROOT_DIR."/backoffice/config/database.php";
-include ROOT_DIR."/backoffice/config/email.php";
-include ROOT_DIR."/backoffice/config/languages.php";
-include ROOT_DIR."/backoffice/config/system.php";
 
 include ROOT_DIR."/backoffice/controller/database.php";
 include ROOT_DIR."/backoffice/controller/https.php";
