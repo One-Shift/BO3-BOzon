@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		{c2r-head}
-		<link rel="stylesheet" href="{c2r-mod-path}/site-assets/css/style.css" media="screen" title="no title" charset="utf-8">
-		<script type="text/javascript" src="{c2r-mod-path}/site-assets/js/script.js"></script>
+		{{ head }}
+		<link rel="stylesheet" href="{{ mod-path }}/site-assets/css/style.css" media="screen" title="no title" charset="utf-8">
+		<script type="text/javascript" src="{{ mod-path }}/site-assets/js/script.js"></script>
 	</head>
 	<body class="login">
 		<div class="spacer sm-30"></div>
@@ -12,20 +12,20 @@
 				<div class="col-sm-4 offset-sm-4 sm-tacenter">
 					<div class="row">
 						<div class="col-sm-10 offset-sm-1">
-							<form method="post" action="{c2r-bo-path}/{c2r-lg}/login/register/">
-								{c2r-message}
+							<form method="post" action="{{ bo-path }}/{{ lg }}/login/register/">
+								{{ message }}
 								<div class="img">
 									<img class="avatar img-circle sm-block120" alt="avatar" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=120&amp;r=g&amp;d=mm">
 								</div>
 								<div class="spacer sm-60"></div>
 								<div class="form-group">
 									<label for="register-input-name">Your Name / Username</label>
-									<input type="text" name="input-name" class="form-control sm-tacenter" id="register-input-name" placeholder="" value="{c2r-name}">
+									<input type="text" name="input-name" class="form-control sm-tacenter" id="register-input-name" placeholder="" value="{{ name }}">
 								</div>
 								<div class="spacer sm-30"></div>
 								<div class="form-group">
 									<label for="register-input-email">Email address</label>
-									<input type="email" name="input-email" class="form-control sm-tacenter" id="register-input-email" placeholder="" value="{c2r-email}">
+									<input type="email" name="input-email" class="form-control sm-tacenter" id="register-input-email" placeholder="" value="{{ email }}">
 								</div>
 								<div class="spacer sm-30"></div>
 								<div class="form-group">
@@ -43,7 +43,7 @@
 								</button>
 							</form>
 							<div class="spacer sm-90"></div>
-							<p>You have an account? <a class="a_signin" href="{c2r-bo-path}/{c2r-lg}/login/">Sign In</a></p>
+							<p>You have an account? <a class="a_signin" href="{{ bo-path }}/{{ lg }}/login/">Sign In</a></p>
 							<div class="spacer sm-30"></div>
 						</div>
 					</div>

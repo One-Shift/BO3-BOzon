@@ -4,7 +4,7 @@
 		<button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#modal-uninstall">
 			<i class="fa fa-chain-broken" aria-hidden="true"></i>
 			<span class="block xs-15 sm-15"></span>
-			{c2r-lg-uninstall}
+			{{ lg-uninstall }}
 		</button>
 		<!-- UNINSTALL BUTTON END -->
 		<!-- Modal Uninstall START -->
@@ -12,21 +12,21 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="modal-uninstall-label">{c2r-lg-title}</h5>
+						<h5 class="modal-title" id="modal-uninstall-label">{{ lg-title }}</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						<p>{c2r-lg-question}</p>
+						<p>{{ lg-question }}</p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">{c2r-lg-close}</button>
-						<form method="post" action="{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/uninstall">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">{{ lg-close }}</button>
+						<form method="post" action="{{ bo-path }}/{{ lg }}/{{ module-folder }}/uninstall">
 							<button type="button" class="btn btn-primary">
 								<i class="fa fa-chain-broken" aria-hidden="true"></i>
 								<span class="block xs-15 sm-15"></span>
-								{c2r-lg-uninstall}
+								{{ lg-uninstall }}
 							</button>
 						</form>
 					</div>

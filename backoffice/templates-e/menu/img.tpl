@@ -1,1 +1,1 @@
-<img src="{c2r-bo-path}/modules/{c2r-module-folder}/site-assets/images/{c2r-img}" alt="" width="14px">
+<img src="{{ bo-path }}/modules/{{ module-folder }}/site-assets/images/{{ img }}" alt="" width="14px">
