@@ -18,6 +18,7 @@ if (isset($_GET["a"]) && !empty($_GET["a"])) {
 } else if (isset(getopt(null, ["a::"])["a"])) {
 	if ($cfg->db->connect) {
 		$a = $db->real_escape_string(getopt(null, ["a::"])["a"]);
+		$cfg->cli = true;
 	} else {
 		$a = getopt(null, ["a::"])["a"];
 	}

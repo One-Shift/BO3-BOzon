@@ -13,6 +13,7 @@ if (isset($_GET["i"])) {
 /* CLI support cmd eg.: php index.php --i=home */
 } else if (isset(getopt(null, ["i::"])["i"])) {
 	$id = intval(getopt(null, ["i::"])["i"]);
+	$cfg->cli = true;
 } else {
 	$id = null;
 }
