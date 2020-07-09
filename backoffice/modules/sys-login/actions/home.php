@@ -8,8 +8,8 @@ if (isset($_POST["input-submit"])) {
 			$_POST["input-password"] = c9_user::getSecurePassword($_POST["input-password"]);
 
 			$query = sprintf(
-				"SELECT id, password FROM %s_9_users WHERE email = '%s' AND status = '%s' AND rank != '%s' LIMIT %s",
-				$cfg->db->prefix, $db->real_escape_string($_POST["input-email"]), TRUE, "member", 1
+				"SELECT id, status, password FROM %s_9_users WHERE email = '%s' AND rank != '%s' LIMIT %s",
+				$cfg->db->prefix, $db->real_escape_string($_POST["input-email"]), "member", 1
 			);
 
 			$source = $db->query($query);
@@ -18,27 +18,35 @@ if (isset($_POST["input-submit"])) {
 				$data = $source->fetch_object();
 
 				if ($data->password == $_POST["input-password"]) {
-					if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-						$ip = ["ip" => $_SERVER['HTTP_CLIENT_IP']];
-					} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-						$ip = ["ip" => $_SERVER['HTTP_X_FORWARDED_FOR']];
-					} else {
-						$ip = ["ip" => $_SERVER['REMOTE_ADDR']];
-					}
-
-					$ip = json_encode($ip);
-
-					if (
-						setcookie($cfg->system->cookie, "{$data->id}.{$data->password}", time() + ($cfg->system->cookie_time * 60), (!empty($cfg->system->path)) ? $cfg->system->path : "/") &&
-						$db->query(sprintf(
-							"INSERT INTO %s_history (user_id, module, description, date) VALUES ('%s', '%s', '%s', '%s')",
-							$cfg->db->prefix, $data->id, "sys-login", $ip, date("Y-m-d H:i:s", time())))
-					) {
-						header("Location: {$cfg->system->path_bo}/{$lg_s}/5-home/");
+					if($data->status) {
+						if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+							$ip = ["ip" => $_SERVER['HTTP_CLIENT_IP']];
+						} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+							$ip = ["ip" => $_SERVER['HTTP_X_FORWARDED_FOR']];
+						} else {
+							$ip = ["ip" => $_SERVER['REMOTE_ADDR']];
+						}
+	
+						$ip = json_encode($ip);
+	
+						if (
+							setcookie($cfg->system->cookie, "{$data->id}.{$data->password}", time() + ($cfg->system->cookie_time * 60), (!empty($cfg->system->path)) ? $cfg->system->path : "/") &&
+							$db->query(sprintf(
+								"INSERT INTO %s_history (user_id, module, description, date) VALUES ('%s', '%s', '%s', '%s')",
+								$cfg->db->prefix, $data->id, "sys-login", $ip, date("Y-m-d H:i:s", time())))
+						) {
+							header("Location: {$cfg->system->path_bo}/{$lg_s}/5-home/");
+						} else {
+							// ERROR MESSAGE
+							$message = bo3::c2r([
+								"return-message" => $mdl_lang["return"]["failure-cookie"],
+								"type" => "danger"
+							], bo3::mdl_load("templates-e/return-message.tpl"));
+						}
 					} else {
 						// ERROR MESSAGE
 						$message = bo3::c2r([
-							"return-message" => $mdl_lang["return"]["failure-cookie"],
+							"return-message" => $mdl_lang["return"]["user-not-active"],
 							"type" => "danger"
 						], bo3::mdl_load("templates-e/return-message.tpl"));
 					}

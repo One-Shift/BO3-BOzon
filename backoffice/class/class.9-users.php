@@ -1,44 +1,54 @@
 <?php
 
+/**
+* c9_user Class
+* Class used to deal with users information that is storaged in DB
+* It's used in the BO for user management
+* Can also be used to deal with users information for front-end purposes.
+*
+* @author 	Carlos Santos
+* @version 1.0
+* @since 2016-10
+* @license The MIT License (MIT)
+*/
+
 class c9_user {
-	protected $id;
-	protected $username;
-	protected $password;
-	protected $email;
-	protected $rank;
-	protected $code;
-	protected $custom_css;
-	protected $status = false;
-	protected $user_key;
-	protected $date;
-	protected $date_update;
+
+	protected $id; /** @var int **/
+	protected $username; /** @var string **/
+	protected $password; /** @var string **/
+	protected $email; /** @var string **/
+	protected $rank; /** @var string **/
+	protected $code; /** @var string **/
+	protected $custom_css; /** @var string **/
+	protected $status = FALSE; /** @var boolean **/
+	protected $user_key; /** @var int **/
+	protected $date; /** @var DateTime **/
+	protected $date_update; /** @var DateTime **/
 
 	public function __construct() {}
 
-	public function setUsername($u) {
-		$this->username = $u;
-	}
+	/** === SET METHODS === **/
 
-	public static function getSecurePassword ($p) {
-		return sha1(md5(sha1(md5($p))));
-	}
+	/** @param string **/
+	public function setUsername($u) {$this->username = $u;}
 
-	public function setPassword($p) {
-		$this->password = sha1(md5(sha1(md5($p))));
-	}
+	/** @param string **/
+	public static function getSecurePassword ($p) {return sha1(md5(sha1(md5($p))));}
 
-	public function setOldPassword($p) {
-		$this->password = $p;
-	}
+	/** @param string **/
+	public function setPassword($p) {$this->password = sha1(md5(sha1(md5($p))));}
 
-	public function setId($i) {
-		$this->id = $i;
-	}
+	/** @param string **/
+	public function setOldPassword($p) {$this->password = $p;}
 
-	public function setEmail($e) {
-		$this->email = $e;
-	}
+	/** @param int **/
+	public function setId($i) {$this->id = $i;}
 
+	/** @param string **/
+	public function setEmail($e) {$this->email = $e;}
+
+	/** @param string **/
 	public function setRank($r) {
 		switch ($r) {
 			case "owner":
@@ -54,39 +64,32 @@ class c9_user {
 		}
 	}
 
-	public function setCode($c) {
-		$this->code = $c;
-	}
+	/** @param string */
+	public function setCode($c) {$this->code = $c;}
 
-	public function setCustomCss($c) {
-		$this->custom_css = $c;
-	}
+	/** @param string */
+	public function setCustomCss($c) {$this->custom_css = $c;}
 
-	public function setStatus($s) {
-		if ($s) {
-			$this->status = TRUE;
-		} else {
-			$this->status = FALSE;
-		}
-	}
+	/** @param boolean */
+	public function setStatus($s = null) {$this->status = !is_null($s) ? $s : FALSE;}
 
-	public function setUserKey() {
-		$this->user_key = md5("{$this->username}+{$this->email}+{$this->date}+{$this->date_update}");
-	}
+	/** @param string */
+	public function setUserKey() {$this->user_key = md5("{$this->username}+{$this->email}+{$this->date}+{$this->date_update}");}
 
-	public function setDate($d = null) {
-		$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
+	/** @param DateTime */
+	public function setDate($d = null) {$this->date = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
 
-	public function setDateUpdate($d = null) {
-		$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());
-	}
+	/** @param DateTime */
+	public function setDateUpdate($d = null) {$this->date_update = ($d !== null) ? $d : date("Y-m-d H:i:s", time());}
 
+	/** === CRUD Functions === */
+
+	/** [Insert new user in DB] @return boolean */
 	public function insert() {
 		global $cfg, $db;
 
-		$query = sprintf(
-			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+		return $db->query(sprintf(
+			"INSERT INTO %s_9_users (`username`, `password`, `email`, `rank`, `code`, `status`, `user_key`) VALUES ('%s', '%s', '%s', '%s', '%s', %d, '%s')",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -95,20 +98,15 @@ class c9_user {
 			$this->code,
 			$this->status,
 			$this->user_key
-		);
-
-		$toReturn = $db->query($query);
-
-		$this->id = $db->insert_id;
-
-		return $toReturn;
+		));
 	}
 
+	/** [Update information of a user by given ID] @return boolean */
 	public function update() {
 		global $cfg, $db;
 
-		$query = sprintf(
-			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = '%s', user_key = '%s' WHERE id = '%s'",
+		return $db->query(sprintf(
+			"UPDATE %s_9_users SET username = '%s', password = '%s', email = '%s', rank = '%s', code = '%s', status = %d, user_key = '%s' WHERE id = %d",
 			$cfg->db->prefix,
 			$this->username,
 			$this->password,
@@ -118,206 +116,235 @@ class c9_user {
 			$this->status,
 			$this->user_key,
 			$this->id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Update custom CSS of a user by given ID] @return boolean */
 	public function update_custom_css() {
 		global $cfg, $db;
 
-		$query = sprintf(
-			"UPDATE %s_9_users SET custom_css = '%s', date_update = '%s' WHERE id = '%s'",
+		return $db->query(sprintf(
+			"UPDATE %s_9_users SET custom_css = '%s', date_update = '%s' WHERE id = %d",
 			$cfg->db->prefix,
 			$this->custom_css,
 			$this->date_update,
 			$this->id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Delete User. Owner rank required] @return boolean */
 	public function delete() {
 		global $cfg, $db, $authData;
 
-		$user = new c9_user();
-		$user->setId($this->id);
-		$user = $user->returnOneUser();
+		if($authData->rank == "owner") {
+			$user = new c9_user();
+			$user->setId($this->id);
+			$user = $user->returnOneUser();
 
-		$trash = new trash();
-		$trash->setCode(json_encode($user));
-		$trash->setDate();
-		$trash->setModule($cfg->mdl->folder);
-		$trash->setUser($authData["id"]);
-		$trash->insert();
+			$trash = new trash(json_encode($user), null, $cfg->mdl->folder, $authData->id);
 
-		unset($user);
+			if($trash->insert()) {
+				return $db->query(sprintf(
+					"DELETE FROM %s_9_users WHERE id = %d",
+					$cfg->db->prefix,
+					$this->id
+				));
+			}
 
-		$query = sprintf(
-			"DELETE FROM %s_9_users WHERE id = '%s'",
-			$cfg->db->prefix,
-			$this->id
-		);
+			unset($user);
+		}
 
-		return $db->query($query);
+		return FALSE;
 	}
 
-	public function returnObject() {
-		return get_object_vars($this);
-	}
+	/** [Returns the properties of the given object] */
+	public function returnObject() {return get_object_vars($this);}
 
+	/** [Return one user by given ID] @return boolean OR @return object */
 	public function returnOneUser() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
-		$source = $db->query($query);
+		$source = $db->query(sprintf(
+			"SELECT * FROM %s_9_users WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id
+		));
 
-		return $source->fetch_object();
+		if($source->num_rows > 0) {
+			return $source->fetch_object();
+		}
+
+		return FALSE;
 	}
 
-	public function existUserByName() {
-		global $cfg, $db;
-
-		$query = sprintf("SELECT * FROM %s_9_users WHERE username = '%s' LIMIT 1", $cfg->db->prefix, $this->username);
-		$source = $db->query($query);
-
-		return $source->num_rows;
-	}
-
+	/** [Return one user by given Email] @return boolean OR @return object */
 	public function returnOneUserByEmail() {
 		global $cfg, $db;
 
-		$query = sprintf(
-			"SELECT * FROM %s_9_users WHERE email = '%s' AND status = '%s' LIMIT 1",
+		$source = $db->query(sprintf(
+			"SELECT * FROM %s_9_users WHERE email = '%s' AND status = %s LIMIT 1",
 			$cfg->db->prefix,
 			$this->email,
 			$this->status
-		);
-		$source = $db->query($query);
+		));
 
-		return $source->fetch_object();
+		if($source->num_rows > 0) {
+			return $source->fetch_object();
+		}
+
+		return FALSE;
 	}
 
-	public function existUserByEmail() {
+	/** [Check if there is any user with the same given name] @return boolean OR @return object */
+	public static function existUserByName($username = null) {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users WHERE email = '%s' LIMIT 1", $cfg->db->prefix, $this->email);
-		$source = $db->query($query);
+		if(!is_null($username)) {
+			$source = $db->query(sprintf("SELECT * FROM %s_9_users WHERE username = '%s' LIMIT 1", $cfg->db->prefix, $username));
 
-		return $source->num_rows;
+			if($source->num_rows > 0) {
+				return $source->fetch_object();
+			}
+		}
+
+		return FALSE;
 	}
 
+	/** [Check if there is any user with the same given email] @return boolean OR @return object */
+	public static function existUserByEmail($email = null) {
+		global $cfg, $db;
+
+		if(!is_null($email)) {
+			$source = $db->query(sprintf("SELECT * FROM %s_9_users WHERE email = '%s' LIMIT 1", $cfg->db->prefix, $email));
+
+			if($source->num_rows > 0) {
+				return $source->fetch_object();
+			}
+		}
+
+		return FALSE;
+	}
+
+	/** [Return all users information from DB. Useful for lists in the BO] @return array */
 	public function returnAllUsers() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users WHERE true", $cfg->db->prefix);
-		$source = $db->query($query);
-
 		$toReturn = [];
-		$i = 0;
 
-		while ($data = $source->fetch_object()) {
-			$toReturn[$i] = $data;
-			$i++;
+		$source = $db->query(sprintf("SELECT * FROM %s_9_users WHERE TRUE", $cfg->db->prefix));
+
+		if($source->num_rows > 0) {
+			while ($data = $source->fetch_object()) {
+				array_push($toReturn, $data);
+			}
 		}
 
 		return $toReturn;
 	}
 
+	/** [Return the number of Users in the DB] @return int */
 	public static function returnNumOfUsers () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users WHERE true", $cfg->db->prefix);
-		$source = $db->query($query);
+		$source = $db->query(sprintf("SELECT * FROM %s_9_users WHERE TRUE", $cfg->db->prefix));
 
 		return $source->num_rows;
 	}
 
-	public static function isOwner ($authData) {
-		return $authData["rank"] == "owner";
-	}
+	/** [Quick check if user is Owner in the system.] @return boolean */
+	public static function isOwner ($authData) {return $authData->rank == "owner";}
 
+
+	/** === LOGS SECTIONS === **/
+	//Used to track users access to the CMS/Platform
+
+	/** [Return the logs from the login module] @return array */
 	public function returnLogs () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_history WHERE module = '%s'", $cfg->db->prefix, "sys-login");
-		$source = $db->query($query);
-
 		$toReturn = [];
-		$i = 0;
 
-		while ($data = $source->fetch_object()) {
-			$toReturn[$i] = $data;
-			$i++;
+		$source = $db->query(sprintf("SELECT * FROM %s_history WHERE module = '%s'", $cfg->db->prefix, "sys-login"));
+
+		if($source->num_rows > 0) {
+			while ($data = $source->fetch_object()) {
+				array_push($toReturn, $data);
+			}
 		}
 
 		return $toReturn;
 	}
 
+	/** [Return Logs from a user by given ID] @return array */
 	public function returnLogsByUser () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_history WHERE user_id = %s AND module = '%s' ORDER BY %s", $cfg->db->prefix, $this->id, "sys-login", "date DESC");
-		$source = $db->query($query);
-
 		$toReturn = [];
-		$i = 0;
 
-		while ($data = $source->fetch_object()) {
-			$toReturn[$i] = $data;
-			$i++;
+		$source = $db->query(sprintf("SELECT * FROM %s_history WHERE user_id = %d AND module = '%s' ORDER BY %s", $cfg->db->prefix, $this->id, "sys-login", "date DESC"));
+
+		if($source->num_rows > 0) {
+			while ($data = $source->fetch_object()) {
+				array_push($toReturn, $data);
+			}
 		}
 
 		return $toReturn;
 	}
 
-	public function returnLastLog () {
+	/** [Return the last log from a user by given ID] @return boolean OR @return object */
+	public function returnUserLastLog () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_history WHERE user_id = %s AND module = '%s' ORDER BY %s LIMIT %s", $cfg->db->prefix, $this->id, "sys-login", "date DESC", 1);
-		$source = $db->query($query);
+		$source = $db->query(sprintf("SELECT * FROM %s_history WHERE user_id = %d AND module = '%s' ORDER BY %s LIMIT %s", $cfg->db->prefix, $this->id, "sys-login", "date DESC", 1));
 
-		return $source->fetch_object();
+		if($source->num_rows > 0) {
+			return $source->fetch_object();
+		}
+
+		return FALSE;
 	}
 
+	/** [Return a single log by given ID] @return boolean OR @return object */
 	public function returnLog () {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_history WHERE id = '%s' LIMIT 1", $cfg->db->prefix, $this->id);
-		$source = $db->query($query);
+		$source = $db->query(sprintf("SELECT * FROM %s_history WHERE id = %d LIMIT 1", $cfg->db->prefix, $this->id));
 
-		return $source->fetch_object();
-	}
-
-	//fields
-
-	public static function insertField ($name, $value, $placeholder, $type, $sort, $required, $status) {
-		global $cfg, $db;
-		$query = sprintf("INSERT INTO %s_9_users_fields (`name`, `value`, `placeholder`, `type`, `sort`,`required`, `status`, `date`, `date_update`) VALUES ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
-			$cfg->db->prefix,
-			$db->real_escape_string($name),
-			$db->real_escape_string($value),
-			$db->real_escape_string($placeholder),
-			$db->real_escape_string($type),
-			$db->real_escape_string($sort),
-			$required,
-			$status,
-			date('Y-m-d H:i:s', time()),
-			date('Y-m-d H:i:s', time())
-		);
-
-		if ($db->query($query)){
-			return true;
+		if($source->num_rows > 0) {
+			return $source->fetch_object();
 		}
 
-		return false;
+		return FALSE;
 	}
 
+
+	/* === USER FIELDS === */
+	//Static functions go by the alias "get"
+
+	/** [Insert a new field in the DB] @return boolean */
+	public static function insertField ($name, $value, $placeholder, $type, $sort, $required, $status) {
+		global $cfg, $db;
+
+		return $db->query(sprintf(
+			"INSERT INTO %s_9_users_fields (`name`, `value`, `placeholder`, `type`, `sort`,`required`, `status`, `date`, `date_update`) VALUES ('%s', '%s', '%s', '%s','%s', '%s', '%s', '%s', '%s')",
+				$cfg->db->prefix,
+				$db->real_escape_string($name),
+				$db->real_escape_string($value),
+				$db->real_escape_string($placeholder),
+				$db->real_escape_string($type),
+				$db->real_escape_string($sort),
+				$required,
+				$status,
+				date('Y-m-d H:i:s', time()),
+				date('Y-m-d H:i:s', time())
+		));
+	}
+
+	/** [Update a field by the given ID] @return boolean */
 	public static function updateField ($name, $value, $placeholder, $sort, $required, $status, $id) {
 		global $cfg, $db;
 
-		$query = sprintf(
-			"UPDATE %s_9_users_fields SET name = '%s', value = '%s', placeholder = '%s', sort = '%s', required = '%s', status = '%s', date_update = '%s' WHERE id = %s",
+		return $db->query(sprintf(
+			"UPDATE %s_9_users_fields SET name = '%s', value = '%s', placeholder = '%s', sort = '%s', required = '%s', status = '%s', date_update = '%s' WHERE id = %d",
 			$cfg->db->prefix,
 			$db->real_escape_string($name),
 			$db->real_escape_string($value),
@@ -327,73 +354,73 @@ class c9_user {
 			$db->real_escape_string($status),
 			date('Y-m-d H:i:s', time()),
 			$id
-		);
-
-		return $db->query($query);
+		));
 	}
 
+	/** [Delete a Field] @return boolean */
 	public static function deleteField($id) {
 		global $cfg, $db, $authData;
 
-		$gp = new c9_user();
-		$gp = $gp->returnOneField($id);
+		$request = new c9_user();
+		$field = $request->returnOneField($id);
 
-		$trash = new trash();
-		$trash->setCode(json_encode($gp));
-		$trash->setDate();
-		$trash->setModule($cfg->mdl->folder);
-		$trash->setUser($authData["id"]);
-		$trash->insert();
+		$trash = new trash(json_encode($gp), null, $cfg->mdl->folder, $authData->id);
 
-		unset($gp);
+		if($trash->insert()) {
+			return $db->query(sprintf("DELETE FROM %s_9_users_fields WHERE id = %d", $cfg->db->prefix, $id));
+		}
 
-		$query = sprintf("DELETE FROM %s_9_users_fields WHERE id = %s", $cfg->db->prefix, $id);
+		unset($field);
 
-		return $db->query($query);
+		return FALSE;
 	}
 
-
-	public static function returnAllFields() {
+	/** [Get All fields. Independent from status] @return array */
+	public static function getAllFields() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users_fields WHERE true", $cfg->db->prefix);
-		$source = $db->query($query);
-
 		$toReturn = [];
-		$i = 0;
 
-		while ($data = $source->fetch_object()) {
-			$toReturn[$i] = $data;
-			$i++;
+		$source = $db->query(sprintf("SELECT * FROM %s_9_users_fields WHERE TRUE", $cfg->db->prefix));
+
+		if($source->num_rows > 0) {
+			while ($data = $source->fetch_object()) {
+				array_push($toReturn, $data);
+			}
 		}
 
 		return $toReturn;
 	}
 
-	public static function returnFields() {
+	/** [Get available Fields] @return array */
+	public static function getFields() {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users_fields WHERE status = %s", $cfg->db->prefix, 1);
-		$source = $db->query($query);
-
 		$toReturn = [];
-		$i = 0;
 
-		while ($data = $source->fetch_object()) {
-			$toReturn[$i] = $data;
-			$i++;
+		$source = $db->query(sprintf("SELECT * FROM %s_9_users_fields WHERE status = %s", $cfg->db->prefix, 1));
+
+		if($source->num_rows > 0) {
+			while ($data = $source->fetch_object()) {
+				array_push($toReturn, $data);
+			}
 		}
 
 		return $toReturn;
 	}
 
-	public static function returnOneField($id) {
+	/** [Get one field by given ID] @return boolean OR @return object */
+	public static function getOneField($id = null) {
 		global $cfg, $db;
 
-		$query = sprintf("SELECT * FROM %s_9_users_fields WHERE id = %s LIMIT 1", $cfg->db->prefix, $id, 1);
-		$source = $db->query($query);
+		if(!is_null($id) && $id != 0) {
+			$source = $db->query(sprintf("SELECT * FROM %s_9_users_fields WHERE id = %s LIMIT 1", $cfg->db->prefix, $id, 1));
 
-		return $source->fetch_object();
+			if($source->num_rows > 0) {
+				return $source->fetch_object();
+			}
+		}
+
+		return FALSE;
 	}
-
 }

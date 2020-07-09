@@ -2,13 +2,9 @@
 
 define('ROOT_DIR', dirname(__FILE__));
 
-include ROOT_DIR."/controller/classes.php";
 include ROOT_DIR."/config/cfg.php";
-include ROOT_DIR."/config/database.php";
-include ROOT_DIR."/config/email.php";
-include ROOT_DIR."/config/languages.php";
-include ROOT_DIR."/config/system.php";
 
+include ROOT_DIR."/controller/classes.php";
 include ROOT_DIR."/controller/database.php";
 include ROOT_DIR."/controller/https.php";
 include ROOT_DIR."/controller/languages.php";
