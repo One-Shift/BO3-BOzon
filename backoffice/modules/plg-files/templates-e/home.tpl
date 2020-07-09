@@ -1,26 +1,19 @@
 <div class="alert alert-warning {c2r-permissions-display}" role="alert">
-	<i class="fas fa-exclamation-triangle"></i> You don't have permissions to write data on the defined path.
+	<i class="fas fa-exclamation-triangle"></i> {c2r-lg-permissions}
 </div>
 <div class="card">
 	<div class="card-header">
-		<strong>Files Upload</strong>
+		<strong>{c2r-lg-files-upload}</strong>
 		<!-- <small>Use this class
 			<code>.btn-block</code>
 		</small> -->
 	</div>
 	<div class="card-body">
 		<form id="upload" action="{c2r-bo-path}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
-			<p>
-				<label for="fileselect" class="custom-file-upload">
-					<i class="fas fa-cloud-upload-alt"></i> Choose your files
-				</label><br>
-				<span class="helper">Multiple files allowed. Enjoy!</span>
-			</p>
-
 			<input id="fileselect" name ="fileselect[]" type="file" multiple="multiple"/>
-			<div id="filedrag">or drop files here</div>
+			<div id="filedrag">{c2r-lg-drop}</div>
 			<div id="submitbutton">
-				<button type="submit">Upload Files</button>
+				<button type="submit">{c2r-lg-files-submit}</button>
 			</div>
 		</form>
 	</div>
@@ -28,7 +21,7 @@
 
 <div class="card">
 	<div class="card-header">
-		<strong>Uploaded Files</strong>
+		<strong>{c2r-lg-uploaded-files}</strong>
 	</div>
 	<div class="card-body">
 		<div id="uploaded-list"></div>

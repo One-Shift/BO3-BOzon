@@ -1,5 +1,7 @@
 <?php
 
+include "controller/languages.php";
+
 $cfg->plg = new stdClass();
 $cfg->plg->name = "Files";
 $cfg->plg->folder = "plg-files";
@@ -11,6 +13,15 @@ $cfg->plg->install = TRUE;
 $cfg->plg->dbTables = [];
 
 // $args = [] are available for plugins
+
+// load language for module
+if (file_exists("modules/{$cfg->plg->folder}/languages/{$lg_s}.ini")) {
+	$plg_lang = parse_ini_file("modules/{$cfg->plg->folder}/languages/{$lg_s}.ini", true);
+} else {
+	if (file_exists("modules/{$cfg->plg->folder}/languages/en.ini")) {
+		$plg_lang = parse_ini_file("modules/{$cfg->plg->folder}/languages/en.ini", true);
+	}
+}
 
 if (bo3::dbTableExists($cfg->plg->dbTables) == TRUE) {
 	include sprintf("modules/%s/actions/home.php", $cfg->plg->folder);
