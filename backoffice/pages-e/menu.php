@@ -13,50 +13,75 @@ $not_installed_menu = "";
 $installed_modules = [];
 
 // installed modules
-$query = sprintf("SELECT * FROM %s_modules ORDER BY %s", $cfg->db->prefix, "sort ASC");
 
-$source = $db->query($query);
+$source = $db->query(sprintf(
+	"SELECT m.id, m.folder, m.code, m.img, m.icon, m.sidebar, ml.name, ml.link_title FROM %s_modules m 
+	INNER JOIN %s_modules_lang ml ON m.id = ml.module_id WHERE ml.lang_id = %d AND ml.module_type = '%s' ORDER BY %s",
+	$cfg->db->prefix,
+	$cfg->db->prefix,
+	$lg,
+	"main",
+	"sort ASC"
+));
 
-while ($data = $source->fetch_object()) {
-	array_push($installed_modules, $data->folder);
+if($source->num_rows > 0) {
 
-	$tmp_name = substr($data->folder, 4);
-	$code = json_decode($data->code);
+	while($module = $source->fetch_object()) {
+		array_push($installed_modules, $module->folder);
 
-	if(isset($code->{"sidebar"}) && $code->{"sidebar"} == TRUE) {
-		// SUB ITEMS
-		if (isset($code->{"sub-items"}) && count((array)$code->{"sub-items"}) > 0) {
-			$submenu = "";
-
-			foreach ((array)$code->{"sub-items"} as $index => $obj) {
-				$submenu .= bo3::c2r([
-					"url" => $obj->url,
-					"name" => $index
-				], $menu_sub_item_tpl);
+		if($module->sidebar) {
+			$tmp_name = substr($module->folder, 4);
+	
+			//Sub-items
+	
+			$source_sub = $db->query(sprintf(
+				"SELECT mm.id, mm.link, ml.name, ml.link_title FROM %s_modules_submenu mm
+				INNER JOIN %s_modules_lang ml ON mm.name = ml.codename WHERE  ml.module_type = '%s' AND ml.module_id = %d AND ml.lang_id = %d",
+				$cfg->db->prefix,
+				$cfg->db->prefix,
+				'sub',
+				$module->id,
+				$lg
+			));
+	
+			if($source_sub->num_rows > 0) {
+				$submenu = "";
+	
+				while($submenu_item = $source_sub->fetch_object()) {
+	
+					$submenu .= bo3::c2r([
+						"url" => $submenu_item->link,
+						"name" => $submenu_item->name,
+						"title" => $submenu_item->link_title,
+						"mod-name" => $module->folder
+					], $menu_sub_item_tpl);
+	
+				}
 			}
+		
+			// ICON
+			if (isset($module->img) && !empty($module->img)) {
+				$icon = bo3::c2r([
+					'module-folder' => $module->folder,
+					'img' => $module->img
+				], $menu_img_tpl);
+			} else {
+				$icon = bo3::c2r([
+					'module-folder' => $module->folder,
+					'fa' => (isset($module->icon) && !empty($module->icon)) ? $module->icon : "fa-folder"
+				], $menu_fa_icon_tpl);
+			}
+		
+			$menu .= bo3::c2r([
+				"sub-menu" => (isset($submenu)) ? $submenu : "",
+				"mod" => $tmp_name,
+				"name" => $module->name,
+				"title" => $module->link_title,
+				"icon" => $icon
+			], (!isset($submenu)) ? $menu_item_tpl : $menu_item_w_sub_items_tpl);
+		
+			unset($submenu);
 		}
-
-		// ICON
-		if (isset($code->img) && !empty($code->img)) {
-			$icon = bo3::c2r([
-				'module-folder' => $data->folder,
-				'img' => $code->img
-			], $menu_img_tpl);
-		} else {
-			$icon = bo3::c2r([
-				'module-folder' => $data->folder,
-				'fa' => (isset($code->{"fa-icon"}) && !empty($code->{"fa-icon"})) ? $code->{"fa-icon"} : "fa-folder"
-			], $menu_fa_icon_tpl);
-		}
-
-		$menu .= bo3::c2r([
-			"sub-menu" => (isset($submenu)) ? $submenu : "",
-			"mod" => $tmp_name,
-			"name" => $data->name,
-			"icon" => $icon
-		], (!isset($submenu)) ? $menu_item_tpl : $menu_item_w_sub_items_tpl);
-
-		unset($submenu);
 	}
 }
 
