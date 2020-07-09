@@ -70,7 +70,7 @@ class c4_file {
 	public function insert () {
 		global $cfg, $db;
 
-		return $db->query(sprintf(
+		$to_return = $db->query(sprintf(
 			"INSERT INTO %s_4_files (file, type, module, id_ass, description, code, sort, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$cfg->db->prefix,
 			$this->file,
@@ -82,6 +82,10 @@ class c4_file {
 			$this->user_id,
 			$db->real_escape_string($this->sort)
 		));
+
+		$this->id = $db->insert_id;
+
+		return $to_return;
 	}
 
 	/** [Update file regist in DB by given ID] @return boolean */
