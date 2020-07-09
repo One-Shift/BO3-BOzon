@@ -14,7 +14,7 @@ class bo3 {
 	
 	public static function c2r ($args = [], $target) {
 		foreach ($args as $index => $value) {
-			$target = str_replace("{c2r-$index}", $value, $target);
+			$target = str_replace("{{ $index }}", $value, $target);
 		}
 		return $target;
 	}

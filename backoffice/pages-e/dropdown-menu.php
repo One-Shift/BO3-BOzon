@@ -8,34 +8,37 @@ $menu_img_tpl = bo3::loade("dropdown-menu/img.tpl");
 $dropdown_menu = "";
 $installed_modules = [];
 
-// installed modules
-$query = sprintf("SELECT * FROM %s_modules ORDER BY %s", $cfg->db->prefix, "sort ASC");
+$source = $db->query(sprintf(
+	"SELECT m.id, m.folder, m.code, m.img, m.icon, m.sidebar, ml.name, ml.link_title FROM %s_modules m 
+	INNER JOIN %s_modules_lang ml ON m.id = ml.module_id WHERE ml.lang_id = %d AND m.dropdown = %d AND ml.module_type = '%s' ORDER BY %s",
+	$cfg->db->prefix,
+	$cfg->db->prefix,
+	$lg,
+	1,
+	"main",
+	"sort ASC"
+));
 
-$source = $db->query($query);
+if($source->num_rows > 0) {
+	while($module = $source->fetch_object()) {
+		$tmp_name = substr($module->folder, 4);
 
-while ($data = $source->fetch_object()) {
-	array_push($installed_modules, $data->folder);
-
-	$tmp_name = substr($data->folder, 4);
-	$code = json_decode($data->code);
-
-	if(isset($code->{"dropdown"}) && $code->{"dropdown"} == TRUE) {
 		// ICON
-		if (isset($code->img) && !empty($code->img)) {
+		if (isset($module->img) && !empty($module->img)) {
 			$icon = bo3::c2r([
-				'module-folder' => $data->folder,
-				'img' => $code->img
+				'module-folder' => $module->folder,
+				'img' => $module->img
 			], $menu_img_tpl);
 		} else {
 			$icon = bo3::c2r([
-				'module-folder' => $data->folder,
-				'icon' => (isset($code->{"fa-icon"}) && !empty($code->icon)) ? $code->icon : "fa-folder"
+				'module-folder' => $module->folder,
+				'icon' => (isset($module->icon) && !empty($module->icon)) ? $module->icon : "fa-folder"
 			], $menu_fa_icon_tpl);
 		}
 
 		$dropdown_menu .= bo3::c2r([
 			"mod" => $tmp_name,
-			"name" => $data->name,
+			"name" => $module->name,
 			"icon" => $icon
 		], $menu_item_tpl);
 	}

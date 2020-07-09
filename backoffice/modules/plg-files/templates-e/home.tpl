@@ -1,26 +1,19 @@
-<div class="alert alert-warning {c2r-permissions-display}" role="alert">
-	<i class="fas fa-exclamation-triangle"></i> You don't have permissions to write data on the defined path.
+<div class="alert alert-warning {{ permissions-display }}" role="alert">
+	<i class="fas fa-exclamation-triangle"></i> {{ lg-permissions }}
 </div>
 <div class="card">
 	<div class="card-header">
-		<strong>Files Upload</strong>
+		<strong>{{ lg-files-upload }}</strong>
 		<!-- <small>Use this class
 			<code>.btn-block</code>
 		</small> -->
 	</div>
 	<div class="card-body">
-		<form id="upload" action="{c2r-bo-path}/{c2r-lg}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{c2r-id}" data-module="{c2r-module}">
-			<p>
-				<label for="fileselect" class="custom-file-upload">
-					<i class="fas fa-cloud-upload-alt"></i> Choose your files
-				</label><br>
-				<span class="helper">Multiple files allowed. Enjoy!</span>
-			</p>
-
+		<form id="upload" action="{{ bo-path }}/{{ lg }}/4-files/api/?r=upload" method="POST" enctype="multipart/form-data" data-id="{{ id }}" data-module="{{ module }}">
 			<input id="fileselect" name ="fileselect[]" type="file" multiple="multiple"/>
-			<div id="filedrag">or drop files here</div>
+			<div id="filedrag">{{ lg-drop }}</div>
 			<div id="submitbutton">
-				<button type="submit">Upload Files</button>
+				<button type="submit">{{ lg-files-submit }}</button>
 			</div>
 		</form>
 	</div>
@@ -28,7 +21,7 @@
 
 <div class="card">
 	<div class="card-header">
-		<strong>Uploaded Files</strong>
+		<strong>{{ lg-uploaded-files }}</strong>
 	</div>
 	<div class="card-body">
 		<div id="uploaded-list"></div>
@@ -57,8 +50,8 @@
 <script type="text/javascript">
 	var data;
 
-	var uploaded_tpl = '{c2r-uploaded-item-tpl}';
-	var message_tpl = '{c2r-message-tpl}';
+	var uploaded_tpl = '{{ uploaded-item-tpl }}';
+	var message_tpl = '{{ message-tpl }}';
 	/* getElementById */
 	function $id(id) {
 		return document.getElementById(id);
@@ -188,7 +181,7 @@
 		}
 
 		$("#uploaded-list").empty();
-		$.get("{c2r-bo-path}/{c2r-lg}/4-files/api/" + id + "?r=getList&module={c2r-module}", function (data) {
+		$.get("{{ bo-path }}/{{ lg }}/4-files/api/" + id + "?r=getList&module={{ module }}", function (data) {
 			data = $.parseJSON(data);
 			var o = data.object;
 			if (o != false) {
@@ -213,7 +206,7 @@
 			form.code = $(obj).find(".inputCode").val();
 			form.sort = $(obj).find(".inputSort").val();
 
-			$.post( "{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=update", form, function(data) {
+			$.post( "{{ bo-path }}/{{ lg }}/4-files/api/" + $(this).attr("data-id") + "?r=update", form, function(data) {
 				data = $.parseJSON(data);
 				if (data.status) {
 					$(button).append(' <i class="fa fa-check-square" aria-hidden="true"></i>');
@@ -227,7 +220,7 @@
 			var button = $(this);
 			var obj = $(this).parent("div").parent("div");
 
-			$.get( "{c2r-bo-path}/{c2r-lg}/4-files/api/" + $(this).attr("data-id") + "?r=delete", function(data) {
+			$.get( "{{ bo-path }}/{{ lg }}/4-files/api/" + $(this).attr("data-id") + "?r=delete", function(data) {
 				data = $.parseJSON(data);
 				if (data.status) {
 					$(obj).remove();
