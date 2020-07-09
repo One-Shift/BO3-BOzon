@@ -12,6 +12,10 @@ $plugin = bo3::c2r([
 	"lg-drop" => $plg_lang["drop"],
 	"lg-files-submit" => $plg_lang["files-submit"],
 	"lg-uploaded-files" => $plg_lang["uploaded-files"],
+
+	"lg-description" => $plg_lang["description"],
+	"lg-code" => $plg_lang["code"],
+	"lg-save" => $plg_lang["save"]
 ], bo3::plg_load("templates-e/home.tpl"));
 
 $mdl = bo3::c2r([
