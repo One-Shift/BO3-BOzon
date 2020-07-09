@@ -27,50 +27,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Categories 0.0.6
 - Users 0.0.3
 
----
 
-## [Unreleased v3.3.0]
 
-### Added
-* Folder `uploads/restricted`
-* .htaccess to folder `uploads/restricted`
+## How to download
 
-### Changed
-* SQL now handle with date_update
-* `u-files` renamed to `uploads`
+Because we are using submodules for this project, Github doesn't allow to fully download the project. Because of that, you can use a flag in git to recursively download everything to your PC.
 
-### Fixed
+Open your Terminal, and move the cursor to a folder of your choice, *eg.: Downloads*:
 
-## # [v3.2.5 RC](https://github.com/One-Shift/BO3-BOzon/releases/tag/v3.2.5-RC) - 2018-04-12
+```shell
+cd ~/Downloads
+git clone --recursive https://github.com/One-Shift/BO3-BOzon.git my_new_project_folder
+```
 
-### Changed
-* Modules update
-* Remote libs changed from `nexus-pt.eu` to `one-shift.com`
-
-### Fixed
-* Plugin Files, fix to update function
-
----
-
-## # [v3.2.1 RC](https://github.com/One-Shift/BO3-BOzon/releases/tag/v3.2.1-RC)  - 2017-09-18
-
-### Added
-* Global method, with `pages-e/_global_.php`
-
-### Changed
-* `functions` class is now `bo3` class
-* `$mysli` var is now `$db` var
-* Template rework
-
-### Fixed
-* Some bug fixed
-
----
-
-## # [v3.0.0 Beta](https://github.com/One-Shift/BO3-BOzon/releases/tag/v3.0.0-beta) - 2017-08-07
-
-### Added
-* BO3 Core
+A new folder called to *my_new_project_folder* will be created will all repository of BO3, including default submodules.
 
 ---
 ## License
