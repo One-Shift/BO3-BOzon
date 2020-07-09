@@ -37,7 +37,7 @@ $tpl = bo3::c2r([
 	"module-action-list" => isset($mdl_action_list) ? $mdl_action_list : "",
 	"module" => isset($mdl) ? $mdl : ".::MDL::.::TPL::.::ERROR::.", // MODULE BODY
 
-	"mdl-url" => "{c2r-bo-path}/{c2r-lg}/{c2r-module-folder}/",
+	"mdl-url" => "{{ bo-path }}/{{ lg }}/{{ module-folder }}/",
 	"mdl-path" => $cfg->mdl->path,
 	"mdl-folder" => $cfg->mdl->folder,
 	"module-folder" => str_replace("mod-" , "", $cfg->mdl->folder),
