@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html lang="{c2r-lg}">
+<html lang="{{ lg }}">
 	<head>
-		{c2r-head}
-		<style>
-			.big {
-				font-size: 150px;
-			}
-		</style>
+		{{ head }}
+		<style>.big {font-size: 150px;}</style>
 	</head>
 	<body>
 		<div class="home">
@@ -16,12 +12,13 @@
 					<h1 class="big">Oops,</h1>
 					<h2>404!</h2>
 					<div class="text">
-						<p>Parece que a página procurada não existe ou algum erro ocorreu.</p>
-						<p>Clique <a href="{c2r-path}/{c2r-lg}/">aqui</a> para voltar</p>
+						<p>It looks like the page you're looking for doesn't exist or an error has occurred.</p>
+						<p>Click <a href="{{ path }}/{{ lg }}/">here</a> to get back.</p>
 					</div>
 				</div>
 			</div>
 			<!-- Marianna Almeida - contato@agyrafa.com -->
 		</div>
 	</body>
+	{{ tail }}
 </html>
