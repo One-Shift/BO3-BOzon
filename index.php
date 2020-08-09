@@ -16,6 +16,7 @@ include ROOT_DIR."/backoffice/controller/id.php";
 include ROOT_DIR."/pages-e/_global_.php";
 
 $head = bo3::loade("head.tpl");
+$tail = bo3::loade("tail.tpl");
 
 // page controller
 $pg_file = sprintf(ROOT_DIR."/pages/%s.php", $pg);
@@ -28,6 +29,7 @@ if (file_exists($pg_file)) {
 // Preparing tpl to be send as response of the request
 $tpl = bo3::c2r([
 	"head" => $head,
+	"tail" => $tail,
 
 	"og-title" => (isset($og["title"])) ? $og["title"] : $cfg->system->sitename,
 	"og-url" => (isset($og["url"])) ? $og["url"] : "{$cfg->system->protocol}://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
@@ -52,6 +54,9 @@ $tpl = bo3::c2r([
 	"bo3-version" => $cfg->system->version,
 	"bo3-subversion" => $cfg->system->sub_version
 ], isset($tpl) ? $tpl : ".::TPL::.::ERROR::.");
+
+// HEADERS
+header('Cache-Control: max-age=86400');
 
 // minify system
 if ($cfg->system->minify) {
