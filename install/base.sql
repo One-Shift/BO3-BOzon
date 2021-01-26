@@ -95,17 +95,11 @@ CREATE TABLE `os_trash` (
 	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE `os_modules`
-	ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `os_modules`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 ALTER TABLE `os_9_users_fields`
- 	ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_9_users`
- 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `os_9_users_fields`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -115,14 +109,14 @@ ALTER TABLE `os_4_files`
 
 ALTER TABLE `os_4_files`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `os_modules`
+    ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_history`
 	ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_trash`
-	ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `os_modules`
 	ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `os_modules_lang`
