@@ -146,16 +146,16 @@ ALTER TABLE `os_modules_lang`
 ALTER TABLE `os_modules_submenu`
 	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO `os_modules` (`id`, `name`, `folder`, `code`, `icon`,`img`, `dropdown`, `sidebar`,`sort`) VALUES
+INSERT INTO `os_modules` (`id`, `name`, `folder`, `code`, `icon`, `img`, `dropdown`, `sidebar`,`sort`) VALUES
 (1, 'Home', 'mod-5-home', '', 'fa-home', '', 0, 1, 0),
 (2, 'Account', 'mod-6-account', '', 'fa-icon', '', 0, 1, 0),
-(3, 'Users', 'mod-9-users', '', 'fa-icon', 0, 1, 0),
-(4, 'Files', 'mod-4-files', '', 'fa-icon', 0, 1, 0);
+(3, 'Users', 'mod-9-users', '', 'fa-icon', '', 0, 1, 0),
+(4, 'Files', 'mod-4-files', '', 'fa-icon', '', 0, 1, 0);
 
 INSERT INTO `os_modules_submenu` (`id`, `name`, `link`, `module_ass`, `status`) VALUES
 (1, 'list-users', '', 3, 1),
 (2, 'add-users', 'add', 3, 1),
-(3, 'logs-users', 'logs', 3, 1)
+(3, 'logs-users', 'logs', 3, 1);
 
 INSERT INTO `os_modules_lang` (`id`, `codename`, `name`, `link_title`, `lang_id`, `module_id`, `module_type`) VALUES
 (1, 'home', 'Ínicio', 'Dashboard Inicial', 1, 1, 'main'),
@@ -166,7 +166,7 @@ INSERT INTO `os_modules_lang` (`id`, `codename`, `name`, `link_title`, `lang_id`
 (6, 'users', 'Users', 'See system users', 2, 3, 'main'),
 (7, 'list-users', 'Lista', 'Ver lista de utilizadores', 1, 3, 'sub'),
 (8, 'list-users', 'List', 'See list', 2, 3, 'sub'),
-(9, 'add-users', 'Adicionar', 'Adicionar Utilizador', 1, 3),
+(9, 'add-users', 'Adicionar', 'Adicionar Utilizador', 1, 3, 'sub'),
 (10, 'add-users', 'Add', 'Add new user', 2, 3, 'sub'),
 (11, 'logs-users', 'Logs', 'Logs de sistema', 1, 3, 'sub'),
 (12, 'logs-users', 'Logs', 'See system logs', 2, 3, 'sub'),
