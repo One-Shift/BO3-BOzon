@@ -1,6 +1,6 @@
 CREATE TABLE `os_modules` (
 	`id` int(11) NOT NULL,
-	`name` varchar(255) NAOT NULL,
+	`name` varchar(255) NOT NULL,
 	`folder` varchar(255) NOT NULL,
 	`code` text NOT NULL,
 	`icon` varchar(255) CHARACTER SET utf8 NOT NULL,
