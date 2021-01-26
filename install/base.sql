@@ -8,7 +8,7 @@ CREATE TABLE `os_modules` (
 	`dropdown` tinyint(1) NOT NULL DEFAULT 0,
 	`sidebar` tinyint(1) NOT NULL DEFAULT 0,
 	`sort` int(11) NOT NULL DEFAULT 0,
-	`date` datetime NOT NULL DEFULT current_timestamp()
+	`date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `os_modules_lang` (
