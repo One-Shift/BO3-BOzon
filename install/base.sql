@@ -21,7 +21,7 @@ CREATE TABLE `os_modules_lang` (
 	`module_type` enum('main','sub') DEFAULT NULL,
 	`date` datetime NOT NULL DEFAULT current_timestamp(),
 	`date_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `os_modules_submenu` (
 	`id` int(11) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `os_modules_submenu` (
 	`status` tinyint(1) NOT NULL DEFAULT 0,
 	`date` datetime NOT NULL DEFAULT current_timestamp(),
 	`date_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `os_9_users` (
