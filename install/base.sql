@@ -16,7 +16,7 @@ CREATE TABLE `os_modules_lang` (
 	`codename` varchar(255) NOT NULL,
 	`name` varchar(255) NOT NULL,
 	`link_title` varchar(255) NOT NULL,
-	`lang_id` int(11) NOT NULL,
+	`lang_id` varchar(11) NOT NULL,
 	`module_id` int(11) NOT NULL,
 	`module_type` enum('main','sub') DEFAULT NULL,
 	`date` datetime NOT NULL DEFAULT current_timestamp(),
