@@ -13,19 +13,20 @@ $not_installed_menu = "";
 $installed_modules = [];
 
 // installed modules
-
-$source = $db->query(sprintf(
+$query = sprintf(
 	"SELECT m.id, m.folder, m.code, m.img, m.icon, m.sidebar, ml.name, ml.link_title FROM %s_modules m 
-	INNER JOIN %s_modules_lang ml ON m.id = ml.module_id WHERE ml.lang_id = '%s' AND ml.module_type = '%s' ORDER BY %s",
+	INNER JOIN %s_modules_lang ml ON m.id = ml.module_id 
+	WHERE ml.lang_id = '%s' AND ml.module_type = '%s' ORDER BY %s",
 	$cfg->db->prefix,
 	$cfg->db->prefix,
-	$lg_s,
+	$lg,
 	"main",
 	"sort ASC"
-));
+);
+
+$source = $db->query($query);
 
 if($source->num_rows > 0) {
-
 	while($module = $source->fetch_object()) {
 		array_push($installed_modules, $module->folder);
 
@@ -35,12 +36,13 @@ if($source->num_rows > 0) {
 			//Sub-items
 			$query = sprintf(
 				"SELECT mm.id, mm.link, ml.name, ml.link_title FROM %s_modules_submenu mm
-				INNER JOIN %s_modules_lang ml ON mm.name = ml.codename WHERE  ml.module_type = '%s' AND ml.module_id = %d AND ml.lang_id = '%s'",
+				INNER JOIN %s_modules_lang ml ON mm.name = ml.codename 
+				WHERE  ml.module_type = '%s' AND ml.module_id = %d AND ml.lang_id = '%s'",
 				$cfg->db->prefix,
 				$cfg->db->prefix,
 				'sub',
 				$module->id,
-				$lg_s
+				$lg
 			);
 
 			$source_sub = $db->query($query);
