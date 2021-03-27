@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * @var stdClass $cfg
+ * @var mysqli $db
+ * @var stdClass $authData
+ * @var array $lang
+ * @var array $mdl_lang
+ * @var string $lg_s
+ * @var int $lg
+ * @var string $pg
+ * @var int $id
+ * @var string $a
+ */
+
 $menu_item_tpl = bo3::loade("menu/item.tpl");
 
 $menu_fa_icon_tpl = bo3::loade("menu/fa-icon.tpl");
@@ -12,11 +25,11 @@ $menu = "";
 $not_installed_menu = "";
 $installed_modules = [];
 
-// installed modules
+# installed modules
 $query = sprintf(
 	"SELECT m.id, m.folder, m.code, m.img, m.icon, m.sidebar, ml.name, ml.link_title FROM %s_modules m 
 	INNER JOIN %s_modules_lang ml ON m.id = ml.module_id 
-	WHERE ml.lang_id = '%s' AND ml.module_type = '%s' ORDER BY %s",
+	WHERE ml.lang_id = %d AND ml.module_type = '%s' ORDER BY %s",
 	$cfg->db->prefix,
 	$cfg->db->prefix,
 	$lg,
@@ -26,14 +39,14 @@ $query = sprintf(
 
 $source = $db->query($query);
 
-if($source->num_rows > 0) {
+if ($source->num_rows > 0) {
 	while($module = $source->fetch_object()) {
 		array_push($installed_modules, $module->folder);
 
 		if($module->sidebar) {
 			$tmp_name = substr($module->folder, 4);
 
-			//Sub-items
+			# Sub-items
 			$query = sprintf(
 				"SELECT mm.id, mm.link, ml.name, ml.link_title FROM %s_modules_submenu mm
 				INNER JOIN %s_modules_lang ml ON mm.name = ml.codename 
@@ -62,7 +75,7 @@ if($source->num_rows > 0) {
 				}
 			}
 		
-			// ICON
+			# ICON
 			if (isset($module->img) && !empty($module->img)) {
 				$icon = bo3::c2r([
 					'module-folder' => $module->folder,
@@ -88,14 +101,12 @@ if($source->num_rows > 0) {
 	}
 }
 
-// show not installed modules if user has owner tag
+# show not installed modules if user has owner tag
 if (c9_user::isOwner($authData)) {
-	// modules not installed
+	# modules not installed
 	$list = glob('modules/mod-*', GLOB_ONLYDIR);
 
-	$icon = bo3::c2r([
-		'fa' => "fa-folder"
-	], $menu_fa_icon_tpl);
+	$icon = bo3::c2r(['fa' => "fa-folder"], $menu_fa_icon_tpl);
 
 	foreach ($list as $key => $value) {
 		$path_explode = explode("/", $value);
