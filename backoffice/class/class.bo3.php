@@ -96,10 +96,16 @@ class bo3 {
 		include sprintf(ROOT_DIR."/modules/plg-%s/plg-%s.php", $plg, $plg);
 	}
 
+	public static function mdl_e($path) {
+		global $cfg;
+
+		return ROOT_DIR."/modules/{$cfg->mdl->folder}/{$path}";
+	}
+
 	public static function mdl_load ($path) {
 		global $cfg;
 
-		if ($path != null) {
+		if (!is_null($path)) {
 			return file_get_contents(ROOT_DIR."/modules/{$cfg->mdl->folder}/{$path}");
 		}
 
