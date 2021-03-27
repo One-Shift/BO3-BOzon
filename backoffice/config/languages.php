@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @var $cfg
+ */
+
 $cfg->lg = [
 	1 => [TRUE, "pt", "Português"],
 	2 => [TRUE, "en", "English"],
