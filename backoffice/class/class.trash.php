@@ -42,7 +42,7 @@ class trash {
 		global $cfg, $db;
 
 		$query = sprintf(
-			"INSERT INTO %s_trash (module, code, user_id) VALUES ('%s', '%s', '%s')",
+			"INSERT INTO %s_trash (module, code, user_id) VALUES ('%s', '%s', %d)",
 			$cfg->db->prefix,
 			$this->module,
 			$db->real_escape_string($this->code),
