@@ -1,4 +1,4 @@
-# Deprecated
+# Marked as Deprecated
 
 ![Imgur](https://camo.githubusercontent.com/9c015107b2d0db1afa63be2714b17ff05e762420/68747470733a2f2f692e696d6775722e636f6d2f417377314a47742e6a7067)
 
